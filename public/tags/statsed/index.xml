@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statsed on A Hugo website</title>
+    <link>/tags/statsed/</link>
+    <description>Recent content in Statsed on A Hugo website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/statsed/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On Correlation</title>
+      <link>/2018/09/10/on-measurement/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/09/10/on-measurement/</guid>
+      <description>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation is not causation.” It gives early statistics students the wrong impressions.
+The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
+    </item>
+    
+  </channel>
+</rss>
