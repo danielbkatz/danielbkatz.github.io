@@ -1,9 +1,0 @@
-name: "Danny's-website"
-output_dir: "."
-navbar:
-  title: "Danny' Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "About Me"
-      href: about.html
