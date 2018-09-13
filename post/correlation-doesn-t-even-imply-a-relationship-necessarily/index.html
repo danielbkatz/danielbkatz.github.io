@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.48" />
+  <meta name="author" content="Daniel Katz">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation is not causation.” It gives early statistics students the wrong impressions.
+The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Playfair&#43;Display:400,700%7cFauna&#43;One">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="https://danielbkatz.github.io/index.xml" type="application/rss+xml" title="Daniel Katz">
+  <link rel="feed" href="https://danielbkatz.github.io/index.xml" type="application/rss+xml" title="Daniel Katz">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Daniel Katz">
+  <meta property="og:url" content="https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
+  <meta property="og:title" content="Correlation Doesn&#39;t Even Imply a Relationship, Necessarily | Daniel Katz">
+  <meta property="og:description" content="There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation is not causation.” It gives early statistics students the wrong impressions.
+The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-09-12T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2018-09-12T00:00:00&#43;00:00">
+  
+
+  
+
+  
+
+  <title>Correlation Doesn&#39;t Even Imply a Relationship, Necessarily | Daniel Katz</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Daniel Katz</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorial/">
+            
+            <span>Tutorials</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Correlation Doesn&#39;t Even Imply a Relationship, Necessarily</h1>
+
+    
+
+<div class="article-metadata">
+
+  
+  
+  <span itemscope itemprop="author" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Daniel Katz">
+  </span>
+  
+
+  <span class="article-date">
+    
+    <meta content="2018-09-12 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+    <time datetime="2018-09-12 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+      Sep 12, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Daniel Katz">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    
+    <a href="https://danielbkatz.github.io/categories/r/">R</a>
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily&amp;url=https%3a%2f%2fdanielbkatz.github.io%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fdanielbkatz.github.io%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fdanielbkatz.github.io%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fdanielbkatz.github.io%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily&amp;body=https%3a%2f%2fdanielbkatz.github.io%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      <p>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation is not causation.” It gives early statistics students the wrong impressions.</p>
+<p>The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that. It protects from students finding a high correlation and going “ah ha, it turns out swimming causes sun burns” (I guess it could, water rinses off sunscreen, and you suddenly have a sunburn)</p>
+<p>The phrase is problematic because it’s actually not accurate.</p>
+<p>1.) The first problem is that, actually, when in the realm of statistics, the only thing that may indicate a causal relationship is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
+<p>2.) The next problem is that, paradoxically, the phrase does not go nearly far enough. Correlaion present in data does not even indicate a real world relationship at all!</p>
+<p>Point 2 can be demonstrated.</p>
+<p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math inline">\(\sigma\)</span> is 1.</p>
+<pre class="r"><code>set.seed(123)
+dist1 &lt;- rnorm(20)
+dist2 &lt;- rnorm(20)</code></pre>
+<p>These two distributions, aside from being generated on my computer have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.</p>
+<p>We can correlate them.</p>
+<pre class="r"><code>cor(dist1, dist2)</code></pre>
+<pre><code>## [1] -0.09172278</code></pre>
+<p>The Correlation is -.09, not very large.</p>
+<p>Let’s do this again.</p>
+<pre class="r"><code>set.seed(9201989)
+dista &lt;- rnorm(20)
+
+distb &lt;- rnorm(20)
+
+cor(dista, distb)</code></pre>
+<pre><code>## [1] -0.3213314</code></pre>
+<p>Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit. It takes as input, the number of times to replicate creating distribrutions of size <em>samples</em> and a particular correlation value, or <em>cor.cutoff</em>. The function returns the number of times a correlation value above this cutoff is returned. The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. The second element is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.</p>
+<pre class="r"><code>library(ggplot2)
+
+totfunc &lt;- function(reps, samples, cor.cutoff){
+random &lt;- function(samples){
+  dist1 &lt;- rnorm(samples, 0, 1)
+  dist2 &lt;- rnorm(samples, 0, 1)
+distab &lt;- as.data.frame(cbind(dist1, dist2))
+x1 &lt;- cor(dist1, dist2)}
+
+
+test1 &lt;-replicate(reps, random(samples))
+
+test2 &lt;- as.data.frame(cbind(test1, c(1:reps)))
+
+corpl &lt;- ggplot(data = test2, aes(x=V2, y = test1)) + geom_line() + xlab(&quot;Replication Number&quot;) + ylab(&quot;Pearson&#39;s Correlation Coeffient Value&quot;)
+x2 &lt;- sum(test2$test1 &gt;= cor.cutoff)
+
+corpl
+plotsr &lt;- list(x2, corpl, test2)
+return(plotsr)
+} </code></pre>
+<p>Let’s see how this works. We’ll start with distributions of size 20 and correlate them. We’ll repeat this process 1000 times. we want to know how many correlation coefficients above the absolute value of .6 exist.</p>
+<pre class="r"><code>set.seed(23)
+testtot &lt;- totfunc(1000, 20, abs(.6))</code></pre>
+<p>To see the plot of correlation coefficients:</p>
+<pre class="r"><code>testtot[[2]]</code></pre>
+<p><img src="/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?</p>
+<pre class="r"><code>testtot[[1]]</code></pre>
+<pre><code>## [1] 5</code></pre>
+<p>Yep, 5 times. That’s fairly impressive. We were able to generate two random distributions, and depending on the sample, got correlation values that exceeded .6.</p>
+<p>If you want to understand why a correlation coefficient doesn’t necessarily describe a real world relationship, this is why!</p>
+<p>And if you want to play with some other numbers, say, with random distributions of size 1000 and do it a thousand times, we can.</p>
+<pre class="r"><code>test2 &lt;- totfunc(1000, 1000, abs(.6))
+
+test2[[1]]</code></pre>
+<pre><code>## [1] 0</code></pre>
+<pre class="r"><code>test2[[2]]</code></pre>
+<p><img src="/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="https://danielbkatz.github.io/tags/correlation/">Correlation</a>
+  
+  <a class="badge badge-light" href="https://danielbkatz.github.io/tags/causation/">Causation</a>
+  
+  <a class="badge badge-light" href="https://danielbkatz.github.io/tags/methods/">Methods</a>
+  
+</div>
+
+
+
+
+    
+    
+
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="https://danielbkatz.github.io/post/getting-started/" rel="prev">Academic: the website designer for Hugo</a>
+  </div>
+  
+</div>
+
+    </div>
+    
+
+    
+
+
+  </div>
+</article>
+
+<div class="container">
+  <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+</div>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: { linebreaks: { automatic: true } },
+        tex2jax: { inlineMath: [ ['$', '$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[', '\\]'] ], processEscapes: false },
+        TeX: { noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } } },
+        messageStyle: 'none'
+      });
+    </script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/search.js"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+  </body>
+</html>
+
