@@ -7,22 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 20 Apr 2016 00:00:00 -0700</lastBuildDate>
     
 	<atom:link href="https://danielbkatz.github.io/home/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Academic</title>
-      <link>https://danielbkatz.github.io/home/hero/</link>
-      <pubDate>Sun, 15 Oct 2017 00:00:00 -0700</pubDate>
-      
-      <guid>https://danielbkatz.github.io/home/hero/</guid>
-      <description>The highly flexible website framework for Hugo with an extensible plugin mechanism. Create a beautifully simple site in under 10 minutes 🚀 Latest release  Star   (function defer() { if (window.jQuery) { jQuery(document).ready(function(){ GetLatestReleaseInfo(); }); } else { setTimeout(function() { defer() }, 50); } })();
-function GetLatestReleaseInfo() { $.getJSON(&amp;lsquo;https://api.github.com/repos/gcushen/hugo-academic/tags&#39;).done(function (json) { let release = json[0]; // let downloadURL = release.zipball_url; $(&amp;lsquo;#academic-release&amp;rsquo;).text(&amp;lsquo;Latest release &amp;rsquo; + release.name);
-});
-}</description>
-    </item>
     
     <item>
       <title></title>
