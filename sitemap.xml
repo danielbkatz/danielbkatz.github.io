@@ -4,7 +4,15 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
+      <loc>/post/correlation-doesn-t-even-imply-correlation/</loc>
+      <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     </url>
     
@@ -12,7 +20,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/example/</loc>
+      <loc>/tutorial/example/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
     </url>
     
@@ -20,7 +28,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/</loc>
+      <loc>/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
     </url>
     
@@ -28,7 +36,15 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/</loc>
+      <loc>/privacy/</loc>
+      <lastmod>2018-06-28T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -36,7 +52,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/publication/</loc>
+      <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -44,7 +60,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/getting-started/</loc>
+      <loc>/post/getting-started/</loc>
       <lastmod>2018-01-13T00:00:00-08:00</lastmod>
     </url>
     
@@ -52,7 +68,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown/</loc>
+      <loc>/post/2015-07-23-r-rmarkdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     </url>
     
@@ -60,7 +76,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/academic/</loc>
+      <loc>/tags/academic/</loc>
       <lastmod>2018-01-13T00:00:00-08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -69,7 +85,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/categories/</loc>
+      <loc>/categories/</loc>
       <priority>0</priority>
     </url>
     
@@ -77,7 +93,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/causation/</loc>
+      <loc>/tags/causation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -86,7 +102,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/correlation/</loc>
+      <loc>/tags/correlation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -95,7 +111,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/</loc>
+      <loc>/</loc>
       <lastmod>2016-04-20T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
@@ -104,7 +120,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/methods/</loc>
+      <loc>/tags/methods/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -113,8 +129,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/plot/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <loc>/publication_types/</loc>
       <priority>0</priority>
     </url>
     
@@ -122,15 +137,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/publication_types/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/categories/r/</loc>
+      <loc>/categories/r/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -139,7 +146,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/r-markdown/</loc>
+      <loc>/tags/r-markdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
@@ -148,17 +155,26 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/regression/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/</loc>
+      <loc>/tags/</loc>
       <lastmod>2018-01-13T00:00:00-08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/plot/</loc>
+      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/regression/</loc>
+      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
     
