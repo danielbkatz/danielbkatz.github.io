@@ -20,14 +20,14 @@
 
 
 &lt;p&gt;There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.&lt;/p&gt;
-&lt;p&gt;The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.&lt;/p&gt;
+&lt;p&gt;The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.&lt;/p&gt;
 &lt;p&gt;The phrase is problematic because it’s actually not accurate.&lt;/p&gt;
 &lt;p&gt;1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not &lt;strong&gt;&lt;em&gt;necessarily&lt;/em&gt;&lt;/strong&gt; imply causation”&lt;/p&gt;
 &lt;p&gt;2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!&lt;/p&gt;
 &lt;p&gt;Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.&lt;/p&gt;
 &lt;div id=&#34;correlating-the-uncorrelated-with-r&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Correlating the Uncorrelated with R&lt;/h3&gt;
-&lt;p&gt;Let’s start by generating two random normal distributions of size 20, &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is 0, &lt;span class=&#34;math display&#34;&gt;\[\sigma\]&lt;/span&gt; is 1.&lt;/p&gt;
+&lt;p&gt;Let’s start by generating two random normal distributions of size 20, &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is 0, &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; is 1.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
 dist1 &amp;lt;- rnorm(20)
 dist2 &amp;lt;- rnorm(20)&lt;/code&gt;&lt;/pre&gt;
@@ -44,7 +44,9 @@ distb &amp;lt;- rnorm(20)
 
 cor(dista, distb)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] -0.3213314&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit. It takes as input, the number of times to replicate creating distribrutions of size &lt;em&gt;samples&lt;/em&gt; and a particular correlation value, or &lt;em&gt;cor.cutoff&lt;/em&gt;. The function returns the number of times a correlation value above this cutoff is returned. The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. The second element is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.&lt;/p&gt;
+&lt;p&gt;Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit.&lt;/p&gt;
+&lt;p&gt;It takes as input, the number of times to replicate creating the distribrutions of size &lt;em&gt;samples&lt;/em&gt; and a particular correlation value, or &lt;em&gt;cor.cutoff&lt;/em&gt;. The function returns the number of times a correlation value above this cutoff (cor.cutoff) is returned.&lt;/p&gt;
+&lt;p&gt;The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. Element 2 is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 
 totfunc &amp;lt;- function(reps, samples, cor.cutoff){

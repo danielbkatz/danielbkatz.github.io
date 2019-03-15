@@ -16,7 +16,7 @@
     
   
   <meta name="description" content="There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
-The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
+The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
@@ -91,7 +91,7 @@ The idea seems simple: Just becuase there is statistical correlation in the data
   <meta property="og:url" content="/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
   <meta property="og:title" content="Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily | Daniel Katz">
   <meta property="og:description" content="There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
-The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
+The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-09-12T00:00:00&#43;00:00">
@@ -337,14 +337,14 @@ The idea seems simple: Just becuase there is statistical correlation in the data
 
 
 <p>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.</p>
-<p>The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.</p>
+<p>The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.</p>
 <p>The phrase is problematic because it’s actually not accurate.</p>
 <p>1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
 <p>2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!</p>
 <p>Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.</p>
 <div id="correlating-the-uncorrelated-with-r" class="section level3">
 <h3>Correlating the Uncorrelated with R</h3>
-<p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math display">\[\sigma\]</span> is 1.</p>
+<p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math inline">\(\sigma\)</span> is 1.</p>
 <pre class="r"><code>set.seed(123)
 dist1 &lt;- rnorm(20)
 dist2 &lt;- rnorm(20)</code></pre>
@@ -361,7 +361,9 @@ distb &lt;- rnorm(20)
 
 cor(dista, distb)</code></pre>
 <pre><code>## [1] -0.3213314</code></pre>
-<p>Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit. It takes as input, the number of times to replicate creating distribrutions of size <em>samples</em> and a particular correlation value, or <em>cor.cutoff</em>. The function returns the number of times a correlation value above this cutoff is returned. The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. The second element is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.</p>
+<p>Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit.</p>
+<p>It takes as input, the number of times to replicate creating the distribrutions of size <em>samples</em> and a particular correlation value, or <em>cor.cutoff</em>. The function returns the number of times a correlation value above this cutoff (cor.cutoff) is returned.</p>
+<p>The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. Element 2 is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.</p>
 <pre class="r"><code>library(ggplot2)
 
 totfunc &lt;- function(reps, samples, cor.cutoff){
