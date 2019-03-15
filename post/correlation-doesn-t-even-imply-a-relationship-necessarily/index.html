@@ -89,7 +89,7 @@ The idea seems simple: Just becuase there is statistical correlation in the data
   
   <meta property="og:site_name" content="Daniel Katz">
   <meta property="og:url" content="/post/correlation-doesn-t-even-imply-a-relationship-necessarily/">
-  <meta property="og:title" content="Correlation Doesn&#39;t Even Imply a Relationship, Necessarily | Daniel Katz">
+  <meta property="og:title" content="Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily | Daniel Katz">
   <meta property="og:description" content="There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
 The idea seems simple: Just becuase there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.">
   <meta property="og:locale" content="en-us">
@@ -103,7 +103,7 @@ The idea seems simple: Just becuase there is statistical correlation in the data
 
   
 
-  <title>Correlation Doesn&#39;t Even Imply a Relationship, Necessarily | Daniel Katz</title>
+  <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily | Daniel Katz</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -238,7 +238,7 @@ The idea seems simple: Just becuase there is statistical correlation in the data
 
 
   <div class="article-container">
-    <h1 itemprop="name">Correlation Doesn&#39;t Even Imply a Relationship, Necessarily</h1>
+    <h1 itemprop="name">Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</h1>
 
     
 
@@ -291,7 +291,7 @@ The idea seems simple: Just becuase there is statistical correlation in the data
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily&amp;url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f"
+         href="https://twitter.com/intent/tweet?text=Correlation%20Doesn%27t%20Even%20Imply%20...%20Correlation%2c%20Necessarily&amp;url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f"
          target="_blank" rel="noopener">
         <i class="fab fa-twitter"></i>
       </a>
@@ -305,21 +305,21 @@ The idea seems simple: Just becuase there is statistical correlation in the data
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20...%20Correlation%2c%20Necessarily"
          target="_blank" rel="noopener">
         <i class="fab fa-linkedin-in"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily"
+         href="http://service.weibo.com/share/share.php?url=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f&amp;title=Correlation%20Doesn%27t%20Even%20Imply%20...%20Correlation%2c%20Necessarily"
          target="_blank" rel="noopener">
         <i class="fab fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Correlation%20Doesn%27t%20Even%20Imply%20a%20Relationship%2c%20Necessarily&amp;body=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f">
+         href="mailto:?subject=Correlation%20Doesn%27t%20Even%20Imply%20...%20Correlation%2c%20Necessarily&amp;body=%2fpost%2fcorrelation-doesn-t-even-imply-a-relationship-necessarily%2f">
         <i class="fas fa-envelope"></i>
       </a>
     </li>
@@ -342,11 +342,13 @@ The idea seems simple: Just becuase there is statistical correlation in the data
 <p>1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
 <p>2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!</p>
 <p>Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.</p>
-<p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math inline">\(\sigma\)</span> is 1.</p>
+<div id="correlating-the-uncorrelated-with-r" class="section level3">
+<h3>Correlating the Uncorrelated with R</h3>
+<p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math display">\[\sigma\]</span> is 1.</p>
 <pre class="r"><code>set.seed(123)
 dist1 &lt;- rnorm(20)
 dist2 &lt;- rnorm(20)</code></pre>
-<p>These two distributions, aside from being generated on my computer have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.</p>
+<p>These two distributions, aside from being generated on my computer, have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.</p>
 <p>We can correlate them.</p>
 <pre class="r"><code>cor(dist1, dist2)</code></pre>
 <pre><code>## [1] -0.09172278</code></pre>
@@ -399,6 +401,7 @@ test2[[1]]</code></pre>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code>test2[[2]]</code></pre>
 <p><img src="/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
 
     </div>
 
@@ -424,11 +427,6 @@ test2[[1]]</code></pre>
     
     <div class="article-widget">
       <div class="post-nav">
-  
-  <div class="post-nav-item">
-    <div class="meta-nav">Next</div>
-    <a href="/post/correlation-doesn-t-even-imply-correlation/" rel="next">Correlation Doesn&#39;t Even Imply...Correlation</a>
-  </div>
   
   
   <div class="post-nav-item">

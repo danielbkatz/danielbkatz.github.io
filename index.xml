@@ -11,16 +11,7 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Correlation Doesn&#39;t Even Imply...Correlation</title>
-      <link>/post/correlation-doesn-t-even-imply-correlation/</link>
-      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/correlation-doesn-t-even-imply-correlation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Correlation Doesn&#39;t Even Imply a Relationship, Necessarily</title>
+      <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
       <link>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
@@ -34,11 +25,13 @@
 &lt;p&gt;1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not &lt;strong&gt;&lt;em&gt;necessarily&lt;/em&gt;&lt;/strong&gt; imply causation”&lt;/p&gt;
 &lt;p&gt;2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!&lt;/p&gt;
 &lt;p&gt;Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.&lt;/p&gt;
-&lt;p&gt;Let’s start by generating two random normal distributions of size 20, &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is 0, &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; is 1.&lt;/p&gt;
+&lt;div id=&#34;correlating-the-uncorrelated-with-r&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Correlating the Uncorrelated with R&lt;/h3&gt;
+&lt;p&gt;Let’s start by generating two random normal distributions of size 20, &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is 0, &lt;span class=&#34;math display&#34;&gt;\[\sigma\]&lt;/span&gt; is 1.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
 dist1 &amp;lt;- rnorm(20)
 dist2 &amp;lt;- rnorm(20)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;These two distributions, aside from being generated on my computer have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.&lt;/p&gt;
+&lt;p&gt;These two distributions, aside from being generated on my computer, have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.&lt;/p&gt;
 &lt;p&gt;We can correlate them.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;cor(dist1, dist2)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] -0.09172278&lt;/code&gt;&lt;/pre&gt;
@@ -91,6 +84,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test2[[2]]&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
 </description>
     </item>
     
