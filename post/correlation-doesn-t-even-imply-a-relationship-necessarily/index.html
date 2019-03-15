@@ -342,8 +342,8 @@ The idea seems simple: Just because there is statistical correlation in the data
 <p>1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
 <p>2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!</p>
 <p>Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.</p>
-<div id="correlating-the-uncorrelated-with-r" class="section level3">
-<h3>Correlating the Uncorrelated with R</h3>
+<div id="correlating-the-uncorrelated" class="section level3">
+<h3>Correlating the Uncorrelated</h3>
 <p>Let’s start by generating two random normal distributions of size 20, <span class="math inline">\(\mu\)</span> is 0, <span class="math inline">\(\sigma\)</span> is 1.</p>
 <pre class="r"><code>set.seed(123)
 dist1 &lt;- rnorm(20)

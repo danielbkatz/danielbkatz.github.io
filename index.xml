@@ -25,8 +25,8 @@
 &lt;p&gt;1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not &lt;strong&gt;&lt;em&gt;necessarily&lt;/em&gt;&lt;/strong&gt; imply causation”&lt;/p&gt;
 &lt;p&gt;2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!&lt;/p&gt;
 &lt;p&gt;Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.&lt;/p&gt;
-&lt;div id=&#34;correlating-the-uncorrelated-with-r&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Correlating the Uncorrelated with R&lt;/h3&gt;
+&lt;div id=&#34;correlating-the-uncorrelated&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Correlating the Uncorrelated&lt;/h3&gt;
 &lt;p&gt;Let’s start by generating two random normal distributions of size 20, &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; is 0, &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; is 1.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
 dist1 &amp;lt;- rnorm(20)
