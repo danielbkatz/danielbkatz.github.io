@@ -7,9 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Fri, 15 Mar 2019 19:44:37 -0700</lastBuildDate>
     
 	<atom:link href="/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Eirt2</title>
+      <link>/tutorial/eirt2/</link>
+      <pubDate>Fri, 15 Mar 2019 19:44:37 -0700</pubDate>
+      
+      <guid>/tutorial/eirt2/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title></title>
@@ -17,7 +27,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/tutorial/explanatoryirt/</guid>
-      <description>title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: default linktitle = “Explanatory IRT”date = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.# Add menu entry to sidebar. [menu.tutorial] parent = “Explanatory IRT” weight = 1 +++## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.</description>
+      <description>title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: defaultdate = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.# Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.</description>
     </item>
     
   </channel>

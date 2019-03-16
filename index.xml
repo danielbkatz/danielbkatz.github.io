@@ -11,11 +11,11 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Tutorial</title>
-      <link>/tutorial/</link>
-      <pubDate>Fri, 15 Mar 2019 18:23:21 -0700</pubDate>
+      <title>Eirt2</title>
+      <link>/tutorial/eirt2/</link>
+      <pubDate>Fri, 15 Mar 2019 19:44:37 -0700</pubDate>
       
-      <guid>/tutorial/</guid>
+      <guid>/tutorial/eirt2/</guid>
       <description></description>
     </item>
     
@@ -124,7 +124,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;/colgroup&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: default linktitle = “Explanatory IRT”&lt;/td&gt;
+&lt;td&gt;title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: default&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td&gt;date = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00&lt;/td&gt;
@@ -133,7 +133,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;td&gt;draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;# Add menu entry to sidebar. [menu.tutorial] parent = “Explanatory IRT” weight = 1 +++&lt;/td&gt;
+&lt;td&gt;# Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.&lt;/td&gt;
@@ -193,7 +193,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9586526 1.0297662&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;## [1] 0.9603971 1.0277610&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
