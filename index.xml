@@ -184,7 +184,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9583444 1.0338395&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;## [1] 0.9588203 1.0295044&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
