@@ -4,7 +4,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/</loc>
+      <loc>/tutorial/</loc>
       <lastmod>2019-03-15T18:23:21-07:00</lastmod>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
+      <loc>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/</loc>
+      <loc>/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
     </url>
     
@@ -28,7 +28,15 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/</loc>
+      <loc>/privacy/</loc>
+      <lastmod>2018-06-28T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -36,7 +44,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/publication/</loc>
+      <loc>/publication/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -44,21 +52,21 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/explanatoryirt/</loc>
+      <loc>/tutorial/explanatoryirt/</loc>
     </url>
     
   
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tutorial/eirt2/</loc>
+      <loc>/tutorial/eirt2/</loc>
     </url>
     
   
     
     <url>
     
-      <loc>https://danielbkatz.github.io/categories/</loc>
+      <loc>/categories/</loc>
       <priority>0</priority>
     </url>
     
@@ -66,7 +74,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/causation/</loc>
+      <loc>/tags/causation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -75,7 +83,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/correlation/</loc>
+      <loc>/tags/correlation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -84,7 +92,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/</loc>
+      <loc>/</loc>
       <lastmod>2016-04-20T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
@@ -93,7 +101,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/methods/</loc>
+      <loc>/tags/methods/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -102,7 +110,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/publication_types/</loc>
+      <loc>/publication_types/</loc>
       <priority>0</priority>
     </url>
     
@@ -110,7 +118,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/categories/r/</loc>
+      <loc>/categories/r/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -119,7 +127,7 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/</loc>
+      <loc>/tags/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
