@@ -4,7 +4,7 @@
     
     <url>
     
-      <loc>/tutorial/</loc>
+      <loc>https://danielbkatz.github.io/tutorial/</loc>
       <lastmod>2019-03-15T18:23:21-07:00</lastmod>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
     
-      <loc>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
+      <loc>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
     
-      <loc>/tutorial/</loc>
+      <loc>https://danielbkatz.github.io/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
     </url>
     
@@ -28,15 +28,7 @@
     
     <url>
     
-      <loc>/privacy/</loc>
-      <lastmod>2018-06-28T00:00:00-07:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/post/</loc>
+      <loc>https://danielbkatz.github.io/post/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -44,7 +36,7 @@
     
     <url>
     
-      <loc>/publication/</loc>
+      <loc>https://danielbkatz.github.io/publication/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -52,7 +44,7 @@
     
     <url>
     
-      <loc>/post/2015-07-23-r-rmarkdown/</loc>
+      <loc>https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     </url>
     
@@ -60,21 +52,21 @@
     
     <url>
     
-      <loc>/tutorial/explanatoryirt/</loc>
+      <loc>https://danielbkatz.github.io/tutorial/explanatoryirt/</loc>
     </url>
     
   
     
     <url>
     
-      <loc>/tutorial/eirt2/</loc>
+      <loc>https://danielbkatz.github.io/tutorial/eirt2/</loc>
     </url>
     
   
     
     <url>
     
-      <loc>/categories/</loc>
+      <loc>https://danielbkatz.github.io/categories/</loc>
       <priority>0</priority>
     </url>
     
@@ -82,7 +74,7 @@
     
     <url>
     
-      <loc>/tags/causation/</loc>
+      <loc>https://danielbkatz.github.io/tags/causation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -91,7 +83,7 @@
     
     <url>
     
-      <loc>/tags/correlation/</loc>
+      <loc>https://danielbkatz.github.io/tags/correlation/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -100,7 +92,7 @@
     
     <url>
     
-      <loc>/</loc>
+      <loc>https://danielbkatz.github.io/</loc>
       <lastmod>2016-04-20T00:00:00-07:00</lastmod>
       <priority>0</priority>
     </url>
@@ -109,7 +101,7 @@
     
     <url>
     
-      <loc>/tags/methods/</loc>
+      <loc>https://danielbkatz.github.io/tags/methods/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -118,7 +110,7 @@
     
     <url>
     
-      <loc>/publication_types/</loc>
+      <loc>https://danielbkatz.github.io/publication_types/</loc>
       <priority>0</priority>
     </url>
     
@@ -126,7 +118,7 @@
     
     <url>
     
-      <loc>/categories/r/</loc>
+      <loc>https://danielbkatz.github.io/categories/r/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -135,7 +127,7 @@
     
     <url>
     
-      <loc>/tags/r-markdown/</loc>
+      <loc>https://danielbkatz.github.io/tags/r-markdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
@@ -144,7 +136,7 @@
     
     <url>
     
-      <loc>/tags/</loc>
+      <loc>https://danielbkatz.github.io/tags/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -153,7 +145,7 @@
     
     <url>
     
-      <loc>/tags/plot/</loc>
+      <loc>https://danielbkatz.github.io/tags/plot/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
@@ -162,7 +154,7 @@
     
     <url>
     
-      <loc>/tags/regression/</loc>
+      <loc>https://danielbkatz.github.io/tags/regression/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
