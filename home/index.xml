@@ -2,95 +2,95 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Daniel Katz</title>
-    <link>https://danielbkatz.github.io/home/</link>
+    <link>/home/</link>
     <description>Recent content in Homes on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Wed, 20 Apr 2016 00:00:00 -0700</lastBuildDate>
     
-	<atom:link href="https://danielbkatz.github.io/home/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://danielbkatz.github.io/home/about/</link>
+      <link>/home/about/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/about/</guid>
+      <guid>/home/about/</guid>
       <description>Biography I am a graduate student studying educational measurement and assessment, philosophy of measurement, and the notion of fairness in psychometrics. I am interested in how we measure students, the justification for quantification in the social sciences, and the way we use statistics to do this. The way we conceptualize what is important to measure has drastic effects on policy.
 Some of my projects are related to validity theory, Rasch modelling, latent regression, measuring &amp;ldquo;soft&amp;rdquo; or &amp;ldquo;fuzzy&amp;rdquo; student skills, and different ways of conceptualizing these latent constructs.</description>
     </item>
     
     <item>
       <title>Selected Publications</title>
-      <link>https://danielbkatz.github.io/home/publications_selected/</link>
+      <link>/home/publications_selected/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/publications_selected/</guid>
+      <guid>/home/publications_selected/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent Publications</title>
-      <link>https://danielbkatz.github.io/home/publications/</link>
+      <link>/home/publications/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/publications/</guid>
+      <guid>/home/publications/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Selected Talks</title>
-      <link>https://danielbkatz.github.io/home/talks_selected/</link>
+      <link>/home/talks_selected/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/talks_selected/</guid>
+      <guid>/home/talks_selected/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent &amp; Upcoming Talks</title>
-      <link>https://danielbkatz.github.io/home/talks/</link>
+      <link>/home/talks/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/talks/</guid>
+      <guid>/home/talks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent Posts</title>
-      <link>https://danielbkatz.github.io/home/posts/</link>
+      <link>/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/posts/</guid>
+      <guid>/home/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Search</title>
-      <link>https://danielbkatz.github.io/home/search/</link>
+      <link>/home/search/</link>
       <pubDate>Mon, 23 Jul 2018 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/search/</guid>
+      <guid>/home/search/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://danielbkatz.github.io/home/contact/</link>
+      <link>/home/contact/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/contact/</guid>
+      <guid>/home/contact/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://danielbkatz.github.io/home/projects/</link>
+      <link>/home/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/home/projects/</guid>
+      <guid>/home/projects/</guid>
       <description></description>
     </item>
     
