@@ -4,6 +4,22 @@
     
     <url>
     
+      <loc>/tutorial/</loc>
+      <lastmod>2019-03-15T18:23:21-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/post/c-users-katzd-desktop-desktop-copy-3-pers-website-danielbkatz-content-tutorial/</loc>
+      <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     </url>
@@ -19,6 +35,8 @@
   
     
     <url>
+    
+      <xhtml:link rel="alternate" href="/tutorial/" hreflang="en"/>
     
       <loc>/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
@@ -68,6 +86,23 @@
     
     <url>
     
+      <loc>/tutorial/explanatoryirt/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="/tutorial/" hreflang="en"/>
+    
+      <loc>/tutorial/</loc>
+      <lastmod>2018-09-09T00:00:00-07:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tags/academic/</loc>
       <lastmod>2018-01-13T00:00:00-08:00</lastmod>
       <priority>0</priority>
@@ -106,13 +141,6 @@
       <loc>/</loc>
       <lastmod>2016-04-20T00:00:00-07:00</lastmod>
       <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tutorial/explanatoryirt/</loc>
     </url>
     
   
