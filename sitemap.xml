@@ -20,8 +20,6 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/tutorial/" hreflang="en"/>
-    
       <loc>/tutorial/</loc>
       <lastmod>2018-09-09T00:00:00-07:00</lastmod>
     </url>
@@ -54,14 +52,6 @@
     
     <url>
     
-      <loc>/post/getting-started/</loc>
-      <lastmod>2018-01-13T00:00:00-08:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/post/2015-07-23-r-rmarkdown/</loc>
       <lastmod>2015-07-23T21:13:14-05:00</lastmod>
     </url>
@@ -77,18 +67,7 @@
     
     <url>
     
-      <xhtml:link rel="alternate" href="/tutorial/" hreflang="en"/>
-    
-      <loc>/tutorial/</loc>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tags/academic/</loc>
-      <lastmod>2018-01-13T00:00:00-08:00</lastmod>
-      <priority>0</priority>
+      <loc>/tutorial/eirt2/</loc>
     </url>
     
   
@@ -166,7 +145,7 @@
     <url>
     
       <loc>/tags/</loc>
-      <lastmod>2018-01-13T00:00:00-08:00</lastmod>
+      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

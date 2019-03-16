@@ -110,194 +110,6 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title>Academic: the website designer for Hugo</title>
-      <link>/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
-      
-      <guid>/post/getting-started/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;Academic&lt;/strong&gt; is a framework to help you create a beautiful website quickly. Perfect for personal sites, blogs, or business/project sites. &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Check out the latest demo&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes. Then head on over to the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start guide&lt;/a&gt; or take a look at the &lt;a href=&#34;https://sourcethemes.com/academic/updates/&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png&#34; alt=&#34;Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Key features:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Easily manage various content including homepage, blog posts, publications, talks, and projects&lt;/li&gt;
-&lt;li&gt;Extensible via &lt;strong&gt;color themes&lt;/strong&gt; and &lt;strong&gt;widgets/plugins&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Write in &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
-&lt;li&gt;Social/academic network linking, &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, and &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt; comments&lt;/li&gt;
-&lt;li&gt;Responsive and mobile friendly&lt;/li&gt;
-&lt;li&gt;Simple and refreshing one page design&lt;/li&gt;
-&lt;li&gt;Multilingual and easy to customize&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;color-themes&#34;&gt;Color Themes&lt;/h2&gt;
-
-&lt;p&gt;Academic is available in different color themes and font themes.&lt;/p&gt;
-
-
-
-&lt;div class=&#34;gallery&#34;&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Default&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-default.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-default.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Ocean&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-ocean.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-ocean.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Dark&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-dark.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-dark.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Default&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-forest.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-forest.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;Coffee theme with Playfair font&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-coffee-playfair.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-coffee-playfair.png&#34;&gt;
-  &lt;/a&gt;
-  
-  
-  
-  
-    
-  
-  &lt;a data-fancybox=&#34;gallery-1&#34; data-caption=&#34;1950s&#34; href=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-1950s.png&#34;&gt;
-    &lt;img alt=&#34;&#34; src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/images/theme-1950s.png&#34;&gt;
-  &lt;/a&gt;
-  
-&lt;/div&gt;
-
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;You can choose from one of the following four methods to install:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;one-click install using your web browser (recommended)&lt;/li&gt;
-&lt;li&gt;install on your computer using Git with the Command Prompt/Terminal app&lt;/li&gt;
-&lt;li&gt;install on your computer by downloading the ZIP files&lt;/li&gt;
-&lt;li&gt;install on your computer with RStudio&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;quick-install-using-your-web-browser&#34;&gt;Quick install using your web browser&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://app.netlify.com/start/deploy?repository=https://github.com/sourcethemes/academic-kickstart&#34; target=&#34;_blank&#34;&gt;Install Academic with Netlify&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Netlify will provide you with a customizable URL to access your new site&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;On GitHub, go to your newly created &lt;code&gt;academic-kickstart&lt;/code&gt; repository and edit &lt;code&gt;config.toml&lt;/code&gt; to personalize your site. Shortly after saving the file, your site will automatically update&lt;/li&gt;
-&lt;li&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-git&#34;&gt;Install with Git&lt;/h3&gt;
-
-&lt;p&gt;Prerequisites:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34; target=&#34;_blank&#34;&gt;Download and install Git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://gohugo.io/getting-started/installing/#quick-install&#34; target=&#34;_blank&#34;&gt;Download and install Hugo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart#fork-destination-box&#34; target=&#34;_blank&#34;&gt;Fork&lt;/a&gt; the &lt;em&gt;Academic Kickstart&lt;/em&gt; repository and clone your fork with Git:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sourcethemes/academic-kickstart.git My_Website
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Note that if you forked Academic Kickstart, the above command should be edited to clone your fork, i.e. replace &lt;code&gt;sourcethemes&lt;/code&gt; with your GitHub username.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize the theme:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd My_Website
-git submodule update --init --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-zip&#34;&gt;Install with ZIP&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract &lt;em&gt;Academic Kickstart&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract the &lt;em&gt;Academic theme&lt;/em&gt; to the &lt;code&gt;themes/academic/&lt;/code&gt; folder from the above step&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-rstudio&#34;&gt;Install with RStudio&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-rstudio&#34; target=&#34;_blank&#34;&gt;View the guide to installing Academic with RStudio&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;If you installed on your computer, view your new website by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now visit &lt;a href=&#34;http://localhost:1313&#34; target=&#34;_blank&#34;&gt;localhost:1313&lt;/a&gt; and your new Academic powered website will appear. Otherwise, if using Netlify, they will provide you with your URL.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content, customize your site, and deploy it. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Build your site by running the &lt;code&gt;hugo&lt;/code&gt; command. Then &lt;a href=&#34;https://georgecushen.com/create-your-website-with-hugo/&#34; target=&#34;_blank&#34;&gt;host it for free using Github Pages&lt;/a&gt; or Netlify (refer to the first installation method). Alternatively, copy the generated &lt;code&gt;public/&lt;/code&gt; directory (by FTP, Rsync, etc.) to your production web server (such as a university&amp;rsquo;s hosting service).&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;updating&#34;&gt;Updating&lt;/h2&gt;
-
-&lt;p&gt;Feel free to &lt;em&gt;star&lt;/em&gt; the project on &lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; to help keep track of updates and check out the &lt;a href=&#34;https://sourcethemes.com/academic/updates&#34; target=&#34;_blank&#34;&gt;release notes&lt;/a&gt; prior to updating your site.&lt;/p&gt;
-
-&lt;p&gt;Before updating the framework, it is recommended to make a backup of your entire website directory (or at least your &lt;code&gt;themes/academic&lt;/code&gt; directory) and record your current version number.&lt;/p&gt;
-
-&lt;p&gt;By default, Academic is installed as a Git submodule which can be updated by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule update --remote --merge
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;Check out the update guide&lt;/a&gt; for full instructions and alternative methods.&lt;/p&gt;
-
-&lt;h2 id=&#34;feedback-contributing&#34;&gt;Feedback &amp;amp; Contributing&lt;/h2&gt;
-
-&lt;p&gt;Please use the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues&#34; target=&#34;_blank&#34;&gt;issue tracker&lt;/a&gt; to let me know about any bugs or feature requests, or alternatively make a pull request.&lt;/p&gt;
-
-&lt;p&gt;For support, head over to the &lt;a href=&#34;http://discuss.gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo discussion forum&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Hello R Markdown</title>
       <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
@@ -432,7 +244,7 @@ Figure 1: A fancy pie chart.
 &lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9605944 1.0286567&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;## [1] 0.9578577 1.0304389&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
@@ -700,6 +512,653 @@ kable(comparemod$IC)&lt;/code&gt;&lt;/pre&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-item-side-the-linear-logistic-test-model-lltm&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;5. The Item Side: The Linear Logistic Test Model (LLTM)&lt;/h1&gt;
+&lt;p&gt;The LLTM is simply a more parsimonious Rasch model. Instead of each individual item being estimated, estimated item difficulties are made just based on item indicators. For instance, the data we have has four item types. Each item type gets its own difficulty estimate. However, there are some complications here. There is an assumption that each item indicator is responsible for the item difficulty. This is not a safe assumption.&lt;/p&gt;
+&lt;p&gt;The other unfortunate part about this is that the simplest way to go about fitting this model is by converting the data to “long” data. After that is done, we’ll create an indicator for each variable type (a categorical variable, denoting math, ela, science, or wordprob type item.&lt;/p&gt;
+&lt;p&gt;To make the data long, we’ll use the “gather” function from tidyr in the tidyverse package. Then we’ll add an indicator based on if_else statements.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#change the name of the mathwordproblem items
+names(eirtdata)[32:41] &amp;lt;- paste0(&amp;quot;WordProb.&amp;quot;, 1:10)
+
+#note the nested ifelse statements. 
+#Basically, if each var contains a certain value, such as &amp;quot;Math,&amp;quot; 
+#it gets recoded into its own column using &amp;quot;Mutate&amp;quot; from dplyr. 
+
+eirtlong &amp;lt;- gather(eirtdata, key = &amp;quot;item&amp;quot;, value = &amp;quot;response&amp;quot;, Math.1:WordProb.10) %&amp;gt;%
+  mutate(ittype = if_else(grepl(pattern = &amp;quot;Math.&amp;quot;, x = item), 1,
+         if_else(grepl(pattern = &amp;quot;Science.&amp;quot;, x = item), 2,
+        if_else(grepl(pattern = &amp;quot;ELA.&amp;quot;, x = item), 3,4))))
+
+head(eirtlong)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 6 x 7
+##      id treat     proflevel abilcov item   response ittype
+##   &amp;lt;dbl&amp;gt; &amp;lt;fct&amp;gt;     &amp;lt;fct&amp;gt;     &amp;lt;fct&amp;gt;   &amp;lt;chr&amp;gt;     &amp;lt;dbl&amp;gt;  &amp;lt;dbl&amp;gt;
+## 1     1 treat     4         1       Math.1        1      1
+## 2     2 treat     3         2       Math.1        1      1
+## 3     3 not-treat 1         2       Math.1        1      1
+## 4     4 not-treat 2         1       Math.1        1      1
+## 5     5 treat     1         2       Math.1        0      1
+## 6     6 not-treat 2         1       Math.1        0      1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To set up the LLTM, we have to use TAM.mml.mfr using the facets formula. TAM will create so-called “pseudo facets” for parameters that don’t have estimates.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;formulaa &amp;lt;- ~ittype
+facets &amp;lt;- as.data.frame(eirtlong[c(5,7)])
+
+#just to make it easier to call
+names(facets) &amp;lt;- c(&amp;quot;item&amp;quot;, &amp;quot;ittype&amp;quot;)
+
+#only want to use the response column. Have to add an id column
+lltm &amp;lt;- tam.mml.mfr(eirtlong[6], facets = facets, 
+                    formulaA = formulaa, pid = eirtlong$id)
+
+control &amp;lt;- glmerControl(optimizer = &amp;quot;optimx&amp;quot;, 
+                        calc.derivs = F, optCtrl = list(method=&amp;quot;nlminb&amp;quot;, starttests = F, kkt=F))
+
+
+#same thing but in lme4
+lltmme1 &amp;lt;- glmer(data=eirtlong, response~-1 + as.factor(ittype) + (1|id),
+                 family = &amp;quot;binomial&amp;quot;, control = control)
+
+#random item in lme4 (I don&amp;#39;t know how to do this in TAM)
+lltmlmer &amp;lt;- glmer(data=eirtlong, response~-1 + as.factor(ittype) + (1|id) + (1|item), family = &amp;quot;binomial&amp;quot;, control = control)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ok, so the LLTM model fit in TAM will only give you “difficulties” for the particular item properties. Now, instead of conceptualizing the Rasch model as ability - item difficulty, the model is “ability - item property difficulty.” There will only be as many item properties as you specify. There can be “crossloadings.”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#get property difficulties
+kable(lltm$xsi.facets)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;parameter&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;facet&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;xsi&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;se.xsi&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ittype1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ittype&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-0.1092315&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0167853&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ittype2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ittype&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0063631&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0167639&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ittype3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ittype&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-1.2873576&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0198834&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;ittype4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ittype&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0249119&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0167649&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF101&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF102&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF103&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF104&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF105&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF106&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF107&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF108&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF109&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;psfPF110&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;psf&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fixef(lltmme1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## as.factor(ittype)1 as.factor(ittype)2 as.factor(ittype)3 
+##        0.109420105       -0.006163771        1.287211963 
+## as.factor(ittype)4 
+##       -0.024710713&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, let’s compare the overall fit of the models:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;kable(CDM::IRT.compareModels(mod1, lat1, latreg2, lltm)$IC)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Model&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;loglike&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Deviance&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Npars&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Nobs&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AIC&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;BIC&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AIC3&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AICc&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;CAIC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;mod1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-31109.02&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62218.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62298.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62510.57&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62338.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62300.29&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62550.57&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;lat1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-30923.31&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61846.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61928.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62146.47&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61969.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61930.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62187.47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;latreg2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-27663.39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55326.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;44&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55414.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55648.55&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55458.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55417.49&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55692.55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;lltm&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-38564.85&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77129.71&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77139.71&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77166.27&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77144.71&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77139.75&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;77171.27&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;It is perhaps of no surprise that the most complicated model has the best fit.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/tutorial/eirt2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tutorial/eirt2/</guid>
+      <description>
+
+
+&lt;p&gt;+++ title = “Overview”&lt;/p&gt;
+&lt;p&gt;date = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00&lt;/p&gt;
+&lt;p&gt;draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.&lt;/p&gt;
+&lt;div id=&#34;add-menu-entry-to-sidebar.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Add menu entry to sidebar.&lt;/h1&gt;
+&lt;p&gt;[menu.tutorial] name = “Explanatory IRT” weight = 1&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;featured-image.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Featured image.&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;uncomment-below-lines-to-use.&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Uncomment below lines to use.&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;header&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;[header]&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;image-headersgetting-started.png&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;image = “headers/getting-started.png”&lt;/h1&gt;
+&lt;/div&gt;
+&lt;div id=&#34;caption-image-credit-academic&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;caption = “Image credit: &lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34;&gt;&lt;strong&gt;Academic&lt;/strong&gt;&lt;/a&gt;”&lt;/h1&gt;
+&lt;p&gt;+++&lt;/p&gt;
+&lt;div id=&#34;get-the-data-read-in&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Get the Data Read in&lt;/h2&gt;
+&lt;p&gt;First, I want to make sure everybody gets the data read into R in the exact same way.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install packages to get data
+#install.packages(&amp;quot;tidyverse&amp;quot;)
+#install.packages(&amp;quot;TAM&amp;quot;)
+#install.packages(&amp;quot;lme4&amp;quot;)
+#install.packages(&amp;quot;readr&amp;quot;)
+#install.packages(&amp;quot;optimx&amp;quot;)
+library(readr)
+library(tidyverse)
+library(lme4)
+library(TAM)
+library(optimx)
+library(knitr)
+
+#get the data read in. Have to be connected to internet. 
+eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)
+
+#get rid of the extra column
+eirtdata &amp;lt;- eirtdata[-1]
+
+#optional, if you want to save the data as a csv file on your computer. 
+#Note, it adds a column.
+#write.csv(eirtdata, &amp;quot;eirtdata.csv&amp;quot;)
+
+#make sure these person level covariates are treated as factors
+eirtdata &amp;lt;- eirtdata %&amp;gt;% mutate(treat = ifelse(treat==1, &amp;quot;treat&amp;quot;, &amp;quot;not-treat&amp;quot;))
+eirtdata$treat &amp;lt;- as.factor(eirtdata$treat)
+eirtdata$proflevel &amp;lt;- as.factor(eirtdata$proflevel)
+eirtdata$abilcov &amp;lt;- as.factor(eirtdata$abilcov)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. The Data&lt;/h1&gt;
+&lt;p&gt;Once the data is read in, let’s describe the data set.&lt;br /&gt;
+The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-variables&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. The variables:&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;: Random Student ID&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Math...&lt;/code&gt; Math Question from the test scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Science...&lt;/code&gt; Science type question scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ELA...&lt;/code&gt; Reading Comprehension type question, science related scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MathWordProb...&lt;/code&gt; Math Word Problem Type Question scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;treat&lt;/code&gt;: 1 if student was assigned to treatment class, 0 if assigned to standard class&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proflevel&lt;/code&gt;: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;abilcov&lt;/code&gt;: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are 40 items on the test in total.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#to get a sense of what&amp;#39;s in the dataset. 
+#names(tells us what the column names are)
+names(eirtdata)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;id&amp;quot;              &amp;quot;Math.1&amp;quot;          &amp;quot;Math.2&amp;quot;         
+##  [4] &amp;quot;Math.3&amp;quot;          &amp;quot;Math.4&amp;quot;          &amp;quot;Math.5&amp;quot;         
+##  [7] &amp;quot;Math.6&amp;quot;          &amp;quot;Math.7&amp;quot;          &amp;quot;Math.8&amp;quot;         
+## [10] &amp;quot;Math.9&amp;quot;          &amp;quot;Math.10&amp;quot;         &amp;quot;Science.1&amp;quot;      
+## [13] &amp;quot;Science.2&amp;quot;       &amp;quot;Science.3&amp;quot;       &amp;quot;Science.4&amp;quot;      
+## [16] &amp;quot;Science.5&amp;quot;       &amp;quot;Science.6&amp;quot;       &amp;quot;Science.7&amp;quot;      
+## [19] &amp;quot;Science.8&amp;quot;       &amp;quot;Science.9&amp;quot;       &amp;quot;Science.10&amp;quot;     
+## [22] &amp;quot;ELA.1&amp;quot;           &amp;quot;ELA.2&amp;quot;           &amp;quot;ELA.3&amp;quot;          
+## [25] &amp;quot;ELA.4&amp;quot;           &amp;quot;ELA.5&amp;quot;           &amp;quot;ELA.6&amp;quot;          
+## [28] &amp;quot;ELA.7&amp;quot;           &amp;quot;ELA.8&amp;quot;           &amp;quot;ELA.9&amp;quot;          
+## [31] &amp;quot;ELA.10&amp;quot;          &amp;quot;MathWordProb.1&amp;quot;  &amp;quot;MathWordProb.2&amp;quot; 
+## [34] &amp;quot;MathWordProb.3&amp;quot;  &amp;quot;MathWordProb.4&amp;quot;  &amp;quot;MathWordProb.5&amp;quot; 
+## [37] &amp;quot;MathWordProb.6&amp;quot;  &amp;quot;MathWordProb.7&amp;quot;  &amp;quot;MathWordProb.8&amp;quot; 
+## [40] &amp;quot;MathWordProb.9&amp;quot;  &amp;quot;MathWordProb.10&amp;quot; &amp;quot;treat&amp;quot;          
+## [43] &amp;quot;proflevel&amp;quot;       &amp;quot;abilcov&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Normally, it would be wise to look at descriptives. We’ll skip that since the emphasis is on fitting the models in TAM.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#just to check out the data, are there 
+#high performing students in both treatment groups? 
+table(eirtdata$treat, eirtdata$proflevel)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            
+##               1   2   3   4
+##   not-treat 185 214 170 191
+##   treat     193 169 211 167&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-the-rasch-model&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Running the Rasch Model&lt;/h1&gt;
+&lt;p&gt;Let’s run some basic IRT using tam on this data. This should help us get an idea.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#fit the first IRT model. Have to subset the data since it contains person covariates.
+mod1 &amp;lt;- tam.mml(eirtdata[2:40])
+
+###4. view fit statistics.
+#It&amp;#39;s a lot easier to interpret these models if the data fit well. 
+#The data fits really well. 
+#If there are any outliers or anything like that, it would be revealed here. 
+
+#get item fit
+mod1fit &amp;lt;- tam.fit(mod1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#item difficulties. Just show the first 10 items difficulties
+head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               xsi     se.xsi
+## Math.1 -1.1901775 0.06170396
+## Math.2 -0.5384382 0.05552351
+## Math.3  0.2070387 0.05424712
+## Math.4  0.7624491 0.05714235
+## Math.5  0.8450950 0.05786723
+## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
+range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9606576 1.0290259&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
+2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.&lt;/p&gt;
+&lt;p&gt;This is all to say, we’re good to start running our latent regressions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;latent-regression-in-two-parts&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Latent Regression in Two Parts&lt;/h1&gt;
+&lt;p&gt;Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?&lt;/p&gt;
+&lt;p&gt;One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.&lt;/p&gt;
+&lt;div id=&#34;part-i.-two-ways-to-analyze-group-differences-in-tam&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part I. Two Ways to Analyze Group Differences in TAM&lt;/h2&gt;
+&lt;p&gt;Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.&lt;/p&gt;
+&lt;p&gt;Formula for latent regression: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*X_1 + \epsilon\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is the regression coefficient for 1. &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).&lt;/p&gt;
+&lt;p&gt;With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#take the treatment variable and make it its own R object
+treat &amp;lt;- eirtdata$treat
+
+#add a simple TAM command
+latg &amp;lt;- tam.mml(eirtdata[2:40], group = treat)
+
+summary(latg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#the next way, and I find this to be the most intuitive way, 
+#but you don&amp;#39;t get group variances. 
+#You have to specify a formula:
+formulay1 &amp;lt;- ~treat
+
+#and then add dataY which can have many columns.
+lat1 &amp;lt;- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)
+
+#unfortunately, as far as I can tell, 
+#this is the only way to get standard errors in TAM for your regression coefficients. 
+se&amp;lt;- tam.se(lat1)
+summary(lat1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get the unstandardized regression coefficient. 
+#You can save these in an object if you like.
+#get standardized regression coefficients (using yx)
+kable(lat1$latreg_stand$beta_stand)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;parm&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;dim&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;est&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdYX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Intercept&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Y1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6989754&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.547852&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3495732&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.095436&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#get R^2 estimate
+lat1$latreg_stand$R2_theta&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.3001418&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#get standard error
+se$beta&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    est.Dim1    se.Dim1
+## 1 0.0000000 0.00000000
+## 2 0.6989754 0.02448985&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can see that the latent regression explains about 30% of the variance in theta estimates (the rest going to person ability and error).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Let&amp;#39;s check standard errors of the regression estimates. 
+se$beta&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##    est.Dim1    se.Dim1
+## 1 0.0000000 0.00000000
+## 2 0.6989754 0.02448985&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#note, this also works below, but gets slightly different estimates 
+#(a group mean is not held to zero)
+#like &amp;lt;- IRT.likelihood(lat1)
+#latregcom &amp;lt;- tam.latreg(like, dataY = eirtdata$treat, formulaY = formulay1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Let&amp;#39;s compare person ability parameters between the standard Rasch model and the latent regression model. 
+head(mod1$person)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   pid case pweight score max         EAP    SD.EAP
+## 1   1    1       1    23  39  0.05383554 0.3182850
+## 2   2    2       1    26  39  0.39026644 0.3432272
+## 3   3    3       1    16  39 -0.67112535 0.3122953
+## 4   4    4       1    20  39 -0.25948566 0.3351358
+## 5   5    5       1    19  39 -0.37144597 0.3318124
+## 6   6    6       1    20  39 -0.25948566 0.3351358&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#theta estimates 
+head(lat1$person)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##   pid case pweight score max          EAP    SD.EAP
+## 1   1    1       1    23  39  0.523588646 0.3041857
+## 2   2    2       1    26  39  0.807582572 0.3265364
+## 3   3    3       1    16  39 -0.388009891 0.3182653
+## 4   4    4       1    20  39 -0.004515606 0.2869874
+## 5   5    5       1    19  39  0.119659588 0.3024843
+## 6   6    6       1    20  39 -0.004515606 0.2869874&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we can see, the person parameters, the EAP estimates are quite different after “adjusting for” a student being in the treatment group or the non-treatment group. The formula now looks like:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;In this model, the variable, &lt;code&gt;treat&lt;/code&gt; is often called a “fixed effect.” TAM constrains the model so that the reference category fixed effect (no treatment) 0, has a value of zero. So, the model, for person 1, (who was in the treatment group) and item 1, looks like this:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Fixed effect of &lt;code&gt;treat&lt;/code&gt; = .70 logits (rounded)&lt;/li&gt;
+&lt;li&gt;Student was in the “treatment group” = 1&lt;/li&gt;
+&lt;li&gt;.51 logits is the student’s ability after adjusting for the student being in the treatment group.&lt;/li&gt;
+&lt;li&gt;Item difficulty for item 1 is -.85 logits.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;We’ve decomposed the variance of theta.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-ii.adding-to-the-latent-regression-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part II.Adding to the Latent Regression model&lt;/h2&gt;
+&lt;p&gt;We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.&lt;/p&gt;
+&lt;p&gt;We’ll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.&lt;/p&gt;
+&lt;p&gt;So the model is now: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*treat + \beta_2*proflevel + \epsilon\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;And the full model will now look something like: &lt;span class=&#34;math inline&#34;&gt;\(Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#this gets all the person level covariates into a single dataframe
+daty &amp;lt;- eirtdata %&amp;gt;% select(treat, proflevel, abilcov)
+
+#create the latent regression formula. Could also add an interaction
+formulay2 &amp;lt;- ~ treat + proflevel
+
+#now run the model
+latreg2 &amp;lt;- tam.mml(eirtdata[2:40], dataY = daty, formulaY = formulay2)
+
+#get standard errors
+selatreg2 &amp;lt;- tam.se(latreg2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view latent regression coefficients
+kable(latreg2$latreg_stand$beta_stand)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;parm&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;dim&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;est&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdYX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Intercept&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;treattreat&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5885051&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3000734&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.176722&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;proflevel2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5132791&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2617163&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.176722&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;proflevel3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5123953&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.2612657&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.176722&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;proflevel4&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.0035342&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.5116929&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;2.353445&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view standard errors
+kable(selatreg2$beta)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;right&#34;&gt;est.Dim1&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;se.Dim1&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0011625&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0016158&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;0.6&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0016201&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;right&#34;&gt;1.2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0016713&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Note all estiimates are statistically significant. The last step in this section is comparing overall model fit.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;comparemod &amp;lt;- CDM::IRT.compareModels(mod1, lat1, latreg2)
+kable(comparemod$IC)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Model&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;loglike&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Deviance&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Npars&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Nobs&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AIC&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;BIC&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AIC3&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;AICc&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;CAIC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;mod1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-31109.02&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62218.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;40&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62298.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62510.57&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62338.04&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62300.29&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62550.57&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;lat1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-30923.31&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61846.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;41&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61928.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62146.47&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61969.63&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;61930.99&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;62187.47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;latreg2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;-27663.39&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55326.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;44&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1500&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55414.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55648.55&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55458.77&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55417.49&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;55692.55&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-item-side-the-linear-logistic-test-model-lltm&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;5. The Item Side: The Linear Logistic Test Model (LLTM)&lt;/h1&gt;
