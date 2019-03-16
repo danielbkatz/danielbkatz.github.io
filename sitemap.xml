@@ -44,14 +44,6 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://danielbkatz.github.io/tutorial/explanatoryirt/</loc>
     </url>
     
@@ -127,35 +119,8 @@
     
     <url>
     
-      <loc>https://danielbkatz.github.io/tags/r-markdown/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>https://danielbkatz.github.io/tags/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/plot/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/regression/</loc>
-      <lastmod>2015-07-23T21:13:14-05:00</lastmod>
       <priority>0</priority>
     </url>
     
