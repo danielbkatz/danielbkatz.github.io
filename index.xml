@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Katz on Daniel Katz</title>
-    <link>/</link>
+    <link>https://danielbkatz.github.io/</link>
     <description>Recent content in Daniel Katz on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,28 +12,19 @@
     
     <item>
       <title>Tutorial</title>
-      <link>/tutorial/</link>
+      <link>https://danielbkatz.github.io/tutorial/</link>
       <pubDate>Fri, 15 Mar 2019 18:23:21 -0700</pubDate>
       
-      <guid>/tutorial/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C:/Users/katzd/Desktop/Desktop - Copy (3)/Pers_website/danielbkatz/content/tutorial</title>
-      <link>/post/c-users-katzd-desktop-desktop-copy-3-pers-website-danielbkatz-content-tutorial/</link>
-      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/c-users-katzd-desktop-desktop-copy-3-pers-website-danielbkatz-content-tutorial/</guid>
+      <guid>https://danielbkatz.github.io/tutorial/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
+      <link>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
+      <guid>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
       <description>
 
 
@@ -91,7 +82,7 @@ return(plotsr)
 testtot &amp;lt;- totfunc(1000, 20, abs(.6))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To see the plot of correlation coefficients:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testtot[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://danielbkatz.github.io/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testtot[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 5&lt;/code&gt;&lt;/pre&gt;
@@ -103,47 +94,17 @@ testtot &amp;lt;- totfunc(1000, 20, abs(.6))&lt;/code&gt;&lt;/pre&gt;
 test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test2[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://danielbkatz.github.io/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Example Page</title>
-      <link>/tutorial/example/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 -0700</pubDate>
-      
-      <guid>/tutorial/example/</guid>
-      <description>
-
-&lt;p&gt;In this tutorial, I&amp;rsquo;ll share my top 10 tips for getting started with Academic:&lt;/p&gt;
-
-&lt;h2 id=&#34;tip-1&#34;&gt;Tip 1&lt;/h2&gt;
-
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-
-&lt;h2 id=&#34;tip-2&#34;&gt;Tip 2&lt;/h2&gt;
-
-&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 -0700</pubDate>
-      
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Academic: the website designer for Hugo</title>
-      <link>/post/getting-started/</link>
+      <link>https://danielbkatz.github.io/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 -0700</pubDate>
       
-      <guid>/post/getting-started/</guid>
+      <guid>https://danielbkatz.github.io/post/getting-started/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;Academic&lt;/strong&gt; is a framework to help you create a beautiful website quickly. Perfect for personal sites, blogs, or business/project sites. &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Check out the latest demo&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes. Then head on over to the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start guide&lt;/a&gt; or take a look at the &lt;a href=&#34;https://sourcethemes.com/academic/updates/&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;.&lt;/p&gt;
@@ -328,10 +289,10 @@ git submodule update --init --recursive
     
     <item>
       <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
+      <link>https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown/</guid>
       <description>
 
 
@@ -368,7 +329,7 @@ pie(
   init.angle = -50, border = NA
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://danielbkatz.github.io/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: A fancy pie chart.
 &lt;/p&gt;
@@ -379,10 +340,10 @@ Figure 1: A fancy pie chart.
     
     <item>
       <title></title>
-      <link>/tutorial/explanatoryirt/</link>
+      <link>https://danielbkatz.github.io/tutorial/explanatoryirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tutorial/explanatoryirt/</guid>
+      <guid>https://danielbkatz.github.io/tutorial/explanatoryirt/</guid>
       <description>
 
 
@@ -461,7 +422,7 @@ Figure 1: A fancy pie chart.
 &lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9597506 1.0318260&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;## [1] 0.9600413 1.0305104&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
