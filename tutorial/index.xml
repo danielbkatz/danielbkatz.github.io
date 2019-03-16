@@ -23,5 +23,15 @@ Tip 1 &amp;hellip;
 Tip 2 &amp;hellip;</description>
     </item>
     
+    <item>
+      <title>Explanatory IRT tutorial with the TAM package in R</title>
+      <link>/tutorial/explanatoryirt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tutorial/explanatoryirt/</guid>
+      <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
+#install packages to get data#install.packages(&amp;quot;tidyverse&amp;quot;)#install.packages(&amp;quot;TAM&amp;quot;)#install.packages(&amp;quot;lme4&amp;quot;)#install.packages(&amp;quot;readr&amp;quot;)#install.packages(&amp;quot;optimx&amp;quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)#get rid of the extra columneirtdata &amp;lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.</description>
+    </item>
+    
   </channel>
 </rss>
