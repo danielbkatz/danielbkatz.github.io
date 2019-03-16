@@ -31,11 +31,29 @@
     </item>
     
     <item>
+      <title>IRT</title>
+      <link>/tags/irt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/irt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Methods</title>
       <link>/tags/methods/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/tags/methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rasch</title>
+      <link>/tags/rasch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rasch/</guid>
       <description></description>
     </item>
     

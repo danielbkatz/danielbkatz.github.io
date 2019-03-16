@@ -4,14 +4,6 @@
     
     <url>
     
-      <loc>/tutorial/eirt2/</loc>
-      <lastmod>2019-03-15T19:44:37-07:00</lastmod>
-    </url>
-    
-  
-    
-    <url>
-    
       <loc>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     </url>
@@ -86,6 +78,21 @@
     
     <url>
     
+      <loc>/post/explanatory-irt-tutorial-with-tam-r/</loc>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tags/irt/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tags/methods/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -112,6 +119,14 @@
     
     <url>
     
+      <loc>/tags/rasch/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/tags/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -122,7 +137,6 @@
     <url>
     
       <loc>/tutorial/</loc>
-      <lastmod>2019-03-15T19:44:37-07:00</lastmod>
       <priority>0</priority>
     </url>
     
