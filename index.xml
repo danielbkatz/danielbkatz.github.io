@@ -184,7 +184,7 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9605814 1.0292465&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;## [1] 0.9583444 1.0338395&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
@@ -795,7 +795,7 @@ head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9614802 1.0282962&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9594228 1.0284909&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
