@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>_Index on Daniel Katz</title>
+    <title>Tutorial on Daniel Katz</title>
     <link>/tutorial/</link>
-    <description>Recent content in _Index on Daniel Katz</description>
+    <description>Recent content in Tutorial on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sat, 16 Mar 2019 16:40:52 -0700</lastBuildDate>
     
 	<atom:link href="/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
+      <title>Explanatory IRT tutorial with the TAM package in R</title>
       <link>/tutorial/explanatoryirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/tutorial/explanatoryirt/</guid>
-      <description>title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: defaultdate = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.# Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.</description>
+      <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
+#install packages to get data#install.packages(&amp;quot;tidyverse&amp;quot;)#install.packages(&amp;quot;TAM&amp;quot;)#install.packages(&amp;quot;lme4&amp;quot;)#install.packages(&amp;quot;readr&amp;quot;)#install.packages(&amp;quot;optimx&amp;quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)#get rid of the extra columneirtdata &amp;lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.</description>
     </item>
     
   </channel>

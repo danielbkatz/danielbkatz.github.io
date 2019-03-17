@@ -88,18 +88,18 @@
   
   <meta property="og:site_name" content="Daniel Katz">
   <meta property="og:url" content="/tutorial/">
-  <meta property="og:title" content="_Index | Daniel Katz">
+  <meta property="og:title" content="Tutorial | Daniel Katz">
   <meta property="og:description" content="PhD Student in Educational Measurement and Psychometrics">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-03-16T16:40:52-07:00">
+  
   
 
   
 
   
 
-  <title>_Index | Daniel Katz</title>
+  <title>Tutorial | Daniel Katz</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
@@ -232,17 +232,18 @@
 
 
 <div class="universal-wrapper">
-  <h1>_Index</h1>
+  <h1>Tutorial</h1>
 
   
 
   
   
   <div>
-    <h2><a href="/tutorial/explanatoryirt/"></a></h2>
+    <h2><a href="/tutorial/explanatoryirt/">Explanatory IRT tutorial with the TAM package in R</a></h2>
     <div class="article-style">
       
-      title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: defaultdate = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.# Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.
+      Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
+#install packages to get data#install.packages(&quot;tidyverse&quot;)#install.packages(&quot;TAM&quot;)#install.packages(&quot;lme4&quot;)#install.packages(&quot;readr&quot;)#install.packages(&quot;optimx&quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &lt;- read_csv(&quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&quot;)#get rid of the extra columneirtdata &lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.
       
     </div>
   </div>

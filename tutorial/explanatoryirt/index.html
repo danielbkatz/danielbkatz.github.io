@@ -1,140 +1,454 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 2.4.0">
+  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="author" content="Daniel Katz">
+
+  
+  
+  
+  
+    
+  
+  <meta name="description" content="Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
+#install packages to get data#install.packages(&quot;tidyverse&quot;)#install.packages(&quot;TAM&quot;)#install.packages(&quot;lme4&quot;)#install.packages(&quot;readr&quot;)#install.packages(&quot;optimx&quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &lt;- read_csv(&quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&quot;)#get rid of the extra columneirtdata &lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/tutorial/explanatoryirt/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" crossorigin="anonymous">
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700%7cRoboto:400,400italic,700%7cRoboto&#43;Mono">
+  
+
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+  
+  
+
+  
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Daniel Katz">
+  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Daniel Katz">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/tutorial/explanatoryirt/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Daniel Katz">
+  <meta property="og:url" content="/tutorial/explanatoryirt/">
+  <meta property="og:title" content="Explanatory IRT tutorial with the TAM package in R | Daniel Katz">
+  <meta property="og:description" content="Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
+#install packages to get data#install.packages(&quot;tidyverse&quot;)#install.packages(&quot;TAM&quot;)#install.packages(&quot;lme4&quot;)#install.packages(&quot;readr&quot;)#install.packages(&quot;optimx&quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &lt;- read_csv(&quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&quot;)#get rid of the extra columneirtdata &lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.">
+  <meta property="og:locale" content="en-us">
+  
+  
+  
+  
+
+  
+
+  
+
+  <title>Explanatory IRT tutorial with the TAM package in R | Daniel Katz</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Daniel Katz</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#about">
+            
+            <span>Home</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#posts">
+            
+            <span>Blog Posts</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorial/">
+            
+            <span>Tutorials</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link" href="/#contact">
+            
+            <span>Contact</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
 
 
 
-<table style="width:4%;">
-<colgroup>
-<col width="4%" />
-</colgroup>
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+Please define menu items named `[menu.tutorial]` in your tutorial\ExplanatoryIRT.html front matter or define `[[menu.tutorial]]` in `config.toml`.
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <input name="q" type="search" class="form-control" id="search-query" placeholder="Search..." autocomplete="off">
+</form>
+
+
+<nav class="docs-links" id="docs-nav">
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+      <div id="search-hits">
+        
+      </div>
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        
+
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">Explanatory IRT tutorial with the TAM package in R</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+
+
+<div id="get-the-data-read-in" class="section level2">
+<h2>Get the Data Read in</h2>
+<p>First, I want to make sure everybody gets the data read into R in the exact same way.</p>
+<pre class="r"><code>#install packages to get data
+#install.packages(&quot;tidyverse&quot;)
+#install.packages(&quot;TAM&quot;)
+#install.packages(&quot;lme4&quot;)
+#install.packages(&quot;readr&quot;)
+#install.packages(&quot;optimx&quot;)
+library(readr)
+library(tidyverse)
+library(lme4)
+library(TAM)
+library(optimx)
+library(knitr)
+
+#get the data read in. Have to be connected to internet. 
+eirtdata &lt;- read_csv(&quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&quot;)
+
+#get rid of the extra column
+eirtdata &lt;- eirtdata[-1]
+
+#optional, if you want to save the data as a csv file on your computer. 
+#Note, it adds a column.
+#write.csv(eirtdata, &quot;eirtdata.csv&quot;)
+
+#make sure these person level covariates are treated as factors
+eirtdata &lt;- eirtdata %&gt;% mutate(treat = ifelse(treat==1, &quot;treat&quot;, &quot;not-treat&quot;))
+eirtdata$treat &lt;- as.factor(eirtdata$treat)
+eirtdata$proflevel &lt;- as.factor(eirtdata$proflevel)
+eirtdata$abilcov &lt;- as.factor(eirtdata$abilcov)</code></pre>
+</div>
+<div id="the-data" class="section level1">
+<h1>1. The Data</h1>
+<p>Once the data is read in, let’s describe the data set.<br />
+The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.</p>
+</div>
+<div id="the-variables" class="section level1">
+<h1>2. The variables:</h1>
+<ol style="list-style-type: decimal">
+<li><code>id</code>: Random Student ID<br />
+</li>
+<li><code>Math...</code> Math Question from the test scored correct or incorrect (1 or 0)<br />
+</li>
+<li><code>Science...</code> Science type question scored correct or incorrect (1 or 0)<br />
+</li>
+<li><code>ELA...</code> Reading Comprehension type question, science related scored correct or incorrect (1 or 0)<br />
+</li>
+<li><code>MathWordProb...</code> Math Word Problem Type Question scored correct or incorrect (1 or 0)<br />
+</li>
+<li><code>treat</code>: 1 if student was assigned to treatment class, 0 if assigned to standard class<br />
+</li>
+<li><code>proflevel</code>: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient.<br />
+</li>
+<li><code>abilcov</code>: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.</li>
+</ol>
+<p>There are 40 items on the test in total.</p>
+<pre class="r"><code>#to get a sense of what&#39;s in the dataset. 
+#names(tells us what the column names are)
+names(eirtdata)</code></pre>
+<pre><code>##  [1] &quot;id&quot;              &quot;Math.1&quot;          &quot;Math.2&quot;         
+##  [4] &quot;Math.3&quot;          &quot;Math.4&quot;          &quot;Math.5&quot;         
+##  [7] &quot;Math.6&quot;          &quot;Math.7&quot;          &quot;Math.8&quot;         
+## [10] &quot;Math.9&quot;          &quot;Math.10&quot;         &quot;Science.1&quot;      
+## [13] &quot;Science.2&quot;       &quot;Science.3&quot;       &quot;Science.4&quot;      
+## [16] &quot;Science.5&quot;       &quot;Science.6&quot;       &quot;Science.7&quot;      
+## [19] &quot;Science.8&quot;       &quot;Science.9&quot;       &quot;Science.10&quot;     
+## [22] &quot;ELA.1&quot;           &quot;ELA.2&quot;           &quot;ELA.3&quot;          
+## [25] &quot;ELA.4&quot;           &quot;ELA.5&quot;           &quot;ELA.6&quot;          
+## [28] &quot;ELA.7&quot;           &quot;ELA.8&quot;           &quot;ELA.9&quot;          
+## [31] &quot;ELA.10&quot;          &quot;MathWordProb.1&quot;  &quot;MathWordProb.2&quot; 
+## [34] &quot;MathWordProb.3&quot;  &quot;MathWordProb.4&quot;  &quot;MathWordProb.5&quot; 
+## [37] &quot;MathWordProb.6&quot;  &quot;MathWordProb.7&quot;  &quot;MathWordProb.8&quot; 
+## [40] &quot;MathWordProb.9&quot;  &quot;MathWordProb.10&quot; &quot;treat&quot;          
+## [43] &quot;proflevel&quot;       &quot;abilcov&quot;</code></pre>
+<p>Normally, it would be wise to look at descriptives. We’ll skip that since the emphasis is on fitting the models in TAM.</p>
+<pre class="r"><code>#just to check out the data, are there 
+#high performing students in both treatment groups? 
+table(eirtdata$treat, eirtdata$proflevel)</code></pre>
+<pre><code>##            
+##               1   2   3   4
+##   not-treat 185 214 170 191
+##   treat     193 169 211 167</code></pre>
+</div>
+<div id="running-the-rasch-model" class="section level1">
+<h1>3. Running the Rasch Model</h1>
+<p>Let’s run some basic IRT using tam on this data. This should help us get an idea.</p>
+<pre class="r"><code>#fit the first IRT model. Have to subset the data since it contains person covariates.
+mod1 &lt;- tam.mml(eirtdata[2:40])
+
+###4. view fit statistics.
+#It&#39;s a lot easier to interpret these models if the data fit well. 
+#The data fits really well. 
+#If there are any outliers or anything like that, it would be revealed here. 
+
+#get item fit
+mod1fit &lt;- tam.fit(mod1)</code></pre>
+<pre class="r"><code>#item difficulties. Just show the first 10 items difficulties
+head(as.data.frame(mod1$xsi))</code></pre>
+<pre><code>##               xsi     se.xsi
+## Math.1 -1.1901775 0.06170396
+## Math.2 -0.5384382 0.05552351
+## Math.3  0.2070387 0.05424712
+## Math.4  0.7624491 0.05714235
+## Math.5  0.8450950 0.05786723
+## Math.6 -0.1907538 0.05419563</code></pre>
+<pre class="r"><code>#view the range of fit statistics, particularly infit
+range(mod1fit$itemfit$Infit)</code></pre>
+<pre><code>## [1] 0.9632171 1.0282751</code></pre>
+<pre class="r"><code>#Get the sample size adjusted acceptable item fit range:
+2* (2/sqrt(1500))</code></pre>
+<pre><code>## [1] 0.1032796</code></pre>
+<p>The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.</p>
+<p>This is all to say, we’re good to start running our latent regressions.</p>
+</div>
+<div id="latent-regression-in-two-parts" class="section level1">
+<h1>4. Latent Regression in Two Parts</h1>
+<p>Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?</p>
+<p>One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.</p>
+<div id="part-i.-two-ways-to-analyze-group-differences-in-tam" class="section level2">
+<h2>Part I. Two Ways to Analyze Group Differences in TAM</h2>
+<p>Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.</p>
+<p>Formula for latent regression: <span class="math inline">\(\theta = \beta_1*X_1 + \epsilon\)</span> where <span class="math inline">\(\beta_1\)</span> is the regression coefficient for 1. <span class="math inline">\(X_1\)</span> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
+<p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”</p>
+<pre class="r"><code>#take the treatment variable and make it its own R object
+treat &lt;- eirtdata$treat
+
+#add a simple TAM command
+latg &lt;- tam.mml(eirtdata[2:40], group = treat)
+
+summary(latg)</code></pre>
+<p>Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.</p>
+<pre class="r"><code>#the next way, and I find this to be the most intuitive way, 
+#but you don&#39;t get group variances. 
+#You have to specify a formula:
+formulay1 &lt;- ~treat
+
+#and then add dataY which can have many columns.
+lat1 &lt;- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)
+
+#unfortunately, as far as I can tell, 
+#this is the only way to get standard errors in TAM for your regression coefficients. 
+se&lt;- tam.se(lat1)
+summary(lat1)</code></pre>
+<pre class="r"><code># get the unstandardized regression coefficient. 
+#You can save these in an object if you like.
+#get standardized regression coefficients (using yx)
+kable(lat1$latreg_stand$beta_stand)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">parm</th>
+<th align="right">dim</th>
+<th align="right">est</th>
+<th align="right">StdYX</th>
+<th align="right">StdX</th>
+<th align="right">StdY</th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td>title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: default</td>
+<td align="left">Intercept</td>
+<td align="right">1</td>
+<td align="right">0.0000000</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>date = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00</td>
-</tr>
-<tr class="odd">
-<td>draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.</td>
-</tr>
-<tr class="even">
-<td># Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++</td>
-</tr>
-<tr class="odd">
-<td>## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.</td>
-</tr>
-<tr class="even">
-<td>```r #install packages to get data #install.packages(“tidyverse”) #install.packages(“TAM”) #install.packages(“lme4”) #install.packages(“readr”) #install.packages(“optimx”) library(readr) library(tidyverse) library(lme4) library(TAM) library(optimx) library(knitr)</td>
-</tr>
-<tr class="odd">
-<td>#get the data read in. Have to be connected to internet. eirtdata &lt;- read_csv(“<a href="https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv" class="uri">https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv</a>”)</td>
-</tr>
-<tr class="even">
-<td>#get rid of the extra column eirtdata &lt;- eirtdata[-1]</td>
-</tr>
-<tr class="odd">
-<td>#optional, if you want to save the data as a csv file on your computer. #Note, it adds a column. #write.csv(eirtdata, “eirtdata.csv”)</td>
-</tr>
-<tr class="even">
-<td>#make sure these person level covariates are treated as factors eirtdata &lt;- eirtdata %&gt;% mutate(treat = ifelse(treat==1, “treat”, “not-treat”)) eirtdata<span class="math inline">\(treat &lt;- as.factor(eirtdata\)</span>treat) eirtdata<span class="math inline">\(proflevel &lt;- as.factor(eirtdata\)</span>proflevel) eirtdata<span class="math inline">\(abilcov &lt;- as.factor(eirtdata\)</span>abilcov) ``` #1. The Data Once the data is read in, let’s describe the data set. The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.</td>
-</tr>
-<tr class="odd">
-<td>#2. The variables: 1. <code>id</code>: Random Student ID 2. <code>Math...</code> Math Question from the test scored correct or incorrect (1 or 0) 3. <code>Science...</code> Science type question scored correct or incorrect (1 or 0) 4. <code>ELA...</code> Reading Comprehension type question, science related scored correct or incorrect (1 or 0) 5. <code>MathWordProb...</code> Math Word Problem Type Question scored correct or incorrect (1 or 0) 6. <code>treat</code>: 1 if student was assigned to treatment class, 0 if assigned to standard class 7. <code>proflevel</code>: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient. 8. <code>abilcov</code>: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.</td>
-</tr>
-<tr class="even">
-<td>There are 40 items on the test in total.</td>
-</tr>
-<tr class="odd">
-<td><code>r #to get a sense of what's in the dataset. #names(tells us what the column names are) names(eirtdata)</code></td>
-</tr>
-<tr class="even">
-<td><code>##  [1] &quot;id&quot;              &quot;Math.1&quot;          &quot;Math.2&quot; ##  [4] &quot;Math.3&quot;          &quot;Math.4&quot;          &quot;Math.5&quot; ##  [7] &quot;Math.6&quot;          &quot;Math.7&quot;          &quot;Math.8&quot; ## [10] &quot;Math.9&quot;          &quot;Math.10&quot;         &quot;Science.1&quot; ## [13] &quot;Science.2&quot;       &quot;Science.3&quot;       &quot;Science.4&quot; ## [16] &quot;Science.5&quot;       &quot;Science.6&quot;       &quot;Science.7&quot; ## [19] &quot;Science.8&quot;       &quot;Science.9&quot;       &quot;Science.10&quot; ## [22] &quot;ELA.1&quot;           &quot;ELA.2&quot;           &quot;ELA.3&quot; ## [25] &quot;ELA.4&quot;           &quot;ELA.5&quot;           &quot;ELA.6&quot; ## [28] &quot;ELA.7&quot;           &quot;ELA.8&quot;           &quot;ELA.9&quot; ## [31] &quot;ELA.10&quot;          &quot;MathWordProb.1&quot;  &quot;MathWordProb.2&quot; ## [34] &quot;MathWordProb.3&quot;  &quot;MathWordProb.4&quot;  &quot;MathWordProb.5&quot; ## [37] &quot;MathWordProb.6&quot;  &quot;MathWordProb.7&quot;  &quot;MathWordProb.8&quot; ## [40] &quot;MathWordProb.9&quot;  &quot;MathWordProb.10&quot; &quot;treat&quot; ## [43] &quot;proflevel&quot;       &quot;abilcov&quot;</code></td>
-</tr>
-<tr class="odd">
-<td>Normally, it would be wise to look at descriptives. We’ll skip that since the emphasis is on fitting the models in TAM.</td>
-</tr>
-<tr class="even">
-<td><code>r #just to check out the data, are there #high performing students in both treatment groups? table(eirtdata$treat, eirtdata$proflevel)</code></td>
-</tr>
-<tr class="odd">
-<td><code>## ##               1   2   3   4 ##   not-treat 185 214 170 191 ##   treat     193 169 211 167</code> # 3. Running the Rasch Model Let’s run some basic IRT using tam on this data. This should help us get an idea.</td>
-</tr>
-<tr class="even">
-<td>```r #fit the first IRT model. Have to subset the data since it contains person covariates. mod1 &lt;- tam.mml(eirtdata[2:40])</td>
-</tr>
-<tr class="odd">
-<td>###4. view fit statistics. #It’s a lot easier to interpret these models if the data fit well. #The data fits really well. #If there are any outliers or anything like that, it would be revealed here.</td>
-</tr>
-<tr class="even">
-<td>#get item fit mod1fit &lt;- tam.fit(mod1) ```</td>
-</tr>
-<tr class="odd">
-<td><code>r #item difficulties. Just show the first 10 items difficulties head(as.data.frame(mod1$xsi))</code></td>
-</tr>
-<tr class="even">
-<td><code>##               xsi     se.xsi ## Math.1 -1.1901775 0.06170396 ## Math.2 -0.5384382 0.05552351 ## Math.3  0.2070387 0.05424712 ## Math.4  0.7624491 0.05714235 ## Math.5  0.8450950 0.05786723 ## Math.6 -0.1907538 0.05419563</code></td>
-</tr>
-<tr class="odd">
-<td><code>r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)</code></td>
-</tr>
-<tr class="even">
-<td><code>## [1] 0.9588203 1.0295044</code></td>
-</tr>
-<tr class="odd">
-<td><code>r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))</code></td>
-</tr>
-<tr class="even">
-<td><code>## [1] 0.1032796</code></td>
-</tr>
-<tr class="odd">
-<td>The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.</td>
-</tr>
-<tr class="even">
-<td>This is all to say, we’re good to start running our latent regressions.</td>
-</tr>
-<tr class="odd">
-<td>#4. Latent Regression in Two Parts Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?</td>
-</tr>
-<tr class="even">
-<td>One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.</td>
-</tr>
-<tr class="odd">
-<td>##Part I. Two Ways to Analyze Group Differences in TAM Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.</td>
-</tr>
-<tr class="even">
-<td>Formula for latent regression: <span class="math inline">\(\theta = \beta_1*X_1 + \epsilon\)</span> where <span class="math inline">\(\beta_1\)</span> is the regression coefficient for 1. <span class="math inline">\(X_1\)</span> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</td>
-</tr>
-<tr class="odd">
-<td>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”</td>
-</tr>
-<tr class="even">
-<td>```r #take the treatment variable and make it its own R object treat &lt;- eirtdata$treat</td>
-</tr>
-<tr class="odd">
-<td>#add a simple TAM command latg &lt;- tam.mml(eirtdata[2:40], group = treat)</td>
-</tr>
-<tr class="even">
-<td>summary(latg) ```</td>
-</tr>
-<tr class="odd">
-<td>Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.</td>
-</tr>
-<tr class="even">
-<td>```r #the next way, and I find this to be the most intuitive way, #but you don’t get group variances. #You have to specify a formula: formulay1 &lt;- ~treat</td>
-</tr>
-<tr class="odd">
-<td>#and then add dataY which can have many columns. lat1 &lt;- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)</td>
-</tr>
-<tr class="even">
-<td>#unfortunately, as far as I can tell, #this is the only way to get standard errors in TAM for your regression coefficients. se&lt;- tam.se(lat1) summary(lat1) ```</td>
-</tr>
-<tr class="odd">
-<td><code>r # get the unstandardized regression coefficient. #You can save these in an object if you like. #get standardized regression coefficients (using yx) kable(lat1$latreg_stand$beta_stand)</code></td>
-</tr>
-<tr class="even">
-<td>parm dim est StdYX StdX StdY</td>
+<td align="left">Y1</td>
+<td align="right">1</td>
+<td align="right">0.6989754</td>
+<td align="right">0.547852</td>
+<td align="right">0.3495732</td>
+<td align="right">1.095436</td>
 </tr>
 </tbody>
 </table>
-<p>Intercept 1 0.0000000 NA NA NA Y1 1 0.6989754 0.547852 0.3495732 1.095436</p>
 <pre class="r"><code>#get R^2 estimate
 lat1$latreg_stand$R2_theta</code></pre>
 <pre><code>## [1] 0.3001418</code></pre>
@@ -182,6 +496,7 @@ head(lat1$person)</code></pre>
 </ol>
 <p><span class="math inline">\(Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\)</span>.</p>
 <p>We’ve decomposed the variance of theta.</p>
+</div>
 <div id="part-ii.adding-to-the-latent-regression-model" class="section level2">
 <h2>Part II.Adding to the Latent Regression model</h2>
 <p>We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.</p>
@@ -344,6 +659,7 @@ kable(comparemod$IC)</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div id="the-item-side-the-linear-logistic-test-model-lltm" class="section level1">
 <h1>5. The Item Side: The Linear Logistic Test Model (LLTM)</h1>
@@ -567,3 +883,144 @@ kable(lltm$xsi.facets)</code></pre>
 </table>
 <p>It is perhaps of no surprise that the most complicated model has the best fit.</p>
 </div>
+
+          </div>
+
+          
+
+        </div>
+
+        <div class="body-footer">
+          Last updated on Jan 1, 0001
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  
+  <p class="powered-by">
+    <a href="/privacy/">Privacy Policy</a>
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; 2018 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+  </p>
+</footer>
+
+
+    </main>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        CommonHTML: { linebreaks: { automatic: true } },
+        tex2jax: { inlineMath: [ ['$', '$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[', '\\]'] ], processEscapes: false },
+        TeX: { noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } } },
+        messageStyle: 'none'
+      });
+    </script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha256-VsEqElsCHSGmnmHXGQzvoWjWwoznFSZc6hs7ARLRacQ=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "Search Results",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    <script src="/js/search.js"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+  </body>
+</html>
+
+

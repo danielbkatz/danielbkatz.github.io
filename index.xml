@@ -101,148 +101,192 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
     </item>
     
     <item>
-      <title></title>
-      <link>/tutorial/explanatoryirt/</link>
+      <title>Explanatory IRT tutorial with the TAM package in R</title>
+      <link>/post/explanatory-irt-tutorial-with-tam-r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tutorial/explanatoryirt/</guid>
+      <guid>/post/explanatory-irt-tutorial-with-tam-r/</guid>
       <description>
 
 
-&lt;table style=&#34;width:4%;&#34;&gt;
-&lt;colgroup&gt;
-&lt;col width=&#34;4%&#34; /&gt;
-&lt;/colgroup&gt;
+&lt;div id=&#34;get-the-data-read-in&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Get the Data Read in&lt;/h2&gt;
+&lt;p&gt;First, I want to make sure everybody gets the data read into R in the exact same way.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install packages to get data
+#install.packages(&amp;quot;tidyverse&amp;quot;)
+#install.packages(&amp;quot;TAM&amp;quot;)
+#install.packages(&amp;quot;lme4&amp;quot;)
+#install.packages(&amp;quot;readr&amp;quot;)
+#install.packages(&amp;quot;optimx&amp;quot;)
+library(readr)
+library(tidyverse)
+library(lme4)
+library(TAM)
+library(optimx)
+library(knitr)
+
+#get the data read in. Have to be connected to internet. 
+eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)
+
+#get rid of the extra column
+eirtdata &amp;lt;- eirtdata[-1]
+
+#optional, if you want to save the data as a csv file on your computer. 
+#Note, it adds a column.
+#write.csv(eirtdata, &amp;quot;eirtdata.csv&amp;quot;)
+
+#make sure these person level covariates are treated as factors
+eirtdata &amp;lt;- eirtdata %&amp;gt;% mutate(treat = ifelse(treat==1, &amp;quot;treat&amp;quot;, &amp;quot;not-treat&amp;quot;))
+eirtdata$treat &amp;lt;- as.factor(eirtdata$treat)
+eirtdata$proflevel &amp;lt;- as.factor(eirtdata$proflevel)
+eirtdata$abilcov &amp;lt;- as.factor(eirtdata$abilcov)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;1. The Data&lt;/h1&gt;
+&lt;p&gt;Once the data is read in, let’s describe the data set.&lt;br /&gt;
+The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-variables&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;2. The variables:&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;: Random Student ID&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Math...&lt;/code&gt; Math Question from the test scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Science...&lt;/code&gt; Science type question scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ELA...&lt;/code&gt; Reading Comprehension type question, science related scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MathWordProb...&lt;/code&gt; Math Word Problem Type Question scored correct or incorrect (1 or 0)&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;treat&lt;/code&gt;: 1 if student was assigned to treatment class, 0 if assigned to standard class&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;proflevel&lt;/code&gt;: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;abilcov&lt;/code&gt;: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There are 40 items on the test in total.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#to get a sense of what&amp;#39;s in the dataset. 
+#names(tells us what the column names are)
+names(eirtdata)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##  [1] &amp;quot;id&amp;quot;              &amp;quot;Math.1&amp;quot;          &amp;quot;Math.2&amp;quot;         
+##  [4] &amp;quot;Math.3&amp;quot;          &amp;quot;Math.4&amp;quot;          &amp;quot;Math.5&amp;quot;         
+##  [7] &amp;quot;Math.6&amp;quot;          &amp;quot;Math.7&amp;quot;          &amp;quot;Math.8&amp;quot;         
+## [10] &amp;quot;Math.9&amp;quot;          &amp;quot;Math.10&amp;quot;         &amp;quot;Science.1&amp;quot;      
+## [13] &amp;quot;Science.2&amp;quot;       &amp;quot;Science.3&amp;quot;       &amp;quot;Science.4&amp;quot;      
+## [16] &amp;quot;Science.5&amp;quot;       &amp;quot;Science.6&amp;quot;       &amp;quot;Science.7&amp;quot;      
+## [19] &amp;quot;Science.8&amp;quot;       &amp;quot;Science.9&amp;quot;       &amp;quot;Science.10&amp;quot;     
+## [22] &amp;quot;ELA.1&amp;quot;           &amp;quot;ELA.2&amp;quot;           &amp;quot;ELA.3&amp;quot;          
+## [25] &amp;quot;ELA.4&amp;quot;           &amp;quot;ELA.5&amp;quot;           &amp;quot;ELA.6&amp;quot;          
+## [28] &amp;quot;ELA.7&amp;quot;           &amp;quot;ELA.8&amp;quot;           &amp;quot;ELA.9&amp;quot;          
+## [31] &amp;quot;ELA.10&amp;quot;          &amp;quot;MathWordProb.1&amp;quot;  &amp;quot;MathWordProb.2&amp;quot; 
+## [34] &amp;quot;MathWordProb.3&amp;quot;  &amp;quot;MathWordProb.4&amp;quot;  &amp;quot;MathWordProb.5&amp;quot; 
+## [37] &amp;quot;MathWordProb.6&amp;quot;  &amp;quot;MathWordProb.7&amp;quot;  &amp;quot;MathWordProb.8&amp;quot; 
+## [40] &amp;quot;MathWordProb.9&amp;quot;  &amp;quot;MathWordProb.10&amp;quot; &amp;quot;treat&amp;quot;          
+## [43] &amp;quot;proflevel&amp;quot;       &amp;quot;abilcov&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Normally, it would be wise to look at descriptives. We’ll skip that since the emphasis is on fitting the models in TAM.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#just to check out the data, are there 
+#high performing students in both treatment groups? 
+table(eirtdata$treat, eirtdata$proflevel)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            
+##               1   2   3   4
+##   not-treat 185 214 170 191
+##   treat     193 169 211 167&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-the-rasch-model&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;3. Running the Rasch Model&lt;/h1&gt;
+&lt;p&gt;Let’s run some basic IRT using tam on this data. This should help us get an idea.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#fit the first IRT model. Have to subset the data since it contains person covariates.
+mod1 &amp;lt;- tam.mml(eirtdata[2:40])
+
+###4. view fit statistics.
+#It&amp;#39;s a lot easier to interpret these models if the data fit well. 
+#The data fits really well. 
+#If there are any outliers or anything like that, it would be revealed here. 
+
+#get item fit
+mod1fit &amp;lt;- tam.fit(mod1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#item difficulties. Just show the first 10 items difficulties
+head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##               xsi     se.xsi
+## Math.1 -1.1901775 0.06170396
+## Math.2 -0.5384382 0.05552351
+## Math.3  0.2070387 0.05424712
+## Math.4  0.7624491 0.05714235
+## Math.5  0.8450950 0.05786723
+## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
+range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.957963 1.028063&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
+2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.&lt;/p&gt;
+&lt;p&gt;This is all to say, we’re good to start running our latent regressions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;latent-regression-in-two-parts&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;4. Latent Regression in Two Parts&lt;/h1&gt;
+&lt;p&gt;Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?&lt;/p&gt;
+&lt;p&gt;One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.&lt;/p&gt;
+&lt;div id=&#34;part-i.-two-ways-to-analyze-group-differences-in-tam&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part I. Two Ways to Analyze Group Differences in TAM&lt;/h2&gt;
+&lt;p&gt;Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.&lt;/p&gt;
+&lt;p&gt;Formula for latent regression: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*X_1 + \epsilon\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is the regression coefficient for 1. &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).&lt;/p&gt;
+&lt;p&gt;With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#take the treatment variable and make it its own R object
+treat &amp;lt;- eirtdata$treat
+
+#add a simple TAM command
+latg &amp;lt;- tam.mml(eirtdata[2:40], group = treat)
+
+summary(latg)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#the next way, and I find this to be the most intuitive way, 
+#but you don&amp;#39;t get group variances. 
+#You have to specify a formula:
+formulay1 &amp;lt;- ~treat
+
+#and then add dataY which can have many columns.
+lat1 &amp;lt;- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)
+
+#unfortunately, as far as I can tell, 
+#this is the only way to get standard errors in TAM for your regression coefficients. 
+se&amp;lt;- tam.se(lat1)
+summary(lat1)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# get the unstandardized regression coefficient. 
+#You can save these in an object if you like.
+#get standardized regression coefficients (using yx)
+kable(lat1$latreg_stand$beta_stand)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;parm&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;dim&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;est&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdYX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdX&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;StdY&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;title: “Explanatory IRT tutorial with the TAM package in R” output: html_document: default&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Intercept&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.0000000&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;NA&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;date = 2018-09-09T00:00:00 # lastmod = 2018-09-09T00:00:00&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;draft = false # Is this a draft? true/false toc = true # Show table of contents? true/false type = “docs” # Do not modify.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;# Add menu entry to sidebar. [menu.tutorial] name = “Explanatory IRT” weight = 1 +++&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;## Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;```r #install packages to get data #install.packages(“tidyverse”) #install.packages(“TAM”) #install.packages(“lme4”) #install.packages(“readr”) #install.packages(“optimx”) library(readr) library(tidyverse) library(lme4) library(TAM) library(optimx) library(knitr)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(“&lt;a href=&#34;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&#34; class=&#34;uri&#34;&gt;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&lt;/a&gt;”)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;#get rid of the extra column eirtdata &amp;lt;- eirtdata[-1]&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#optional, if you want to save the data as a csv file on your computer. #Note, it adds a column. #write.csv(eirtdata, “eirtdata.csv”)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;#make sure these person level covariates are treated as factors eirtdata &amp;lt;- eirtdata %&amp;gt;% mutate(treat = ifelse(treat==1, “treat”, “not-treat”)) eirtdata&lt;span class=&#34;math inline&#34;&gt;\(treat &amp;lt;- as.factor(eirtdata\)&lt;/span&gt;treat) eirtdata&lt;span class=&#34;math inline&#34;&gt;\(proflevel &amp;lt;- as.factor(eirtdata\)&lt;/span&gt;proflevel) eirtdata&lt;span class=&#34;math inline&#34;&gt;\(abilcov &amp;lt;- as.factor(eirtdata\)&lt;/span&gt;abilcov) ``` #1. The Data Once the data is read in, let’s describe the data set. The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#2. The variables: 1. &lt;code&gt;id&lt;/code&gt;: Random Student ID 2. &lt;code&gt;Math...&lt;/code&gt; Math Question from the test scored correct or incorrect (1 or 0) 3. &lt;code&gt;Science...&lt;/code&gt; Science type question scored correct or incorrect (1 or 0) 4. &lt;code&gt;ELA...&lt;/code&gt; Reading Comprehension type question, science related scored correct or incorrect (1 or 0) 5. &lt;code&gt;MathWordProb...&lt;/code&gt; Math Word Problem Type Question scored correct or incorrect (1 or 0) 6. &lt;code&gt;treat&lt;/code&gt;: 1 if student was assigned to treatment class, 0 if assigned to standard class 7. &lt;code&gt;proflevel&lt;/code&gt;: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient. 8. &lt;code&gt;abilcov&lt;/code&gt;: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;There are 40 items on the test in total.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;r #to get a sense of what&#39;s in the dataset. #names(tells us what the column names are) names(eirtdata)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;##  [1] &amp;quot;id&amp;quot;              &amp;quot;Math.1&amp;quot;          &amp;quot;Math.2&amp;quot; ##  [4] &amp;quot;Math.3&amp;quot;          &amp;quot;Math.4&amp;quot;          &amp;quot;Math.5&amp;quot; ##  [7] &amp;quot;Math.6&amp;quot;          &amp;quot;Math.7&amp;quot;          &amp;quot;Math.8&amp;quot; ## [10] &amp;quot;Math.9&amp;quot;          &amp;quot;Math.10&amp;quot;         &amp;quot;Science.1&amp;quot; ## [13] &amp;quot;Science.2&amp;quot;       &amp;quot;Science.3&amp;quot;       &amp;quot;Science.4&amp;quot; ## [16] &amp;quot;Science.5&amp;quot;       &amp;quot;Science.6&amp;quot;       &amp;quot;Science.7&amp;quot; ## [19] &amp;quot;Science.8&amp;quot;       &amp;quot;Science.9&amp;quot;       &amp;quot;Science.10&amp;quot; ## [22] &amp;quot;ELA.1&amp;quot;           &amp;quot;ELA.2&amp;quot;           &amp;quot;ELA.3&amp;quot; ## [25] &amp;quot;ELA.4&amp;quot;           &amp;quot;ELA.5&amp;quot;           &amp;quot;ELA.6&amp;quot; ## [28] &amp;quot;ELA.7&amp;quot;           &amp;quot;ELA.8&amp;quot;           &amp;quot;ELA.9&amp;quot; ## [31] &amp;quot;ELA.10&amp;quot;          &amp;quot;MathWordProb.1&amp;quot;  &amp;quot;MathWordProb.2&amp;quot; ## [34] &amp;quot;MathWordProb.3&amp;quot;  &amp;quot;MathWordProb.4&amp;quot;  &amp;quot;MathWordProb.5&amp;quot; ## [37] &amp;quot;MathWordProb.6&amp;quot;  &amp;quot;MathWordProb.7&amp;quot;  &amp;quot;MathWordProb.8&amp;quot; ## [40] &amp;quot;MathWordProb.9&amp;quot;  &amp;quot;MathWordProb.10&amp;quot; &amp;quot;treat&amp;quot; ## [43] &amp;quot;proflevel&amp;quot;       &amp;quot;abilcov&amp;quot;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Normally, it would be wise to look at descriptives. We’ll skip that since the emphasis is on fitting the models in TAM.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;r #just to check out the data, are there #high performing students in both treatment groups? table(eirtdata$treat, eirtdata$proflevel)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;## ##               1   2   3   4 ##   not-treat 185 214 170 191 ##   treat     193 169 211 167&lt;/code&gt; # 3. Running the Rasch Model Let’s run some basic IRT using tam on this data. This should help us get an idea.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;```r #fit the first IRT model. Have to subset the data since it contains person covariates. mod1 &amp;lt;- tam.mml(eirtdata[2:40])&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;###4. view fit statistics. #It’s a lot easier to interpret these models if the data fit well. #The data fits really well. #If there are any outliers or anything like that, it would be revealed here.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;#get item fit mod1fit &amp;lt;- tam.fit(mod1) ```&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;r #item difficulties. Just show the first 10 items difficulties head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;##               xsi     se.xsi ## Math.1 -1.1901775 0.06170396 ## Math.2 -0.5384382 0.05552351 ## Math.3  0.2070387 0.05424712 ## Math.4  0.7624491 0.05714235 ## Math.5  0.8450950 0.05786723 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;r #view the range of fit statistics, particularly infit range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.9588203 1.0295044&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;r #Get the sample size adjusted acceptable item fit range: 2* (2/sqrt(1500))&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;This is all to say, we’re good to start running our latent regressions.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#4. Latent Regression in Two Parts Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;##Part I. Two Ways to Analyze Group Differences in TAM Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;Formula for latent regression: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*X_1 + \epsilon\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is the regression coefficient for 1. &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;```r #take the treatment variable and make it its own R object treat &amp;lt;- eirtdata$treat&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#add a simple TAM command latg &amp;lt;- tam.mml(eirtdata[2:40], group = treat)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;summary(latg) ```&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;```r #the next way, and I find this to be the most intuitive way, #but you don’t get group variances. #You have to specify a formula: formulay1 &amp;lt;- ~treat&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;#and then add dataY which can have many columns. lat1 &amp;lt;- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;#unfortunately, as far as I can tell, #this is the only way to get standard errors in TAM for your regression coefficients. se&amp;lt;- tam.se(lat1) summary(lat1) ```&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;odd&#34;&gt;
-&lt;td&gt;&lt;code&gt;r # get the unstandardized regression coefficient. #You can save these in an object if you like. #get standardized regression coefficients (using yx) kable(lat1$latreg_stand$beta_stand)&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr class=&#34;even&#34;&gt;
-&lt;td&gt;parm dim est StdYX StdX StdY&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Y1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6989754&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.547852&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.3495732&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;1.095436&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Intercept 1 0.0000000 NA NA NA Y1 1 0.6989754 0.547852 0.3495732 1.095436&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#get R^2 estimate
 lat1$latreg_stand$R2_theta&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.3001418&lt;/code&gt;&lt;/pre&gt;
@@ -290,6 +334,7 @@ head(lat1$person)&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;We’ve decomposed the variance of theta.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div id=&#34;part-ii.adding-to-the-latent-regression-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Part II.Adding to the Latent Regression model&lt;/h2&gt;
 &lt;p&gt;We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.&lt;/p&gt;
@@ -452,6 +497,7 @@ kable(comparemod$IC)&lt;/code&gt;&lt;/pre&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;the-item-side-the-linear-logistic-test-model-lltm&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;5. The Item Side: The Linear Logistic Test Model (LLTM)&lt;/h1&gt;
@@ -680,10 +726,10 @@ kable(lltm$xsi.facets)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Explanatory IRT tutorial with the TAM package in R</title>
-      <link>/post/explanatory-irt-tutorial-with-tam-r/</link>
+      <link>/tutorial/explanatoryirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/explanatory-irt-tutorial-with-tam-r/</guid>
+      <guid>/tutorial/explanatoryirt/</guid>
       <description>
 
 
@@ -795,7 +841,7 @@ head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9594228 1.0284909&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9632171 1.0282751&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
