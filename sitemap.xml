@@ -12,6 +12,14 @@
     
     <url>
     
+      <loc>/tutorial/explanatoryirt/</loc>
+      <lastmod>2018-09-09T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
       <loc>/privacy/</loc>
       <lastmod>2018-06-28T00:00:00-07:00</lastmod>
     </url>
@@ -29,6 +37,14 @@
     <url>
     
       <loc>/publication/</loc>
+      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
+    </url>
+    
+  
+    
+    <url>
+    
+      <loc>/tutorial/</loc>
       <lastmod>2017-01-01T00:00:00-08:00</lastmod>
     </url>
     
@@ -72,13 +88,6 @@
     <url>
     
       <loc>/post/explanatory-irt-tutorial-with-tam-r/</loc>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tutorial/explanatoryirt/</loc>
     </url>
     
   
@@ -130,13 +139,6 @@
       <loc>/tags/</loc>
       <lastmod>2018-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
-    </url>
-    
-  
-    
-    <url>
-    
-      <loc>/tutorial/</loc>
     </url>
     
   

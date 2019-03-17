@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorial on Daniel Katz</title>
+    <title>Tutorials on Daniel Katz</title>
     <link>/tutorial/</link>
-    <description>Recent content in Tutorial on Daniel Katz</description>
+    <description>Recent content in Tutorials on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0800</lastBuildDate>
     
 	<atom:link href="/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Explanatory IRT tutorial with the TAM package in R</title>
+      <title>Explanatory IRT with TAM in R (latent regression and LLTM)</title>
       <link>/tutorial/explanatoryirt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>/tutorial/explanatoryirt/</guid>
       <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
