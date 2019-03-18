@@ -64,6 +64,20 @@
 
   
   
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-70963217-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
   
 
   
@@ -236,16 +250,6 @@
   
 
   
-  
-  <div>
-    <h2><a href="/tutorial/explanatoryirt/">Explanatory IRT with TAM in R (latent regression and LLTM)</a></h2>
-    <div class="article-style">
-      
-      Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
-#install packages to get data#install.packages(&quot;tidyverse&quot;)#install.packages(&quot;TAM&quot;)#install.packages(&quot;lme4&quot;)#install.packages(&quot;readr&quot;)#install.packages(&quot;optimx&quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &lt;- read_csv(&quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&quot;)#get rid of the extra columneirtdata &lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.
-      
-    </div>
-  </div>
   
 
   
