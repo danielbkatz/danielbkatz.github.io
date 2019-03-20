@@ -20,10 +20,10 @@
 
 
 &lt;p&gt;There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.&lt;/p&gt;
-&lt;p&gt;The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.&lt;/p&gt;
+&lt;p&gt;The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.&lt;/p&gt;
 &lt;p&gt;The phrase is problematic because it’s actually not accurate.&lt;/p&gt;
 &lt;p&gt;1.) The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not &lt;strong&gt;&lt;em&gt;necessarily&lt;/em&gt;&lt;/strong&gt; imply causation”&lt;/p&gt;
-&lt;p&gt;2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlaion present in data does not even indicate a real world relationship, let alone a causal one!&lt;/p&gt;
+&lt;p&gt;2.) The next problem is that, paradoxically, the phrase does not go far enough. Correlation present in data does not even indicate a real world relationship, let alone a causal one!&lt;/p&gt;
 &lt;p&gt;Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.&lt;/p&gt;
 &lt;div id=&#34;correlating-the-uncorrelated&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Correlating the Uncorrelated&lt;/h3&gt;
@@ -207,7 +207,7 @@ head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9614816 1.0270404&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9579831 1.0305160&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
