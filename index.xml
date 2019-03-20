@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Katz on Daniel Katz</title>
-    <link>/</link>
+    <link>https://danielbkatz.github.io/</link>
     <description>Recent content in Daniel Katz on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
+      <link>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
+      <guid>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
       <description>
 
 
@@ -73,7 +73,7 @@ return(plotsr)
 testtot &amp;lt;- totfunc(1000, 20, abs(.6))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;To see the plot of correlation coefficients:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testtot[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://danielbkatz.github.io/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;testtot[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 5&lt;/code&gt;&lt;/pre&gt;
@@ -85,27 +85,17 @@ testtot &amp;lt;- totfunc(1000, 20, abs(.6))&lt;/code&gt;&lt;/pre&gt;
 test2[[1]]&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test2[[2]]&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://danielbkatz.github.io/post/2018-09-12-correlation-doesn-t-even-imply-a-relationship-necessarily_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
     
     <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 -0700</pubDate>
-      
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Explanatory IRT tutorial with the TAM package in R</title>
-      <link>/post/explanatory-irt-tutorial-with-tam-r/</link>
+      <link>https://danielbkatz.github.io/post/explanatory-irt-tutorial-with-tam-r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/explanatory-irt-tutorial-with-tam-r/</guid>
+      <guid>https://danielbkatz.github.io/post/explanatory-irt-tutorial-with-tam-r/</guid>
       <description>
 
 
@@ -217,7 +207,7 @@ head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9574072 1.0327078&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9623418 1.0267426&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;

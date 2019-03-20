@@ -2,58 +2,58 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Daniel Katz</title>
-    <link>/tags/</link>
+    <link>https://danielbkatz.github.io/tags/</link>
     <description>Recent content in Tags on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danielbkatz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Causation</title>
-      <link>/tags/causation/</link>
+      <link>https://danielbkatz.github.io/tags/causation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/causation/</guid>
+      <guid>https://danielbkatz.github.io/tags/causation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Correlation</title>
-      <link>/tags/correlation/</link>
+      <link>https://danielbkatz.github.io/tags/correlation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/correlation/</guid>
+      <guid>https://danielbkatz.github.io/tags/correlation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IRT</title>
-      <link>/tags/irt/</link>
+      <link>https://danielbkatz.github.io/tags/irt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/irt/</guid>
+      <guid>https://danielbkatz.github.io/tags/irt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Methods</title>
-      <link>/tags/methods/</link>
+      <link>https://danielbkatz.github.io/tags/methods/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/methods/</guid>
+      <guid>https://danielbkatz.github.io/tags/methods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rasch</title>
-      <link>/tags/rasch/</link>
+      <link>https://danielbkatz.github.io/tags/rasch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rasch/</guid>
+      <guid>https://danielbkatz.github.io/tags/rasch/</guid>
       <description></description>
     </item>
     

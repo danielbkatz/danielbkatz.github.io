@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Daniel Katz</title>
-    <link>/categories/r/</link>
+    <link>https://danielbkatz.github.io/categories/r/</link>
     <description>Recent content in R on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danielbkatz.github.io/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
+      <link>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
+      <guid>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
       <description>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
 The idea seems simple: Just because there is statistical correlation in the data present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. You know, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
     </item>
     
     <item>
       <title>Explanatory IRT tutorial with the TAM package in R</title>
-      <link>/post/explanatory-irt-tutorial-with-tam-r/</link>
+      <link>https://danielbkatz.github.io/post/explanatory-irt-tutorial-with-tam-r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/post/explanatory-irt-tutorial-with-tam-r/</guid>
+      <guid>https://danielbkatz.github.io/post/explanatory-irt-tutorial-with-tam-r/</guid>
       <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
 #install packages to get data#install.packages(&amp;quot;tidyverse&amp;quot;)#install.packages(&amp;quot;TAM&amp;quot;)#install.packages(&amp;quot;lme4&amp;quot;)#install.packages(&amp;quot;readr&amp;quot;)#install.packages(&amp;quot;optimx&amp;quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)#get rid of the extra columneirtdata &amp;lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.</description>
     </item>

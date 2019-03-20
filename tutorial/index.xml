@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorials on Daniel Katz</title>
-    <link>/tutorial/</link>
+    <link>https://danielbkatz.github.io/tutorial/</link>
     <description>Recent content in Tutorials on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 -0800</lastBuildDate>
     
-	<atom:link href="/tutorial/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danielbkatz.github.io/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
