@@ -99,8 +99,8 @@ test2[[1]]&lt;/code&gt;&lt;/pre&gt;
       <description>
 
 
-&lt;div id=&#34;get-the-data-read-in&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Get the Data Read in&lt;/h2&gt;
+&lt;div id=&#34;get-the-data-read-in&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Get the Data Read in&lt;/h3&gt;
 &lt;p&gt;First, I want to make sure everybody gets the data read into R in the exact same way.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#install packages to get data
 #install.packages(&amp;quot;tidyverse&amp;quot;)
@@ -131,13 +131,13 @@ eirtdata$treat &amp;lt;- as.factor(eirtdata$treat)
 eirtdata$proflevel &amp;lt;- as.factor(eirtdata$proflevel)
 eirtdata$abilcov &amp;lt;- as.factor(eirtdata$abilcov)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;the-data&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;1. The Data&lt;/h1&gt;
+&lt;div id=&#34;the-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;1. The Data&lt;/h3&gt;
 &lt;p&gt;Once the data is read in, let’s describe the data set.&lt;br /&gt;
 The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;the-variables&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;2. The variables:&lt;/h1&gt;
+&lt;div id=&#34;the-variables&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;2. The variables:&lt;/h3&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;code&gt;id&lt;/code&gt;: Random Student ID&lt;br /&gt;
 &lt;/li&gt;
@@ -183,8 +183,8 @@ table(eirtdata$treat, eirtdata$proflevel)&lt;/code&gt;&lt;/pre&gt;
 ##   not-treat 185 214 170 191
 ##   treat     193 169 211 167&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;div id=&#34;running-the-rasch-model&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;3. Running the Rasch Model&lt;/h1&gt;
+&lt;div id=&#34;running-the-rasch-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;3. Running the Rasch Model&lt;/h3&gt;
 &lt;p&gt;Let’s run some basic IRT using tam on this data. This should help us get an idea.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#fit the first IRT model. Have to subset the data since it contains person covariates.
 mod1 &amp;lt;- tam.mml(eirtdata[2:40])
@@ -207,19 +207,19 @@ head(as.data.frame(mod1$xsi))&lt;/code&gt;&lt;/pre&gt;
 ## Math.6 -0.1907538 0.05419563&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 0.9623418 1.0267426&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.9614816 1.0270404&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## [1] 0.1032796&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.&lt;/p&gt;
 &lt;p&gt;This is all to say, we’re good to start running our latent regressions.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;latent-regression-in-two-parts&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;4. Latent Regression in Two Parts&lt;/h1&gt;
+&lt;div id=&#34;latent-regression-in-two-parts&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;4. Latent Regression in Two Parts&lt;/h2&gt;
 &lt;p&gt;Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?&lt;/p&gt;
 &lt;p&gt;One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.&lt;/p&gt;
-&lt;div id=&#34;part-i.-two-ways-to-analyze-group-differences-in-tam&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Part I. Two Ways to Analyze Group Differences in TAM&lt;/h2&gt;
+&lt;div id=&#34;part-i.-two-ways-to-analyze-group-differences-in-tam&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part I. Two Ways to Analyze Group Differences in TAM&lt;/h3&gt;
 &lt;p&gt;Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.&lt;/p&gt;
 &lt;p&gt;Formula for latent regression: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*X_1 + \epsilon\)&lt;/span&gt; where &lt;span class=&#34;math inline&#34;&gt;\(\beta_1\)&lt;/span&gt; is the regression coefficient for 1. &lt;span class=&#34;math inline&#34;&gt;\(X_1\)&lt;/span&gt; takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).&lt;/p&gt;
 &lt;p&gt;With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”&lt;/p&gt;
@@ -325,8 +325,8 @@ head(lat1$person)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;We’ve decomposed the variance of theta.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;part-ii.adding-to-the-latent-regression-model&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Part II.Adding to the Latent Regression model&lt;/h2&gt;
+&lt;div id=&#34;part-ii.adding-to-the-latent-regression-model&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part II.Adding to the Latent Regression model&lt;/h3&gt;
 &lt;p&gt;We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.&lt;/p&gt;
 &lt;p&gt;We’ll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.&lt;/p&gt;
 &lt;p&gt;So the model is now: &lt;span class=&#34;math inline&#34;&gt;\(\theta = \beta_1*treat + \beta_2*proflevel + \epsilon\)&lt;/span&gt;&lt;/p&gt;
@@ -488,9 +488,8 @@ kable(comparemod$IC)&lt;/code&gt;&lt;/pre&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;the-item-side-the-linear-logistic-test-model-lltm&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;5. The Item Side: The Linear Logistic Test Model (LLTM)&lt;/h1&gt;
+&lt;div id=&#34;the-item-side-the-linear-logistic-test-model-lltm&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;5. The Item Side: The Linear Logistic Test Model (LLTM)&lt;/h3&gt;
 &lt;p&gt;The LLTM is simply a more parsimonious Rasch model. Instead of each individual item being estimated, estimated item difficulties are made just based on item indicators. For instance, the data we have has four item types. Each item type gets its own difficulty estimate. However, there are some complications here. There is an assumption that each item indicator is responsible for the item difficulty. This is not a safe assumption.&lt;/p&gt;
 &lt;p&gt;The other unfortunate part about this is that the simplest way to go about fitting this model is by converting the data to “long” data. After that is done, we’ll create an indicator for each variable type (a categorical variable, denoting math, ela, science, or wordprob type item.&lt;/p&gt;
 &lt;p&gt;To make the data long, we’ll use the “gather” function from tidyr in the tidyverse package. Then we’ll add an indicator based on if_else statements.&lt;/p&gt;
@@ -710,6 +709,7 @@ kable(lltm$xsi.facets)&lt;/code&gt;&lt;/pre&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;It is perhaps of no surprise that the most complicated model has the best fit.&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

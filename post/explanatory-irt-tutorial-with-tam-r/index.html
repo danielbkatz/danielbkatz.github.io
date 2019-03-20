@@ -378,8 +378,8 @@
       
 
 
-<div id="get-the-data-read-in" class="section level2">
-<h2>Get the Data Read in</h2>
+<div id="get-the-data-read-in" class="section level3">
+<h3>Get the Data Read in</h3>
 <p>First, I want to make sure everybody gets the data read into R in the exact same way.</p>
 <pre class="r"><code>#install packages to get data
 #install.packages(&quot;tidyverse&quot;)
@@ -410,13 +410,13 @@ eirtdata$treat &lt;- as.factor(eirtdata$treat)
 eirtdata$proflevel &lt;- as.factor(eirtdata$proflevel)
 eirtdata$abilcov &lt;- as.factor(eirtdata$abilcov)</code></pre>
 </div>
-<div id="the-data" class="section level1">
-<h1>1. The Data</h1>
+<div id="the-data" class="section level3">
+<h3>1. The Data</h3>
 <p>Once the data is read in, let’s describe the data set.<br />
 The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.</p>
 </div>
-<div id="the-variables" class="section level1">
-<h1>2. The variables:</h1>
+<div id="the-variables" class="section level3">
+<h3>2. The variables:</h3>
 <ol style="list-style-type: decimal">
 <li><code>id</code>: Random Student ID<br />
 </li>
@@ -462,8 +462,8 @@ table(eirtdata$treat, eirtdata$proflevel)</code></pre>
 ##   not-treat 185 214 170 191
 ##   treat     193 169 211 167</code></pre>
 </div>
-<div id="running-the-rasch-model" class="section level1">
-<h1>3. Running the Rasch Model</h1>
+<div id="running-the-rasch-model" class="section level3">
+<h3>3. Running the Rasch Model</h3>
 <p>Let’s run some basic IRT using tam on this data. This should help us get an idea.</p>
 <pre class="r"><code>#fit the first IRT model. Have to subset the data since it contains person covariates.
 mod1 &lt;- tam.mml(eirtdata[2:40])
@@ -486,19 +486,19 @@ head(as.data.frame(mod1$xsi))</code></pre>
 ## Math.6 -0.1907538 0.05419563</code></pre>
 <pre class="r"><code>#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)</code></pre>
-<pre><code>## [1] 0.9623418 1.0267426</code></pre>
+<pre><code>## [1] 0.9614816 1.0270404</code></pre>
 <pre class="r"><code>#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))</code></pre>
 <pre><code>## [1] 0.1032796</code></pre>
 <p>The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn’t meet the acceptable standard based on certain fit criteria.</p>
 <p>This is all to say, we’re good to start running our latent regressions.</p>
 </div>
-<div id="latent-regression-in-two-parts" class="section level1">
-<h1>4. Latent Regression in Two Parts</h1>
+<div id="latent-regression-in-two-parts" class="section level2">
+<h2>4. Latent Regression in Two Parts</h2>
 <p>Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?</p>
 <p>One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.</p>
-<div id="part-i.-two-ways-to-analyze-group-differences-in-tam" class="section level2">
-<h2>Part I. Two Ways to Analyze Group Differences in TAM</h2>
+<div id="part-i.-two-ways-to-analyze-group-differences-in-tam" class="section level3">
+<h3>Part I. Two Ways to Analyze Group Differences in TAM</h3>
 <p>Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.</p>
 <p>Formula for latent regression: <span class="math inline">\(\theta = \beta_1*X_1 + \epsilon\)</span> where <span class="math inline">\(\beta_1\)</span> is the regression coefficient for 1. <span class="math inline">\(X_1\)</span> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
 <p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”</p>
@@ -604,8 +604,8 @@ head(lat1$person)</code></pre>
 <p><span class="math inline">\(Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\)</span>.</p>
 <p>We’ve decomposed the variance of theta.</p>
 </div>
-<div id="part-ii.adding-to-the-latent-regression-model" class="section level2">
-<h2>Part II.Adding to the Latent Regression model</h2>
+<div id="part-ii.adding-to-the-latent-regression-model" class="section level3">
+<h3>Part II.Adding to the Latent Regression model</h3>
 <p>We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.</p>
 <p>We’ll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.</p>
 <p>So the model is now: <span class="math inline">\(\theta = \beta_1*treat + \beta_2*proflevel + \epsilon\)</span></p>
@@ -767,9 +767,8 @@ kable(comparemod$IC)</code></pre>
 </tbody>
 </table>
 </div>
-</div>
-<div id="the-item-side-the-linear-logistic-test-model-lltm" class="section level1">
-<h1>5. The Item Side: The Linear Logistic Test Model (LLTM)</h1>
+<div id="the-item-side-the-linear-logistic-test-model-lltm" class="section level3">
+<h3>5. The Item Side: The Linear Logistic Test Model (LLTM)</h3>
 <p>The LLTM is simply a more parsimonious Rasch model. Instead of each individual item being estimated, estimated item difficulties are made just based on item indicators. For instance, the data we have has four item types. Each item type gets its own difficulty estimate. However, there are some complications here. There is an assumption that each item indicator is responsible for the item difficulty. This is not a safe assumption.</p>
 <p>The other unfortunate part about this is that the simplest way to go about fitting this model is by converting the data to “long” data. After that is done, we’ll create an indicator for each variable type (a categorical variable, denoting math, ela, science, or wordprob type item.</p>
 <p>To make the data long, we’ll use the “gather” function from tidyr in the tidyverse package. Then we’ll add an indicator based on if_else statements.</p>
@@ -989,6 +988,7 @@ kable(lltm$xsi.facets)</code></pre>
 </tbody>
 </table>
 <p>It is perhaps of no surprise that the most complicated model has the best fit.</p>
+</div>
 </div>
 
     </div>
