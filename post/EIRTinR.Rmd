@@ -8,6 +8,7 @@ categories:
   - R
 tags:
   - IRT
+  - psychometrics
   - Rasch
   - Methods
   - TAM
