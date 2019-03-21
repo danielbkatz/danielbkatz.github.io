@@ -2,58 +2,103 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Daniel Katz</title>
-    <link>https://danielbkatz.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
+    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://danielbkatz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Causation</title>
-      <link>https://danielbkatz.github.io/tags/causation/</link>
+      <link>/tags/causation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/tags/causation/</guid>
+      <guid>/tags/causation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Correlation</title>
-      <link>https://danielbkatz.github.io/tags/correlation/</link>
+      <link>/tags/correlation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/tags/correlation/</guid>
+      <guid>/tags/correlation/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>IRT</title>
-      <link>https://danielbkatz.github.io/tags/irt/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Dif</title>
+      <link>/tags/dif/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/tags/irt/</guid>
+      <guid>/tags/dif/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Irt</title>
+      <link>/tags/irt/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/irt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Measurement Invariance</title>
+      <link>/tags/measurement-invariance/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/measurement-invariance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Methods</title>
-      <link>https://danielbkatz.github.io/tags/methods/</link>
+      <link>/tags/methods/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>P Value</title>
+      <link>/tags/p-value/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/tags/methods/</guid>
+      <guid>/tags/p-value/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rasch</title>
-      <link>https://danielbkatz.github.io/tags/rasch/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>/tags/rasch/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/tags/rasch/</guid>
+      <guid>/tags/rasch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tam</title>
+      <link>/tags/tam/</link>
+      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/tam/</guid>
       <description></description>
     </item>
     

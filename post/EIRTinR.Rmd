@@ -1,0 +1,322 @@
+---
+title: Explanatory IRT tutorial with the TAM package in R
+author: Daniel Katz
+date: '2019-03-15'
+slug: 'Explanatory-IRT-tutorial-with-TAM-R'
+
+categories:
+  - R
+tags:
+  - IRT
+  - Rasch
+  - Methods
+  - TAM
+  - Rasch
+  - R
+  - DIF
+  - Measurement Invariance
+
+header:
+  caption: ''
+  image: ''
+---
+
+
+### Get the Data Read in
+First, I want to make sure everybody gets the data read into R in the exact same way. 
+
+```{r message=FALSE, warning=FALSE, paged.print=TRUE}
+#install packages to get data
+#install.packages("tidyverse")
+#install.packages("TAM")
+#install.packages("lme4")
+#install.packages("readr")
+#install.packages("optimx")
+library(readr)
+library(tidyverse)
+library(lme4)
+library(TAM)
+library(optimx)
+library(knitr)
+
+#get the data read in. Have to be connected to internet. 
+eirtdata <- read_csv("https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv")
+
+#get rid of the extra column
+eirtdata <- eirtdata[-1]
+
+#optional, if you want to save the data as a csv file on your computer. 
+#Note, it adds a column.
+#write.csv(eirtdata, "eirtdata.csv")
+
+#make sure these person level covariates are treated as factors
+eirtdata <- eirtdata %>% mutate(treat = ifelse(treat==1, "treat", "not-treat"))
+eirtdata$treat <- as.factor(eirtdata$treat)
+eirtdata$proflevel <- as.factor(eirtdata$proflevel)
+eirtdata$abilcov <- as.factor(eirtdata$abilcov)
+```
+### 1. The Data
+Once the data is read in, let's describe the data set.  
+The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there's a treatment and control group. 
+
+### 2. The variables:  
+1. `id`: Random Student ID  
+2. `Math...` Math Question from the test scored correct or incorrect (1 or 0)  
+3. `Science...` Science type question scored correct or incorrect (1 or 0)  
+4. `ELA...` Reading Comprehension type question, science related scored correct or incorrect (1 or 0)  
+5. `MathWordProb...` Math Word Problem Type Question scored correct or incorrect (1 or 0)  
+6. `treat`: 1 if student was assigned to treatment class, 0 if assigned to standard class  
+7. `proflevel`: Categorical variable representing proficiency category on previous chemistry exam. 1 is the lowest, least proficient category. 4 is the most proficient.   
+8. `abilcov`: Whether student is a chemistry(3), molecular biology(2), or other (1) major. Categorical.  
+  
+There are 40 items on the test in total.
+
+
+```{r}
+#to get a sense of what's in the dataset. 
+#names(tells us what the column names are)
+names(eirtdata)
+```
+
+Normally, it would be wise to look at descriptives. We'll skip that since the emphasis is on fitting the models in TAM.
+
+```{r}
+#just to check out the data, are there 
+#high performing students in both treatment groups? 
+table(eirtdata$treat, eirtdata$proflevel)
+
+```
+### 3. Running the Rasch Model
+Let's run some basic IRT using tam on this data. This should help us get an idea. 
+```{r message=FALSE, warning=FALSE, paged.print=FALSE, results="hide"}
+#fit the first IRT model. Have to subset the data since it contains person covariates.
+mod1 <- tam.mml(eirtdata[2:40])
+
+###4. view fit statistics.
+#It's a lot easier to interpret these models if the data fit well. 
+#The data fits really well. 
+#If there are any outliers or anything like that, it would be revealed here. 
+
+#get item fit
+mod1fit <- tam.fit(mod1)
+
+```
+```{r}
+#item difficulties. Just show the first 10 items difficulties
+head(as.data.frame(mod1$xsi))
+
+#view the range of fit statistics, particularly infit
+range(mod1fit$itemfit$Infit)
+
+#Get the sample size adjusted acceptable item fit range:
+2* (2/sqrt(1500))
+```
+
+The smalles infit value is .96, the larges it 1.03. Therefore, items are fitting pretty well, though, a few wouldn't meet the acceptable standard based on certain fit criteria. 
+
+This is all to say, we're good to start running our latent regressions. 
+
+## 4. Latent Regression in Two Parts
+Example Q1. Is there a noticable difference in general ability (based on the test we're analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?
+
+One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn't really be a latent variable model. It takes the observed score and regresses it on the observed student classification.  
+  
+    
+
+### Part I. Two Ways to Analyze Group Differences in TAM
+Treat the "treat" variable as placing students in groups, 1 and 0. We can do this two ways in TAM.
+
+Formula for latent regression: $\theta = \beta_1*X_1 + \epsilon$ where $\beta_1$ is the regression coefficient for 1. $X_1$ takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).
+
+With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two "groups." This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different "shapes"
+```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, results="hide"}
+#take the treatment variable and make it its own R object
+treat <- eirtdata$treat
+
+#add a simple TAM command
+latg <- tam.mml(eirtdata[2:40], group = treat)
+
+summary(latg)
+```
+
+Under the section, "covariances, variances" we see that the two groups have pretty similar distributions. 
+
+```{r, results='hide'}
+#the next way, and I find this to be the most intuitive way, 
+#but you don't get group variances. 
+#You have to specify a formula:
+formulay1 <- ~treat
+
+#and then add dataY which can have many columns.
+lat1 <- tam.mml(eirtdata[2:40], dataY = eirtdata$treat, formulaY = formulay1)
+
+#unfortunately, as far as I can tell, 
+#this is the only way to get standard errors in TAM for your regression coefficients. 
+se<- tam.se(lat1)
+summary(lat1)
+```
+```{r}
+
+# get the unstandardized regression coefficient. 
+#You can save these in an object if you like.
+#get standardized regression coefficients (using yx)
+kable(lat1$latreg_stand$beta_stand)
+
+#get R^2 estimate
+lat1$latreg_stand$R2_theta
+
+#get standard error
+se$beta
+```
+We can see that the latent regression explains about 30% of the variance in theta estimates (the rest going to person ability and error).
+
+```{r}
+#Let's check standard errors of the regression estimates. 
+se$beta
+
+#note, this also works below, but gets slightly different estimates 
+#(a group mean is not held to zero)
+#like <- IRT.likelihood(lat1)
+#latregcom <- tam.latreg(like, dataY = eirtdata$treat, formulaY = formulay1)
+```
+
+```{r}
+
+#Let's compare person ability parameters between the standard Rasch model and the latent regression model. 
+head(mod1$person)
+
+
+#theta estimates 
+head(lat1$person)
+
+```
+
+As we can see, the person parameters, the EAP estimates are quite different after "adjusting for" a student being in the treatment group or the non-treatment group. The formula now looks like:
+
+$Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i$.
+
+In this model, the variable, ```treat``` is often called a "fixed effect." TAM constrains the model so that the reference category fixed effect (no treatment) 0, has a value of zero. So, the model, for person 1, (who was in the treatment group) and item 1, looks like this:
+
+1. Fixed effect of `treat` = .70 logits (rounded)
+2. Student was in the "treatment group" = 1
+3. .51 logits is the student's ability after adjusting for the student being in the treatment group. 
+4. Item difficulty for item 1 is -.85 logits.
+
+$Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon$. 
+
+We've decomposed the variance of theta.  
+  
+    
+### Part II.Adding to the Latent Regression model
+We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment.
+1. Create a matrix of covariates.
+2. Create a latent regression formula object for formulaY1
+3. Run the model. 
+
+We'll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.
+
+So the model is now: $\theta = \beta_1*treat + \beta_2*proflevel + \epsilon$
+
+And the full model will now look something like: $Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i$.
+
+
+```{r, results='hide'}
+#this gets all the person level covariates into a single dataframe
+daty <- eirtdata %>% select(treat, proflevel, abilcov)
+
+#create the latent regression formula. Could also add an interaction
+formulay2 <- ~ treat + proflevel
+
+#now run the model
+latreg2 <- tam.mml(eirtdata[2:40], dataY = daty, formulaY = formulay2)
+
+#get standard errors
+selatreg2 <- tam.se(latreg2)
+
+```
+```{r}
+#view latent regression coefficients
+kable(latreg2$latreg_stand$beta_stand)
+
+#view standard errors
+kable(selatreg2$beta)
+
+```
+
+Note all estiimates are statistically significant. The last step in this section is comparing overall model fit. 
+
+```{r}
+comparemod <- CDM::IRT.compareModels(mod1, lat1, latreg2)
+kable(comparemod$IC)
+
+
+```
+
+### 5. The Item Side: The Linear Logistic Test Model (LLTM)
+
+The LLTM is simply a more parsimonious Rasch model. Instead of each individual item being estimated, estimated item difficulties are made just based on item indicators. For instance, the data we have has four item types. Each item type gets its own difficulty estimate. However, there are some complications here. There is an assumption that each item indicator is responsible for the item difficulty. This is not a safe assumption.  
+  
+The other unfortunate part about this is that the simplest way to go about fitting this model is by converting the data to "long" data. After that is done, we'll create an indicator for each variable type (a categorical variable, denoting math, ela, science, or wordprob type item.  
+  
+To make the data long, we'll use the "gather" function from tidyr in the tidyverse package. Then we'll add an indicator based on if_else statements.
+
+```{r} 
+
+#change the name of the mathwordproblem items
+names(eirtdata)[32:41] <- paste0("WordProb.", 1:10)
+
+#note the nested ifelse statements. 
+#Basically, if each var contains a certain value, such as "Math," 
+#it gets recoded into its own column using "Mutate" from dplyr. 
+
+eirtlong <- gather(eirtdata, key = "item", value = "response", Math.1:WordProb.10) %>%
+  mutate(ittype = if_else(grepl(pattern = "Math.", x = item), 1,
+         if_else(grepl(pattern = "Science.", x = item), 2,
+        if_else(grepl(pattern = "ELA.", x = item), 3,4))))
+
+head(eirtlong)
+
+```
+To set up the LLTM, we have to use TAM.mml.mfr using the facets formula. TAM will create so-called "pseudo facets" for parameters that don't have estimates. 
+```{r, results="hide"}
+
+formulaa <- ~ittype
+facets <- as.data.frame(eirtlong[c(5,7)])
+
+#just to make it easier to call
+names(facets) <- c("item", "ittype")
+
+#only want to use the response column. Have to add an id column
+lltm <- tam.mml.mfr(eirtlong[6], facets = facets, 
+                    formulaA = formulaa, pid = eirtlong$id)
+
+control <- glmerControl(optimizer = "optimx", 
+                        calc.derivs = F, optCtrl = list(method="nlminb", starttests = F, kkt=F))
+
+
+#same thing but in lme4
+lltmme1 <- glmer(data=eirtlong, response~-1 + as.factor(ittype) + (1|id),
+                 family = "binomial", control = control)
+
+#random item in lme4 (I don't know how to do this in TAM)
+lltmlmer <- glmer(data=eirtlong, response~-1 + as.factor(ittype) + (1|id) + (1|item), family = "binomial", control = control)
+
+```
+
+Ok, so the LLTM model fit in TAM will only give you "difficulties" for the particular item properties. Now, instead of conceptualizing the Rasch model as ability - item difficulty, the model is "ability - item property difficulty." There will only be as many item properties as you specify. There can be "crossloadings."
+
+```{r}
+#get property difficulties
+kable(lltm$xsi.facets)
+
+fixef(lltmme1)
+
+```
+
+Finally, let's compare the overall fit of the models:
+```{r}
+kable(CDM::IRT.compareModels(mod1, lat1, latreg2, lltm)$IC)
+
+```
+
+It is perhaps of no surprise that the most complicated model has the best fit. 

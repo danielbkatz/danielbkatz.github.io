@@ -1,129 +1,108 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/post/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/2019/03/15/explanatory-irt-tutorial-with-tam-r/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/post/</loc>
-      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/publication/</loc>
-      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tutorial/</loc>
-      <lastmod>2017-01-01T00:00:00-08:00</lastmod>
-    </url>
-    
+  <url>
+    <loc>/contact/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/categories/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/causation/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/causation/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/correlation/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/correlation/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/</loc>
-      <lastmod>2016-04-20T00:00:00-07:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/dif/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/post/explanatory-irt-tutorial-with-tam-r/</loc>
-    </url>
-    
+  <url>
+    <loc>/tags/irt/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/irt/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/measurement-invariance/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/methods/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/methods/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/publication_types/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/p-value/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/categories/r/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/rasch/</loc>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
   
-    
-    <url>
-    
-      <loc>https://danielbkatz.github.io/tags/</loc>
-      <lastmod>2018-09-12T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
+  <url>
+    <loc>/tags/rasch/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/tam/</loc>
+    <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/topics/</loc>
+    <priority>0</priority>
+  </url>
   
 </urlset>
