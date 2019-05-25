@@ -23,6 +23,10 @@
   </url>
   
   <url>
+    <loc>/presentations/testbeam/</loc>
+  </url>
+  
+  <url>
     <loc>/tags/causation/</loc>
     <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -43,6 +47,12 @@
   <url>
     <loc>/tags/dif/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/ggplot2/</loc>
+    <lastmod>2018-09-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -73,6 +83,11 @@
   <url>
     <loc>/post/</loc>
     <lastmod>2019-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/presentations/</loc>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,256 @@
+---
+title: 'An Introduction to R: Data Cleaning, Wrangling, and Visualizing'
+author: "Daniel Katz"
+date: "7/17/2019"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      titleSlideClass: ["center", "middle", "my-title"]
+      highlightStyle: github
+      highlightLines: true
+
+
+---
+
+class: middle
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache=TRUE)
+```
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+mono_light(
+  base_color = "#1c5253"
+           )
+```
+
+# Introduction
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(caTools)
+library(gganimate)
+library(knitr)
+```
+
++ I'm a fourth year grad student at UCSB
++ Began chipping away at learning R about four years ago    
++ It was really frustrating  
++ After a major project or two, it became my preferred tool for most things data analysis  
++ I don't expect you to be experts after this session, but I hope you know where to start!
+
+---
+
+class: center, middle
+
+### What are you hoping to get out of thise course?
+---
+
+class: middle
+
+# What is R?
+
++ R is a software and scripting language
+
++ Like any other language it has syntax (for now think, "rules" of language)
+
++ R comes with a variety of built-in tools
+
++ R is desiged for statistics, but you can do lots with it 
+  + build websites
+  + write documents in Latex
+  + Create slides for presentations, etc.
+
+---
+
+class: middle
+
+# R and Packages
+.pull-left[
++ Think of `packages` as very specialized bundles of software 
+
++ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network`
+
++ You don't need all the packages!]
+--
+.pull-right[
++ For instance, the `psych` package is a built with tools commonly needed in the social sciences
+
++ We'll be focusing on a suite of packages called the `tidyverse`, which helps with data exploration, cleaning, and visualization]
+---
+
+class: middle
+
+## Packages, cont'd
++ When you `install.packages()`, R will search for a package on `CRAN` and download it onto your computer
+
++ To see where it's downloaded, type `.libpaths()` and run this
+
++ Each time you start a new R session, you have to load a package via `library()` but you don't have to install, each time
+---
+
+class: middle
+
+
+# Installing and Loading Packages 
+
+
+
+.pull-left[Installs the package if it's not already installed:
+
+`install.packages("psych")`]
+
+
+.pull-right[Loads the package so I can use the functions in the `psych` package"
+
+`library(psych)`]
+---
+
+class: middle
+  
+# Why do I like R?
++ It is quickly becoming the statistical language of choice in academic and non-academic circles
++ Fast developing `R Packages` are making tasks more accessible to non-programmers like us
++ It allows for sharing code, (we won't cover Github, but please check it out)
+
+---
+
+# It makes really cool data visualizations
+
+```{r echo=FALSE, out.width = '90%', message=FALSE, warning=FALSE, fig.align='center', message=FALSE}
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  geom_smooth(se = FALSE) +
+  theme(legend.position = "bottom") +
+  guides(colour = guide_legend(nrow = 1, override.aes = list(size = 4))) +
+   labs(
+    x = "Engine displacement (L)",
+    y = "Highway fuel economy (mpg)",
+    colour = "Car type"
+  )
+```
+
+---
+ 
+```{r, fig.align='center', message=FALSE}
+ggplot(mpg, aes(x= factor(manufacturer),y=hwy))+geom_boxplot(aes(fill=manufacturer))+
+theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+---
+
+class: middle, center
+
+## What's a Function?
+
+---
+
+
+```{r out.width = '98%', fig.align='center'}
+knitr::include_graphics("cyclists.gif")
+
+```
+
+---
+
+# Other Forms of Functions?
+$f(x)=sin(\theta)$ 
+
+`f_angle <- sin(angle)` 
+```{r makingdat, fig.align='center', message=FALSE, warning=FALSE, include=FALSE}
+library(transformr)
+
+angle <- matrix(seq(from = 1, to=20, by=.2),ncol=1)
+output <- as.data.frame(sin(angle))
+findat <- cbind(angle, output) %>% mutate(time1 = angle)
+
+sinanimate <- ggplot(findat, aes(x=angle, y = V1)) + geom_line(size=.8, color="blue") + geom_point() +  labs(x="angle", y = "sin(angle)")+ transition_reveal(time1) + ease_aes('linear')
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+animate(sinanimate, height = 500, width =900)
+```
+
+---
+## What are some functions we use?
+.pull-left[## How about a mean?
+Let's say we have a vector, `x`, with five elements: `1,2,3,4,5`    
+
+`x = [1,2,3,4,5]`
+
+$mean(x)=\frac{1+2+3+4+5}{5}$ 
+
+$mean(x) = 3$]
+
+--
+.pull-right[## `R` uses functions:
+```{r echo=TRUE}
+#Let's make a vector with 
+#five elements
+
+x <- c(1,2,3,4,5)
+
+mean(x)
+```
+]
+---
+
+# Let's get Our Hands Dirty
++ The best way to learn R is to use it
++ Even when it's frustratingly slow, use R instead of something else
++ There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
++ Errors are good! Use the error output to guide your thinkingv (and Googling)
+---
+
+# Vocabulary!
+          
+| R Word   | Translation
+|----------|------------------
+| Script   | Document containing code to be run
+| Console  | Output Window/Printer (but you can also run code here)
+| Environment| The place where things you create in R, live
+| Working Directory| The folder where your current R session lives, where output files go
+
+---
+
+# Open Up Rstudio
+1. Find the `View` tab and change your RStudio session to looks like mine
+2. Change your R studio Session to look different
+3. Find the `Global Environment` (what's in there right now?)
+4. Type `1+1` into the `console` and run the code
+5. Type `1+1` into a `script` and run the code
+---
+
+# We have to cover some basics
+`<-`  
+is an assignment operator. This assigns some value to a `variable`  
+
+For instance:
+```{r echo=TRUE}
+x <- 2
+x
+#What does this do? What's the value of y?
+y <- x+2
+```
+
+---
+
+# Operators in R
+|Operation|Operator in R |Example|
+|---------|------|-------|-------|
+|Addition |`+` |`4+3`
+|Subtraction|`-`| `4-3`
+|Multiplication|`*`| `4*3`
+|Exponentiation | `**`| `4**3`
+|Division | `/`| `12/4`
+|Matrix multiplication|`%*%`| `a %*% b`|
+
+**Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
+
+
+
+
+
+
