@@ -2,121 +2,121 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Daniel Katz</title>
-    <link>/tags/</link>
+    <link>https://danielbkatz.github.io/tags/</link>
     <description>Recent content in Tags on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danielbkatz.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Causation</title>
-      <link>/tags/causation/</link>
+      <link>https://danielbkatz.github.io/tags/causation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/causation/</guid>
+      <guid>https://danielbkatz.github.io/tags/causation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Correlation</title>
-      <link>/tags/correlation/</link>
+      <link>https://danielbkatz.github.io/tags/correlation/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/correlation/</guid>
+      <guid>https://danielbkatz.github.io/tags/correlation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Dif</title>
-      <link>/tags/dif/</link>
+      <link>https://danielbkatz.github.io/tags/dif/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/dif/</guid>
+      <guid>https://danielbkatz.github.io/tags/dif/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ggplot2</title>
-      <link>/tags/ggplot2/</link>
+      <link>https://danielbkatz.github.io/tags/ggplot2/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/ggplot2/</guid>
+      <guid>https://danielbkatz.github.io/tags/ggplot2/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Irt</title>
-      <link>/tags/irt/</link>
+      <link>https://danielbkatz.github.io/tags/irt/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/irt/</guid>
+      <guid>https://danielbkatz.github.io/tags/irt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Measurement Invariance</title>
-      <link>/tags/measurement-invariance/</link>
+      <link>https://danielbkatz.github.io/tags/measurement-invariance/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/measurement-invariance/</guid>
+      <guid>https://danielbkatz.github.io/tags/measurement-invariance/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Methods</title>
-      <link>/tags/methods/</link>
+      <link>https://danielbkatz.github.io/tags/methods/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/methods/</guid>
+      <guid>https://danielbkatz.github.io/tags/methods/</guid>
       <description></description>
     </item>
     
     <item>
       <title>P Value</title>
-      <link>/tags/p-value/</link>
+      <link>https://danielbkatz.github.io/tags/p-value/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/tags/p-value/</guid>
+      <guid>https://danielbkatz.github.io/tags/p-value/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Psychometrics</title>
-      <link>/tags/psychometrics/</link>
+      <link>https://danielbkatz.github.io/tags/psychometrics/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/psychometrics/</guid>
+      <guid>https://danielbkatz.github.io/tags/psychometrics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
+      <link>https://danielbkatz.github.io/tags/r/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://danielbkatz.github.io/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Rasch</title>
-      <link>/tags/rasch/</link>
+      <link>https://danielbkatz.github.io/tags/rasch/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/rasch/</guid>
+      <guid>https://danielbkatz.github.io/tags/rasch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tam</title>
-      <link>/tags/tam/</link>
+      <link>https://danielbkatz.github.io/tags/tam/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/tags/tam/</guid>
+      <guid>https://danielbkatz.github.io/tags/tam/</guid>
       <description></description>
     </item>
     
