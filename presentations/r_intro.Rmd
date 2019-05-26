@@ -16,7 +16,6 @@ output:
 class: middle
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache=TRUE)
-knitr::include_url('http://www.dbkatz.com/presentations/')
 ```
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)

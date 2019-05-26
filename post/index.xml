@@ -32,5 +32,15 @@
 The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
     </item>
     
+    <item>
+      <title>Beginning a new Intro-to-R workshop</title>
+      <link>/1/01/01/beginning-a-new-intro-to-r-workshop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
+      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides.
+knitr::include_url(&amp;#39;http://www.dbkatz.com/presentations/#1&amp;#39;)</description>
+    </item>
+    
   </channel>
 </rss>
