@@ -118,7 +118,7 @@ class: middle
 
 # It makes really cool data visualizations
 
-```{r echo=FALSE, out.width = '90%', message=FALSE, warning=FALSE, fig.align='center', message=FALSE}
+```{r echo=FALSE, out.width = '75%', message=FALSE, warning=FALSE, fig.align='center', message=FALSE}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(colour = class)) +
   geom_smooth(se = FALSE) +
@@ -148,7 +148,7 @@ class: middle, center
 
 
 ```{r out.width = '98%', fig.align='center'}
-knitr::include_graphics("cyclists.gif")
+knitr::include_graphics("C:/Users/katzd/Documents/R_workshop/IntroSlides/cyclists.gif")
 
 ```
 
