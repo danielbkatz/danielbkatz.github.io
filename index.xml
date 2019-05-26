@@ -65,8 +65,16 @@ The idea seems simple: Just because there’s statistical correlation in the pre
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/presentations/</guid>
-      <description>knitr::opts_chunk$set(echo = TRUE)  Intro-to-R Workshop [intro slides](&amp;ldquo;http://www.dbkatz.com/slides/r_introslides.html&amp;quot;)
-knitr::include_url(&amp;quot;http://www.dbkatz.com/slides/r_introslides.html&amp;quot;)  </description>
+      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: slides/intro.html</description>
+    </item>
+    
+    <item>
+      <title>Beginning a new Intro-to-R workshop</title>
+      <link>/presentations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/presentations/</guid>
+      <description>I&amp;rsquo;ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: slides/intro.html</description>
     </item>
     
     <item>
