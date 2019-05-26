@@ -118,7 +118,7 @@ class: middle
 
 # It makes really cool data visualizations
 
-```{r echo=FALSE, out.width = '75%', message=FALSE, warning=FALSE, fig.align='center', message=FALSE}
+```{r echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, out.width='75%'}
 ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(colour = class)) +
   geom_smooth(se = FALSE) +
