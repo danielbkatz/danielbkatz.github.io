@@ -12,12 +12,12 @@
     
     
     <item>
-      <title></title>
-      <link>/presentations/r_introslides/</link>
+      <title>Beginning a new Intro-to-R workshop</title>
+      <link>/presentations/intro-to-r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/presentations/r_introslides/</guid>
-      <description>An Introduction to R: Data Cleaning, Wrangling, and Visualizingclass: center, middle, my-title, title-slide# An Introduction to R: Data Cleaning, Wrangling, and Visualizing### Daniel Katz---class: middle# Introduction+ I&#39;m a fourth year grad student at UCSB+ Began chipping away at learning R about four years ago + It was really frustrating + After a major project or two, it became my preferred tool for most things data analysis + I don&#39;t expect you to be experts after this session, but I hope you know where to start!</description>
+      <guid>/presentations/intro-to-r/</guid>
+      <description>Intro-to-R Workshop intro slides</description>
     </item>
     
   </channel>
