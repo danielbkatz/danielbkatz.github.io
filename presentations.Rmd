@@ -1,5 +1,5 @@
 ---
-title: "Beginning a new Intro-to-R workshop"
+title: "Presentations I've given (or will be giving)"
 author: "Danny"
 date: "5/25/2019"
 output: html_document
