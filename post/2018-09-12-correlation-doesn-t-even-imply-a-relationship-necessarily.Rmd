@@ -11,6 +11,7 @@ tags:
   - Methods
   - R
   - p-value
+  - ggplot2
 header:
   caption: ''
   image: ''
