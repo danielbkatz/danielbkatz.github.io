@@ -310,12 +310,15 @@
 <h1>It makes really cool data visualizations</h1>
 <p><img src="/presentations/r_intro_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <hr />
+<pre class="r"><code>ggplot(mpg, aes(x= factor(manufacturer),y=hwy))+geom_boxplot(aes(fill=manufacturer))+
+theme(axis.text.x = element_text(angle = 90, hjust = 1))</code></pre>
 <p><img src="/presentations/r_intro_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
 <hr />
 <p>class: middle, center</p>
 <div id="whats-a-function" class="section level2">
 <h2>What’s a Function?</h2>
 <hr />
+<pre class="r"><code>knitr::include_graphics(&quot;cyclists.gif&quot;)</code></pre>
 <p><img src="cyclists.gif" width="98%" style="display: block; margin: auto;" /></p>
 <hr />
 </div>

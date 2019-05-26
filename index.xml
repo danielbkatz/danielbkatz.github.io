@@ -51,27 +51,12 @@ The idea seems simple: Just because there’s statistical correlation in the pre
     </item>
     
     <item>
-      <title>An Introduction to R: Data Cleaning, Wrangling, and Visualizing</title>
-      <link>/presentations/r_intro/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/presentations/r_intro/</guid>
-      <description>class: middle
-IntroductionI’m a fourth year grad student at UCSBBegan chipping away at learning R about four years ago
-It was really frustrating
-After a major project or two, it became my preferred tool for most things data analysis
-I don’t expect you to be experts after this session, but I hope you know where to start!class: center, middle
-### What are you hoping to get out of thise course?</description>
-    </item>
-    
-    <item>
       <title>Beginning a new Intro-to-R workshop</title>
       <link>/1/01/01/beginning-a-new-intro-to-r-workshop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
-      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides.
-knitr::include_url(&amp;#39;http://www.dbkatz.com/presentations/#1&amp;#39;)</description>
+      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides.</description>
     </item>
     
   </channel>
