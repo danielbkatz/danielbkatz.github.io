@@ -2,60 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Daniel Katz</title>
-    <link>https://danielbkatz.github.io/</link>
+    <link>/</link>
     <description>Recent content on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://danielbkatz.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Explanatory IRT tutorial with the TAM package in R</title>
-      <link>https://danielbkatz.github.io/2019/03/15/explanatory-irt-tutorial-with-tam-r/</link>
+      <link>/2019/03/15/explanatory-irt-tutorial-with-tam-r/</link>
       <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/2019/03/15/explanatory-irt-tutorial-with-tam-r/</guid>
+      <guid>/2019/03/15/explanatory-irt-tutorial-with-tam-r/</guid>
       <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
 #install packages to get data#install.packages(&amp;quot;tidyverse&amp;quot;)#install.packages(&amp;quot;TAM&amp;quot;)#install.packages(&amp;quot;lme4&amp;quot;)#install.packages(&amp;quot;readr&amp;quot;)#install.packages(&amp;quot;optimx&amp;quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)#get rid of the extra columneirtdata &amp;lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.</description>
     </item>
     
     <item>
       <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
+      <link>/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
+      <guid>/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
       <description>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
 The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://danielbkatz.github.io/about/</link>
+      <link>/about/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/about/</guid>
+      <guid>/about/</guid>
       <description>I&amp;rsquo;m a graduate student in the Gevirtz Graduate School of Education at the University of California, Santa Barbara. I&amp;rsquo;m interested in a number of issues related to the way we use statistics in the social sciences. However, I&amp;rsquo;m really interested in issues related to the philosophy of measurement and probability, item response theory (particularly Rasch modelling), and general causal modelling and causal claims. My research projects span testing and assessment and general policy work as well as program evaluation.</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://danielbkatz.github.io/contact/</link>
+      <link>/contact/</link>
       <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/contact/</guid>
+      <guid>/contact/</guid>
       <description>If you would like to get in touch, please email me: dkatz[at]education.ucsb.edu</description>
     </item>
     
     <item>
       <title>Beginning a new Intro-to-R workshop</title>
-      <link>https://danielbkatz.github.io/1/01/01/beginning-a-new-intro-to-r-workshop/</link>
+      <link>/1/01/01/beginning-a-new-intro-to-r-workshop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://danielbkatz.github.io/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
+      <guid>/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
       <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: slides/intro.html(Rmd source: static/slides/r_introslides.Rmd).</description>
     </item>
     
