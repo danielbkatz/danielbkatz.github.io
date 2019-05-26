@@ -10,6 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r echo=FALSE}
-knitr::include_url('http://www.dbkatz.com/slides/r_introslides.html')
+knitr::include_url('http://www.dbkatz.com/slides/r_introslides.Rmd')
 
 ```
