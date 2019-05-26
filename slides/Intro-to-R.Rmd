@@ -1,0 +1,13 @@
+---
+title: "Beginning a new Intro-to-R workshop"
+author: "Danny"
+date: "5/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I'll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: [slides/intro.html](/slides/r_introslides.html)(Rmd source: [static/slides/r_introslides.Rmd](https://github.com/danielbkatz/danielbkatz.github.io/blame/master/static/slides/xaringan.Rmd)).
+
