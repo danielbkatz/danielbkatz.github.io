@@ -147,7 +147,7 @@ class: middle, center
 ---
 
 
-```{r out.width = '98%', fig.align='center'}
+```{r out.width = '90%', fig.align='center'}
 knitr::include_graphics("C:/Users/katzd/Documents/R_workshop/IntroSlides/cyclists.gif")
 
 ```
