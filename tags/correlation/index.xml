@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Correlation on Daniel Katz</title>
-    <link>/tags/correlation/</link>
+    <link>https://danielbkatz.github.io/tags/correlation/</link>
     <description>Recent content in Correlation on Daniel Katz</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2016. All rights reserved.</copyright>
     <lastBuildDate>Wed, 12 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/correlation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://danielbkatz.github.io/tags/correlation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
+      <link>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
       <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
+      <guid>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
       <description>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
 The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
     </item>

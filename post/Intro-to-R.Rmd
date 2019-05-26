@@ -9,5 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-I'll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: [slides/intro.html](/slides/r_introslides.html)(Rmd source: [static/slides/r_introslides.Rmd](https://github.com/danielbkatz/danielbkatz.github.io/blame/master/static/slides/xaringan.Rmd)).
+I'll be running an introduction to R workshop at UCSB on June 17. Here are some teaser slides: [slides/intro.html](/slides/r_introslides.html)
+
+```{r echo=FALSE}
+knitr::include_url("http://www.dbkatz.com/slides/r_introslides.html")
+
+```
 
