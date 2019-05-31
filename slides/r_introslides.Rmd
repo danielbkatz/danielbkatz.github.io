@@ -198,9 +198,14 @@ mean(x)
 
 # Let's get Our Hands Dirty
 + The best way to learn R is to use it
+
 + Even when it's frustratingly slow, use R instead of something else
+
 + There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
+
 + Errors are good! Use the error output to guide your thinkingv (and Googling)
+
++ Think in ideas, not lines of code!
 ---
 
 # Vocabulary!
