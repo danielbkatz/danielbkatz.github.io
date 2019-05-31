@@ -133,7 +133,7 @@ ggplot(mpg, aes(displ, hwy)) +
 
 ---
  
-```{r, fig.align='center', message=FALSE}
+```{r echo=FALSE, fig.align='center', message=FALSE}
 ggplot(mpg, aes(x= factor(manufacturer),y=hwy))+geom_boxplot(aes(fill=manufacturer))+
 theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
@@ -218,8 +218,23 @@ mean(x)
 1. Find the `View` tab and change your RStudio session to looks like mine
 2. Change your R studio Session to look different
 3. Find the `Global Environment` (what's in there right now?)
-4. Type `1+1` into the `console` and run the code
-5. Type `1+1` into a `script` and run the code
+4. Type `4+3` into the `console` and run the code
+5. Type `4*3` into a `script` and run the code
+---
+
+
+# Operators in R
+|Operation|Operator in R |Example|
+|---------|------|-------|-------|
+|Addition |`+` |`4+3`
+|Subtraction|`-`| `4-3`
+|Multiplication|`*`| `4*3`
+|Exponentiation | `**`| `4**3`
+|Division | `/`| `12/4`
+|Matrix multiplication|`%*%`| `a %*% b`|
+
+**Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
+
 ---
 
 # We have to cover some basics
@@ -236,17 +251,7 @@ y <- x+2
 
 ---
 
-# Operators in R
-|Operation|Operator in R |Example|
-|---------|------|-------|-------|
-|Addition |`+` |`4+3`
-|Subtraction|`-`| `4-3`
-|Multiplication|`*`| `4*3`
-|Exponentiation | `**`| `4**3`
-|Division | `/`| `12/4`
-|Matrix multiplication|`%*%`| `a %*% b`|
 
-**Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
 
 
 
