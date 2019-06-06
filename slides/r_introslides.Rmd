@@ -51,22 +51,39 @@ class: center, middle
 ### What are you hoping to get out of thise course?
 ---
 
-### Teaching Philosophy for this course/Where We're Going
-+ My goal is to get you up and running
---
-+ Because of this, I'm going to skip some really "foundational" aspects of R (this is not how I learned)
---
-  + This is how I wish I learned
-  + By the time you need to know true foundations, they'll make a lot more sense
+class: middle
+
+### Teaching Philosophy/General Strategy
+
+
++ My goal is to get you up and running - doing is the best learning
   
-+ I'm going with a `tidyverse` first approach but I'm mixing in some basic aspects that I find unavoidable
++ I'm going with a `tidyverse` [_**first**_](http://varianceexplained.org/r/teach-tidyverse/) approach while mixing in foundations that I find unavoidable [_**Click to read more**_](http://varianceexplained.org/r/teach-tidyverse/)
 
-+ I won't emphasize style throughout
-  + I think it's important to focus on ideas, think in terms of functions!
-  + But occassionally I will emphasize style/best practices when I think it makes life easier
-  + For more on style/best practices, go ![here](http://adv-r.had.co.nz/Style.html)
-  [See this post for more]
++ I won't emphasize style/best practices except in a few cases
 
++ I think it's important to focus on ideas and functions!
+
++ For more on style/best practices, [_**click here**_](http://adv-r.had.co.nz/Style.html)
+
+---
+
+## General Outline
+1. Intro: What is R? How should I think about R and Rstudio?
+
+2. Some basic data structures (unavoidable foundation)
+
+3. Data wrangling with the `tidyverse`
+
+4. Data exploration
+  + Visualization
+  + Descriptive Statistics
+  
+5. Basic modelling in R
+
+6. Other Help Resources
+
+---
 
 class: middle
 
@@ -76,7 +93,7 @@ class: middle
 
 + Like any other language it has syntax (for now think, "rules" of language)
 
-+ R comes with a variety of built-in tools
++ R comes with a variety of built-in functions
 
 + R is desiged for statistics, but you can do lots with it 
   + build websites
@@ -85,24 +102,26 @@ class: middle
 
 ---
 
-class: middle
-
 # R and Packages
-+ Think of `packages` as very specialized bundles of software 
++ Think of `packages` as very specialized bundles of software. 
+  + They're collections of functions developed by the "community"
+  + For a full intro, [_**click here**_](https://www.datacamp.com/community/tutorials/r-packages-guide#what)
 
-+ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network`
-
++ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)  
+  
 + You don't need all the packages!
---
-+ For instance, the `psych` package is a built with tools commonly needed in the social sciences
 
++ For instance, the `psych` package is a built with tools commonly needed in the social sciences
+  
+--
+  
 + We'll be focusing on a suite of packages called the `tidyverse`, which helps with data exploration, cleaning, and visualization
 ---
 
 class: middle
 
 ## Packages, cont'd
-+ When you `install.packages()`, R will search for a package on `CRAN` and download it onto your computer
++ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer
 
 + To see where it's downloaded, type `.libpaths()` and run this
 
@@ -111,27 +130,40 @@ class: middle
 
 class: middle
 
-
 # Installing and Loading Packages 
+Installs the package if it's not already installed:
+
+`install.packages("psych")`
+
+Loads the package so I can use the functions in the `psych` package"
+`library(psych)`
+---
+
+class: middle 
 
 
+## Installing and loading packages looks like this
 
-.pull-left[Installs the package if it's not already installed:
-
-`install.packages("psych")`]
-
-
-.pull-right[Loads the package so I can use the functions in the `psych` package"
-
-`library(psych)`]
+`install.packages("psych)`  
+`library(psych)` 
 ---
 
 class: middle
   
 # Why do I like R?
-+ It is quickly becoming the statistical language of choice in academic and non-academic circles
++ It is quickly becoming the statistical language of choice in academic and non-academic circles  
+
+--
+  
 + Fast developing `R Packages` are making tasks more accessible to non-programmers like us
-+ It allows for sharing code, (we won't cover Github, but please check it out)
+  
+--
+  
++ R allows for sharing code: we won't cover Github, but please [_**check it out**_](https://happygitwithr.com/rstudio-git-github.html)
+  
+--
+  
++ R forces us to slow down and think
 
 ---
 
@@ -215,19 +247,48 @@ mean(x)
 ]
 ---
 
-# Let's get Our Hands Dirty
+## There are also other forms of functions we use in computation
++ "Reading in" Data into R so we can explore or model
+
++ Linear Regression,`lm()` in R
+
++ Transforming Data in R:
+```{r echo=FALSE}
+knitr::include_graphics("gatheringdata.jpg")
+```
+From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz/)
+
+---
+
+# Open R Studio
+
+1. Once open, click File (top left) > New Project > New Directory > New Project >Create Project as a Subdirectory of: click browse.
+  
+2. Choose where you'd like to put this session's R work. 
+
+3. Go to the first box, `Directory Name` > Name this R project! (no spaces; It'll make your life easier)
+
+4. Create Project.
+ 
+This is specific to R and Rstudio. *Working directories* (think directories = folders) is where this project will look for files, save documents, and results.
+
+--- 
+
+
+## Let's get Our Hands Dirty (Recommendations)
+  
 + The best way to learn R is to use it
 
 + Even when it's frustratingly slow, use R instead of something else
-
+  
 + There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
+  
++ Errors are good! Use the error output to guide your thinkingg (and Googling)
 
-+ Errors are good! Use the error output to guide your thinkingv (and Googling)
++ In other words, "failing fast" is really convenient
+--- 
 
-+ Think in ideas, not lines of code!
----
-
-# Vocabulary!
+# Vocabulary
           
 | R Word   | Translation
 |----------|------------------
@@ -235,6 +296,7 @@ mean(x)
 | Console  | Output Window/Printer (but you can also run code here)
 | Environment| The place where things you create in R, live
 | Working Directory| The folder where your current R session lives, where output files go
+
 
 ---
 
@@ -261,22 +323,21 @@ mean(x)
 
 ---
 
-# We have to cover some basics
+
+## Working!
+
 `<-`  
 is an assignment operator. This assigns some value to a `variable`  
-
+    
 For instance:
 ```{r echo=TRUE}
 x <- 2
 x
-#What does this do? What's the value of y?
+
+#What's the value of y?
 y <- x+2
 ```
-
----
-
-
-
+--- 
 
 
 
