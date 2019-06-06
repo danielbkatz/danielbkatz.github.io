@@ -1,5 +1,5 @@
 ---
-title: 'An Introduction to R: Data Cleaning, Wrangling, and Visualizing'
+title: 'An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else'
 author: "Daniel Katz"
 output:
   xaringan::moon_reader:
@@ -35,9 +35,13 @@ library(knitr)
 ```
 
 + I'm a fourth year grad student at UCSB
-+ Began chipping away at learning R about four years ago    
-+ It was really frustrating  
-+ After a major project or two, it became my preferred tool for most things data analysis  
+
++ Began chipping away at learning R about four years ago
+
++ It was really frustrating
+
++ After a major project or two, it became my preferred tool for most things data analysis
+
 + I don't expect you to be experts after this session, but I hope you know where to start!
 
 ---
@@ -46,6 +50,23 @@ class: center, middle
 
 ### What are you hoping to get out of thise course?
 ---
+
+### Teaching Philosophy for this course/Where We're Going
++ My goal is to get you up and running
+--
++ Because of this, I'm going to skip some really "foundational" aspects of R (this is not how I learned)
+--
+  + This is how I wish I learned
+  + By the time you need to know true foundations, they'll make a lot more sense
+  
++ I'm going with a `tidyverse` first approach but I'm mixing in some basic aspects that I find unavoidable
+
++ I won't emphasize style throughout
+  + I think it's important to focus on ideas, think in terms of functions!
+  + But occassionally I will emphasize style/best practices when I think it makes life easier
+  + For more on style/best practices, go ![here](http://adv-r.had.co.nz/Style.html)
+  [See this post for more]
+
 
 class: middle
 
@@ -67,17 +88,15 @@ class: middle
 class: middle
 
 # R and Packages
-.pull-left[
 + Think of `packages` as very specialized bundles of software 
 
 + These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network`
 
-+ You don't need all the packages!]
++ You don't need all the packages!
 --
-.pull-right[
 + For instance, the `psych` package is a built with tools commonly needed in the social sciences
 
-+ We'll be focusing on a suite of packages called the `tidyverse`, which helps with data exploration, cleaning, and visualization]
++ We'll be focusing on a suite of packages called the `tidyverse`, which helps with data exploration, cleaning, and visualization
 ---
 
 class: middle
