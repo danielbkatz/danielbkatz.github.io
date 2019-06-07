@@ -144,7 +144,36 @@ class: middle
 ### Can also go searching for it with a longer path (doesn't need to be in your working directory)
 
 ```r
-cohort16 &lt;- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/cohort16.csv")
+cohort16 &lt;- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
+```
+
+```
+## Warning: Missing column names filled in: 'X1' [1]
+```
+
+```
+## Parsed with column specification:
+## cols(
+##   X1 = col_double(),
+##   CDS = col_character(),
+##   Name = col_character(),
+##   AggLevel = col_character(),
+##   DFC = col_character(),
+##   Subgroup = col_character(),
+##   Subgrouptype = col_character(),
+##   NumCohort = col_double(),
+##   NumGraduates = col_double(),
+##   `Cohort Graduation Rate` = col_double(),
+##   NumDropouts = col_double(),
+##   `Cohort Dropout Rate` = col_double(),
+##   NumSpecialEducation = col_double(),
+##   `Special Ed Completers Rate` = col_double(),
+##   NumStillEnrolled = col_double(),
+##   `Still Enrolled Rate` = col_double(),
+##   NumGED = col_double(),
+##   `GED Rate` = col_double(),
+##   Year = col_double()
+## )
 ```
   
 ---
@@ -173,24 +202,52 @@ cohort16 &lt;- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/co
 
 ---
 
-class: middle
-
 ## Data Sense
 
 Let's get a sense of the data
 
 ```r
 #get variable names
+
 names(cohort16)
 ```
 
-
-
+```
+##  [1] "X1"                         "CDS"                       
+##  [3] "Name"                       "AggLevel"                  
+##  [5] "DFC"                        "Subgroup"                  
+##  [7] "Subgrouptype"               "NumCohort"                 
+##  [9] "NumGraduates"               "Cohort Graduation Rate"    
+## [11] "NumDropouts"                "Cohort Dropout Rate"       
+## [13] "NumSpecialEducation"        "Special Ed Completers Rate"
+## [15] "NumStillEnrolled"           "Still Enrolled Rate"       
+## [17] "NumGED"                     "GED Rate"                  
+## [19] "Year"
+```
+---
 Get the first 10 rows
 
 ```r
 head(cohort16)
 ```
+
+```
+## # A tibble: 6 x 19
+##      X1 CDS   Name  AggLevel DFC   Subgroup Subgrouptype NumCohort
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;
+## 1     1 3968~ Paci~ S        N     FOS      All                 NA
+## 2     2 3367~ Palm~ S        N     FOS      All                 NA
+## 3     3 4075~ Paso~ S        N     FOS      All                 NA
+## 4     4 1964~ Path~ S        N     FOS      All                 NA
+## 5     5 3367~ Patr~ S        N     FOS      All                 NA
+## 6     6 4369~ Pega~ S        N     FOS      All                 NA
+## # ... with 11 more variables: NumGraduates &lt;dbl&gt;, `Cohort Graduation
+## #   Rate` &lt;dbl&gt;, NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;,
+## #   NumSpecialEducation &lt;dbl&gt;, `Special Ed Completers Rate` &lt;dbl&gt;,
+## #   NumStillEnrolled &lt;dbl&gt;, `Still Enrolled Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;,
+## #   `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
+```
+
 
 ---
 ## Using select to get RID of a column
@@ -204,7 +261,93 @@ co16_rem &lt;- select(cohort16, -X1)
 
 #non_tidyverse solution
 co16_rem &lt;- cohort16[-1]
+
+#make sure this worked
+names(co16_rem)
 ```
+
+```
+##  [1] "CDS"                        "Name"                      
+##  [3] "AggLevel"                   "DFC"                       
+##  [5] "Subgroup"                   "Subgrouptype"              
+##  [7] "NumCohort"                  "NumGraduates"              
+##  [9] "Cohort Graduation Rate"     "NumDropouts"               
+## [11] "Cohort Dropout Rate"        "NumSpecialEducation"       
+## [13] "Special Ed Completers Rate" "NumStillEnrolled"          
+## [15] "Still Enrolled Rate"        "NumGED"                    
+## [17] "GED Rate"                   "Year"
+```
+
+---
+
+
+# (Re-Introducing Select)
++ Let's say, we want to know about average graduation rates by subgroup
+  + For the entire state
+  + Among Males and Females 
+  + For districts 
+  + That aren't charter schools
+  
+Make life easier, just select the needed columns with `select(data.framename, variable names to be selected, seperated by a column)`
+
+```r
+gencohort16 &lt;- select(co16_rem, CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates)
+```
+
+Easy! 
+
+---
+
+## Introducing `filter()` and pipe operators `%&gt;%`
+
++ I know that in the `Name` column, there's a Name called, `Statewide`
+
++ `filter` literally filters rows that meet a certain rule, such as equaling a value
+
++ `filter(df_name, rule)
+
+```r
+statemfco16 &lt;- filter(gencohort16, Name=="Statewide")
+```
++ However, we don't want to create a new object in R every time you perform an operation. 
+
++ The `%&gt;%` operator, helps - read it as `and then`. 
+
+Let's make that make sense
+
+
+```r
+statemfco16 &lt;- co16_rem %&gt;% 
+  select(CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates) %&gt;%
+  filter(Name=="Statewide")
+```
+
+
+--- 
+
+
+## Checking our work
+
++ Remember when we talked about `class`?
+
++ Well, let's make sure `CDS` which is a school ID, is of class 'character`, how will we do this?
+
++ We don't want school ID to be a "numeric" variable of some sort - It's an ID so leading zeros matter
+
++ Using another R index tool, `$`, which selects column by name (auto complete should show you the name).
+
+```r
+class(co16_rem$CDS)
+```
+
+What about all variables?
+
+
+```r
+str(co16_rem)
+```
+
++ Easy!
 
 ---
     </textarea>

@@ -145,9 +145,9 @@ cohort16 <- read_csv(cohortdata)
 class: middle
 
 ### Can also go searching for it with a longer path (doesn't need to be in your working directory)
-```{r readin, eval=FALSE}
+```{r readin}
 
-cohort16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/cohort16.csv")
+cohort16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
 ```
   
 ---
@@ -179,27 +179,22 @@ knitr::include_graphics("directory.jpg")
 
 ---
 
-class: middle
-
 ## Data Sense
 
 Let's get a sense of the data
-```{r eval = FALSE}
+```{r}
 #get variable names
+
 names(cohort16)
 
 ```
-
-```{r echo=FALSE, eval = FALSE}
-knitr::kable(xtable::xtable(cohort16),  format = "html")
-
-```
-
+---
 Get the first 10 rows
-```{r eval = FALSE}
+```{r}
 head(cohort16)
 
 ```
+
 
 ---
 ## Using select to get RID of a column
@@ -207,12 +202,86 @@ We notice that the first column in the dataset is called `X1.` This column is ad
 
 We use a `-sign` before the column name. That's it. 
 
-```{r eval = FALSE}
+```{r}
 co16_rem <- select(cohort16, -X1)
 
 #non_tidyverse solution
 co16_rem <- cohort16[-1]
 
+#make sure this worked
+names(co16_rem)
+
 ```
+
+---
+
+
+# (Re-Introducing Select)
++ Let's say, we want to know about average graduation rates by subgroup
+  + For the entire state
+  + Among Males and Females 
+  + For districts 
+  + That aren't charter schools
+  
+Make life easier, just select the needed columns with `select(data.framename, variable names to be selected, seperated by a column)`
+```{r}
+gencohort16 <- select(co16_rem, CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates)
+
+```
+
+Easy! 
+
+---
+
+## Introducing `filter()` and pipe operators `%>%`
+
++ I know that in the `Name` column, there's a Name called, `Statewide`
+
++ `filter` literally filters rows that meet a certain rule, such as equaling a value
+
++ `filter(df_name, rule)
+```{r}
+statemfco16 <- filter(gencohort16, Name=="Statewide")
+
+```
++ However, we don't want to create a new object in R every time you perform an operation. 
+
++ The `%>%` operator, helps - read it as `and then`. 
+
+Let's make that make sense
+
+```{r}
+statemfco16 <- co16_rem %>% 
+  select(CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates) %>%
+  filter(Name=="Statewide")
+
+
+```
+
+
+--- 
+
+
+## Checking our work
+
++ Remember when we talked about `class`?
+
++ Well, let's make sure `CDS` which is a school ID, is of class 'character`, how will we do this?
+
++ We don't want school ID to be a "numeric" variable of some sort - It's an ID so leading zeros matter
+
++ Using another R index tool, `$`, which selects column by name (auto complete should show you the name).
+```{r eval= FALSE}
+class(co16_rem$CDS)
+```  
+
+What about all variables?
+
+```{r eval=FALSE}
+str(co16_rem)
+
+```
+
++ Easy!
 
 ---
