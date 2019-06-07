@@ -44,6 +44,8 @@ library(knitr)
 
 + I don't expect you to be experts after this session, but I hope you know where to start!
 
++ Always remember that `R` is case sensitive, capitalization matters
+
 ---
 
 class: center, middle
@@ -85,7 +87,9 @@ class: middle
 
 ---
 
+
 class: middle
+
 
 # What is R?
 
@@ -113,9 +117,21 @@ class: middle
 
 + For instance, the `psych` package is a built with tools commonly needed in the social sciences
   
---
+---
+## why the tidyverse?
+
++ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling
   
-+ We'll be focusing on a suite of packages called the `tidyverse`, which helps with data exploration, cleaning, and visualization
+  
++ `dplyr` for creating common, easy to use and remember verbs for basic data handling tasks.
++ `ggplot2` for data vizualization 
++ `tidyr` for creating `tidy` data
++ `readr` for reading in "rectangular" data of different formats
++ `purrr` for really working with lots of data easily (for cleaning, computing variables, etc.)
++ `tibble` to make dealing with dataframes even easier. Dataframes will become tibbles in R
++ `stringr` for working with strings and doing a but of text mining
++ `forcats` for handling factors. 
+
 ---
 
 class: middle
@@ -142,9 +158,9 @@ Loads the package so I can use the functions in the `psych` package"
 class: middle 
 
 
-## Installing and loading packages looks like this
+## Installing and loading packages looks like this (note the quotes)
 
-`install.packages("psych)`  
+`install.packages("psych")`  
 `library(psych)` 
 ---
 
@@ -256,26 +272,15 @@ mean(x)
 ```{r echo=FALSE}
 knitr::include_graphics("gatheringdata.jpg")
 ```
-From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz/)
+From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
 
 ---
 
-# Open R Studio
 
-1. Once open, click File (top left) > New Project > New Directory > New Project >Create Project as a Subdirectory of: click browse.
-  
-2. Choose where you'd like to put this session's R work. 
-
-3. Go to the first box, `Directory Name` > Name this R project! (no spaces; It'll make your life easier)
-
-4. Create Project.
- 
-This is specific to R and Rstudio. *Working directories* (think directories = folders) is where this project will look for files, save documents, and results.
-
---- 
+class: middle
 
 
-## Let's get Our Hands Dirty (Recommendations)
+# Always Remind Yourself
   
 + The best way to learn R is to use it
 
@@ -286,7 +291,57 @@ This is specific to R and Rstudio. *Working directories* (think directories = fo
 + Errors are good! Use the error output to guide your thinkingg (and Googling)
 
 + In other words, "failing fast" is really convenient
---- 
+
+---
+
+class: middle
+
+## Open R Studio
+
+1. Once open, click File (top left) > New Project > New Directory > New Project >Create Project as a Subdirectory of: click browse.
+  
+2. Choose where you'd like to put this session's R work. 
+
+3. Go to the first box, `Directory Name` > Name this R project! (no spaces; It'll make your life easier)
+
+4. Create Project.
+
+---
+
+class: middle
+
+
+## Creating a "Script"
+
++ Scripts are RStudio's text editor. ***Work in Scripts***. They're saved text.  
+  
++ Code in the console doesn't get saved 
+  
++ The primary aim of working in scripts in being able to re-run your code
+  
++ Don't rely on saving saved data, rely on being able to re-run your script as if you have no memory of what you had done before
+---
+
+## Creating a new script
+In R studio, in the Project you created...
+1. File > New File > R Script 
+  + Or, ctrl+shft+N
+  + Or, below file, hit the icon that looks like: 
+```{r echo=FALSE}
+knitr::include_graphics("createscript.jpg")
+```
+2. Save your script (File > Save)
+
+3. Make sure it's saved in your home directory (you'll have to name it)
+
+4. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or Hit the `run` button in the top right of the script area
+
+5. There are multiple ways to run more than one line of code at a time
+  + Highlight the relevant code, run
+  + Or select the various options under "Run"
+
+***Challenge*** Figure out how to run a line of code in the console!
+---
 
 # Vocabulary
           
@@ -297,15 +352,16 @@ This is specific to R and Rstudio. *Working directories* (think directories = fo
 | Environment| The place where things you create in R, live
 | Working Directory| The folder where your current R session lives, where output files go
 
-
 ---
 
+class: middle
+
+
 # Open Up Rstudio
-1. Find the `View` tab and change your RStudio session to looks like mine
-2. Change your R studio Session to look different
+1. Find the `View` tab and change your RStudio session so it shows only the console
+2. Change your R studio Session to look like it did before
 3. Find the `Global Environment` (what's in there right now?)
-4. Type `4+3` into the `console` and run the code
-5. Type `4*3` into a `script` and run the code
+
 ---
 
 
@@ -323,21 +379,237 @@ This is specific to R and Rstudio. *Working directories* (think directories = fo
 
 ---
 
+class: middle
 
-## Working!
 
-`<-`  
-is an assignment operator. This assigns some value to a `variable`  
-    
+## Commenting
+
++ Commenting is essential to workflow. You may not remember why or what you were thinking or doing when looking at old code. 
+
++ R will recognize any line after `#` as a comment
+
 For instance:
+
+```{r}
+# I ran this to see what would happen
+
+factorial(4)
+
+```
+
++ I recommend taking notes in an R script this way! 
+  + Or open a text file (File > Text File). 
+  + This won't run code, you can just take notes right in R studio
+---
+## Output
++ R `returns a value` in the `console`
+
++ It'll look like this:
+```{r echo=FALSE}
+knitr::include_graphics("output_slides.jpg")
+```
+
+***Challenge***: Order of operations: Run `(4+3)*(4-3)` and then `4+3*4-3` in the console (for experimentation). What happens?
+
+---
+## Variable Assignment
+1. One of the most fundamental aspects of R (really any language) assigning `variables` or `objects`. This is giving something a name so you can store it and work with it in R.
+
+2. Now, we can store objects in R and work with the objects!
+
+3. Note, none of this requires an external package, just through `base R`. For a nice base R cheat sheet, [_**Click**_](https://paulvanderlaken.files.wordpress.com/2017/08/base-r-cheetsheat.pdf)
+
+ 
+--
+ 
+For instance, run the code below:
 ```{r echo=TRUE}
 x <- 2
-x
+```
 
+```{r echo=TRUE}
 #What's the value of y?
 y <- x+2
 ```
---- 
+---
+
+class: middle 
+
+
+## The Environment
+
++ In the right corner, under `Environment`, you should now see where R is "storing" what `x` and `y` and theire values.
+
++ The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects that we've assigned to variables
+
+
++If you don't assign something to a variable, it won't be stored
+---
+  
+
+## Run the code below in a script
+
+`x + y`
+
+`x*y`
+
+`x==y`
+
+What happens?
+--
+
+```{r}
+x + y
+
+x*y
+
+x==y
+```
+
+---
+## Boolean Operators!
+
++ If you notice, R `x==y` yields, `FALSE`
++ `==` is a different type of operator
+
+|Operation|Operator in R |Example|
+|---------|------|-------|-------|
+|Equality/Are they Equal? |`==` |`x==y`
+|Greater than or equal|`>=`| `x >= y`
+|Less than or equal to|`<=`| `x <= y`
+|Or | `|`| `x|y`
+|And | `&`| `x & y`
+
+---
+
+## Data Structures
+For individual values or vectors, R has a number of data types (not different than SPSS). We have a few ways of checking (for instance, numeric, character, factor, etc):
+
+```{r}
+# this will work on vectors as well
+class(x)
+
+is.numeric(x)
+is.character(x)
+
+isTRUE(x<2)
+
+
+```
+---
+Class: Middle
+
+## what's a Vector?
++ In R, it's basically anything that has more than one `element` in it.
+
++ It's just like a vector in math
+
+---
+## Check your Understanding
+
+Run the following code:
+
+`thisvector <- c("hello", "world", 4, 5)`
+
+`thisvector`
+
+`class(thisvector)`
+
+**Challenge** 
+1. What do you think `c()` does? (concat...)  
+
+2. What `class` is `thisvector`?  
+
+3. Strings, or in R speak, objects of class `character`, need to have double or single quotes around them. Any intuition why?  
+
+
+---
+
+## Check your Understanding
+
+Run the following code:
+
+`newvector <- c(1:5)`  
+`extravector <- c(6:10)`  
+`combinedvector <- newvector+extravector`  
+`combinedvector`  
+
+2. What does the `:` operator do?
+
+3. what class is `newvector`?
+
+--
+
+```{r}
+newvector <- c(1:5)
+extravector <- c(6:10)
+combinedvector <- newvector+extravector
+
+combinedvector
+```
+
+---
+### This is one of those necessary evils, so you know how R works
+- To select individual elements, use `[2]` and the numeric position that you would like to extract. 
+
+- For instance, run: `new2 <- newvector[c(2,3)]`
+
+- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R
+
+- We can also get descriptives or compute across a vector, or specific vector elements
+
+---
+
+## How to Operate on Vectors (this is also true for dataframes)
+
++ Everything below are base R commands using base R functions
+
+`sum(newvector)`  
+**`sum(newvector[c(2,3)])`**  
+
+`mean(newvector)`  
+`sd(newvector)`  
+`range(newvector)`  
+**`summary(newvector)`**
+
+
+```{r echo=FALSE}
+sum(newvector)
+
+sum(newvector[c(2,3)])
+
+mean(newvector)
+
+sd(newvector)
+
+range(newvector)
+
+summary(newvector)
+```
+
+---
+### Enough Putzing about, Let's get to Data
+
++ The type of data structure you will most likely work with in R is the dataframe. Or, data.frame. 
+
++ Other common types of data structures:
+  + `matrix`
+  + `lists`
+  + `arrays` 
+
+--
++ An array is a general multidimensional data structure 
+  +mindblowingly, a matrix that essentially has an x, y, and a z axis 
+  
+-- 
+
++ One can make lists of matrices or dataframes, and lists can be IN, dataframes
+  + For instance, sometimes, you want to do the same thing to a number of dataframes.
+  + If you put them in a list, you have a method for doing this very easily (we'll see later)
+  
+---
+## Getting data sets in to R with the `readr` package
++ Time to work with data
 
 
 
