@@ -13,5 +13,7 @@ I'll be running an introduction to R workshop at UCSB on June 17. Here are some 
 
 ```{r echo=FALSE}
 knitr::include_url("http://www.dbkatz.com/slides/r_introslides.html")
+knitr::include_url("http://www.dbkatz.com/slides/r_introslides2.html")
+
 ```
 
