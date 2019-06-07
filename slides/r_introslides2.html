@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else part 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Katz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, my-title, title-slide
+
+# An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else part 2
+### Daniel Katz
+
+---
+
+
+class: middle
+
+
+
+
+# Enough Putzing about, Let's get to Data
+
++ The type of data structure you will most likely work with in R is the dataframe. Or, data.frame. 
+
++ Other common types of data structures:
+  + `matrix`
+  + `lists`
+  + `arrays` 
+
+--
++ An array is a general multidimensional data structure 
+  + mindblowingly, a matrix that essentially has an x, y, and a z axis 
+  
+-- 
+
++ One can make lists of matrices or dataframes, and lists can be IN, dataframes
+  + For instance, sometimes, you want to do the same thing to a number of dataframes.
+  + If you put them in a list, you have a method for doing this very easily (we'll see later)
+  
+---
+## Getting data sets in to R with the `readr` package
++ The first challenge: getting data into R
+
++ R needs a path (where the file that contains the data is)
+
++ R needs a command to read in the data
+
++ We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
+
++ However, the `foreign` package and `haven` can handle files from SAS, SPSS, STATA (and probably others)
+
+  + You don't need SPSS, SAS, or STATA to read data into R
+
+---
+
+## First, things first
++ Download the data!
+
++ The data today is a publically accessible dataset from the [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+
++ What you'll want to do is download the most recent year (cohort16) from the website to your computer (eventually you'll just use R to do this)
+
++ And put it in your working directory?
+
++ My what?
+
+
+```r
+# this will tell you the file path of your current working directory. The best thing is to put it here, since your Rproject is here. 
+getwd()
+```
+
+```
+## [1] "C:/Users/katzd/Desktop/Github/perswebsite2/static/slides"
+```
+
+```r
+#Try to find where this is on your computer, manually.
+```
+
+---
+
+## Read in the data, the cheating way...
++ First create a new script in R, save it, and call it something that tells you we started learning the tidyverse.
+
++ In the top right, right under the Environment tab, it'll say "Import Dataset"
+
++ The file we downloaded is a CSV file (make sure to use readr)
+
++ Select `Import Dataset` &gt; `From Text (readr)` &gt; `Browse` &gt; Find the dataset*, select, and open &gt; look at the preview
+
++ If it doesn't look right, you can play with the settings (probably have to change, delimiter)
+
+
+
+## Don't import yet!
+
+---
+
+## The final steps
++ In the lower right, there is some code, copy it and cancel out
+
++ Paste the code into your new script; write a note about what it is
+
++ Eventually, you'll want to do this manually, I promise (and please promise me)
+
+
+
++ Run all the code...
+
+---
+## Code for Reading in 
+
+
+```r
+# Now that I've put my files in a rawdata folder in the working directory, I can do this:
+
+# Load the library
+library(readr)
+
+cohort16 &lt;- read_csv("RawData/cohort16.csv")
+View(cohort16)
+
+
+
+#Alternatively you can save the object location (makes life easier)
+
+# Assign a variable with a string value of the file location.
+cohortdata &lt;- "RawData/cohort16.csv"
+
+# Put the variable in your function, `read_delim`
+cohort16 &lt;- read_csv(cohortdata)
+
+# Note the View(function) - Let's you see the data
+#View(cohort16)
+```
+
+---
+class: middle
+
+### Can also go searching for it with a longer path (doesn't need to be in your working directory)
+
+```r
+cohort16 &lt;- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/cohort16.csv")
+```
+  
+---
+## A Rare Best Practice
+
+1. It is recommend that you create, in your working directory, folders just for the initial raw data (this data isn't to be altered)
+
+2. Another folder in your working directory just for altered datasets (with computed variables, cleaned, or otherwise changed data)
+
+3. Another folder just for statistical output and plots (or divide)
+
+&lt;img src="directory.jpg" width="1080" /&gt;
+
+*(if you put it in your working directory, you'll see it straight away, if not, you'll have to find it)
+
+---
+
+# Introducing `dplyr`
+[_**`dplyr`**_](https://dplyr.tidyverse.org/) is a package full of "verbs" that help us work on data. Some major verbs are
+
++ `select()` allows us to select or deselect columns by name
+
++ `filter()` allows us to filter rows by certain values
+
++ `mutate` allows us to create/compute new variables
+
+---
+
+class: middle
+
+## Data Sense
+
+Let's get a sense of the data
+
+```r
+#get variable names
+names(cohort16)
+```
+
+
+
+Get the first 10 rows
+
+```r
+head(cohort16)
+```
+
+---
+## Using select to get RID of a column
+We notice that the first column in the dataset is called `X1.` This column is added automatically when a dataframe is exported to csv from R. Let's get rid of it.  
+
+We use a `-sign` before the column name. That's it. 
+
+
+```r
+co16_rem &lt;- select(cohort16, -X1)
+
+#non_tidyverse solution
+co16_rem &lt;- cohort16[-1]
+```
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
