@@ -120,17 +120,14 @@ class: middle
 ---
 ## why the tidyverse?
 
-+ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling
+The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling
   
   
-+ `dplyr` for creating common, easy to use and remember verbs for basic data handling tasks.
-+ `ggplot2` for data vizualization 
-+ `tidyr` for creating `tidy` data
-+ `readr` for reading in "rectangular" data of different formats
-+ `purrr` for really working with lots of data easily (for cleaning, computing variables, etc.)
-+ `tibble` to make dealing with dataframes even easier. Dataframes will become tibbles in R
-+ `stringr` for working with strings and doing a but of text mining
-+ `forcats` for handling factors. 
+```{r echo=FALSE}
+packagsstab <- tibble(Package = c("dplyr", "ggplot2", "tidyr", "readr", "purrr", "tibble", "stringr", "forcats"), Description = c("for creating common, easy to use and remember verbs for basic data handling tasks", "for data visualization",  "for creating `tidy` data",  "for reading in 'rectangular' data of different formats",  "for really working with lots of data easily (for cleaning, computing variables, etc.)", "to make dealing with dataframes even easier. Dataframes will become tibbles in R", "for working with strings and doing a bit of text mining", "for handling factors in R"))
+
+knitr::kable(xtable::xtable(packagsstab),  format = "html")
+```
 
 ---
 
@@ -332,15 +329,15 @@ knitr::include_graphics("createscript.jpg")
 ```
 2. Save your script (File > Save)
 
-3. Make sure it's saved in your home directory (you'll have to name it)
+3. Make sure it's saved in your project's directory
 
-4. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or Hit the `run` button in the top right of the script area
+4. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or the `run` button in the top right of the script
 
 5. There are multiple ways to run more than one line of code at a time
   + Highlight the relevant code, run
   + Or select the various options under "Run"
 
-***Challenge*** Figure out how to run a line of code in the console!
+**Challenge** Figure out how to run a line of code in the console!
 ---
 
 # Vocabulary
@@ -413,13 +410,13 @@ knitr::include_graphics("output_slides.jpg")
 
 ---
 ## Variable Assignment
-1. One of the most fundamental aspects of R (really any language) assigning `variables` or `objects`. This is giving something a name so you can store it and work with it in R.
+1. One of the most fundamental aspects of R (really any language) assigning `variables` or `objects`, giving something a name so you can store it and work with it in R.
+  + R uses `<-` (shortcut for Windows: "alt" and "-" or in Mac: "option" and "-")
 
 2. Now, we can store objects in R and work with the objects!
 
 3. Note, none of this requires an external package, just through `base R`. For a nice base R cheat sheet, [_**Click**_](https://paulvanderlaken.files.wordpress.com/2017/08/base-r-cheetsheat.pdf)
 
- 
 --
  
 For instance, run the code below:
@@ -475,6 +472,7 @@ x==y
 |Operation|Operator in R |Example|
 |---------|------|-------|-------|
 |Equality/Are they Equal? |`==` |`x==y`
+|Not Equal |`!=` |`x!=y`
 |Greater than or equal|`>=`| `x >= y`
 |Less than or equal to|`<=`| `x <= y`
 |Or | `|`| `x|y`
@@ -504,6 +502,13 @@ Class: Middle
 
 + It's just like a vector in math
 
+```{r}
+
+vector1 <- c(1, 3, 8, 9, 10**8)
+vector1
+
+```
+
 ---
 ## Check your Understanding
 
@@ -530,9 +535,9 @@ Run the following code:
 Run the following code:
 
 `newvector <- c(1:5)`  
-`extravector <- c(6:10)`  
-`combinedvector <- newvector+extravector`  
-`combinedvector`  
+`extravector <- c(6:10)`    
+`combinedvector <- newvector+extravector`   
+`combinedvector`   
 
 2. What does the `:` operator do?
 
@@ -599,7 +604,7 @@ summary(newvector)
 
 --
 + An array is a general multidimensional data structure 
-  +mindblowingly, a matrix that essentially has an x, y, and a z axis 
+  + mindblowingly, a matrix that essentially has an x, y, and a z axis 
   
 -- 
 
@@ -609,9 +614,168 @@ summary(newvector)
   
 ---
 ## Getting data sets in to R with the `readr` package
-+ Time to work with data
++ The first challenge: getting data into R
+
++ R needs a path (where the file that contains the data is)
+
++ R needs a command to read in the data
+
++ We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
+
++ However, the `foreign` package and `haven` can handle files from SAS, SPSS, STATA (and probably others)
+
+  + You don't need SPSS, SAS, or STATA to read data into R
+
+---
+
+## First, things first
++ Download the data!
+
++ The data today is a publically accessible dataset from the [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+
++ What you'll want to do is download the most recent year (cohort16) from the website to your computer (eventually you'll just use R to do this)
+
++ And put it in your working directory?
+
++ My what?
+
+```{r}
+# this will tell you the file path of your current working directory. The best thing is to put it here, since your Rproject is here. 
+getwd()
+
+#Try to find where this is on your computer, manually.
+
+```
+
+---
+
+## Read in the data, the cheating way...
++ First create a new script in R, save it, and call it something that tells you we started learning the tidyverse.
+
++ In the top right, right under the Environment tab, it'll say "Import Dataset"
+
++ The file we downloaded is a CSV file (make sure to use readr)
+
++ Select `Import Dataset` > `From Text (readr)` > `Browse` > Find the dataset*, select, and open > look at the preview
+
++ If it doesn't look right, you can play with the settings (probably have to change, delimiter)
 
 
+
+## Don't import yet!
+
+---
+
+## The final steps
++ In the lower right, there is some code, copy it and cancel out
+
++ Paste the code into your new script; write a note about what it is
+
++ Eventually, you'll want to do this manually, I promise (and please promise me)
+
+```{r echo=FALSE}
+knitr::include_graphics("importing.jpg")
+
+```
+
++ Run all the code...
+
+---
+## Code for Reading in 
+
+```{r, eval=FALSE}
+# Now that I've put my files in a rawdata folder in the working directory, I can do this:
+
+# Load the library
+library(readr)
+
+cohort16 <- read_csv("RawData/cohort16.csv")
+View(cohort16)
+
+
+
+#Alternatively you can save the object location (makes life easier)
+
+# Assign a variable with a string value of the file location.
+cohortdata <- "RawData/cohort16.csv"
+
+# Put the variable in your function, `read_delim`
+cohort16 <- read_csv(cohortdata)
+
+# Note the View(function) - Let's you see the data
+#View(cohort16)
+```
+
+---
+class: middle
+
+### Can also go searching for it with a longer path (doesn't need to be in your working directory)
+```{r readin}
+
+cohort16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/cohort16.csv")
+```
+  
+---
+## A Rare Best Practice
+
+1. It is recommend that you create, in your working directory, folders just for the initial raw data (this data isn't to be altered)
+
+2. Another folder in your working directory just for altered datasets (with computed variables, cleaned, or otherwise changed data)
+
+3. Another folder just for statistical output and plots (or divide)
+
+*(if you put it in your working directory, you'll see it straight away, if not, you'll have to find it)
+
+---
+
+# Introducing `dplyr`
+[_**`dplyr`**_](https://dplyr.tidyverse.org/) is a package full of "verbs" that help us work on data. Some major verbs are
+
++ `select()` allows us to select or deselect columns by name
+
++ `filter()` allows us to filter rows by certain values
+
++ `mutate` allows us to create/compute new variables
+
+---
+
+class: middle
+
+## Data Sense
+
+Let's get a sense of the data
+```{r}
+#get variable names
+names(cohort16)
+
+```
+
+```{r echo=FALSE}
+knitr::kable(xtable::xtable(cohort16),  format = "html")
+
+```
+
+Get the first 10 rows
+```{r eval = FALSE}
+head(cohort16)
+
+```
+
+---
+## Using select to get RID of a column
+We notice that the first column in the dataset is called `X1.` This column is added automatically when a dataframe is exported to csv from R. Let's get rid of it.  
+
+We use a `-sign` before the column name. That's it. 
+
+```{r}
+co16_rem <- select(cohort16, -X1)
+
+#non_tidyverse solution
+co16_rem <- cohort16[-1]
+
+```
+
+---
 
 
 
