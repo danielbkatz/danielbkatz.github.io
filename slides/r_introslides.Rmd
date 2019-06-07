@@ -724,6 +724,11 @@ cohort16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/cohor
 
 3. Another folder just for statistical output and plots (or divide)
 
+```{r echo=FALSE}
+knitr::include_graphics("directory.jpg")
+
+```
+
 *(if you put it in your working directory, you'll see it straight away, if not, you'll have to find it)
 
 ---
