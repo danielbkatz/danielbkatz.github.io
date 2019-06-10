@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else</title>
+    <title>An Introduction to R</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Daniel Katz" />
+    <meta name="author" content="Daniel Katz  University of California, Santa Barbara   [MethodsU 2019 | Gevirtz Graduate School of Education | June 17, 2019]" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, my-title, title-slide
+class: left, middle, inverse, title-slide
 
-# An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else
-### Daniel Katz
+# An Introduction to R
+## Data Cleaning, Wrangling, Visualizing, and Everything Else with the <code><mark>tidyverse</span></mark>
+### Daniel Katz<br><span style="font-size: 70%;"> University of California, Santa Barbara<br><br> [MethodsU 2019 | Gevirtz Graduate School of Education | June 17, 2019]</span>
+### <img src = "methodsusm.jpg"/>
+
+---
+
+
+layout: true
+
+background-image: url(methodsu.jpg), url(UC-Santa-Barbara-seal.png), 
+background-position: bottom left, bottom right
+background-size: 10%, 10%
 
 ---
 
 
 
-background-image: url(img/UC-Santa-Barbara-seal.png), url(img/tidyverse.png), url(img/methodsu.png)
-background-position: 0% 100%, 100% 0%, 50% 100%
-background-size: 10%, 10%, 10%
 
-
-class: middle
-
+class: middle  
 
 
 # Introduction
@@ -41,13 +47,12 @@ class: middle
 
 + I don't expect you to be experts after this session, but I hope you know where to start!
 
-+ Always remember that `R` is case sensitive, capitalization matters
 
 ---
 
 class: center, middle
 
-### What are you hoping to get out of thise course?
+### What are you hoping to get out of this course?
 ---
 
 class: middle
@@ -65,25 +70,30 @@ class: middle
 
 + For more on style/best practices, [_**click here**_](http://adv-r.had.co.nz/Style.html)
 
----
++ Learning how to trouble shoot is quite important
 
+---
+class: middle
 ## General Outline
-1. Intro: What is R? How should I think about R and Rstudio?
 
-2. Some basic data structures (unavoidable foundation)
+1. Intro: What is R? How should I think about and use R and Rstudio?
 
-3. Data wrangling with the `tidyverse`
+--
+2. Some basic data structures (unavoidable foundation)  
 
-4. Data exploration
-  + Visualization
-  + Descriptive Statistics
+--
+3. Data wrangling with the `tidyverse`    
   
-5. Basic modelling in R
+--
+4. Data exploration  
 
-6. Other Help Resources
+--
+5. Basic modelling in R  
+
+--
+6. Other Help Resources  
 
 ---
-
 
 class: middle
 
@@ -100,9 +110,286 @@ class: middle
   + build websites
   + write documents in Latex
   + Create slides for presentations, etc.
+---
+class: middle
+  
+# Why do I like R?
+
++ It is quickly becoming the statistical language of choice in academic and non-academic circles    
+--
+  
++ Fast developing `R Packages` are making tasks more accessible to non-programmers like us  
+--
+  
++ R allows for sharing code: we won't cover Github, but please [_**check it out**_](https://happygitwithr.com/rstudio-git-github.html)  
+--
+  
++ R forces us to slow down and think  
 
 ---
 
+# It makes really cool data visualizations
+
+&lt;img src="r_introslides_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+ 
+&lt;img src="r_introslides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center
+
+## What's a Function?
+
+---
+
+
+&lt;img src="cyclists.gif" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Other Forms of Functions?
+`\(f(x)=sin(\theta)\)` 
+
+`f_angle &lt;- sin(angle)` 
+
+
+![](r_introslides_files/figure-html/unnamed-chunk-5-1.gif)&lt;!-- --&gt;
+
+---
+## What are some functions we use?
+.pull-left[## How about a mean?
+Let's say we have a vector, `x`, with five elements: `1,2,3,4,5`    
+
+`x = [1,2,3,4,5]`
+
+`\(mean(x)=\frac{1+2+3+4+5}{5}\)` 
+
+`\(mean(x) = 3\)`]
+
+--
+.pull-right[## `R` uses functions:
+
+```r
+#Let's make a vector with 
+#five elements
+
+x &lt;- c(1,2,3,4,5)
+
+mean(x)
+```
+
+```
+## [1] 3
+```
+]
+---
+
+## There are also other forms of functions we use in computation
++ "Reading in" Data into R so we can explore or model
+
++ Linear Regression,`lm()` in R
+
++ Transforming Data in R:
+&lt;img src="gatheringdata.jpg" width="1001" /&gt;
+From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
+
+
+---
+
+## Open R Studio
+
+background-image: url(introconsole.png)  
+background-size: contain
+background-position: center
+
+
+---
+
+background-image: url(scriptconsole.png)  
+background-size: contain
+background-position: center
+
+
+---
+
+
+class: middle
+
+
+# Always Remind Yourself
+  
++ The best way to learn R is to use it
+
++ Even when it's frustratingly slow, use R instead of something else
+  
++ There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
+  
++ Errors are good! Use the error output to guide your thinkingg (and Googling)
+
++ In other words, "failing fast" is really convenient
+
+
+---
+
+class: middle
+
+
+## Introducing "Scripts"
+
++ Scripts are RStudio's text editor. ***Work in Scripts***. They're saved text that you *can* edit  
+  
+
++ Code in the console doesn't get saved and you *cannot* edit  
+  
+--
+
++ The primary aim of working in scripts is reproducability, transparency, being able to run code from start-to-finish without intervening  
+  
+--
++ Don't rely on saving data, rely on being able to re-run your script as if you have no memory of what you had done before 
+
+---
+
+# Running the code in a script
+
+&lt;img src="run script.jpg" width="1820" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Creating a new script in RStudio
+
+.pull-left[
+1. File &gt; New File &gt; R Script 
+  + Or, ctrl+shft+N
+  + Or, below file, hit the icon that looks like:
+&lt;img src="createscript.jpg" width="51" /&gt;
+
+2. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or the `run` button in the top right of the script
+]
+
+--
+.pull-right[3. Type `1+1` in a script and run it.
+  + What happens? Where does it output?
+
+4. There are multiple ways to run more than one line of code at a time
+  + Highlight the relevant code, run
+  + Or select the various options under "Run"]
+
+--
+
+.center[**Challenge** Figure out how to run a line of code in the console!]
+
+---
+
+
+class: middle
+
+
+## Commenting
+
+
++ Commenting is essential to workflow. You may not remember why or what you were thinking or doing when looking at old code. 
+
++ R will recognize any line after `#` as a comment
+
+For instance:
+
+
+```r
+# I ran this to see what would happen
+
+factorial(4)
+```
+
+```
+## [1] 24
+```
+
++ I recommend taking notes in an R script this way! 
+---
+
+
+# Vocabulary
+          
+| R Word   | Translation
+|----------|------------------
+| Script   | Document containing code to be run
+| Console  | Output Window/Printer (but you can also run code here)
+| Environment| The place where things you create in R, live
+| Working Directory| The folder where your current R session lives, where output files go
+  
+---
+
+class: middle
+
+## working Directory (We'll return to this in more detail later)
++ The notion of the &lt;mark&gt;working directory&lt;/mark&gt; isn't unique to R
+
++ Directories are just folders on your computer with a certain `path`
+  + For instance, your `desktop` is a directory
+  + A folder within `Documents` is a directory
+
++ A `working directory` is just where you tell `R` that you'll be working
+  + when you load files, it knows to look to a certain folder
+  + When you export files, `R` exports automatically to the working directory]
+
+---
+## File paths
+
+.pull-left[+ A path to a Word doc on my desktop looks like: "C:/Users/katzd/Desktop/myfile.docx".
+
++ A path to a file in a folder called, `thesis` in the `Documents directory` looks like "C:/Users/katzd/Documents/thesis/myfile.docx"
+
++ But these are long!]
+
+.pull-right[+ Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
+
++ If I make the folder, `thesis` my working directory, then you won't need to type, the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus folder 
+
++ If I have a folder called, `analysis` in `thesis`, and thesis is my working directory the path will be "analysis/filename.ext".
+
++ To see the currect working directory, simply run the code `getwd()`
+
++ To set the working directory setwd("filepath") (the filepath has to be in quotes)]
+
+.center[###If you've made any comments or would like to save your current script, go ahead an do-so now (file &gt; save &gt; where you want to save it &gt; name)]
+
+---
+
+## Creating RStudio Projects
+### Projects are an RStudio work unit, (but, not required)
+
+.pull-left[1. Once open, click File (top left) &gt; New Project
+
+2. New Directory &gt; New Project &gt; Create Project as a Subdirectory of: click `browse`.
+  
+3. Choose where you'd like to put this session's R work (for instance, on your desktop. 
+
+4. Go to the first box, `Directory Name` &gt; Name this R project - `IntroR` (no spaces; It'll make your life easier)
+
+5. Create Project.]
+
+.pull-right[
+&lt;img src="newproject.jpg" width="800px" style="display: block; margin: auto;" /&gt;
+]
+---
+
+class: middle
+
+## Let's get setup for the workshop!
+1. In your project, create a new script to have at the ready.
+2. Save the script as `introscript`.
+3. Use a command to check your working directory.
+4. Write a comment that "this is the first R work we'll do in the R workshop"
+5. Find the `View` tab and change your RStudio session so it shows only the console
+6. Change your R studio Session to look like it did before
+7. Find the `Global Environment` (what's in there right now?)
+
+
+---
+  
 # R and Packages
 + Think of `packages` as very specialized bundles of software. 
   + They're collections of functions developed by the "community"
@@ -112,7 +399,52 @@ class: middle
   
 + You don't need all the packages!
 
++ Packages add functions to base R
+
 + For instance, the `psych` package is a built with tools commonly needed in the social sciences
+---
+class: middle
+
+## Packages, cont'd
++ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer
+
++ To see where it's downloaded, type `.libpaths()` and run this
+
++ Each time you start a new R session, you have to load a package via `library()` but you don't have to install, each time
+---
+
+class: middle
+
+# Installing and Loading Packages 
+Installs the package if it's not already installed:
+
+`install.packages("psych")`
+
+Loads the package so I can use the functions in the `psych` package"
+`library(psych)`
+---
+
+class: middle 
+
+
+## Installing and loading packages looks like this (note the quotes)
+
+```r
+install.packages("psych")  
+library(psych)
+```
+---
+
+class: middle
+
+## Let's Install and Load the tidyverse
+
+
+```r
+install.packages("tidyverse")  
+library(tidyverse)
+```
+
   
 ---
 ## why the tidyverse?
@@ -165,210 +497,6 @@ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of package
 
 ---
 
-class: middle
-
-## Packages, cont'd
-+ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer
-
-+ To see where it's downloaded, type `.libpaths()` and run this
-
-+ Each time you start a new R session, you have to load a package via `library()` but you don't have to install, each time
----
-
-class: middle
-
-# Installing and Loading Packages 
-Installs the package if it's not already installed:
-
-`install.packages("psych")`
-
-Loads the package so I can use the functions in the `psych` package"
-`library(psych)`
----
-
-class: middle 
-
-
-## Installing and loading packages looks like this (note the quotes)
-
-`install.packages("psych")`  
-`library(psych)` 
----
-
-class: middle
-  
-# Why do I like R?
-+ It is quickly becoming the statistical language of choice in academic and non-academic circles  
-
---
-  
-+ Fast developing `R Packages` are making tasks more accessible to non-programmers like us
-  
---
-  
-+ R allows for sharing code: we won't cover Github, but please [_**check it out**_](https://happygitwithr.com/rstudio-git-github.html)
-  
---
-  
-+ R forces us to slow down and think
-
----
-
-# It makes really cool data visualizations
-
-&lt;img src="r_introslides_files/figure-html/unnamed-chunk-3-1.png" width="75%" style="display: block; margin: auto;" /&gt;
-
----
- 
-&lt;img src="r_introslides_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
-
----
-
-class: middle, center
-
-## What's a Function?
-
----
-
-
-&lt;img src="cyclists.gif" width="90%" style="display: block; margin: auto;" /&gt;
-
----
-
-# Other Forms of Functions?
-`\(f(x)=sin(\theta)\)` 
-
-`f_angle &lt;- sin(angle)` 
-
-
-![](r_introslides_files/figure-html/unnamed-chunk-6-1.gif)&lt;!-- --&gt;
-
----
-## What are some functions we use?
-.pull-left[## How about a mean?
-Let's say we have a vector, `x`, with five elements: `1,2,3,4,5`    
-
-`x = [1,2,3,4,5]`
-
-`\(mean(x)=\frac{1+2+3+4+5}{5}\)` 
-
-`\(mean(x) = 3\)`]
-
---
-.pull-right[## `R` uses functions:
-
-```r
-#Let's make a vector with 
-#five elements
-
-x &lt;- c(1,2,3,4,5)
-
-mean(x)
-```
-
-```
-## [1] 3
-```
-]
----
-
-## There are also other forms of functions we use in computation
-+ "Reading in" Data into R so we can explore or model
-
-+ Linear Regression,`lm()` in R
-
-+ Transforming Data in R:
-&lt;img src="gatheringdata.jpg" width="1001" /&gt;
-From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
-
----
-
-
-class: middle
-
-
-# Always Remind Yourself
-  
-+ The best way to learn R is to use it
-
-+ Even when it's frustratingly slow, use R instead of something else
-  
-+ There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
-  
-+ Errors are good! Use the error output to guide your thinkingg (and Googling)
-
-+ In other words, "failing fast" is really convenient
-
----
-
-class: middle
-
-## Open R Studio
-
-1. Once open, click File (top left) &gt; New Project &gt; New Directory &gt; New Project &gt;Create Project as a Subdirectory of: click browse.
-  
-2. Choose where you'd like to put this session's R work. 
-
-3. Go to the first box, `Directory Name` &gt; Name this R project! (no spaces; It'll make your life easier)
-
-4. Create Project.
-
----
-
-class: middle
-
-
-## Creating a "Script"
-
-+ Scripts are RStudio's text editor. ***Work in Scripts***. They're saved text.  
-  
-+ Code in the console doesn't get saved 
-  
-+ The primary aim of working in scripts in being able to re-run your code
-  
-+ Don't rely on saving saved data, rely on being able to re-run your script as if you have no memory of what you had done before
----
-
-## Creating a new script
-In R studio, in the Project you created...
-1. File &gt; New File &gt; R Script 
-  + Or, ctrl+shft+N
-  + Or, below file, hit the icon that looks like: 
-&lt;img src="createscript.jpg" width="51" /&gt;
-2. Save your script (File &gt; Save)
-
-3. Make sure it's saved in your project's directory
-
-4. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or the `run` button in the top right of the script
-
-5. There are multiple ways to run more than one line of code at a time
-  + Highlight the relevant code, run
-  + Or select the various options under "Run"
-
-**Challenge** Figure out how to run a line of code in the console!
----
-
-# Vocabulary
-          
-| R Word   | Translation
-|----------|------------------
-| Script   | Document containing code to be run
-| Console  | Output Window/Printer (but you can also run code here)
-| Environment| The place where things you create in R, live
-| Working Directory| The folder where your current R session lives, where output files go
-
----
-
-class: middle
-
-
-# Open Up Rstudio
-1. Find the `View` tab and change your RStudio session so it shows only the console
-2. Change your R studio Session to look like it did before
-3. Find the `Global Environment` (what's in there right now?)
-
----
-
 
 # Operators in R
 |Operation|Operator in R |Example|
@@ -384,32 +512,6 @@ class: middle
 
 ---
 
-class: middle
-
-
-## Commenting
-
-+ Commenting is essential to workflow. You may not remember why or what you were thinking or doing when looking at old code. 
-
-+ R will recognize any line after `#` as a comment
-
-For instance:
-
-
-```r
-# I ran this to see what would happen
-
-factorial(4)
-```
-
-```
-## [1] 24
-```
-
-+ I recommend taking notes in an R script this way! 
-  + Or open a text file (File &gt; Text File). 
-  + This won't run code, you can just take notes right in R studio
----
 ## Output
 + R `returns a value` in the `console`
 
@@ -440,6 +542,13 @@ x &lt;- 2
 #What's the value of y?
 y &lt;- x+2
 ```
+
+1. What is in your Global Environment, now?
+2. What was outputted in the console?
+
+--
+**Outputting the value of a variable requires using `print(x)`, or just `x`
+
 ---
 
 class: middle 
@@ -447,7 +556,7 @@ class: middle
 
 ## The Environment
 
-+ In the right corner, under `Environment`, you should now see where R is "storing" what `x` and `y` and theire values.
++ In the right corner, under `Global Environment`, you should now see where R is "storing" `x` and `y` and their values.
 
 + The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects that we've assigned to variables
 
@@ -493,7 +602,7 @@ x==y
 ```
 
 ---
-## Boolean Operators!
+## Boolean/Logical Operators!
 
 + If you notice, R `x==y` yields, `FALSE`
 + `==` is a different type of operator
@@ -504,7 +613,9 @@ x==y
 |Not Equal |`!=` |`x!=y`
 |Greater than or equal|`&gt;=`| `x &gt;= y`
 |Less than or equal to|`&lt;=`| `x &lt;= y`
-|Or | `|`| `x|y`
+|Greater than|`&gt;`| `x &gt; y`
+|Less than |`&lt;`| `x &lt; y`
+|Or |  `|` | `x|y`
 |And | `&amp;`| `x &amp; y`
 
 ---
@@ -551,12 +662,16 @@ Class: Middle
 ## what's a Vector?
 + In R, it's basically anything that has more than one `element` in it.
 
-+ It's just like a vector in math
++ It's just like a vector in math (row vector, column vector)
+
++ R does think in matrices
+
++ Instead of doing things one at a time, it operates on entire rows, columns, dataframes, lists, (arrays in general)
 
 
 ```r
-vector1 &lt;- c(1, 3, 8, 9, 10**8)
-vector1
+v1 &lt;- c(1, 3, 8, 9, 10**8)
+v1
 ```
 
 ```
@@ -568,30 +683,30 @@ vector1
 
 Run the following code:
 
-`thisvector &lt;- c("hello", "world", 4, 5)`
+`v2 &lt;- c("hello", "world", 4, 5)`
 
-`thisvector`
+`v2`
 
-`class(thisvector)`
+`class(v2)`
 
 **Challenge** 
 1. What do you think `c()` does? (concat...)  
 
-2. What `class` is `thisvector`?  
+2. What &lt;mark&gt;`class`&lt;/mark&gt; is `v2`?  
 
-3. Strings, or in R speak, objects of class `character`, need to have double or single quotes around them. Any intuition why?  
+3. Strings, or in R speak, objects of class `character`, need to have double or single quotes around them. Any intuition as to why?  
 
 
 ---
 
-## Check your Understanding
+## Check for Understanding
 
-Run the following code:
+1. Run the following code:
 
-`newvector &lt;- c(1:5)`  
-`extravector &lt;- c(6:10)`    
-`combinedvector &lt;- newvector+extravector`   
-`combinedvector`   
+`v3 &lt;- c(1:5)`  
+`v4 &lt;- c(6:10)`    
+`v5 &lt;- v3+v4 `  
+`v5`   
 
 2. What does the `:` operator do?
 
@@ -601,11 +716,10 @@ Run the following code:
 
 
 ```r
-newvector &lt;- c(1:5)
-extravector &lt;- c(6:10)
-combinedvector &lt;- newvector+extravector
-
-combinedvector
+v3 &lt;- c(1:5)
+v4 &lt;- c(6:10)
+v5 &lt;- v3+v4
+v5
 ```
 
 ```
@@ -613,12 +727,15 @@ combinedvector
 ```
 
 ---
+
+class: middle
+
 ### This is one of those necessary evils, so you know how R works
 - To select individual elements, use `[2]` and the numeric position that you would like to extract. 
 
-- For instance, run: `new2 &lt;- newvector[c(2,3)]`
+- For instance, run: `v6 &lt;- v5[c(2,3)]`
 
-- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R
+- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R using &lt;mark&gt;base R&lt;/mark&gt;
 
 - We can also get descriptives or compute across a vector, or specific vector elements
 
@@ -628,47 +745,46 @@ combinedvector
 
 + Everything below are base R commands using base R functions
 
-`sum(newvector)`  
-**`sum(newvector[c(2,3)])`**  
+`sum(v5)`  
+**`sum(v5[c(2,3)])`**  
 
-`mean(newvector)`  
-`sd(newvector)`  
-`range(newvector)`  
-**`summary(newvector)`**
+`mean(v5)`  
+`sd(v5)`  
+`range(v5)`  
+**`summary(v5)`**
 
 
-
-```
-## [1] 15
-```
 
 ```
-## [1] 5
+## [1] 55
 ```
 
 ```
-## [1] 3
+## [1] 20
 ```
 
 ```
-## [1] 1.581139
+## [1] 11
 ```
 
 ```
-## [1] 1 5
+## [1] 3.162278
+```
+
+```
+## [1]  7 15
 ```
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       1       2       3       3       4       5
+##       7       9      11      11      13      15
 ```
-
 ---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
+"highlightStyle": "tomorrow-night-bright",
 "highlightLines": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
