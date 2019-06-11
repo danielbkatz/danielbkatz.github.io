@@ -7,7 +7,7 @@ output:
     css: xaringan-themer.css
     nature:
       titleSlideClass: ["center", "middle", "my-title"]
-      highlightStyle: github
+      highlightStyle: tomorrow-night-bright
       highlightLines: true
 
 
@@ -19,9 +19,9 @@ options(htmltools.dir.version = FALSE)
 ```
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
-mono_light(
-  base_color = "#1c5253"
-           )
+mono_light(base_color = "#151B54",
+  code_highlight_color = "#c0e8f5",
+  link_color = "#197b9e")
 ```
 
 ```{r include=FALSE}
@@ -35,42 +35,48 @@ library(tidyverse)
 + Other common types of data structures:
   + `matrix`
   + `lists`
-  + `arrays` 
+  + `arrays`
 
 --
-+ An array is a general multidimensional data structure 
-  + mindblowingly, a matrix that essentially has an x, y, and a z axis 
   
--- 
 
-+ One can make lists of matrices or dataframes, and lists can be IN, dataframes
-  + For instance, sometimes, you want to do the same thing to a number of dataframes.
++ An array is a general multidimensional data structure 
+  + mindblowingly, a matrix that essentially has an x, y, and a z axis (or more!)
+--
+
++ One can make lists of matrices or dataframes, and lists can be [_**IN dataframes**_](https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html)
+  + For instance, sometimes, you want to do the same thing to a number of dataframes [_**iteration**_](https://r4ds.had.co.nz/iteration.html).
   + If you put them in a list, you have a method for doing this very easily (we'll see later)
   
 ---
+
+class: middle
+
 ## Getting data sets in to R with the `readr` package
 + The first challenge: getting data into R
 
-+ R needs a path (where the file that contains the data is)
-
 + R needs a command to read in the data
+
++ R needs a <mark>path</mark>, where to find the data
 
 + We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
 
-+ However, the `foreign` package and `haven` can handle files from SAS, SPSS, STATA (and probably others)
++ However, the `foreign` package and `haven` package can handle files from SAS, SPSS, STATA (and probably others)
 
-  + You don't need SPSS, SAS, or STATA to read data into R
++ You don't need SPSS, SAS, or STATA to read data into R
 
 ---
+
+class: middle
 
 ## First, things first
 + Download the data!
 
 + The data today is a publically accessible dataset from the [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
 
-+ What you'll want to do is download the most recent year (cohort16) from the website to your computer (eventually you'll just use R to do this)
++ I've posted it on the workshop web here: [_**CDEDATA**_](http://www.dbkatz.com/1/01/01/beginning-a-new-intro-to-r-workshop/)
 
-+ And put it in your working directory?
++ And put it in your working directory
 
 + My what?
 
@@ -78,78 +84,9 @@ library(tidyverse)
 # this will tell you the file path of your current working directory. The best thing is to put it here, since your Rproject is here. 
 getwd()
 
-#Try to find where this is on your computer, manually.
 
 ```
 
----
-
-## Read in the data, the cheating way...
-+ First create a new script in R, save it, and call it something that tells you we started learning the tidyverse.
-
-+ In the top right, right under the Environment tab, it'll say "Import Dataset"
-
-+ The file we downloaded is a CSV file (make sure to use readr)
-
-+ Select `Import Dataset` > `From Text (readr)` > `Browse` > Find the dataset*, select, and open > look at the preview
-
-+ If it doesn't look right, you can play with the settings (probably have to change, delimiter)
-
-
-
-## Don't import yet!
-
----
-
-## The final steps
-+ In the lower right, there is some code, copy it and cancel out
-
-+ Paste the code into your new script; write a note about what it is
-
-+ Eventually, you'll want to do this manually, I promise (and please promise me)
-
-```{r echo=FALSE}
-#knitr::include_graphics("importing.jpg")
-
-```
-
-+ Run all the code...
-
----
-## Code for Reading in 
-
-```{r, eval=FALSE}
-# Now that I've put my files in a rawdata folder in the working directory, I can do this:
-
-# Load the library
-library(readr)
-
-cohort16 <- read_csv("RawData/cohort16.csv")
-View(cohort16)
-
-
-
-#Alternatively you can save the object location (makes life easier)
-
-# Assign a variable with a string value of the file location.
-cohortdata <- "RawData/cohort16.csv"
-
-# Put the variable in your function, `read_delim`
-cohort16 <- read_csv(cohortdata)
-
-# Note the View(function) - Let's you see the data
-#View(cohort16)
-```
-
----
-class: middle
-
-### Can also go searching for it with a longer path (doesn't need to be in your working directory)
-```{r readin}
-
-cohort16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
-```
-  
 ---
 ## A Rare Best Practice
 
@@ -166,14 +103,84 @@ knitr::include_graphics("directory.jpg")
 
 *(if you put it in your working directory, you'll see it straight away, if not, you'll have to find it)
 
+
+---
+
+## Read in the data, the cheating way...
++ First create a new script in R, save it, and call it `learning_tidyverse`.
+
++ In the top right, right under the Global Environment tab, it says "Import Dataset"
+
++ The file we downloaded is a CSV file (make sure to use readr)
+
++ Select `Import Dataset` > `From Text (readr)` > `Browse` > Find the dataset*, select, and open > look at the preview
+
++ If it doesn't look right, you can play with the settings (probably have to change, delimiter)
+
+
+
+# Don't import yet!
+
+---
+
+## The final steps
++ In the lower right, there is some code, <mark>copy it</mark> and cancel out
+
++ Paste the code into your new script; write a note about what it is
+
++ Eventually, you'll want to do this manually, I promise (and please promise me)
+
+```{r echo=FALSE}
+knitr::include_graphics("importing.jpg")
+
+```
+
++ Run all the code...
+
+---
+## Code for Reading in 
+
+```{r, eval=FALSE}
+# Now that I've put my files in a rawdata folder in the working directory, I can do this:
+
+# Load the library
+library(readr)
+
+co16 <- read_csv("RawData/cohort16.csv")
+View(co16)
+
+
+
+#Alternatively you can save the object location (makes life easier)
+
+# Assign a variable with a string value of the file location.
+cohortdata <- "RawData/cohort16.csv"
+
+# Put the variable in your function, `read_delim`
+co16 <- read_csv(cohortdata)
+
+# Note the View(function) - Let's you see the data
+#View(cohort16)
+```
+
+---
+class: middle
+
+### Can also go searching for it with a longer path (doesn't need to be in your working directory)
+```{r readin}
+
+co16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
+```
+  
+
 ---
 
 # Introducing `dplyr`
 [_**`dplyr`**_](https://dplyr.tidyverse.org/) is a package full of "verbs" that help us work on data. Some major verbs are
 
-+ `select()` allows us to select or deselect columns by name
-
 + `filter()` allows us to filter rows by certain values
+
++ `select()` allows us to select or deselect columns by name
 
 + `mutate` allows us to create/compute new variables
 
@@ -185,13 +192,13 @@ Let's get a sense of the data
 ```{r}
 #get variable names
 
-names(cohort16)
+names(co16)
 
 ```
 ---
 Get the first 10 rows
 ```{r}
-head(cohort16)
+head(co16)
 
 ```
 
@@ -200,13 +207,13 @@ head(cohort16)
 ## Using select to get RID of a column
 We notice that the first column in the dataset is called `X1.` This column is added automatically when a dataframe is exported to csv from R. Let's get rid of it.  
 
-We use a `-sign` before the column name. That's it. 
+We use a `-` sign before the column name. That's it. 
 
 ```{r}
-co16_rem <- select(cohort16, -X1)
+co16_rem <- select(co16, -X1)
 
-#non_tidyverse solution
-co16_rem <- cohort16[-1]
+#non tidyverse solution (remember indexing!!)
+co16_rem <- co16[-1]
 
 #make sure this worked
 names(co16_rem)
@@ -214,52 +221,133 @@ names(co16_rem)
 ```
 
 ---
-
-
-# (Re-Introducing Select)
-+ Let's say, we want to know about average graduation rates by subgroup
-  + For the entire state
-  + Among Males and Females 
-  + For districts 
-  + That aren't charter schools
-  
-Make life easier, just select the needed columns with `select(data.framename, variable names to be selected, seperated by a column)`
-```{r}
-gencohort16 <- select(co16_rem, CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates)
-
-```
-
-Easy! 
-
----
-
 ## Introducing `filter()` and pipe operators `%>%`
 
-+ I know that in the `Name` column, there's a Name called, `Statewide`
++ Let's say, we want to know about average graduation rate
+  + For the entire state
+  + But just for non-charter schools
+  + And for standard school districts
+
++ I know that in the `Name` column, there's school names and a value called `Statewide`
 
 + `filter` literally filters rows that meet a certain rule, such as equaling a value
 
-+ `filter(df_name, rule)
++ `filter(df_name, rule)`
 ```{r}
-statemfco16 <- filter(gencohort16, Name=="Statewide")
+stateco16 <- filter(co16_rem, Name=="Statewide")
+```
+---
+
+## Piping Operators
+
++ However, we don't want to create a new object in R every time you perform an operation (we often perform a lot of operations and this gets confusing)
+
++ The `%>%` operator, helps - read it as `and then`
+
+```{r}
+state_co16 <- co16_rem %>% 
+  filter(Name=="Statewide")
+
+# table gives you counts on column (remember $ indexes)
+table(state_co16$Name)
+```
+
+
+---
+
+.pull-left[1. The variable, <mark>DFC</mark> contains information as to whether a school is a charter school or not. 
+  + Y = Charter School
+  + N = Not a charter school
+
+2. The variable <mark>Subgroup</mark> identifies totals for each school by subgroup
+  + EL = English Language Learners
+  + MIG = Migrant Education
+  + SD = Socioeconmically Disadvantaged
+  + SE = Special Education
+  + FEM = Female
+  + MAL = Male
+  + All = Total Of All Subgroups]
+
+.pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `filtdf` by...
+
+2. using `filter` so we only keep schools that are not charter schools and information on Socioeconomically disadvantaged students.
+
+3. Use filter and/or pipes so you only need to create one dataframe 
+
+3. If you need the codebook, it is here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+
+*Hint* You can do this with one pipe or two. ]
+
+---
+# Solutions
+
+```{r}
+# Either one will work, I prefer method1
+filtdf <- co16_rem %>% filter(DFC == "N", Subgroup == "SD")
+
+# or...
+
+filtdf <- co16_rem %>% filter(DFC=="N") %>% filter(Subgroup=="SD")
+
+table(filtdf$DFC)
+
+table(filtdf$Subgroup)
+
 
 ```
-+ However, we don't want to create a new object in R every time you perform an operation. 
+---
+# Challenge
+1.After filtering, what categories are still left in the variable, `Agglevel`, in your new dataframe, filtdf?
 
-+ The `%>%` operator, helps - read it as `and then`. 
+2. Without creating a new R object, edit your script such that you keep only the category `D` from `Agglevel`.
 
-Let's make that make sense
+--
+```{r}
+# Get categories in Agglevel
+table(filtdf$AggLevel)
+
+#filter again
+filtdf <- co16_rem %>% filter(DFC == "N", Subgroup == "SD", 
+                              AggLevel=="D")
+
+# or...
+
+filtdf <- co16_rem %>% filter(DFC=="N") %>% filter(Subgroup=="SD") %>%
+  filter(AggLevel=="D")
+
+table(filtdf$AggLevel) #492 schools that now match this criteria...
+
+# Other checks: get the number of rows in a dataframe
+nrow(filtdf)
+ncol(filtdf)
+
+```
 
 ```{r}
+
 statemfco16 <- co16_rem %>% 
   select(CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates) %>%
   filter(Name=="Statewide")
 
 
 ```
+---
+  
+Make life easier, just select the needed columns with `select(data.framename, variable names to be selected, seperated by a column)`
+```{r}
+gencohort16 <- select(co16_rem, CDS, Name, AggLevel, DFC, 
+                      Subgroup, Subgrouptype, NumCohort, 
+                      NumGraduates)
+head(gencohort16)
 
+# or 
+View(gencohort16)
 
---- 
+```
+
+Easy! 
+
+---
 
 
 ## Checking our work
