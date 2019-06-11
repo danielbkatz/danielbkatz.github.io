@@ -70,6 +70,8 @@ class: middle
 
 
 + My goal is to get you up and running - doing is the best learning
+
++ Provide you with some quality resources for continuing to learn via links like [_**this**_](https://stackoverflow.com/tags/r/info)
   
 + I'm going with a `tidyverse` [_**first**_](http://varianceexplained.org/r/teach-tidyverse/) approach while mixing in foundations that I find unavoidable [_**Click to read more**_](http://varianceexplained.org/r/teach-tidyverse/)
 
