@@ -373,21 +373,24 @@ class: middle
 ---
 ## File paths
 
-.pull-left[+ A path to a Word doc on my desktop looks like: "C:/Users/katzd/Desktop/myfile.docx".
++ A path to a Word doc on my desktop looks like: "C:/Users/katzd/Desktop/myfile.docx".
 
 + A path to a file in a folder called, `thesis` in the `Documents directory` looks like "C:/Users/katzd/Documents/thesis/myfile.docx"
 
-+ But these are long!]
++ But these are long!
 
-.pull-right[+ Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
++ Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
+---
 
-+ If I make the folder, `thesis` my working directory, then you won't need to type, the whole path, just the name of the document or <mark>subdirectory</mark> plus folder 
+## File Paths Continued...
 
-+ If I have a folder called, `analysis` in `thesis`, and thesis is my working directory the path will be "analysis/filename.ext".
++ If I make the folder `thesis` my working directory, then you won't need to type, the whole path, just the name of the document or <mark>subdirectory</mark> plus folder 
+
++ If I have a folder called, `analysis` in `thesis` - thesis is my working- directory the path will be "analysis/filename.ext".
 
 + To see the currect working directory, simply run the code `getwd()`
 
-+ To set the working directory setwd("filepath") (the filepath has to be in quotes)]
++ To set the working directory setwd("filepath") (the filepath has to be in quotes)
 
 .center[###If you've made any comments or would like to save your current script, go ahead an do-so now (file > save > where you want to save it > name)]
 
