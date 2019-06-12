@@ -284,6 +284,30 @@ names(co16_rem)
 ## [15] "Still Enrolled Rate"        "NumGED"                    
 ## [17] "GED Rate"                   "Year"
 ```
+
+---
+
+## Checking our work
+
++ Remember when we talked about `class`?
+
++ Well, let's make sure `CDS` which is a school ID, is of class `character`, how will we do this?
+
++ We don't want school ID to be a "numeric" variable of some sort - It's an ID so leading zeros matter
+
++ Using another R index tool, `$`, which selects column by name (auto complete should show you the name).
+
+```r
+class(co16_rem$CDS)
+```
+
+What about all variables?: Introducing `str()`
+
+
+```r
+str(co16_rem)
+```
+Easy!
 ---
 
 class: middle 
@@ -301,7 +325,7 @@ class: middle
 
 class: middle
 
-+ If for instance, we take the first row, 
++ If for instance, we take the first row, and first six columns
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
@@ -311,18 +335,6 @@ class: middle
    &lt;th style="text-align:left;"&gt; DFC &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Subgroup &lt;/th&gt;
    &lt;th style="text-align:left;"&gt; Subgrouptype &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumCohort &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumGraduates &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Cohort Graduation Rate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumDropouts &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Cohort Dropout Rate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumSpecialEducation &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Special Ed Completers Rate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumStillEnrolled &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Still Enrolled Rate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; NumGED &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; GED Rate &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Year &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
@@ -333,30 +345,18 @@ class: middle
    &lt;td style="text-align:left;"&gt; Y &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; All &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; 9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 100 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1516 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
 + We note, that the data for this row represents district totals, (so it's at the school level). 
 
-+ It refers to the totals relevant to the state-identified `Subgroup`, `All`. 
-  + According to the codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation of those particular subgroups.
++ It refers to the totals relevant to the state-identified `Subgroup`, `All`.  
+(codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation of those particular subgroups)
   
 + However, `Subgrouptype` is 9, which refers to: `9 – Two or more races, not Hispanic`
 
-+ So that row refers to district totals for all students who have been identified as `Two or more races, not Hispanic` but not broken up by program-participation, Gender (you really get to see how the state of CA thinks)
++ So that row refers to district total for that district for all students who have been identified as `Two or more races, not Hispanic` (you really get to see how the state of CA thinks)
 
 + Let's make this make sense, with `filter`
 ---
@@ -383,7 +383,7 @@ stateco16 &lt;- filter(co16_rem, Name=="Statewide")
 
 + Use filter, on AggLevel such that we only select the category `D = Local educational agency totals (includes districts and direct funded charter schools)`
 
-+ You'll have to start with `co16_rem` again
++ You'll have to start with `co16_rem` again  
 --
 ## solution
 
@@ -442,11 +442,11 @@ table(distr$AggLevel)
   + Y = Charter School
   + N = Not a charter school
 
-2. The variable AggLevel has information on level of analysis where
+2. The variable &lt;mark&gt;AggLevel&lt;/mark&gt; has information on level of analysis where
   + D = Local educational agency totals (includes districts and direct funded charter schools)
   + O = County totals
   + S = School totals
-  + T = State totals
+  + T = State totals]
 
 .pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `filtdf` by...
 
@@ -476,6 +476,7 @@ filtdf &lt;- co16_rem %&gt;% filter(DFC=="N") %&gt;% filter(AggLevel=="D")
 
 2. Without creating a new R object, edit your script such that you keep only the category `All` from variable `Subgroup` and `All` from variable `Subgrouptype`. Make sure it is still called `filtdf`
 --
+## SOlutions
 
 ```r
 table(filtdf$AggLevel)
@@ -512,9 +513,10 @@ head(filtdf)
 ---
 ## Remember our logical operators?
 
-1. Now, using a pipe and assigning a new variable name, filtdf1000 (for exercise, not necessary, though), start with filtdf filter such that filtdf1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable . 
+1. Now, using a pipe and assigning a new variable called `filtdf1000` (for exercise, not necessary, though), start with filtdf such that filtdf1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable . 
 
 --
+## Solutions
 
 ```r
 table(filtdf$AggLevel)
@@ -547,120 +549,134 @@ nrow(filtdf)
 
 ---
 
-##
+class: middle
+# Non-tidyverse solutions to filtering rows
 
---
++ If I want to select particular rows, say, row 1, along with the first four columns, `newdf &lt;- co16_rem[1, 1:4]` (where the first element represents row number, after the comma, the column (just like a matrix))
 
-```r
-# Get categories in Agglevel
-table(filtdf$AggLevel)
-```
++ If I want to select rows according to rule (say, 1000), `newdf &lt;- co16_rem[co16_rem$numcohort &gt;= "1000", ]`
 
-```
-## 
-##   D 
-## 493
-```
++ For non-tidyverse solutions for selecting columns:
+  + Indexing: co16_rem[1:4] (note, don't need commas) but same as co16_rem[, 1:4]
+  + Naming `co16_rem$AggLevel`
 
-```r
-#filter again
-filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", Subgroup == "SD", 
-                              AggLevel=="D")
+---
+class: middle
 
-# or...
+## tidyverse solution to selecting columns
 
-filtdf &lt;- co16_rem %&gt;% filter(DFC=="N") %&gt;% filter(Subgroup=="SD") %&gt;%
-  filter(AggLevel=="D")
++ Re-introducing `select()`
 
-table(filtdf$AggLevel) #492 schools that now match this criteria...
-```
++ `select()` takes a dataframe name and the name of the columns you wish to select.
 
-```
-## 
-##   D 
-## 492
-```
++ Typical use involves taking a very large dataset and selecting only the columns you need. 
 
-```r
-# Other checks: get the number of rows in a dataframe
-nrow(filtdf)
-```
++ You can also use `select()` to reorder columns, remove columns, and even rename columns
 
-```
-## [1] 492
-```
+---
+class: middle
 
-```r
-ncol(filtdf)
-```
+# Example use:
 
-```
-## [1] 18
-```
 
 
 ```r
-statemfco16 &lt;- co16_rem %&gt;% 
-  select(CDS, Name, AggLevel, DFC, Subgroup, Subgrouptype, NumCohort, NumGraduates) %&gt;%
-  filter(Name=="Statewide")
+state16 &lt;- co16_rem %&gt;% 
+  select(CDS, Name, NumCohort, NumGraduates)
+
+# without a pipe operator
+state16 &lt;- select(co16_rem , CDS, Name, NumCohort, NumGraduates)
+
+
+names(state16)
+```
+
+```
+## [1] "CDS"          "Name"         "NumCohort"    "NumGraduates"
+```
+
+```r
+#or
+View(state16)
 ```
 ---
-  
-Make life easier, just select the needed columns with `select(data.framename, variable names to be selected, seperated by a column)`
+# Check for understanding select():
+
+1. Starting with co16_rem, edit the code from the previous slide so that you use a pipe operator, and select:
+  + CDS
+  + Name
+  + AggLevel
+  + DFC
+  + Subgroup
+  + Subgrouptype
+  + NumCohort
+  + NumGraduates
+--
+# Solutions
 
 ```r
-gencohort16 &lt;- select(co16_rem, CDS, Name, AggLevel, DFC, 
+state16 &lt;- co16_rem %&gt;% select(CDS, Name, AggLevel, DFC, 
                       Subgroup, Subgrouptype, NumCohort, 
                       NumGraduates)
-head(gencohort16)
+names(state16)
 ```
 
 ```
-## # A tibble: 6 x 8
-##   CDS    Name   AggLevel DFC   Subgroup Subgrouptype NumCohort NumGraduates
-##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;
-## 1 01611~ REALM~ D        Y     All      9                   NA           NA
-## 2 01611~ Impac~ D        Y     All      2                   NA           NA
-## 3 01611~ Impac~ D        Y     All      9                   NA           NA
-## 4 01611~ Impac~ D        Y     All      7                   NA           NA
-## 5 01611~ Silve~ D        Y     All      5                   11           NA
-## 6 01612~ Liver~ D        Y     All      5                   27           27
+## [1] "CDS"          "Name"         "AggLevel"     "DFC"         
+## [5] "Subgroup"     "Subgrouptype" "NumCohort"    "NumGraduates"
+```
+---
+## Adding more to pipes
+  
+2. Using a pipe operator, add a filter command to your code, such that you select only district level data, D, (from AggLevel), only non-charter schools  ("N", from DFC), only `All` from both `Subgroup` and `Subgrouptype`
+
+3. What is the largest value for `Numcohort`?
+
+
+```r
+state16 &lt;- co16_rem %&gt;% 
+  select(CDS, Name, AggLevel, DFC, 
+                      Subgroup, Subgrouptype, NumCohort, 
+                      NumGraduates) %&gt;% 
+  filter(AggLevel=="D", DFC=="N", Subgroup=="All", Subgrouptype=="All")
+
+
+range(state16$NumCohort, na.rm=T)
+```
+
+```
+## [1]    11 34472
 ```
 
 ```r
-# or 
-View(gencohort16)
+max(state16$NumCohort, na.rm=T)
 ```
+
+```
+## [1] 34472
+```
+
 
 Easy! 
 
 ---
+class: middle
 
+## Getting fancy
 
-## Checking our work
-
-+ Remember when we talked about `class`?
-
-+ Well, let's make sure `CDS` which is a school ID, is of class 'character`, how will we do this?
-
-+ We don't want school ID to be a "numeric" variable of some sort - It's an ID so leading zeros matter
-
-+ Using another R index tool, `$`, which selects column by name (auto complete should show you the name).
-
-```r
-class(co16_rem$CDS)
-```
-
-What about all variables?
+If you want to find the district with the largest cohort via dplyr:
 
 
 ```r
-str(co16_rem)
+state16 %&gt;% filter(NumCohort==max(NumCohort, na.rm=T)) %&gt;% select(Name)
 ```
 
-+ Easy!
-
----
+```
+## # A tibble: 1 x 1
+##   Name               
+##   &lt;chr&gt;              
+## 1 Los Angeles Unified
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

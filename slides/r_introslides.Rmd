@@ -759,7 +759,7 @@ range(v5)
 summary(v5)
 ```
 ---
-class: center
+class: middle
 
 ## Important points from part 1
 
