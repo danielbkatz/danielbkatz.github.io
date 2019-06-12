@@ -23,15 +23,15 @@ class: middle
 
 # Enough Putzing about, Let's get to Data
 
-+ The type of data structure you will most likely work with in R is the dataframe. Or, data.frame. 
++ The type of data structure you will mostly work with in R is the dataframe. Or, &lt;mark&gt;data.frame&lt;/mark&gt; 
 
 + Other common types of data structures:
   + `matrix`
   + `lists`
   + `arrays`
 
---
-  
+---
+## Arrays
 
 + An array is a general multidimensional data structure 
   + mindblowingly, a matrix that essentially has an x, y, and a z axis (or more!)
@@ -66,6 +66,8 @@ class: middle
 + Download the data!
 
 + The data today is a publically accessible dataset from the [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+
++ Download by clicking: [**Example Data 1**](/CDRPdata/cohort16.csv)
 
 + I've posted it on the workshop web here: [_**CDEDATA**_](http://www.dbkatz.com/1/01/01/beginning-a-new-intro-to-r-workshop/)
 
@@ -102,7 +104,7 @@ getwd()
 ## Read in the data, the cheating way...
 + First create a new script in R, save it, and call it `learning_tidyverse`.
 
-+ In the top right, right under the Global Environment tab, it says "Import Dataset"
++ In the top right, under the Global Environment tab, it says "Import Dataset"
 
 + The file we downloaded is a CSV file (make sure to use readr)
 
@@ -119,20 +121,21 @@ getwd()
 ## The final steps
 + In the lower right, there is some code, &lt;mark&gt;copy it&lt;/mark&gt; and cancel out
 
-+ Paste the code into your new script; write a note about what it is
++ Paste the code into your new script at the top; write a note about what it is
 
 + Eventually, you'll want to do this manually, I promise (and please promise me)
 
 &lt;img src="importing.jpg" width="1609" /&gt;
 
-+ Run all the code...
-
 ---
 ## Code for Reading in 
++ Run all the code...
+
 
 
 ```r
-# Now that I've put my files in a rawdata folder in the working directory, I can do this:
+# Now that I've put my files in a rawdata folder 
+#in the working directory, I can do this:
 
 # Load the library
 library(readr)
@@ -160,7 +163,7 @@ class: middle
 ### Can also go searching for it with a longer path (doesn't need to be in your working directory)
 
 ```r
-co16 &lt;- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
+co16 &lt;- read_csv("C:/Users/katzd/Desktop/Github/perswebsite2/static/CDRPdata/cohort16.csv")
 ```
 
 ```
@@ -239,12 +242,12 @@ head(co16)
 ## # A tibble: 6 x 19
 ##      X1 CDS   Name  AggLevel DFC   Subgroup Subgrouptype NumCohort
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;
-## 1     1 3968~ Paci~ S        N     FOS      All                 NA
-## 2     2 3367~ Palm~ S        N     FOS      All                 NA
-## 3     3 4075~ Paso~ S        N     FOS      All                 NA
-## 4     4 1964~ Path~ S        N     FOS      All                 NA
-## 5     5 3367~ Patr~ S        N     FOS      All                 NA
-## 6     6 4369~ Pega~ S        N     FOS      All                 NA
+## 1     1 0161~ REAL~ D        Y     All      9                   NA
+## 2     2 0161~ Impa~ D        Y     All      2                   NA
+## 3     3 0161~ Impa~ D        Y     All      9                   NA
+## 4     4 0161~ Impa~ D        Y     All      7                   NA
+## 5     5 0161~ Silv~ D        Y     All      5                   11
+## 6     6 0161~ Live~ D        Y     All      5                   27
 ## # ... with 11 more variables: NumGraduates &lt;dbl&gt;, `Cohort Graduation
 ## #   Rate` &lt;dbl&gt;, NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;,
 ## #   NumSpecialEducation &lt;dbl&gt;, `Special Ed Completers Rate` &lt;dbl&gt;,
@@ -281,7 +284,81 @@ names(co16_rem)
 ## [15] "Still Enrolled Rate"        "NumGED"                    
 ## [17] "GED Rate"                   "Year"
 ```
+---
 
+class: middle 
+
+## Explaining the data set (this is especially good for the tidyverse)
+
++ The variable `CDS` is a code for county, district, and schools.
+
++ This data contains information from state level, to county level, to district level, to school level.
+
++ It also contains information about demographics. Each demographic group per school, gets its own row and the numeric variables have to do with that particular subgroup in that school.
+
++ For instance, `AggLevel` denotes whether that row refers to `State`, `County`, `District` or `School`  
+---
+
+class: middle
+
++ If for instance, we take the first row, 
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; CDS &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; AggLevel &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; DFC &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Subgroup &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Subgrouptype &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumCohort &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumGraduates &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Cohort Graduation Rate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumDropouts &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Cohort Dropout Rate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumSpecialEducation &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Special Ed Completers Rate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumStillEnrolled &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Still Enrolled Rate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; NumGED &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; GED Rate &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Year &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 01611430122697 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; REALM Charter High &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Y &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; All &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 100 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1516 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
++ We note, that the data for this row represents district totals, (so it's at the school level). 
+
++ It refers to the totals relevant to the state-identified `Subgroup`, `All`. 
+  + According to the codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation of those particular subgroups.
+  
++ However, `Subgrouptype` is 9, which refers to: `9 – Two or more races, not Hispanic`
+
++ So that row refers to district totals for all students who have been identified as `Two or more races, not Hispanic` but not broken up by program-participation, Gender (you really get to see how the state of CA thinks)
+
++ Let's make this make sense, with `filter`
 ---
 ## Introducing `filter()` and pipe operators `%&gt;%`
 
@@ -300,6 +377,40 @@ names(co16_rem)
 stateco16 &lt;- filter(co16_rem, Name=="Statewide")
 ```
 ---
+## Check for understanding, filter.
+
++ Let's say we only want to look at `district totals` data, not school level data. 
+
++ Use filter, on AggLevel such that we only select the category `D = Local educational agency totals (includes districts and direct funded charter schools)`
+
++ You'll have to start with `co16_rem` again
+--
+## solution
+
+```r
+distr &lt;- filter(co16_rem, AggLevel == "D")
+
+# Did it work?
+table(distr$AggLevel)
+```
+
+```
+## 
+##     D 
+## 19585
+```
+
+```r
+#vs.
+
+table(co16_rem$AggLevel)
+```
+
+```
+## 
+##     D     O     S     T 
+## 19585  1814 53829    34
+```
 
 ## Piping Operators
 
@@ -309,38 +420,37 @@ stateco16 &lt;- filter(co16_rem, Name=="Statewide")
 
 
 ```r
-state_co16 &lt;- co16_rem %&gt;% 
-  filter(Name=="Statewide")
+distr &lt;- co16_rem %&gt;% 
+  filter(AggLevel == "D")
 
 # table gives you counts on column (remember $ indexes)
-table(state_co16$Name)
+table(distr$AggLevel)
 ```
 
 ```
 ## 
-## Statewide 
-##        35
+##     D 
+## 19585
 ```
 
-
+*What about filtering on more than one variable? That sounds like a challenge!*
 ---
 
-.pull-left[1. The variable, &lt;mark&gt;DFC&lt;/mark&gt; contains information as to whether a school is a charter school or not. 
+.pull-left[We notice that even after filtering for District, individual charter schools are left in the dataset. 
+
+1. The variable, &lt;mark&gt;DFC&lt;/mark&gt; contains information as to whether a school is a charter school or not. 
   + Y = Charter School
   + N = Not a charter school
 
-2. The variable &lt;mark&gt;Subgroup&lt;/mark&gt; identifies totals for each school by subgroup
-  + EL = English Language Learners
-  + MIG = Migrant Education
-  + SD = Socioeconmically Disadvantaged
-  + SE = Special Education
-  + FEM = Female
-  + MAL = Male
-  + All = Total Of All Subgroups]
+2. The variable AggLevel has information on level of analysis where
+  + D = Local educational agency totals (includes districts and direct funded charter schools)
+  + O = County totals
+  + S = School totals
+  + T = State totals
 
 .pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `filtdf` by...
 
-2. using `filter` so we only keep schools that are not charter schools and information on Socioeconomically disadvantaged students.
+2. using `filter` so we only keep districts but remove charter schools.
 
 3. Use filter and/or pipes so you only need to create one dataframe 
 
@@ -354,35 +464,90 @@ table(state_co16$Name)
 
 ```r
 # Either one will work, I prefer method1
-filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", Subgroup == "SD")
+filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", AggLevel == "D")
 
 # or...
 
-filtdf &lt;- co16_rem %&gt;% filter(DFC=="N") %&gt;% filter(Subgroup=="SD")
-
-table(filtdf$DFC)
-```
-
-```
-## 
-##    N 
-## 2846
-```
-
-```r
-table(filtdf$Subgroup)
-```
-
-```
-## 
-##   SD 
-## 2846
+filtdf &lt;- co16_rem %&gt;% filter(DFC=="N") %&gt;% filter(AggLevel=="D")
 ```
 ---
 # Challenge
 1.After filtering, what categories are still left in the variable, `Agglevel`, in your new dataframe, filtdf?
 
-2. Without creating a new R object, edit your script such that you keep only the category `D` from `Agglevel`.
+2. Without creating a new R object, edit your script such that you keep only the category `All` from variable `Subgroup` and `All` from variable `Subgrouptype`. Make sure it is still called `filtdf`
+--
+
+```r
+table(filtdf$AggLevel)
+```
+
+```
+## 
+##     D 
+## 12466
+```
+
+```r
+filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", AggLevel == "D", Subgroup=="All", Subgrouptype=="All")
+
+head(filtdf)
+```
+
+```
+## # A tibble: 6 x 18
+##   CDS   Name  AggLevel DFC   Subgroup Subgrouptype NumCohort NumGraduates
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;
+## 1 0110~ Alam~ D        N     All      All                312          109
+## 2 0161~ Alam~ D        N     All      All                727          632
+## 3 0161~ Cast~ D        N     All      All                779          749
+## 4 0161~ Pied~ D        N     All      All                206          205
+## 5 0410~ Butt~ D        N     All      All                 76           37
+## 6 0461~ Chic~ D        N     All      All               1093          979
+## # ... with 10 more variables: `Cohort Graduation Rate` &lt;dbl&gt;,
+## #   NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;,
+## #   NumSpecialEducation &lt;dbl&gt;, `Special Ed Completers Rate` &lt;dbl&gt;,
+## #   NumStillEnrolled &lt;dbl&gt;, `Still Enrolled Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;,
+## #   `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
+```
+---
+## Remember our logical operators?
+
+1. Now, using a pipe and assigning a new variable name, filtdf1000 (for exercise, not necessary, though), start with filtdf filter such that filtdf1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable . 
+
+--
+
+```r
+table(filtdf$AggLevel)
+```
+
+```
+## 
+##   D 
+## 493
+```
+
+```r
+filtdf1000 &lt;- filtdf %&gt;%
+  filter(NumCohort &gt;= 1000)
+
+range(filtdf$NumCohort)
+```
+
+```
+## [1] NA NA
+```
+
+```r
+nrow(filtdf)
+```
+
+```
+## [1] 493
+```
+
+---
+
+##
 
 --
 
@@ -393,8 +558,8 @@ table(filtdf$AggLevel)
 
 ```
 ## 
-##    D    O    S    T 
-##  492   58 2295    1
+##   D 
+## 493
 ```
 
 ```r
@@ -454,12 +619,12 @@ head(gencohort16)
 ## # A tibble: 6 x 8
 ##   CDS    Name   AggLevel DFC   Subgroup Subgrouptype NumCohort NumGraduates
 ##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;
-## 1 39686~ Pacif~ S        N     FOS      All                 NA           NA
-## 2 33670~ Palm ~ S        N     FOS      All                 NA           NA
-## 3 40754~ Paso ~ S        N     FOS      All                 NA           NA
-## 4 19647~ Pathw~ S        N     FOS      All                 NA           NA
-## 5 33670~ Patri~ S        N     FOS      All                 NA           NA
-## 6 43694~ Pegas~ S        N     FOS      All                 NA           NA
+## 1 01611~ REALM~ D        Y     All      9                   NA           NA
+## 2 01611~ Impac~ D        Y     All      2                   NA           NA
+## 3 01611~ Impac~ D        Y     All      9                   NA           NA
+## 4 01611~ Impac~ D        Y     All      7                   NA           NA
+## 5 01611~ Silve~ D        Y     All      5                   11           NA
+## 6 01612~ Liver~ D        Y     All      5                   27           27
 ```
 
 ```r

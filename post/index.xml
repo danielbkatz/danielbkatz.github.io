@@ -38,10 +38,10 @@ The idea seems simple: Just because there’s statistical correlation in the pre
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://danielbkatz.github.io/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
-      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some draft slides:
+      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some draft slides:
 1. Intro to R, part 1
 2. Reading in Data, tidyverse, part2
-Example Data</description>
+DataExample Data 1</description>
     </item>
     
   </channel>

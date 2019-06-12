@@ -30,15 +30,15 @@ library(tidyverse)
 ```
 # Enough Putzing about, Let's get to Data
 
-+ The type of data structure you will most likely work with in R is the dataframe. Or, data.frame. 
++ The type of data structure you will mostly work with in R is the dataframe. Or, <mark>data.frame</mark> 
 
 + Other common types of data structures:
   + `matrix`
   + `lists`
   + `arrays`
 
---
-  
+---
+## Arrays
 
 + An array is a general multidimensional data structure 
   + mindblowingly, a matrix that essentially has an x, y, and a z axis (or more!)
@@ -73,6 +73,8 @@ class: middle
 + Download the data!
 
 + The data today is a publically accessible dataset from the [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+
++ Download by clicking: [**Example Data 1**](/CDRPdata/cohort16.csv)
 
 + I've posted it on the workshop web here: [_**CDEDATA**_](http://www.dbkatz.com/1/01/01/beginning-a-new-intro-to-r-workshop/)
 
@@ -109,7 +111,7 @@ knitr::include_graphics("directory.jpg")
 ## Read in the data, the cheating way...
 + First create a new script in R, save it, and call it `learning_tidyverse`.
 
-+ In the top right, right under the Global Environment tab, it says "Import Dataset"
++ In the top right, under the Global Environment tab, it says "Import Dataset"
 
 + The file we downloaded is a CSV file (make sure to use readr)
 
@@ -126,7 +128,7 @@ knitr::include_graphics("directory.jpg")
 ## The final steps
 + In the lower right, there is some code, <mark>copy it</mark> and cancel out
 
-+ Paste the code into your new script; write a note about what it is
++ Paste the code into your new script at the top; write a note about what it is
 
 + Eventually, you'll want to do this manually, I promise (and please promise me)
 
@@ -135,13 +137,14 @@ knitr::include_graphics("importing.jpg")
 
 ```
 
-+ Run all the code...
-
 ---
 ## Code for Reading in 
++ Run all the code...
+
 
 ```{r, eval=FALSE}
-# Now that I've put my files in a rawdata folder in the working directory, I can do this:
+# Now that I've put my files in a rawdata folder 
+#in the working directory, I can do this:
 
 # Load the library
 library(readr)
@@ -169,7 +172,7 @@ class: middle
 ### Can also go searching for it with a longer path (doesn't need to be in your working directory)
 ```{r readin}
 
-co16 <- read_csv("C:/Users/katzd/Desktop/Teaching R/Extrablanl/Newproj/RawData/cohort16.csv")
+co16 <- read_csv("C:/Users/katzd/Desktop/Github/perswebsite2/static/CDRPdata/cohort16.csv")
 ```
   
 
@@ -218,8 +221,41 @@ co16_rem <- co16[-1]
 #make sure this worked
 names(co16_rem)
 
+
+```
+---
+
+class: middle 
+
+## Explaining the data set (this is especially good for the tidyverse)
+
++ The variable `CDS` is a code for county, district, and schools.
+
++ This data contains information from state level, to county level, to district level, to school level.
+
++ It also contains information about demographics. Each demographic group per school, gets its own row and the numeric variables have to do with that particular subgroup in that school.
+
++ For instance, `AggLevel` denotes whether that row refers to `State`, `County`, `District` or `School`  
+---
+
+class: middle
+
++ If for instance, we take the first row, 
+```{r echo=FALSE}
+knitr::kable(xtable::xtable(co16_rem[1,]),  format = "html")
+
 ```
 
++ We note, that the data for this row represents district totals, (so it's at the school level). 
+
++ It refers to the totals relevant to the state-identified `Subgroup`, `All`. 
+  + According to the codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation of those particular subgroups.
+  
++ However, `Subgrouptype` is 9, which refers to: `9 – Two or more races, not Hispanic`
+
++ So that row refers to district totals for all students who have been identified as `Two or more races, not Hispanic` but not broken up by program-participation, Gender (you really get to see how the state of CA thinks)
+
++ Let's make this make sense, with `filter`
 ---
 ## Introducing `filter()` and pipe operators `%>%`
 
@@ -237,6 +273,25 @@ names(co16_rem)
 stateco16 <- filter(co16_rem, Name=="Statewide")
 ```
 ---
+## Check for understanding, filter.
+
++ Let's say we only want to look at `district totals` data, not school level data. 
+
++ Use filter, on AggLevel such that we only select the category `D = Local educational agency totals (includes districts and direct funded charter schools)`
+
++ You'll have to start with `co16_rem` again
+--
+## solution
+```{r}
+distr <- filter(co16_rem, AggLevel == "D")
+
+# Did it work?
+table(distr$AggLevel)
+
+#vs.
+
+table(co16_rem$AggLevel)
+```
 
 ## Piping Operators
 
@@ -245,32 +300,31 @@ stateco16 <- filter(co16_rem, Name=="Statewide")
 + The `%>%` operator, helps - read it as `and then`
 
 ```{r}
-state_co16 <- co16_rem %>% 
-  filter(Name=="Statewide")
+distr <- co16_rem %>% 
+  filter(AggLevel == "D")
 
 # table gives you counts on column (remember $ indexes)
-table(state_co16$Name)
+table(distr$AggLevel)
 ```
 
-
+*What about filtering on more than one variable? That sounds like a challenge!*
 ---
 
-.pull-left[1. The variable, <mark>DFC</mark> contains information as to whether a school is a charter school or not. 
+.pull-left[We notice that even after filtering for District, individual charter schools are left in the dataset. 
+
+1. The variable, <mark>DFC</mark> contains information as to whether a school is a charter school or not. 
   + Y = Charter School
   + N = Not a charter school
 
-2. The variable <mark>Subgroup</mark> identifies totals for each school by subgroup
-  + EL = English Language Learners
-  + MIG = Migrant Education
-  + SD = Socioeconmically Disadvantaged
-  + SE = Special Education
-  + FEM = Female
-  + MAL = Male
-  + All = Total Of All Subgroups]
+2. The variable AggLevel has information on level of analysis where
+  + D = Local educational agency totals (includes districts and direct funded charter schools)
+  + O = County totals
+  + S = School totals
+  + T = State totals
 
 .pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `filtdf` by...
 
-2. using `filter` so we only keep schools that are not charter schools and information on Socioeconomically disadvantaged students.
+2. using `filter` so we only keep districts but remove charter schools.
 
 3. Use filter and/or pipes so you only need to create one dataframe 
 
@@ -283,15 +337,11 @@ table(state_co16$Name)
 
 ```{r}
 # Either one will work, I prefer method1
-filtdf <- co16_rem %>% filter(DFC == "N", Subgroup == "SD")
+filtdf <- co16_rem %>% filter(DFC == "N", AggLevel == "D")
 
 # or...
 
-filtdf <- co16_rem %>% filter(DFC=="N") %>% filter(Subgroup=="SD")
-
-table(filtdf$DFC)
-
-table(filtdf$Subgroup)
+filtdf <- co16_rem %>% filter(DFC=="N") %>% filter(AggLevel=="D")
 
 
 ```
@@ -299,7 +349,37 @@ table(filtdf$Subgroup)
 # Challenge
 1.After filtering, what categories are still left in the variable, `Agglevel`, in your new dataframe, filtdf?
 
-2. Without creating a new R object, edit your script such that you keep only the category `D` from `Agglevel`.
+2. Without creating a new R object, edit your script such that you keep only the category `All` from variable `Subgroup` and `All` from variable `Subgrouptype`. Make sure it is still called `filtdf`
+--
+```{r}
+table(filtdf$AggLevel)
+
+filtdf <- co16_rem %>% filter(DFC == "N", AggLevel == "D", Subgroup=="All", Subgrouptype=="All")
+
+head(filtdf)
+
+```
+---
+## Remember our logical operators?
+
+1. Now, using a pipe and assigning a new variable name, filtdf1000 (for exercise, not necessary, though), start with filtdf filter such that filtdf1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable . 
+
+--
+```{r}
+table(filtdf$AggLevel)
+
+filtdf1000 <- filtdf %>%
+  filter(NumCohort >= 1000)
+
+range(filtdf$NumCohort)
+
+nrow(filtdf)
+
+```
+
+---
+
+##
 
 --
 ```{r}

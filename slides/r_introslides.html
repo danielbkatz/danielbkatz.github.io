@@ -66,7 +66,7 @@ class: middle
   
 + I'm going with a `tidyverse` [_**first**_](http://varianceexplained.org/r/teach-tidyverse/) approach while mixing in foundations that I find unavoidable [_**Click to read more**_](http://varianceexplained.org/r/teach-tidyverse/)
 
-+ I won't emphasize style/best practices except in a few cases
++ I won't emphasize code-style best practices except in a few cases
 
 + I think it's important to focus on ideas and functions!
 
@@ -84,16 +84,14 @@ class: middle
 2. Some basic data structures (unavoidable foundation)  
 
 --
-3. Data wrangling with the `tidyverse`    
-  
---
-4. Data exploration  
+3. Data wrangling with the `tidyverse` 
+  +Data exploration  
 
 --
-5. Basic modelling in R  
+4. Basic modelling in R  
 
 --
-6. Other Help Resources  
+5. Other Help Resources  
 
 ---
 
@@ -102,12 +100,15 @@ class: middle
 
 # What is R?
 
-+ R is a software and scripting language
++ R is a software and scripting language  
+  
 
-+ Like any other language it has syntax (for now think, "rules" of language)
++ Like any other language it has syntax (for now think, "rules" of language)  
+  
 
-+ R comes with a variety of built-in functions
-
++ R comes with a variety of built-in functions  
+  
+  
 + R is desiged for statistics, but you can do lots with it 
   + build websites
   + write documents in Latex
@@ -118,15 +119,20 @@ class: middle
 # Why do I like R?
 
 + It is quickly becoming the statistical language of choice in academic and non-academic circles    
+
 --
   
 + Fast developing `R Packages` are making tasks more accessible to non-programmers like us  
+
+
 --
   
 + R allows for sharing code: we won't cover Github, but please [_**check it out**_](https://happygitwithr.com/rstudio-git-github.html)  
+
 --
   
 + R forces us to slow down and think  
+
 
 ---
 
@@ -185,7 +191,9 @@ mean(x)
 ```
 ## [1] 3
 ```
-]
++ In R speak, the particular thing that goes in the parentheses of a function, such as `mean` is called an &lt;mark&gt;argument&lt;/mark&gt;
+
++ R functions often take more than one argument]
 ---
 
 ## There are also other forms of functions we use in computation
@@ -200,7 +208,6 @@ From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz
 
 ---
 
-## Open R Studio
 
 background-image: url(introconsole.png)  
 background-size: contain
@@ -240,15 +247,16 @@ class: middle
 
 ## Introducing "Scripts"
 
-+ Scripts are RStudio's text editor. ***Work in Scripts***. They're saved text that you *can* edit  
++ Scripts are RStudio's text editor. **Work in Scripts**. They're saved text that you _can_ edit  
   
 
-+ Code in the console doesn't get saved and you *cannot* edit  
++ Code in the console doesn't get saved and you _cannot_ edit  
   
 --
 
-+ The primary aim of working in scripts is reproducability, transparency, being able to run code from start-to-finish without intervening  
-  
++ The primary aim of working in scripts is reproducability, transparency, being able to run code from start-to-finish without intervening    
+
+
 --
 + Don't rely on saving data, rely on being able to re-run your script as if you have no memory of what you had done before 
 
@@ -272,12 +280,13 @@ class: middle
 ]
 
 --
-.pull-right[3. Type `1+1` in a script and run it.
+.pull-right[Make sure it works: 3. Type `1+1` in a script and run it.
   + What happens? Where does it output?
 
 4. There are multiple ways to run more than one line of code at a time
   + Highlight the relevant code, run
-  + Or select the various options under "Run"]
+  + Or select the various options under "Run"
+5. Write two lines of code (such as `1+1` and `2+2`)]
 
 --
 
@@ -309,7 +318,7 @@ factorial(4)
 ## [1] 24
 ```
 
-+ I recommend taking notes in an R script this way! 
++ I recommend taking notes in an R script for this workshop! 
 ---
 
 
@@ -326,7 +335,7 @@ factorial(4)
 
 class: middle
 
-## working Directory (We'll return to this in more detail later)
+## Working Directory (We'll return to this in more detail later)
 + The notion of the &lt;mark&gt;working directory&lt;/mark&gt; isn't unique to R
 
 + Directories are just folders on your computer with a certain `path`
@@ -340,9 +349,9 @@ class: middle
 ---
 ## File paths
 
-+ A path to a Word doc on my desktop looks like: "C:/Users/katzd/Desktop/myfile.docx".
++ A path to a Word doc on my desktop looks like: `C:/Users/katzd/Desktop/myfile.docx`.
 
-+ A path to a file in a folder called, `thesis` in the `Documents directory` looks like "C:/Users/katzd/Documents/thesis/myfile.docx"
++ A path to a file in a folder called, `thesis` in the `Documents directory` looks like `C:/Users/katzd/Documents/thesis/myfile.docx`
 
 + But these are long!
 
@@ -351,15 +360,15 @@ class: middle
 
 ## File Paths Continued...
 
-+ If I make the folder `thesis` my working directory, then you won't need to type, the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus folder 
++ If I make the folder `thesis` my working directory, then you won't need to type the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus folder 
 
-+ If I have a folder called, `analysis` in `thesis` - thesis is my working- directory the path will be "analysis/filename.ext".
++ If I have a folder called, `analysis` in `thesis` - thesis is my working- directory the path will be &lt;mark&gt;analysis/filename.ext&lt;/mark&gt;.
 
 + To see the currect working directory, simply run the code `getwd()`
 
 + To set the working directory setwd("filepath") (the filepath has to be in quotes)
 
-.center[###If you've made any comments or would like to save your current script, go ahead an do-so now (file &gt; save &gt; where you want to save it &gt; name)]
+.center[###If you've made any comments or would like to save your current script, please go ahead an do-so now (file &gt; save &gt; where you want to save it &gt; name)]
 
 ---
 
@@ -370,7 +379,7 @@ class: middle
 
 2. New Directory &gt; New Project &gt; Create Project as a Subdirectory of: click `browse`.
   
-3. Choose where you'd like to put this session's R work (for instance, on your desktop. 
+3. Choose where you'd like to put this session's R work (for instance, on your desktop in a folder called, `Rworkshop`). 
 
 4. Go to the first box, `Directory Name` &gt; Name this R project - `IntroR` (no spaces; It'll make your life easier)
 
@@ -384,12 +393,18 @@ class: middle
 class: middle
 
 ## Let's get setup for the workshop!
-1. In your project, create a new script to have at the ready.
-2. Save the script as `introscript`.
-3. Use a command to check your working directory.
-4. Write a comment that "this is the first R work we'll do in the R workshop"
+1. In your project, create a new script to have at the ready. 
+
+2. Save the script as `introscript`. 
+
+3. Use a command to check your working directory. [_Hint_](http://www.dbkatz.com/slides/r_introslides.html#38).
+
+4. Write a comment:"this is the first R work we'll do in the R workshop"
+
 5. Find the `View` tab and change your RStudio session so it shows only the console
+
 6. Change your R studio Session to look like it did before
+
 7. Find the `Global Environment` (what's in there right now?)
 
 
@@ -449,8 +464,25 @@ class: middle
 install.packages("tidyverse")  
 library(tidyverse)
 ```
+---
+## Getting help
++ First and foremost, you can see you packages in the bottom-right pane:
+&lt;img src="packages.jpg" width="868" /&gt;
 
-  
++ Click on a package to see the documentation
+---
+## Other Help
+
++ You can also type `?packagename` such as `?dplyr`
+
++ To get help with a base R function, you can type ?function
+
++ To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
+
++ Under the &lt;mark&gt;Help&lt;/mark&gt; tab in R studio, exists a few resources as well, including "cheat sheets"
+
++ Also, Google (we'll talk about this more)! 
+
 ---
 ## why the tidyverse?
 
@@ -513,7 +545,7 @@ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of package
 |Division | `/`| `12/4`
 |Matrix multiplication|`%*%`| `a %*% b`|
 
-**Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
+**Challenge: Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
 
 ---
 
@@ -528,15 +560,18 @@ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of package
 ---
 ## Variable Assignment
 1. One of the most fundamental aspects of R (really any language) assigning `variables` or `objects`, giving something a name so you can store it and work with it in R.
-  + R uses `&lt;-` (shortcut for Windows: "alt" and "-" or in Mac: "option" and "-")
+  + R uses `&lt;-` (you can also use for Windows: "alt" and "-" or on a Mac: "option" and "-")
 
 2. Now, we can store objects in R and work with the objects!
 
 3. Note, none of this requires an external package, just through `base R`. For a nice base R cheat sheet, [_**Click**_](https://paulvanderlaken.files.wordpress.com/2017/08/base-r-cheetsheat.pdf)
 
---
+4. As a heads up, when we start assigning variables, note what changes in your R session (where do you see the variables go?)
+
+---
+class: middle
  
-For instance, run the code below:
+### For instance, run the code below:
 
 ```r
 x &lt;- 2
@@ -548,7 +583,7 @@ x &lt;- 2
 y &lt;- x+2
 ```
 
-1. What is in your Global Environment, now?
+1. What is in your Global Environment, now?  
 2. What was outputted in the console?
 
 --
@@ -566,7 +601,7 @@ class: middle
 + The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects that we've assigned to variables
 
 
-+If you don't assign something to a variable, it won't be stored
++ If you don't assign something to a variable, it won't be stored
 ---
   
 
@@ -609,28 +644,69 @@ x==y
 ---
 ## Boolean/Logical Operators!
 
-+ If you notice, R `x==y` yields, `FALSE`
-+ `==` is a different type of operator
++ `x==y` yields, `FALSE`: `==` is a different type of operator
 
-|Operation|Operator in R |Example|
-|---------|------|-------|-------|
-|Equality/Are they Equal? |`==` |`x==y`
-|Not Equal |`!=` |`x!=y`
-|Greater than or equal|`&gt;=`| `x &gt;= y`
-|Less than or equal to|`&lt;=`| `x &lt;= y`
-|Greater than|`&gt;`| `x &gt; y`
-|Less than |`&lt;`| `x &lt; y`
-|Or |  `|` | `x|y`
-|And | `&amp;`| `x &amp; y`
-
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Operation &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Operator &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Example &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Equality; Are they equal? &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; == &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x==y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Not Equal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; != &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x!=y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Greater then or equal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt;= &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x&amp;gt;=y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Less than or equal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;= &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x&amp;lt;=y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Greater than &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x&amp;gt;y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Less than &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; X,y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Or &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; | &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x|y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; And &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &amp;amp; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; x &amp;amp; y &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 ---
 
 ## Data Structures
-For individual values or vectors, R has a number of data types (not different than SPSS). We have a few ways of checking (for instance, numeric, character, factor, etc):
+For individual values or vectors, R has a number of data types (not different than SPSS). We have a few ways of checking (for instance, numeric, character, factor, etc): 
+
+`class(x)` returns the data structure (such as numeric, integer, character, factor)
 
 
 ```r
-# this will work on vectors as well
+# this will work on vectors as well. 
 class(x)
 ```
 
@@ -639,6 +715,7 @@ class(x)
 ```
 
 ```r
+#This returns True or False
 is.numeric(x)
 ```
 
@@ -715,7 +792,7 @@ Run the following code:
 
 2. What does the `:` operator do?
 
-3. what class is `newvector`?
+3. what class is `v5`?
 
 --
 
@@ -731,12 +808,20 @@ v5
 ## [1]  7  9 11 13 15
 ```
 
+```r
+class(v5)
+```
+
+```
+## [1] "integer"
+```
+
 ---
 
 class: middle
 
 ### This is one of those necessary evils, so you know how R works
-- To select individual elements, use `[2]` and the numeric position that you would like to extract. 
+- To select individual elements in a vector, use `[2]` and the numeric position that you would like to extract. 
 
 - For instance, run: `v6 &lt;- v5[c(2,3)]`
 
@@ -752,7 +837,6 @@ class: middle
 
 `sum(v5)`  
 **`sum(v5[c(2,3)])`**  
-
 `mean(v5)`  
 `sd(v5)`  
 `range(v5)`  
@@ -785,6 +869,23 @@ class: middle
 ##       7       9      11      11      13      15
 ```
 ---
+class: center
+
+## Important points from part 1
+
+1. Work in scripts.
+
+2. R comes with a base set of functions.
+
+3. R has data structures and types including mathematical/numerical operators and boolean/logical operators.
+
+4. You can always use `class()` to figure out the data-type of a &lt;mark&gt;vector&lt;/mark&gt;.
+
+5. To save variables in R, use an assignment operator.
+
+6. Packages are external software that we can download to R.
+
+7. Within R, there are various ways to get help.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
