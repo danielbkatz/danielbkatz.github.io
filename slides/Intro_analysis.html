@@ -461,6 +461,7 @@ ggplot(data=state16d,
 ---
 ## Warmup
 
+
 ```r
 plot1 &lt;- ggplot(data=state16d, 
                 aes(x=droprate, y=GEDrate)) + 
@@ -473,9 +474,12 @@ plot1 &lt;- ggplot(data=state16d,
 
 1. Use ?geom_point to find out what the `stroke` aesthetic does
 
-1. instead of `color=Subgroup` above, use `color=GED Rate &gt;.3`
+1. instead of `color=Subgroup` above, use `color=GEDrate &gt;.3`
 
 1. What are three other `geom_functions`?
+
+---
+
 
 ---
 # Challenge: Aesthetics
@@ -520,7 +524,7 @@ plot2 &lt;- state16 %&gt;%
 plot2
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -545,7 +549,7 @@ plot3 &lt;- ggplot(graphdata2,
 plot3
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-17-1.png" height="40%" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-18-1.png" height="40%" /&gt;
 
 ---
 # Challenge: Facets
@@ -578,7 +582,7 @@ plot5 &lt;- ggplot(graphdata3,
 plot4
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Plot 5
@@ -587,7 +591,7 @@ plot4
 plot5
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 ---
 class: middle
 # What happens when you replace facet_wrap with facet_grid?
@@ -605,7 +609,7 @@ plot6 &lt;- ggplot(graphdata3,
 plot6
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
 
 ---
 class: middle 
@@ -629,8 +633,6 @@ class: middle
 
 + we can add aesthetics just to that geom_function
 
-+ General form: 
-
 ```r
 plot7 &lt;- ggplot(graphdata3, 
             aes(x=NumDropouts, y = gradrate))+
@@ -639,7 +641,7 @@ plot7 &lt;- ggplot(graphdata3,
 plot7
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -673,7 +675,7 @@ ggplot(graphdata4) +
 * geom_boxplot(aes(y = gradrate, x = DFC))
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -684,7 +686,7 @@ ggplot(graphdata4, aes(y = gradrate, x = DFC, fill = Subgroup)) +
 *                     geom_boxplot()
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -697,7 +699,7 @@ See the most popular geoms, [_**here**_](https://eric.netlify.com/2017/08/10/mos
 
 
 ---
-## Starting to think about descriptives
+## Starting to think about descriptives, putting it together
 
 + Faceting is super useful when you want to look at correlations by group. Go back to `graphdata4`
 
@@ -705,7 +707,7 @@ See the most popular geoms, [_**here**_](https://eric.netlify.com/2017/08/10/mos
 ```r
 plotcorr &lt;- ggplot(graphdata4, 
             aes(x=droprate, y = gradrate))+
-  geom_point() + 
+  geom_point(aes(color=Subgroup)) + 
   facet_grid(Subgroup~DFC) 
 ```
 ---
@@ -714,7 +716,111 @@ plotcorr &lt;- ggplot(graphdata4,
 plotcorr
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+
+---
+## ggplot2 Labels
+
++  Adding labels is actually really simple
+
++ ggplot2 objects can be always added to with a `+`
+
++ What we'll add is `labs()`
+
+
+```r
+plotcorr &lt;- plotcorr + 
+  labs(y="Cohort Graduation Rate", 
+       x= "Cohort Dropout Rate", 
+       title = "Relationship between high school graduation rates and dropout rates",
+       subtitle = "By California defined subgroup and charter school type")
+
+plotcorr
+```
+
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## What about changing the legened?
+This is a good resource for more on [_**ggplot text**_](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html): 
+
+```r
+plotcorr &lt;- plotcorr +  
+  scale_color_discrete(labels = c("All", "Female", "Male"))
+plotcorr
+```
+
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Labelling individual Cases (with GEDrates greater than 20%)
+See package, [_**ggrepl**_](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html) to make this cleaner
+
+```r
+plotlab &lt;- plot1 +  geom_text(data=subset(graphdata4, GEDrate &gt;30), 
+          aes(x=droprate, y = GEDrate, label=Name))
+          
+plotlab
+```
+
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+---
+# There's much, much more:
+
++ Check out themes related to ggplot2
+
++ Check out how to make plots APA or the like, compliant here: [_**APA**_](https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_5.html)
+
++ A good startin place, as usual, is the ggplot2 R studio [_**page**_](https://ggplot2.tidyverse.org/)  
+
+---
+# Exporting data/saving data
+
++ To export data from R is quite simple, but remember our directories! 
+
+&lt;img src="directory.jpg" width="90%" /&gt;
+
++ We want to put any data we've cleaned in a folder called something like, "cleaneddata" and give it a name so we know what's in there. 
+
++ Remember `state16d`?
+
++ We'll use the `write_csv()` function from the `readr` package. 
+
++ general form (`write_csv(df, "folder/data.csv") - extension can be anything related to `write_*` start typing `write_` to see what happens...
+
++ What you save it as (in quotes) doesn't have to be the same as what it's called in R.
+
+
+```r
+write_csv(state16d, "Cleandata/districtsub.csv")
+
+# to write to SPSS
+library(haven)
+write_sav(state16d, "Cleandata/districtsub.sav")
+
+# sav is an SPSS file extension
+```
+---
+
+class: center
+
+# Exporting ggplot2 object
+
+
+```r
+ggsave("plots/plot1.pdf", plot1)
+
+ggsave("plots/plot1.png", plot1)
+
+# make it a certain size
+ggsave("plots/plot1", width = 20, height = 20, units = "cm")
+```
+
+
+---
+# Part 3.2: Descriptive statistics
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -276,6 +276,7 @@ ggplot(data=state16d,
 
 ---
 ## Warmup
+
 ```{r eval=F}
 
 plot1 <- ggplot(data=state16d, 
@@ -289,9 +290,17 @@ plot1 <- ggplot(data=state16d,
 
 1. Use ?geom_point to find out what the `stroke` aesthetic does
 
-1. instead of `color=Subgroup` above, use `color=GED Rate >.3`
+1. instead of `color=Subgroup` above, use `color=GEDrate >.3`
 
 1. What are three other `geom_functions`?
+
+---
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=5}
+plot1 <- ggplot(data=state16d, 
+                aes(x=droprate, y=GEDrate)) + 
+         geom_point(aes(color=GEDrate >.3))
+
+```
 
 ---
 # Challenge: Aesthetics
@@ -432,8 +441,6 @@ class: middle
 ## Geoms continued
 
 + we can add aesthetics just to that geom_function
-
-+ General form: 
 ```{r message=FALSE, warning=FALSE, fig.width = 5, fig.height = 5}
 plot7 <- ggplot(graphdata3, 
             aes(x=NumDropouts, y = gradrate))+
@@ -492,7 +499,7 @@ See the most popular geoms, [_**here**_](https://eric.netlify.com/2017/08/10/mos
 
 
 ---
-## Starting to think about descriptives
+## Starting to think about descriptives, putting it together
 
 + Faceting is super useful when you want to look at correlations by group. Go back to `graphdata4`
 
@@ -500,7 +507,7 @@ See the most popular geoms, [_**here**_](https://eric.netlify.com/2017/08/10/mos
 
 plotcorr <- ggplot(graphdata4, 
             aes(x=droprate, y = gradrate))+
-  geom_point() + 
+  geom_point(aes(color=Subgroup)) + 
   facet_grid(Subgroup~DFC) 
 
 ```
@@ -508,3 +515,100 @@ plotcorr <- ggplot(graphdata4,
 ```{r, fig.height=6}
 plotcorr
 ```
+
+---
+## ggplot2 Labels
+
++  Adding labels is actually really simple
+
++ ggplot2 objects can be always added to with a `+`
+
++ What we'll add is `labs()`
+
+```{r, fig.height=5, fig.width=5, fig.align="center"}
+
+plotcorr <- plotcorr + 
+  labs(y="Cohort Graduation Rate", 
+       x= "Cohort Dropout Rate", 
+       title = "Relationship between high school graduation rates and dropout rates",
+       subtitle = "By California defined subgroup and charter school type")
+
+plotcorr
+```
+
+---
+## What about changing the legened?
+This is a good resource for more on [_**ggplot text**_](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html): 
+```{r, fig.height=5, fig.width=5, fig.align="center"}
+plotcorr <- plotcorr +  
+  scale_color_discrete(labels = c("All", "Female", "Male"))
+plotcorr
+```
+
+---
+## Labelling individual Cases (with GEDrates greater than 20%)
+See package, [_**ggrepl**_](https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html) to make this cleaner
+```{r, fig.height=5, fig.width=5, fig.align="center"}
+plotlab <- plot1 +  geom_text(data=subset(graphdata4, GEDrate >30), 
+          aes(x=droprate, y = GEDrate, label=Name))
+          
+plotlab
+```
+---
+# There's much, much more:
+
++ Check out themes related to ggplot2
+
++ Check out how to make plots APA or the like, compliant here: [_**APA**_](https://ndphillips.github.io/IntroductionR_Course/assignments/wpa/wpa_5.html)
+
++ A good startin place, as usual, is the ggplot2 R studio [_**page**_](https://ggplot2.tidyverse.org/)  
+
+---
+# Exporting data/saving data
+
++ To export data from R is quite simple, but remember our directories! 
+
+```{r echo=FALSE, out.width = '90%'}
+knitr::include_graphics("directory.jpg")
+```
+
++ We want to put any data we've cleaned in a folder called something like, "cleaneddata" and give it a name so we know what's in there. 
+
++ Remember `state16d`?
+
++ We'll use the `write_csv()` function from the `readr` package. 
+
++ general form (`write_csv(df, "folder/data.csv") - extension can be anything related to `write_*` start typing `write_` to see what happens...
+
++ What you save it as (in quotes) doesn't have to be the same as what it's called in R.
+
+```{r, eval=F}
+write_csv(state16d, "Cleandata/districtsub.csv")
+
+# to write to SPSS
+library(haven)
+write_sav(state16d, "Cleandata/districtsub.sav")
+
+# sav is an SPSS file extension
+
+```
+---
+
+class: center
+
+# Exporting ggplot2 object
+
+```{r, eval=F}
+ggsave("plots/plot1.pdf", plot1)
+
+ggsave("plots/plot1.png", plot1)
+
+# make it a certain size
+ggsave("plots/plot1.png", width = 20, height = 20, units = "cm")
+```
+
+
+---
+# Part 3.2: Descriptive statistics
+
+---
