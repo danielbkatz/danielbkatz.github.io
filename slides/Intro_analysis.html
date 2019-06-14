@@ -31,12 +31,12 @@ class: middle
 1. Each variable has its own column
 2. Each observation has its own row
 3. Each value has its own cell
-
+--
 Because...
 1. Uniformity makes everything easier and you know how your data is stored
 2. It makes vectorization easier
 
-However, sometimes we need both tidy forms, and non-tidyforms of data
+However, sometimes we need both tidy forms, and non-tidyforms of data 
 
 ---
 Tidy (long data):
@@ -169,7 +169,8 @@ table(co16_rem$Subgroup)
 mvf &lt;- co16_rem %&gt;% 
   select(CDS, DFC, AggLevel, Subgroup, Subgrouptype,
          NumCohort) %&gt;% 
-  filter(AggLevel=="D", DFC=="N",
+  filter(AggLevel=="D", 
+         DFC=="N",
          Subgroup=="FEM"| Subgroup=="MAL",  
          Subgrouptype=="All") %&gt;% 
 * group_by(Subgroup) %&gt;%
@@ -205,9 +206,9 @@ class: middle
 
 ## Challenge, `group_by()` and `summarize()`
 
-1. Edit the code above so you're grouping by Subgroup and Subgrouptype. 
+1. Edit the code above so you're grouping by Subgroup AND Subgrouptype (feel free to use help). 
 
-2. However, with Subgroup, filter it to include Male, Female, and "All".
+2. However, with Subgroup, filter it first to include Male, Female, and "All".
 
 3. We'll look at something the state of CA always looks at: group by Subgrouptype such that we keep only those classified by CA as "Hispanic or Latinx" (5), "African American" (6), "White, not Hispanic (7), and "All".
 
@@ -379,6 +380,42 @@ class: middle
 
 + the general form of ggplot is:
 `ggplot(data, aes(mapping)) + geom_function(aes(mappings))`
+---
+
+class: middle 
+
+
+### Building a ggplot
+
+
+.pull-left[
+1. Start with adding the data
+
+1. Add an aesthetic internally or externally  
+
+1. Add a geome (what kind of plot will it be?)   
+
+1. Add other rules such as themes.  
+
+1. Get help via documentation or other resources as you need]
+
+--
+.pull-right[
+1. `ggplot(data)`
+
+1. `ggplot(data =df, aes(x=x_var, y=y_var))` 
+
+1. `ggplot(data=df, aes(x=x_var, y=y_var)) + geom_point(aes(color=grouo)) + geom_smooth(method=lm)`
+
+1. `?ggplot2::geom_smooth`
+]
+
+`ggplot(data=state16d) +`
+--
+       `aes(x=droprate, y=GEDrate)) +`
+--
+         `geom_point(aes(color=Subgroup))`
+  
 
 ---
 ## Example
@@ -407,6 +444,7 @@ ggplot(data=state16d,
 
 + It's important to know the `class` of your variables
 ---
+
 # Another example
 Just a histogram?
 
@@ -430,9 +468,13 @@ plot1 &lt;- ggplot(data=state16d,
 ```
 
 1. What variables in state16d are categorical? Continuous? (hint, there's one command)
+
 1. Using the code above, map a continuous variable to &lt;mark&gt;color&lt;/mark&gt;, &lt;mark&gt;size&lt;/mark&gt;, and &lt;mark&gt;shape&lt;/mark&gt; (using geom_point). How do these aesthetics behave differently for categorical vs. continuous variables?
+
 1. Use ?geom_point to find out what the `stroke` aesthetic does
+
 1. instead of `color=Subgroup` above, use `color=GED Rate &gt;.3`
+
 1. What are three other `geom_functions`?
 
 ---
@@ -454,7 +496,7 @@ Using ggplot2, answer the questions:
 ---
 
 ```r
-graphdata2 &lt;- co16_rem %&gt;% 
+graphdata2 &lt;- state16 %&gt;% 
   filter(AggLevel=="S", 
          Subgroup=="All", 
          Subgrouptype=="All")
@@ -468,11 +510,11 @@ plot2 &lt;- ggplot(graphdata2,
 ## We can also do this with pipes all the way through
 
 ```r
-plot2 &lt;- co16_rem %&gt;% 
+plot2 &lt;- state16 %&gt;% 
   filter(AggLevel=="S", 
          Subgroup=="All", 
          Subgrouptype=="All") %&gt;%
-  ggplot(aes(x=NumCohort, y=`Cohort Graduation Rate`))+
+  ggplot(aes(x=NumCohort, y=gradrate))+
   geom_point(aes(color=DFC)) 
 
 plot2
@@ -514,7 +556,7 @@ plot3
 + You can have two sides to the formula. To see this, run the code:
 
 ```r
-graphdata3 &lt;- co16_rem %&gt;% 
+graphdata3 &lt;- state16 %&gt;% 
   filter(AggLevel=="S", 
          Subgroup=="MAL"| Subgroup=="FEM", 
          Subgrouptype=="All")
@@ -529,14 +571,23 @@ plot5 &lt;- ggplot(graphdata3,
             aes(NumDropouts))+
   geom_histogram() + facet_wrap(DFC~Subgroup)
 ```
-
 ---
+# Plot 4
 
 ```r
 plot4
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-19-1.png" height="50%" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Plot 5
+
+```r
+plot5
+```
+
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 ---
 class: middle
 # What happens when you replace facet_wrap with facet_grid?
@@ -554,10 +605,116 @@ plot6 &lt;- ggplot(graphdata3,
 plot6
 ```
 
-![](Intro_analysis_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+---
+class: middle 
+
+## More on `geom_`
++ According to Hadley Wickham, author of ggplot2, `geom_` are so-called because they represent the geometric objects that we use to represent data
+
++ Boxplots use &lt;mark&gt;box geoms&lt;/mark&gt;, line charts use &lt;mark&gt;line geoms&lt;/mark&gt;, scatter plots use...
+--
+  + Point geoms
+--
+  
++ We can represent the same data in multiple ways using geoms_
+
++ we've already played with geoms above, to get a sense. 
+
++ Because of code completion, with `geom_ ` in a function, we can see our options.
+---
+
+## Geoms continued
+
++ we can add aesthetics just to that geom_function
+
++ General form: 
+
+```r
+plot7 &lt;- ggplot(graphdata3, 
+            aes(x=NumDropouts, y = gradrate))+
+  geom_point(aes(color=Subgroup))
+
+plot7
+```
+
+![](Intro_analysis_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+
+---
+
+class: middle
+
+## Challenge (geoms)
+
+1. Make a boxplot starting with `state16` data creating `graphdata4`
+  + filter so `subgrouptype` = "All"
+  + `Subgroup` = "MAL", "FEM" and "All"
+  + looking at the difference between graduation rates (gradrates) for charters and non-charters, but just
+
+2. Add a group to the boxplot such that you look at differences between charters and non-charters and the subgroups (using `Subgroup`) within each
+
+--
+1. Start with: 
+
+```r
+graphdata4 &lt;- state16 %&gt;% 
+  filter(Subgroup=="MAL"| Subgroup=="FEM"|Subgroup=="All", 
+         Subgrouptype=="All")
+```
+
+---
+## Solutions
+
+
+```r
+#bar chart
+ggplot(graphdata4) + 
+* geom_boxplot(aes(y = gradrate, x = DFC))
+```
+
+![](Intro_analysis_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
+
+---
+
+
+```r
+#bar chart
+ggplot(graphdata4, aes(y = gradrate, x = DFC, fill = Subgroup)) +
+*                     geom_boxplot()
+```
+
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle 
+
+## All the geoms
+There are a lot of geoms_
+
+See the most popular geoms, [_**here**_](https://eric.netlify.com/2017/08/10/most-popular-ggplot2-geoms/)
 
 
 ---
+## Starting to think about descriptives
+
++ Faceting is super useful when you want to look at correlations by group. Go back to `graphdata4`
+
+
+```r
+plotcorr &lt;- ggplot(graphdata4, 
+            aes(x=droprate, y = gradrate))+
+  geom_point() + 
+  facet_grid(Subgroup~DFC) 
+```
+---
+
+```r
+plotcorr
+```
+
+![](Intro_analysis_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

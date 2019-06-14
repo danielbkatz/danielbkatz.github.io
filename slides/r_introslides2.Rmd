@@ -22,10 +22,10 @@ options(htmltools.dir.version = FALSE)
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
 mono_light(base_color = "#151B54",
-  code_highlight_color = "#c0e8f5",
-  link_color = "#197b9e",
-  #code_inline_background_color = "#F1948A",
-  code_inline_color = "#1F618D",
+  code_highlight_color = "EDF803",
+  link_color = "#4C4D41",
+  code_inline_background_color = "#F2F9C9",
+  code_inline_color = "#000000",
   code_font_google   = google_font("Droid Mono"))
 ```
 
@@ -431,18 +431,20 @@ class: middle
 
 # Non-tidyverse solutions to filtering rows
 
-### If I want to select particular rows, say, row 1, along with the fourth column:
-
+*If I want to select particular rows, say, row 1, along with the fourth column:*
 + `newdf <- co16_rem[1, 4]` (where the first element represents row number, after the comma, the column (just like a matrix))
 
 + Just the first row: `newdf <- co16_rem[1, ]`
 
-### If I want to select rows according to rule (say, 1000): 
+*If I want to select rows according to rule (say, 1000)* 
 `newdf <- co16_rem[co16_rem$numcohort >= "1000", ]`
 
---
+---
+
+class: middle 
+
 ## For non-tidyverse solutions for selecting columns:
-  + Indexing: co16_rem[1:4] (note, don't need commas) but same as co16_rem[, 1:4]
+  + Indexing: `co16_rem[1:4]` (note, don't need commas) but same as `co16_rem[, 1:4]`
   + Naming `co16_rem$AggLevel`
 
 ---
@@ -470,13 +472,13 @@ class: middle
 
 state16 <- co16_rem %>% 
   select(CDS, Name, NumCohort, 
-         NumGraduates, 
-         `Cohort Graduation Rate`)
+         NumGraduates,
+         `Cohort Graduation Rate`, NumDropouts)
 
 # without a pipe operator
 state16 <- select(co16_rem , CDS,
                   Name, NumCohort, NumGraduates, 
-                  `Cohort Graduation Rate`)
+                  `Cohort Graduation Rate`, NumDropouts)
 
 
 names(state16)
@@ -494,7 +496,7 @@ class: middle
   + Ex: If I want to see `Cohort Graduation Rate` first:
 
 `state16 <- co16_rem %>% 
-  select(CDS, Name, NumCohort, NumGraduates, `Cohort Graduation Rate`)`
+  select(`Cohort Graduation Rate`, CDS, Name, NumCohort, NumGraduates, NumDropouts)`
 
 + If I want to rename a column in the process of selecting the format is:
   `newdf <- old_df %>% 
@@ -510,7 +512,7 @@ class: middle
 
 ```{r echo=FALSE}
 
-tibble1 <- tibble::tibble(Variable_Name = c("CDS", "Name", "AggLevel", "DFC", "Subgroup", "Subgrouptype", "NumCohort", "NumGraduates"), Variable_Description = c("County, District, or School ID", "Name of State, County, District, or School", "Level of Row Observation Statewide Totals(T), County Totals (0), District/Local Education Agency Totals (D), School Totals (S)", "Direct Funded Charter: Yes (Y), No (N)", "This is a coded field for identifying subgroups of students, such as, program participation and gender", "This is a coded field for identifying racial/ethnic designation", "Number of Students in the Cohort", "Number of students who graduated from the cohort"))  
+tibble1 <- tibble::tibble(Variable_Name = c("CDS", "Name", "AggLevel", "DFC", "Subgroup", "Subgrouptype", "NumCohort", "NumGraduates", "NumDropouts"), Variable_Description = c("County, District, or School ID", "Name of State, County, District, or School", "Level of Row Observation Statewide Totals(T), County Totals (0), District/Local Education Agency Totals (D), School Totals (S)", "Direct Funded Charter: Yes (Y), No (N)", "This is a coded field for identifying subgroups of students, such as, program participation and gender", "This is a coded field for identifying racial/ethnic designation", "Number of Students in the Cohort", "Number of students who graduated from the cohort", "Number of Students Recorded as Dropping Out of School"))  
 
 knitr::kable(xtable::xtable(tibble1),  format = "html", font_size = 7)
 
@@ -547,12 +549,10 @@ knitr::kable(xtable::xtable(tibble1),  format = "html", font_size = 7)
 ---
 # Solutions
 ```{r}
-state16 <- co16_rem %>% select(CDS:NumGraduates)
-                    
-
+state16 <- co16_rem %>% select(CDS:NumGraduates, NumDropouts)
+                  
    
 names(state16)
-
 
 ```
 ---
@@ -571,15 +571,12 @@ Creating a new dataframe called state16d, and using a pipe operator
 1. What is the largest value for `Numcohort`?
 --
 ```{r}
-state16 <- co16_rem %>% select(CDS:NumGraduates,
+state16 <- co16_rem %>% select(CDS:NumGraduates, NumDropouts,
                       gradrate = `Cohort Graduation Rate`,
                       droprate = `Cohort Dropout Rate`,
                       GEDrate = `GED Rate`)
 
-state16d <- co16_rem %>% select(CDS:NumGraduates,
-                      gradrate = `Cohort Graduation Rate`,
-                      droprate = `Cohort Dropout Rate`,
-                      GEDrate = `GED Rate`) %>% 
+state16d <- state16 %>% 
   filter(AggLevel=="D", DFC=="N", Subgroup=="All", 
          Subgrouptype=="All")
 ```

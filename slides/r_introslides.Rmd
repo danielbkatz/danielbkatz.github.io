@@ -86,21 +86,27 @@ class: middle
 ---
 class: middle
 ## General Outline
-
+.pull-left[
 1. Intro: What is R? How should I think about and use R and Rstudio?
 
---
-2. Some basic data structures (unavoidable foundation)  
+1. Some basic data structures (unavoidable foundation)  
+
+1. Data wrangling with the `tidyverse` 
+  + Data Visualization
+  + Data exploration 
+  
+1. Basic modelling in R  
+
+1. Other Help Resources ]
 
 --
-3. Data wrangling with the `tidyverse` 
-  +Data exploration  
+.pull-right[I'm showing you a *TON* and I don't expect you to have it all at your fingertips. But you'll know where to start, how to get help when you don't.
 
---
-4. Basic modelling in R  
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("poppins_bag.gif")
 
---
-5. Other Help Resources  
+```
+]
 
 ---
 
@@ -270,7 +276,10 @@ class: middle
   
 + Errors are good! Use the error output to guide your thinkingg (and Googling)
 
-+ In other words, "failing fast" is really convenient
++ In other words, "failing fast" is really convenient:
+  + Run code, change it until it breaks, figure out why it breaks
+  + Run example code, break it up into parts
+
 
 
 ---
@@ -496,9 +505,13 @@ class: middle
 
 ```{r eval=F}
 install.packages("tidyverse")  
-library(tidyverse)
-
 ```
+## Load the tidyverse
+
+```{r library-tidyverse, echo=TRUE, message=TRUE, warning=TRUE}
+library(tidyverse)
+```
+
 ---
 ## Getting help
 + First and foremost, you can see you packages in the bottom-right pane:
@@ -516,9 +529,17 @@ knitr::include_graphics("packages.jpg")
 
 + To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
 
-+ Under the <mark>Help</mark> tab in R studio, exists a few resources as well, including "cheat sheets"
++ Under the <mark>Help</mark> tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
 
-+ Also, Google (we'll talk about this more)! 
++ Also, Google (we'll talk about this more)!
+
+---
+# Run the examples in documentation, usually at the bottom of the section to see how something works!
+
+```{r, echo = FALSE, fig.align = "center"}
+knitr::include_graphics("doc_examples.jpg")
+```
+
 
 ---
 ## why the tidyverse?
@@ -585,6 +606,7 @@ y <- x+2
 
 1. What is in your Global Environment, now?  
 2. What was outputted in the console?
+3. Now run `x <- 3`. What is the value of x? What is the value of `x+2`
 
 --
 **Outputting the value of a variable requires using `print(x)`, or just `x`
@@ -672,7 +694,7 @@ v1
 ```
 
 ---
-## Check your Understanding
+## Check your Understanding (classes of vectors)
 
 Run the following code:
 

@@ -551,18 +551,20 @@ class: middle
 
 # Non-tidyverse solutions to filtering rows
 
-### If I want to select particular rows, say, row 1, along with the fourth column:
-
+*If I want to select particular rows, say, row 1, along with the fourth column:*
 + `newdf &lt;- co16_rem[1, 4]` (where the first element represents row number, after the comma, the column (just like a matrix))
 
 + Just the first row: `newdf &lt;- co16_rem[1, ]`
 
-### If I want to select rows according to rule (say, 1000): 
+*If I want to select rows according to rule (say, 1000)* 
 `newdf &lt;- co16_rem[co16_rem$numcohort &gt;= "1000", ]`
 
---
+---
+
+class: middle 
+
 ## For non-tidyverse solutions for selecting columns:
-  + Indexing: co16_rem[1:4] (note, don't need commas) but same as co16_rem[, 1:4]
+  + Indexing: `co16_rem[1:4]` (note, don't need commas) but same as `co16_rem[, 1:4]`
   + Naming `co16_rem$AggLevel`
 
 ---
@@ -590,13 +592,13 @@ class: middle
 ```r
 state16 &lt;- co16_rem %&gt;% 
   select(CDS, Name, NumCohort, 
-         NumGraduates, 
-         `Cohort Graduation Rate`)
+         NumGraduates,
+         `Cohort Graduation Rate`, NumDropouts)
 
 # without a pipe operator
 state16 &lt;- select(co16_rem , CDS,
                   Name, NumCohort, NumGraduates, 
-                  `Cohort Graduation Rate`)
+                  `Cohort Graduation Rate`, NumDropouts)
 
 
 names(state16)
@@ -605,7 +607,7 @@ names(state16)
 ```
 ## [1] "CDS"                    "Name"                  
 ## [3] "NumCohort"              "NumGraduates"          
-## [5] "Cohort Graduation Rate"
+## [5] "Cohort Graduation Rate" "NumDropouts"
 ```
 
 ```r
@@ -620,7 +622,7 @@ class: middle
   + Ex: If I want to see `Cohort Graduation Rate` first:
 
 `state16 &lt;- co16_rem %&gt;% 
-  select(CDS, Name, NumCohort, NumGraduates, `Cohort Graduation Rate`)`
+  select(`Cohort Graduation Rate`, CDS, Name, NumCohort, NumGraduates, NumDropouts)`
 
 + If I want to rename a column in the process of selecting the format is:
   `newdf &lt;- old_df %&gt;% 
@@ -674,6 +676,10 @@ class: middle
    &lt;td style="text-align:left;"&gt; NumGraduates &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Number of students who graduated from the cohort &lt;/td&gt;
   &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; NumDropouts &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Number of Students Recorded as Dropping Out of School &lt;/td&gt;
+  &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
@@ -683,9 +689,8 @@ class: middle
 # Solutions
 
 ```r
-state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates)
-                    
-
+state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates, NumDropouts)
+                  
    
 names(state16)
 ```
@@ -693,6 +698,7 @@ names(state16)
 ```
 ## [1] "CDS"          "Name"         "AggLevel"     "DFC"         
 ## [5] "Subgroup"     "Subgrouptype" "NumCohort"    "NumGraduates"
+## [9] "NumDropouts"
 ```
 ---
 ## Adding more to pipes
@@ -711,15 +717,12 @@ Creating a new dataframe called state16d, and using a pipe operator
 --
 
 ```r
-state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates,
+state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates, NumDropouts,
                       gradrate = `Cohort Graduation Rate`,
                       droprate = `Cohort Dropout Rate`,
                       GEDrate = `GED Rate`)
 
-state16d &lt;- co16_rem %&gt;% select(CDS:NumGraduates,
-                      gradrate = `Cohort Graduation Rate`,
-                      droprate = `Cohort Dropout Rate`,
-                      GEDrate = `GED Rate`) %&gt;% 
+state16d &lt;- state16 %&gt;% 
   filter(AggLevel=="D", DFC=="N", Subgroup=="All", 
          Subgrouptype=="All")
 ```
@@ -823,16 +826,17 @@ head(state16d[5:length(state16d)])
 ```
 
 ```
-## # A tibble: 6 x 8
-##   Subgroup Subgrouptype NumCohort NumGraduates gradrate droprate GEDrate
-##   &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-## 1 All      All                312          109     34.9     47.4     0.3
-## 2 All      All                727          632     86.9      5.4     0  
-## 3 All      All                779          749     96.2      2.3     0  
-## 4 All      All                206          205     99.5      0.5     0  
-## 5 All      All                 76           37     48.7     25       6.6
-## 6 All      All               1093          979     89.6      7.1     0.1
-## # ... with 1 more variable: gradrate_calc &lt;dbl&gt;
+## # A tibble: 6 x 9
+##   Subgroup Subgrouptype NumCohort NumGraduates NumDropouts gradrate
+##   &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
+## 1 All      All                312          109         148     34.9
+## 2 All      All                727          632          39     86.9
+## 3 All      All                779          749          18     96.2
+## 4 All      All                206          205          NA     99.5
+## 5 All      All                 76           37          19     48.7
+## 6 All      All               1093          979          78     89.6
+## # ... with 3 more variables: droprate &lt;dbl&gt;, GEDrate &lt;dbl&gt;,
+## #   gradrate_calc &lt;dbl&gt;
 ```
 
 ---
