@@ -8,16 +8,13 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 I'll be running an introduction to R workshop at UCSB on June 17. Here are some draft slides:     
-1.  [**Intro to R, part 1 (basics)**](/slides/r_introslides.html)   
-2.  [**Intro to R, part 2 (Reading in Data, dplyr verbs**](/slides/r_introslides2.html) 
-
-3. [**Intro to R part 3, analysis and viz**](/slides/Intro_analysis.html)
+1.  [**Part 1: Intro to R (basics)**](/slides/r_introslides.html)    
+2.  [**Part 2: Intro to R (Reading in Data, dplyr verbs**](/slides/r_introslides2.html)  
+3.  [**Part 3: Intro to R, analysis and viz**](/slides/Intro_analysis.html)  
 
 ## Data:
 1.  [**Example Data 1**](/CDRPdata/cohort16.csv)
-
 
 
 ```{r echo=FALSE}
