@@ -22,6 +22,8 @@ class: middle
 
 
 
+
+
 ## Tidy data principles
 #### The notion of tidy data comes from Hadley Wickham, the author of the tidyverse
 + The philosophy of tidy data shapes the tidyverse
@@ -380,28 +382,18 @@ class: middle
 
 ---
 ## Example
-.pull-left[
 
-```r
-graphdata &lt;- co16_rem %&gt;%
- filter(DFC == "N", 
-        AggLevel=="D", 
-        Subgroup != "All", 
-        Subgrouptype=="All")
-```
 
 
 ```r
-ggplot(data=graphdata, 
-       aes(x=`Cohort Dropout Rate`, y=`GED Rate`)) + 
+ggplot(data=state16d, 
+       aes(x=droprate, y=GEDrate)) + 
          geom_point(aes(color=Subgroup)) +
          geom_smooth(method = lm) 
 ```
-]
 
-.pull-right[
-![](Intro_analysis_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
-]
+![](Intro_analysis_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
 ---
 ## Logic of ggplot2
 + "An aesthetic is a visual property of the objects in your plot. Aesthetics include things like the size, the shape, or the color of your points."
@@ -420,44 +412,28 @@ Just a histogram?
 
 
 ```r
-ggplot(data=graphdata, 
+ggplot(data=state16d, 
        aes(x=NumCohort)) + 
   geom_histogram()
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 458 rows containing non-finite values (stat_bin).
-```
-
-![](Intro_analysis_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 
 ---
 ## Warmup
 
-
 ```r
-graphdata &lt;- co16_rem %&gt;%
- filter(DFC == "N", 
-        AggLevel=="D", 
-        Subgroup != "All", 
-        Subgrouptype=="All")
-
-plot1 &lt;- ggplot(data=graphdata, 
-                aes(x=`Cohort Dropout Rate`, y=`GED Rate`)) + 
+plot1 &lt;- ggplot(data=state16d, 
+                aes(x=droprate, y=GEDrate)) + 
          geom_point(aes(color=Subgroup))
-plot1
 ```
 
-1. What variables in co16_rem are categorical? Continuous? (hint, there's one command)
-1. Using `co16_rem` and the code above, map a continuous variable to color, size, and shape (using geom_point). How do these aesthetics behave differently for categorical vs. continuous variables?
+1. What variables in state16d are categorical? Continuous? (hint, there's one command)
+1. Using the code above, map a continuous variable to &lt;mark&gt;color&lt;/mark&gt;, &lt;mark&gt;size&lt;/mark&gt;, and &lt;mark&gt;shape&lt;/mark&gt; (using geom_point). How do these aesthetics behave differently for categorical vs. continuous variables?
 1. Use ?geom_point to find out what the `stroke` aesthetic does
-1. instead of `color=Subgroup` above, use `color=GED Rate` &gt;.3)
-1. What other `geom_functions` are there?
+1. instead of `color=Subgroup` above, use `color=GED Rate &gt;.3`
+1. What are three other `geom_functions`?
 
 ---
 # Challenge: Aesthetics
@@ -486,14 +462,7 @@ graphdata2 &lt;- co16_rem %&gt;%
 plot2 &lt;- ggplot(graphdata2, 
             aes(NumCohort, `Cohort Graduation Rate`))+
   geom_point(aes(color=DFC)) 
-plot2
 ```
-
-```
-## Warning: Removed 471 rows containing missing values (geom_point).
-```
-
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-16-1.png" height="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## We can also do this with pipes all the way through
@@ -509,11 +478,7 @@ plot2 &lt;- co16_rem %&gt;%
 plot2
 ```
 
-```
-## Warning: Removed 471 rows containing missing values (geom_point).
-```
-
-![](Intro_analysis_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
 
@@ -538,15 +503,7 @@ plot3 &lt;- ggplot(graphdata2,
 plot3
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 471 rows containing non-finite values (stat_bin).
-```
-
-![](Intro_analysis_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-17-1.png" height="40%" /&gt;
 
 ---
 # Challenge: Facets
@@ -579,38 +536,26 @@ plot5 &lt;- ggplot(graphdata3,
 plot4
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 4131 rows containing non-finite values (stat_bin).
-```
-
-![](Intro_analysis_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-19-1.png" height="50%" /&gt;
 ---
 class: middle
 # What happens when you replace facet_wrap with facet_grid?
 
----
+--
 
 ```r
 plot6 &lt;- ggplot(graphdata3, 
             aes(NumDropouts))+
   geom_histogram() + facet_grid(DFC~Subgroup)
+```
+---
 
+```r
 plot6
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```
-## Warning: Removed 4131 rows containing non-finite values (stat_bin).
-```
-
 ![](Intro_analysis_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+
 
 ---
     </textarea>

@@ -735,17 +735,7 @@ class: middle
 
 ## How to Operate on Vectors (this is also true for dataframes)
 
-+ Everything below are base R commands using base R functions
-
-`sum(v5)`  
-**`sum(v5[c(2,3)])`**  
-`mean(v5)`  
-`sd(v5)`  
-`range(v5)`  
-**`summary(v5)`**
-
-
-```{r echo=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 sum(v5)
 
 sum(v5[c(2,3)])

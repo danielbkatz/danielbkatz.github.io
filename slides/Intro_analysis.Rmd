@@ -35,7 +35,20 @@ co16 <- read_csv("C:/Users/katzd/Desktop/Github/perswebsite2/static/CDRPdata/coh
 
 co16_rem <- select(co16, -X1)
 
+state16 <- co16_rem %>% select(CDS:NumGraduates,
+                      gradrate = `Cohort Graduation Rate`,
+                      droprate = `Cohort Dropout Rate`,
+                      GEDrate = `GED Rate`)
+
+state16d <- co16_rem %>% select(CDS:NumGraduates,
+                      gradrate = `Cohort Graduation Rate`,
+                      droprate = `Cohort Dropout Rate`,
+                      GEDrate = `GED Rate`) %>% 
+  filter(AggLevel=="D", DFC=="N", Subgroup=="All", 
+         Subgrouptype=="All")
 ```
+
+
 ## Tidy data principles
 #### The notion of tidy data comes from Hadley Wickham, the author of the tidyverse
 + The philosophy of tidy data shapes the tidyverse
@@ -187,31 +200,17 @@ class: middle
 
 ---
 ## Example
-.pull-left[
-```{r}
-graphdata <- co16_rem %>%
- filter(DFC == "N", 
-        AggLevel=="D", 
-        Subgroup != "All", 
-        Subgrouptype=="All")
 
-```
 
-```{r plot-last, fig.show="hide", message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, fig.width = 5, fig.height = 5}
 
-ggplot(data=graphdata, 
-       aes(x=`Cohort Dropout Rate`, y=`GED Rate`)) + 
+ggplot(data=state16d, 
+       aes(x=droprate, y=GEDrate)) + 
          geom_point(aes(color=Subgroup)) +
          geom_smooth(method = lm) 
 
-  
 ```
-]
 
-.pull-right[
-```{r ref.label = 'plot-last', echo = FALSE}
-```
-]
 ---
 ## Logic of ggplot2
 + "An aesthetic is a visual property of the objects in your plot. Aesthetics include things like the size, the shape, or the color of your points."
@@ -228,36 +227,29 @@ ggplot(data=graphdata,
 # Another example
 Just a histogram?
 
-```{r}
-ggplot(data=graphdata, 
+```{r message=FALSE, warning=FALSE, fig.width = 5, fig.height = 5}
+ggplot(data=state16d, 
        aes(x=NumCohort)) + 
   geom_histogram()
+
+  
 ```
 
 
 ---
 ## Warmup
-
 ```{r eval=F}
 
-graphdata <- co16_rem %>%
- filter(DFC == "N", 
-        AggLevel=="D", 
-        Subgroup != "All", 
-        Subgrouptype=="All")
-
-plot1 <- ggplot(data=graphdata, 
-                aes(x=`Cohort Dropout Rate`, y=`GED Rate`)) + 
+plot1 <- ggplot(data=state16d, 
+                aes(x=droprate, y=GEDrate)) + 
          geom_point(aes(color=Subgroup))
-plot1
-
 ```
 
-1. What variables in co16_rem are categorical? Continuous? (hint, there's one command)
-1. Using `co16_rem` and the code above, map a continuous variable to color, size, and shape (using geom_point). How do these aesthetics behave differently for categorical vs. continuous variables?
+1. What variables in state16d are categorical? Continuous? (hint, there's one command)
+1. Using the code above, map a continuous variable to <mark>color</mark>, <mark>size</mark>, and <mark>shape</mark> (using geom_point). How do these aesthetics behave differently for categorical vs. continuous variables?
 1. Use ?geom_point to find out what the `stroke` aesthetic does
-1. instead of `color=Subgroup` above, use `color=GED Rate` >.3)
-1. What other `geom_functions` are there?
+1. instead of `color=Subgroup` above, use `color=GED Rate >.3`
+1. What are three other `geom_functions`?
 
 ---
 # Challenge: Aesthetics
@@ -276,7 +268,7 @@ Using ggplot2, answer the questions:
 + Hint, The code for school level data for AggLevel = "S", Use subgroup and subgrouptype ="All", start with co16_rem and filter
 
 ---
-```{r out.height = '60%', fig.align="center"}
+```{r fig.align="center", message=FALSE, warning=FALSE, fig.width = 5, fig.height = 5}
 graphdata2 <- co16_rem %>% 
   filter(AggLevel=="S", 
          Subgroup=="All", 
@@ -285,14 +277,12 @@ graphdata2 <- co16_rem %>%
 plot2 <- ggplot(graphdata2, 
             aes(NumCohort, `Cohort Graduation Rate`))+
   geom_point(aes(color=DFC)) 
-plot2
-  
 
 ```
 
 ---
 ## We can also do this with pipes all the way through
-```{r}
+```{r message=FALSE, warning=FALSE, fig.width = 5, fig.height = 5}
 
 plot2 <- co16_rem %>% 
   filter(AggLevel=="S", 
@@ -320,7 +310,7 @@ class: middle
 
 ---
 
-```{r}
+```{r message=FALSE, warning=FALSE, out.height = '40%'}
 plot3 <- ggplot(graphdata2, 
             aes(NumCohort))+
   geom_histogram() + facet_wrap(~DFC)
@@ -335,7 +325,7 @@ plot3
 + A formula is simply another data-structure in R. Don't worry about that, for now. 
 
 + You can have two sides to the formula. To see this, run the code:
-```{r}
+```{r message=FALSE, warning=FALSE}
 graphdata3 <- co16_rem %>% 
   filter(AggLevel=="S", 
          Subgroup=="MAL"| Subgroup=="FEM", 
@@ -354,21 +344,25 @@ plot5 <- ggplot(graphdata3,
 ```
 
 ---
-```{r}
+```{r message=FALSE, warning=FALSE, out.height = '50%'}
 plot4
 ```
 ---
 class: middle
 # What happens when you replace facet_wrap with facet_grid?
 
----
-```{r}
+--
+```{r message=FALSE, warning=FALSE, out.height = '40%'}
 plot6 <- ggplot(graphdata3, 
             aes(NumDropouts))+
   geom_histogram() + facet_grid(DFC~Subgroup)
 
+```
+---
+```{r message=FALSE, warning=FALSE}
 plot6
 ```
+
 
 ---
 
