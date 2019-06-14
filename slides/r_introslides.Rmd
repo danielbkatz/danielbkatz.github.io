@@ -614,6 +614,7 @@ class: middle
 `x==y`
 
 What happens?
+
 --
 
 ```{r}
@@ -649,9 +650,6 @@ class(x)
 #This returns True or False
 is.numeric(x)
 is.character(x)
-
-isTRUE(x<2)
-
 
 ```
 ---
@@ -733,17 +731,12 @@ class: middle
 
 ---
 
-## How to Operate on Vectors (this is also true for dataframes)
-
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
+sum(v5)
 max(v5)
-
 mean(v5)
-
 sd(v5)
-
 range(v5)
-
 summary(v5)
 ```
 ---
@@ -764,5 +757,3 @@ class: middle
 6. Packages are external software that we can download to R.
 
 7. Within R, there are various ways to get help.
-
-
