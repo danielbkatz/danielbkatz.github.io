@@ -736,9 +736,7 @@ class: middle
 ## How to Operate on Vectors (this is also true for dataframes)
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-sum(v5)
-
-sum(v5[c(2,3)])
+max(v5)
 
 mean(v5)
 
