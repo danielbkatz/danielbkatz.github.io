@@ -130,7 +130,7 @@ Treat the "treat" variable as placing students in groups, 1 and 0. We can do thi
 Formula for latent regression: $\theta = \beta_1*X_1 + \epsilon$ where $\beta_1$ is the regression coefficient for 1. $X_1$ takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).
 
 With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two "groups." This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different "shapes"
-```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, results="hide"}
+```{r, message=FALSE, warning=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, results="hide", cache=T}
 #take the treatment variable and make it its own R object
 treat <- eirtdata$treat
 
@@ -142,7 +142,7 @@ summary(latg)
 
 Under the section, "covariances, variances" we see that the two groups have pretty similar distributions. 
 
-```{r, results='hide'}
+```{r, results='hide', cache=T}
 #the next way, and I find this to be the most intuitive way, 
 #but you don't get group variances. 
 #You have to specify a formula:
@@ -221,7 +221,7 @@ So the model is now: $\theta = \beta_1*treat + \beta_2*proflevel + \epsilon$
 And the full model will now look something like: $Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i$.
 
 
-```{r, results='hide'}
+```{r, results='hide', cache=T}
 #this gets all the person level covariates into a single dataframe
 daty <- eirtdata %>% select(treat, proflevel, abilcov)
 
@@ -246,7 +246,7 @@ kable(selatreg2$beta)
 
 Note all estiimates are statistically significant. The last step in this section is comparing overall model fit. 
 
-```{r}
+```{r, cache=T}
 comparemod <- CDM::IRT.compareModels(mod1, lat1, latreg2)
 kable(comparemod$IC)
 
@@ -261,7 +261,7 @@ The other unfortunate part about this is that the simplest way to go about fitti
   
 To make the data long, we'll use the "gather" function from tidyr in the tidyverse package. Then we'll add an indicator based on if_else statements.
 
-```{r} 
+```{r, cache=T} 
 
 #change the name of the mathwordproblem items
 names(eirtdata)[32:41] <- paste0("WordProb.", 1:10)
@@ -279,7 +279,7 @@ head(eirtlong)
 
 ```
 To set up the LLTM, we have to use TAM.mml.mfr using the facets formula. TAM will create so-called "pseudo facets" for parameters that don't have estimates. 
-```{r, results="hide"}
+```{r, results="hide", cache=T}
 
 formulaa <- ~ittype
 facets <- as.data.frame(eirtlong[c(5,7)])
@@ -315,7 +315,7 @@ fixef(lltmme1)
 ```
 
 Finally, let's compare the overall fit of the models:
-```{r}
+```{r, cache=T}
 kable(CDM::IRT.compareModels(mod1, lat1, latreg2, lltm)$IC)
 
 ```
