@@ -30,8 +30,13 @@ options(htmltools.dir.version = FALSE)
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
 mono_light(base_color = "#151B54",
-  code_highlight_color = "#c0e8f5",
-  link_color = "#197b9e")
+  code_highlight_color = "#EDF803",
+  link_color = "#4C4D41",
+  code_inline_background_color = "#F2F9C9",
+  code_inline_color = "#000000",
+  code_font_google   = google_font("Droid Mono")
+  )
+```
 ```
 class: middle  
 
