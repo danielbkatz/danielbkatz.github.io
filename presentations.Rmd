@@ -16,6 +16,9 @@ I'll be running an introduction to R workshop at UCSB on June 17. Here are some 
 ## Data:
 1.  [**Example Data 1**](/CDRPdata/cohort16.csv)
 
+## Useful Resources
+1. [List of Links](/help/helplist.html)
+
 
 ```{r echo=FALSE}
 knitr::include_url("http://www.dbkatz.com/slides/r_introslides.html")
