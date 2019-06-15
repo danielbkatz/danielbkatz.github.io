@@ -11,26 +11,20 @@
 class: left, middle, inverse, title-slide
 
 # An Introduction to R
-## Data Cleaning, Wrangling, Visualizing, and Everything Else with the <code><mark>tidyverse</span></mark>
+## Data Cleaning, Wrangling, Visualizing, and Everything Else with the <code>tidyverse</code> </span>
 ### Daniel Katz<br><span style="font-size: 70%;"> University of California, Santa Barbara<br><br> [MethodsU 2019 | Gevirtz Graduate School of Education | June 17, 2019]</span>
 ### <img src = "methodsusm.jpg"/>
 
 ---
 
 
-layout: true
 
-background-image: url(methodsu.jpg), url(UC-Santa-Barbara-seal.png), 
-background-position: bottom left, bottom right
-background-size: 10%, 10%
-
----
+class: middle
 
 
 
 
-```
-class: middle  
+
 
 
 # Introduction
@@ -46,7 +40,6 @@ class: middle
 
 + After a major project or two, it became my preferred tool for most things data analysis
 
-+ I don't expect you to be experts after this session, but I hope you know where to start!
 
 
 ---
@@ -67,13 +60,14 @@ class: middle
   
 + I'm going with a `tidyverse` [_**first**_](http://varianceexplained.org/r/teach-tidyverse/) approach while mixing in foundations that I find unavoidable [_**Click to read more**_](http://varianceexplained.org/r/teach-tidyverse/)
 
+--
 + I won't emphasize code-style best practices except in a few cases
 
-+ I think it's important to focus on ideas and functions!
++ I think it's important to focus on ideas and functions
 
 + For more on style/best practices, [_**click here**_](http://adv-r.had.co.nz/Style.html)
 
-+ Learning how to trouble shoot is quite important
++ Learning how to trouble shoot is important
 
 ---
 class: middle
@@ -92,7 +86,7 @@ class: middle
 1. Other Help Resources ]
 
 --
-.pull-right[I'm showing you a *TON* and I don't expect you to have it all at your fingertips. But you'll know where to start, how to get help when you don't.
+.pull-right[There's a **TON** to R. I don't expect expertise after this session, but I hope you know where to start!
 
 &lt;img src="poppins_bag.gif" style="display: block; margin: auto;" /&gt;
 ]
@@ -142,11 +136,11 @@ class: middle
 
 # It makes really cool data visualizations
 
-&lt;img src="r_introslides_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="r_introslides_files/figure-html/unnamed-chunk-3-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
  
-&lt;img src="r_introslides_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="r_introslides_files/figure-html/unnamed-chunk-4-1.png" width="504" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -166,6 +160,112 @@ class: middle, center
 
 `f_angle &lt;- sin(angle)` 
 
+
+
+```
+## 
+Frame 1 (1%)
+Frame 2 (2%)
+Frame 3 (3%)
+Frame 4 (4%)
+Frame 5 (5%)
+Frame 6 (6%)
+Frame 7 (7%)
+Frame 8 (8%)
+Frame 9 (9%)
+Frame 10 (10%)
+Frame 11 (11%)
+Frame 12 (12%)
+Frame 13 (13%)
+Frame 14 (14%)
+Frame 15 (15%)
+Frame 16 (16%)
+Frame 17 (17%)
+Frame 18 (18%)
+Frame 19 (19%)
+Frame 20 (20%)
+Frame 21 (21%)
+Frame 22 (22%)
+Frame 23 (23%)
+Frame 24 (24%)
+Frame 25 (25%)
+Frame 26 (26%)
+Frame 27 (27%)
+Frame 28 (28%)
+Frame 29 (29%)
+Frame 30 (30%)
+Frame 31 (31%)
+Frame 32 (32%)
+Frame 33 (33%)
+Frame 34 (34%)
+Frame 35 (35%)
+Frame 36 (36%)
+Frame 37 (37%)
+Frame 38 (38%)
+Frame 39 (39%)
+Frame 40 (40%)
+Frame 41 (41%)
+Frame 42 (42%)
+Frame 43 (43%)
+Frame 44 (44%)
+Frame 45 (45%)
+Frame 46 (46%)
+Frame 47 (47%)
+Frame 48 (48%)
+Frame 49 (49%)
+Frame 50 (50%)
+Frame 51 (51%)
+Frame 52 (52%)
+Frame 53 (53%)
+Frame 54 (54%)
+Frame 55 (55%)
+Frame 56 (56%)
+Frame 57 (57%)
+Frame 58 (58%)
+Frame 59 (59%)
+Frame 60 (60%)
+Frame 61 (61%)
+Frame 62 (62%)
+Frame 63 (63%)
+Frame 64 (64%)
+Frame 65 (65%)
+Frame 66 (66%)
+Frame 67 (67%)
+Frame 68 (68%)
+Frame 69 (69%)
+Frame 70 (70%)
+Frame 71 (71%)
+Frame 72 (72%)
+Frame 73 (73%)
+Frame 74 (74%)
+Frame 75 (75%)
+Frame 76 (76%)
+Frame 77 (77%)
+Frame 78 (78%)
+Frame 79 (79%)
+Frame 80 (80%)
+Frame 81 (81%)
+Frame 82 (82%)
+Frame 83 (83%)
+Frame 84 (84%)
+Frame 85 (85%)
+Frame 86 (86%)
+Frame 87 (87%)
+Frame 88 (88%)
+Frame 89 (89%)
+Frame 90 (90%)
+Frame 91 (91%)
+Frame 92 (92%)
+Frame 93 (93%)
+Frame 94 (94%)
+Frame 95 (95%)
+Frame 96 (96%)
+Frame 97 (97%)
+Frame 98 (98%)
+Frame 99 (99%)
+Frame 100 (100%)
+## Finalizing encoding... done!
+```
 
 ![](r_introslides_files/figure-html/unnamed-chunk-6-1.gif)&lt;!-- --&gt;
 
@@ -198,44 +298,49 @@ mean(x)
 ]
 ---
 
+class: middle
+
 ## Some of the language
 
 .pull-left[
+1. What goes in the parentheses of a function, such as `mean(x)` is called an &lt;mark&gt;argument&lt;/mark&gt;
 
-+ In R speak, the particular thing that goes in the parentheses of a function, such as `mean(x)` is called an &lt;mark&gt;argument&lt;/mark&gt;
+1. R functions often take more than one argument
 
-+ R functions often "take more than one argument"
+1. &lt;mark&gt;Code completion&lt;/mark&gt;: you can see what arguments a function takes as you start typing. R is making suggestions. 
 
-+ Because of &lt;mark&gt;code completion&lt;/mark&gt;, you can see what arguments a function takes as you start typing.R is making suggestions. 
+1. Hit tab to select these options!]
+--
 
-+ Hit tab to select these options!
-]
+.pull-right[
+1. `ggplot()` is a function, it performs some operation
 
-.pull-right[Don't worry about what this means just yet, but:
-+ `ggplot()` is a function, it performs some operation
+1. It takes several arguments such as `ggplot(data=df, aes(x=xvar, y=yvar))`
 
-+ It takes several arguments such as `ggplot(data=df, aes(x=xvar, y=yvar))`
+1. Note: `df` is often R standin speak for a hypothetical `dataframe`, an R word for dataset
 
-+ Note: `df` is often R standin speak for a hypothetical `dataframe`, and R word for dataset
-
+1. Argument type and number varies from function-to-function
 ]
 
 ---
 
 class: middle
 
-# Arguments
+# Syntax, Continued 
 
-+ When you see that an argument as an option with an equal sign, it usually means order doesn't matter as long as you type the argument first
++ When you see that an argument has an option with an equal sign, it usually means order doesn't matter as long as you type the argument name first
 
-+ For instance to perform linear regression I can type `lm(data=x, outcome~var1+var2)` Or `lm(outcome~var1+var2, data)`
++ For instance to perform linear regression I can type `lm(data=df, outcome~var1+var2)` Or `lm(outcome~var1+var2, df)`
 
-+ You usually need commas between arguments
++ You need commas between arguments
 
 + Make sure your parentheses match/are closed
 
 + R is case sensitive. So `var1` is different from `Var1`
 ---
+
+class: middle 
+
 ## There are also other forms of functions we use in computation
 + "Reading in" Data into R so we can explore or model
 
@@ -243,9 +348,9 @@ class: middle
 
 + Transforming Data in R:
 &lt;img src="gatheringdata.jpg" width="1001" /&gt;
-From, [_**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
+From, [Link: _**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
 
-
+## Open Up RStudio
 ---
 
 
@@ -273,9 +378,7 @@ class: middle
 
 + Even when it's frustratingly slow, use R instead of something else
   
-+ There are a lot of resources online to answer questions (Stack Exchange, Stack Overflow, Github)
-  
-+ Errors are good! Use the error output to guide your thinkingg (and Googling)
++ Errors are good! Use the error output to guide your thinking (and Googling)
 
 + In other words, "failing fast" is really convenient:
   + Run code, change it until it breaks, figure out why it breaks
@@ -319,7 +422,10 @@ class: middle
   + Or, below file, hit the icon that looks like:
 &lt;img src="createscript.jpg" width="51" /&gt;
 
-2. To run a line of code in a script, put your cursor on that line, and run it, via ctrl/cmd + enter. Or the `run` button in the top right of the script
+2. To run a line of code in a script
++ put your cursor on that line, 
++ run it, via ctrl/cmd + enter. 
++ Or the `run` button in the top right of the script
 ]
 
 --
@@ -328,8 +434,10 @@ class: middle
 
 4. There are multiple ways to run more than one line of code at a time
   + Highlight the relevant code, run
-  + Or select the various options under "Run"
-5. Write two lines of code (such as `1+1` and `2+2`)]
+  + Or select the various options under "Run"]
+--
+  
+.center[Write two lines of code (such as `1+1` and `2+2`)]
 
 --
 
@@ -343,8 +451,7 @@ class: middle
 
 ## Commenting
 
-
-+ Commenting is essential to workflow. You may not remember why or what you were thinking or doing when looking at old code. 
+*Commenting is essential.* 
 
 + R will recognize any line after `#` as a comment
 
@@ -387,12 +494,15 @@ class: middle
 
 + A `working directory` is just where you tell `R` that you'll be working
   + when you load files, it knows to look to a certain folder
-  + When you export files, `R` exports automatically to the working directory]
+  + When you export files, `R` exports automatically to the working directory
 
 ---
+
+class: middle
+
 ## File paths
 
-+ A path to a Word doc on my desktop looks like: `C:/Users/katzd/Desktop/myfile.docx`.
++ A path to a Word doc on my desktop looks like: `C:/Users/katzd/Desktop/myfile.docx`
 
 + A path to a file in a folder called, `thesis` in the `Documents directory` looks like `C:/Users/katzd/Documents/thesis/myfile.docx`
 
@@ -401,32 +511,48 @@ class: middle
 + Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
 ---
 
-## File Paths Continued...
+class: middle
 
-+ If I make the folder `thesis` my working directory, then you won't need to type the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus folder 
+## File Paths Continued...Example
 
-+ If I have a folder called, `analysis` in `thesis` - thesis is my working- directory the path will be &lt;mark&gt;analysis/filename.ext&lt;/mark&gt;.
++ I make the folder, `thesis`, my working directory, with `analysis.csv` in it.
+
++ You won't need to type the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus file 
+
++ If I have a folder called, `analysis` in `thesis` directory the path will be &lt;mark&gt;analysis/filename.ext&lt;/mark&gt;.
+---
+class: middle 
+
+## File Paths: Getting the Wd...
 
 + To see the currect working directory, simply run the code `getwd()`
 
-+ To set the working directory setwd("filepath") (the filepath has to be in quotes)
++ To set the working directory `setwd("filepath")` (the filepath has to be in quotes)
 
-.center[###If you've made any comments or would like to save your current script, please go ahead an do-so now (file &gt; save &gt; where you want to save it &gt; name)]
++ It's often useful to set the working directory at the top of your script
+
+**via menu options**: Session ➡️ Set Working Directory ➡️ Choose Directory (copy and paste outputted code to the top of your script)
+
++ Some people don't like this practice: [**Link**](https://whattheyforgot.org/safe-paths.html)
+
++ Run: `getwd()`
+
+---
+
+.middle[### If you've made any comments or would like to save your current script, please go ahead an do-so now (file ➡️  save ➡️  where you want to save it ➡️  name)]
 
 ---
 
 ## Creating RStudio Projects
 ### Projects are an RStudio work unit, (but, not required)
 
-.pull-left[1. Once open, click File (top left) &gt; New Project
+.pull-left[1. Once open, click File (top left) ➡️  New Project
 
-2. New Directory &gt; New Project &gt; Create Project as a Subdirectory of: click `browse`.
+2. New Directory ➡️  New Project ➡️  Create Project as a Subdirectory of: click `browse`.
   
 3. Choose where you'd like to put this session's R work (for instance, on your desktop in a folder called, `Rworkshop`). 
 
-4. Go to the first box, `Directory Name` &gt; Name this R project - `IntroR` (no spaces; It'll make your life easier)
-
-5. Create Project.]
+4. `Directory Name` ➡️  Name this R project - `IntroR` (no spaces; It'll make your life easier) ➡️ Create Project.]
 
 .pull-right[
 &lt;img src="newproject.jpg" width="800px" style="display: block; margin: auto;" /&gt;
@@ -458,22 +584,29 @@ class: middle
   + They're collections of functions developed by the "community"
   + For a full intro, [_**click here**_](https://www.datacamp.com/community/tutorials/r-packages-guide#what)
 
-+ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)  
-  
+--
++ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)
+
+--
+
 + You don't need all the packages!
 
+--
 + Packages add functions to base R
 
-+ For instance, the `psych` package is a built with tools commonly needed in the social sciences
+--
+
++ For instance, the `psych` package is built with tools commonly needed in the social sciences
+
 ---
 class: middle
 
 ## Packages, cont'd
-+ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer
++ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer (have to be connected to the internet)
 
-+ To see where it's downloaded, type `.libpaths()` and run this
++ To see where it's downloaded, run `.libpaths()`
 
-+ Each time you start a new R session, you have to load a package via `library()` but you don't have to install, each time
++ Each time you start a new R session, you have to load a package via `library()` but you don't have to install each time
 ---
 
 class: middle
@@ -493,6 +626,7 @@ class: middle
 ## Installing and loading packages looks like this (note the quotes)
 
 ```r
+# note the quotes
 install.packages("psych")  
 library(psych)
 ```
@@ -515,7 +649,8 @@ library(tidyverse)
 
 ---
 ## Getting help
-+ First and foremost, you can see you packages in the bottom-right pane:
++ First and foremost, you can see installed packages in the bottom-right pane:
+
 &lt;img src="packages.jpg" width="868" /&gt;
 
 + Click on a package to see the documentation
@@ -541,7 +676,7 @@ library(tidyverse)
 ---
 ## why the tidyverse?
 
-The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling
+The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling easier
   
   
 &lt;table&gt;
@@ -614,14 +749,19 @@ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of package
 
 ---
 ## Variable Assignment
-1. One of the most fundamental aspects of R (really any language) assigning `variables` or `objects`, giving something a name so you can store it and work with it in R.
+1. One of the most fundamental aspects of R (really any language) is assigning `variables` or `objects`, 
+  + giving something a name so you can 
+  + store it 
+  + work with it in R.
   + R uses `&lt;-` (you can also use for Windows: "alt" and "-" or on a Mac: "option" and "-")
 
 2. Now, we can store objects in R and work with the objects!
 
 3. Note, none of this requires an external package, just through `base R`. For a nice base R cheat sheet, [_**Click**_](https://paulvanderlaken.files.wordpress.com/2017/08/base-r-cheetsheat.pdf)
 
-4. As a heads up, when we start assigning variables, note what changes in your R session (where do you see the variables go?)
+--
+
+4. When we start assigning variables, note what changes in your R session (where do you see the variables go?)
 
 ---
 class: middle
@@ -641,9 +781,7 @@ y &lt;- x+2
 1. What is in your Global Environment, now?  
 2. What was outputted in the console?
 3. Now run `x &lt;- 3`. What is the value of x? What is the value of `x+2`
-
---
-**Outputting the value of a variable requires using `print(x)`, or just `x`
+4. Just type `x` and run
 
 ---
 
@@ -654,8 +792,7 @@ class: middle
 
 + In the right corner, under `Global Environment`, you should now see where R is "storing" `x` and `y` and their values.
 
-+ The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects that we've assigned to variables
-
++ The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects
 
 + If you don't assign something to a variable, it won't be stored
 ---
@@ -761,6 +898,7 @@ For individual values or vectors, R has a number of data types (not different th
 
 `class(x)` returns the data structure (such as numeric, integer, character, factor)
 
+Not exhaustive of all possible:
 
 ```r
 # this will work on vectors as well. 
@@ -772,7 +910,14 @@ class(x)
 ```
 
 ```r
-#This returns True or False
+str(x)
+```
+
+```
+##  num 2
+```
+
+```r
 is.numeric(x)
 ```
 
@@ -798,19 +943,20 @@ Class: Middle
 + R does think in matrices
 
 + Instead of doing things one at a time, it operates on entire rows, columns, dataframes, lists, (arrays in general)
-
+--
+## **Run:**
 
 ```r
-v1 &lt;- c(1, 3, 8, 9, 10**8)
+v1 &lt;- c(1, 3, 8, 9, 10*8)
 v1
 ```
 
 ```
-## [1] 1e+00 3e+00 8e+00 9e+00 1e+08
+## [1]  1  3  8  9 80
 ```
 
 ---
-## Check your Understanding (classes of vectors)
+## Check for Understanding (classes of vectors)
 
 Run the following code:
 
@@ -821,7 +967,7 @@ Run the following code:
 `class(v2)`
 
 **Challenge** 
-1. What do you think `c()` does? (concat...)  
+1. What do you think `c()` does?  
 
 2. What &lt;mark&gt;`class`&lt;/mark&gt; is `v2`?  
 
@@ -844,7 +990,7 @@ Run the following code:
 3. what class is `v5`?
 
 --
-
+R is vectorized: it operates on entire vectors at a time
 
 ```r
 v3 &lt;- c(1:5)
@@ -877,6 +1023,17 @@ class: middle
 - This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R using &lt;mark&gt;base R&lt;/mark&gt;
 
 - We can also get descriptives or compute across a vector, or specific vector elements
+
+- Working with datasets or matrices, we can subset rows, columns or both
+---
+class: middle 
+
+#### Rows: `df[1, ]` (gets just the first row)
+#### Columnn `df[,1]` or `df[1]` (gets just the first column)
+#### Both `df[1,1]`
+#### Can Select multiple `df[1:5, 1:6]` or `df[c(1,3, 8), c(1, 9, 2)]`
+
+### But the `tidyvese` is going to make our lives easier
 
 ---
 
@@ -940,7 +1097,7 @@ class: middle
 
 3. R has data structures and types including mathematical/numerical operators and boolean/logical operators.
 
-4. You can always use `class()` to figure out the data-type of a &lt;mark&gt;vector&lt;/mark&gt;.
+4. You can always use `class()` or `str()` to figure out the data-type of a &lt;mark&gt;vector&lt;/mark&gt;.
 
 5. To save variables in R, use an assignment operator.
 
@@ -951,7 +1108,7 @@ class: middle
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "tomorrow-night-bright",
+"highlightStyle": "agate",
 "highlightLines": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {

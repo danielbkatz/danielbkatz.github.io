@@ -4,6 +4,10 @@
     <title>An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else</title>
     <meta charset="utf-8" />
     <meta name="author" content="Daniel Katz" />
+    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
+    <script src="libs/viz/viz.js"></script>
+    <link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding/grViz.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -32,14 +36,17 @@ class: middle
   + `arrays`
 
 ---
-## Arrays
+
+class: middle
+
+### Arrays
 
 + An array is a general multidimensional data structure 
   + mindblowingly, a matrix that essentially has an x, y, and a z axis (or more!)  
   
 + One can make lists of matrices or dataframes, and lists can be [_**IN dataframes**_](https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html)
-  + For instance, sometimes, you want to do the same thing to a number of dataframes [_**iteration**_](https://r4ds.had.co.nz/iteration.html).
-  + If you put them in a list, you have a method for doing this very easily (we'll see later)
+  + Sometimes, you want to do the same thing to a number of dataframes [_**iteration**_](https://r4ds.had.co.nz/iteration.html).
+  + In a list, you have a method for doing this very easily 
   
 ---
 
@@ -54,7 +61,7 @@ class: middle
 
 + We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
 
-+ However, the `foreign` package and `haven` package can handle files from SAS, SPSS, STATA (and probably others)
+#### However, the `foreign` package and `haven` package can handle files from SAS, SPSS, STATA
 
 + You don't need SPSS, SAS, or STATA to read data into R
 
@@ -77,7 +84,7 @@ class: middle
 
 
 ```r
-# this will tell you the file path of your current working directory. The best thing is to put it here, since your Rproject is here. 
+# this will tell you the file path of your current wd. 
 getwd()
 ```
 
@@ -97,8 +104,9 @@ getwd()
 &lt;img src="directory.jpg" width="90%" /&gt;
 
 
-
-
+---
+<div id="htmlwidget-24ed5dee04e5241b55e8" style="width:576px;height:576px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-24ed5dee04e5241b55e8">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ---
 
 ## Read in the data, the cheating way...
@@ -108,9 +116,9 @@ getwd()
 
 1. The file we downloaded is a CSV file (make sure to use readr)
 
-1. Select `Import Dataset` &gt; `From Text (readr)` &gt; `Browse` &gt; Find the dataset*, select, and open &gt; look at the preview
+1. Select `Import Dataset` ➡️ `From Text (readr)` ➡️ `Browse` ➡️Find the dataset*, select, and open ➡️ look at the preview
 
-1. If it doesn't look right, you can play with the settings (probably have to change, delimiter)
+1. If it doesn't look right, you can play with the settings (probably have to change delimiter)
 
 
 # Don't import yet!
@@ -122,7 +130,7 @@ getwd()
 
 1. Paste the code into your new script at the top; write a note about what it is
 
-1. Eventually, you'll want to do this manually, I promise (and please promise me)
+1. Eventually, you'll want to do this manually, I promise (and please, promise me)
 
 &lt;img src="importing.jpg" width="536" /&gt;
 
@@ -140,20 +148,18 @@ getwd()
 library(readr)
 
 co16 &lt;- read_csv("RawData/cohort16.csv")
+#Try out "View!"
 View(co16)
 
 
 
-#Alternatively you can save the object location (makes life easier)
+#You can also save the object location (makes life easier)
 
 # Assign a variable with a string value of the file location.
 cohortdata &lt;- "RawData/cohort16.csv"
 
 # Put the variable in your function, `read_delim`
 co16 &lt;- read_csv(cohortdata)
-
-# Note the View(function) - Let's you see the data
-#View(cohort16)
 ```
 
 ---
@@ -168,9 +174,11 @@ co16 &lt;- read_csv("C:/Users/katzd/Desktop/Github/perswebsite2/static/CDRPdata/
 ## Missing data in R...
 + Missing data in `R` appears as `NA`
 
-+ The philosophy in R regarding `NA` is that it's an unknown value, kind of like a latent variable (many, in fact, consider latent variable modelling just soliving a missing data problem)
++ The philosophy in R regarding `NA` is that it's an unknown value
 
-+ Therefore, base R won't compute certain statistics if you don't use the command `na.rm=T` which tells it to compute the statistic by removing the missing cases (where T = TRUE)
+  + kind of like a latent variable (many consider latent variable modelling a solution to a missing data problem)
+
++ Base R won't compute certain statistics if you don't use the command `na.rm=T` which tells it to compute the statistic by removing the missing cases (where T = TRUE)
 
 + Because: The mean isn't known with missing values, truly
 
@@ -194,7 +202,9 @@ mean(missingvector, na.rm = T)
 ```
 ---
 
-# Introducing `dplyr`
+class: middle 
+
+# Introducing `dplyr` from the tidyverse
 [_**`dplyr`**_](https://dplyr.tidyverse.org/) is a package full of "verbs" that help us work on data. Some major verbs are
 
 + &lt;code&gt;filter()&lt;/code&gt; allows us to filter rows by certain values
@@ -254,7 +264,9 @@ head(co16)
 
 ---
 ## Using select to get RID of a column
-We notice that the first column in the dataset is called `X1.` This column is added automatically when a dataframe is exported to csv from R. Let's get rid of it.  
+#### We notice that the first column in the dataset is called `X1.` 
+
++ This column is added automatically when a dataframe is exported to csv from R. Let's get rid of it.  
 
 We use a `-` sign before the column name. That's it. 
 
@@ -291,17 +303,40 @@ names(co16_rem)
 
 + We don't want school ID to be a "numeric" variable of some sort - It's an ID so leading zeros matter
 
-+ Using another R index tool, `$`, which selects column by name (auto complete should show you the name).
++ Using another R index tool, `$`, which selects column by name (code complete should show you the name).
 
 ```r
 class(co16_rem$CDS)
 ```
+---
 
-What about all variables?: Introducing `str()`
+# What about all variables?: Introducing `str()`
 
 
 ```r
 str(co16_rem)
+```
+
+```
+## Classes 'tbl_df', 'tbl' and 'data.frame':	75262 obs. of  18 variables:
+##  $ CDS                       : chr  "01611430122697" "01611920113902" "01611920113902" "01611920113902" ...
+*##  $ Name                      : chr  "REALM Charter High" "Impact Academy of Arts &amp; Technology" "Impact Academy of Arts &amp; Technology" "Impact Academy of Arts &amp; Technology" ...
+##  $ AggLevel                  : chr  "D" "D" "D" "D" ...
+##  $ DFC                       : chr  "Y" "Y" "Y" "Y" ...
+##  $ Subgroup                  : chr  "All" "All" "All" "All" ...
+##  $ Subgrouptype              : chr  "9" "2" "9" "7" ...
+##  $ NumCohort                 : num  NA NA NA NA 11 27 50 61 NA NA ...
+##  $ NumGraduates              : num  NA NA NA NA NA 27 47 55 NA NA ...
+##  $ Cohort Graduation Rate    : num  0 100 50 100 63.6 ...
+##  $ NumDropouts               : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Cohort Dropout Rate       : num  100 0 50 0 27.3 0 4 1.6 12.5 0 ...
+##  $ NumSpecialEducation       : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Special Ed Completers Rate: num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ NumStillEnrolled          : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Still Enrolled Rate       : num  0 0 0 0 9.1 0 2 8.2 0 0 ...
+##  $ NumGED                    : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ GED Rate                  : num  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Year                      : num  1516 1516 1516 1516 1516 ...
 ```
 Easy!
 ---
@@ -310,12 +345,12 @@ class: middle
 
 ## Explaining the data set (this is especially good for the tidyverse)
 
-+ The variable `CDS` is a code for county, district, and schools.
++ The variable `CDS` is a code for county, district, and schools (an ID).
 
 + This data contains information from state level, to county level, to district level, to school level.
 
-+ It also contains information about demographics. Each demographic group per school, gets its own row and the numeric variables have to do with that particular subgroup in that school.
-
++ It also contains information about demographics. Each demographic group per school, gets its own row 
+  
 + For instance, `AggLevel` denotes whether that row refers to "State", "County", "District," or "School"  
 ---
 
@@ -345,41 +380,57 @@ class: middle
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-+ We note, that the data for this row represents district totals, (so it's at the school level). 
++ This row represents district totals (so it's at the district level). 
 
-+ It refers to the totals relevant to the state-identified `Subgroup`, "All".  
-(codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation of those particular subgroups)
++ District totals for the state-identified `Subgroup`, "All".  
+(codebook, here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp), that's an aggregation)
   
-+ However, `Subgrouptype` is 9, which refers to: `9 – Two or more races, not Hispanic`
++ `Subgrouptype` is 9, which refers to: `9 – Two or more races, not Hispanic`
+  + Not stratified by "Gender" 
+--
 
-+ So that row refers to district total for that district for all students who have been identified as `Two or more races, not Hispanic` (you really get to see how the state of CA thinks)
++ So that row refers to the district's total for all students who have been identified as `Two or more races, not Hispanic` (you really get to see how the state of CA thinks)
 
-+ Let's make this make sense, with `filter`
 ---
 ## Introducing `filter()` and pipe operators `%&gt;%`
 
-+ Let's say, we want to know about average graduation rate
-  + For the entire state
-  + But just for non-charter schools
-  + And for standard school districts
++ Let's say, we want to know about average graduation rate: For the entire state
 
 + I know that in the `Name` column, there's school names and a value called "Statewide"
 
 + `filter` literally filters rows that meet a certain rule, such as equaling a value
 
-+ `filter(df_name, rule)`
++ `filter(df, rule)`
 
 ```r
 stateco16 &lt;- filter(co16_rem, Name=="Statewide")
 ```
 ---
+
+
+class: middle 
+
+
+```r
+stateco16 &lt;- filter(co16_rem, Name=="Statewide")
+```
+
+#### We `filter` based on the value of a variable
+  + The variable is `Name` 
+  + It is of class, "character"
+  + The value that we want is "Statewide"
+
++ This keeps only the cases where Name==Statewide
+---
 ## Check for understanding, filter.
 
-+ Let's say we only want to look at `district totals` data, not school level data. 
++ We only want to look at `district totals` data. 
 
-+ Use filter, on AggLevel such that we only select the category `D = Local educational agency totals (includes districts and direct funded charter schools)`
++ Use filter, on AggLevel such that we only select the category `D`
 
-+ You'll have to start with `co16_rem` again  
++ Call this new dataframe that you create "distr"
+
++ You'll have to start with `co16_rem` 
 --
 ## solution
 
@@ -417,6 +468,8 @@ class: middle
 
 + The `%&gt;%` operator, helps - read it as `and then`
 
++ Read the code: Take co16_rem, then filter it (rule)
+
 
 ```r
 distr &lt;- co16_rem %&gt;% 
@@ -435,8 +488,8 @@ table(distr$AggLevel)
 *What about filtering on more than one variable? That sounds like a challenge!*
 ---
 
-.pull-left[We notice that even after filtering for District, individual charter schools are left in the dataset. 
-
+After filtering for District, individual charter schools are left in the dataset. 
+.pull-left[
 1. The variable, &lt;mark&gt;DFC&lt;/mark&gt; contains information as to whether a school is a charter school or not. 
   + Y = Charter School
   + N = Not a charter school
@@ -447,15 +500,15 @@ table(distr$AggLevel)
   + S = School totals
   + T = State totals]
 
-.pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `filtdf` by...
+.pull-right[1. Starting with the dataframe, `co16_rem`, create a new dataframe called `cocharter` by...
 
 2. using `filter` so we only keep districts but remove charter schools.
 
 3. Use filter and/or pipes so you only need to create one dataframe 
 
-3. If you need the codebook, it is here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)
+3. If you need the codebook, it is here: [_**California Department of Education**_](https://www.cde.ca.gov/ds/sd/sd/filescohort.asp)]
 
-*Hint* You can do this with one pipe or two. ]
+#### *Hint* You can do this with one pipe or two. Filter can take multiple arguments
 
 ---
 # Solutions
@@ -463,28 +516,31 @@ table(distr$AggLevel)
 
 ```r
 # Either one will work, I prefer method1
-filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", AggLevel == "D")
+nocharter &lt;- co16_rem %&gt;% 
+  filter(DFC == "N", AggLevel == "D")
 
 # or...
 
-filtdf &lt;- co16_rem %&gt;% filter(DFC=="N") %&gt;% filter(AggLevel=="D")
+nocharter &lt;- co16_rem %&gt;% 
+  filter(DFC=="N") %&gt;% filter(AggLevel=="D")
 ```
 ---
 # Challenge
-1.After filtering, what categories are still left in the variable, `Agglevel`, in your new dataframe, filtdf?
-  
-2. Without creating a new R object, edit your script such that you keep only the category `All` from variable `Subgroup` and `All` from variable `Subgrouptype`. Make sure it is still called `filtdf`
+1.After filtering, what categories are still left in the variable, `Agglevel`, in your new dataframe, nocharter?
+
+1. Without creating a new R object, edit your script such that you keep only the category `All` from variable `Subgroup` and `All` from variable `Subgrouptype`. Make sure it is still called `nofilter`
 
 ---
 
 ## Solutions
 
 ```r
-filtdf &lt;- co16_rem %&gt;% filter(DFC == "N", AggLevel == "D", 
+nocharter &lt;- co16_rem %&gt;% 
+  filter(DFC == "N", AggLevel == "D", 
                               Subgroup=="All", 
                               Subgrouptype=="All")
 
-filtdf
+nocharter
 ```
 
 ```
@@ -508,9 +564,11 @@ filtdf
 ## #   `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
 ```
 ---
-## Remember our logical operators Challenge
+## "Remember our logical operators" Challenge
 
-1. Now, using a pipe and assigning a new variable called `filtdf1000` (for exercise, not necessary, though), start with filtdf such that filtdf1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable NumCohort). 
+1. Now, using a pipe and assigning a new variable called `nocharter1000`, start with nocharter such that nocharter1000 only has districts with _at least_ 1000 students in its cohort (you'll need the variable NumCohort). 
+
+1. The variable you'll need to filter on is "NumCohort"
 
 ---
 ## Solutions
@@ -529,11 +587,11 @@ table(filtdf$AggLevel)
 filtdf1000 &lt;- filtdf %&gt;%
   filter(NumCohort &gt;= 1000)
 
-range(filtdf$NumCohort)
+range(filtdf$NumCohort, na.rm = T)
 ```
 
 ```
-## [1] NA NA
+## [1]    11 34472
 ```
 
 ```r
@@ -556,7 +614,8 @@ class: middle
 
 + Just the first row: `newdf &lt;- co16_rem[1, ]`
 
-*If I want to select rows according to rule (say, 1000)* 
+*If I want to select rows according to rule (say, 1000)*:
+
 `newdf &lt;- co16_rem[co16_rem$numcohort &gt;= "1000", ]`
 
 ---
@@ -565,7 +624,8 @@ class: middle
 
 ## For non-tidyverse solutions for selecting columns:
   + Indexing: `co16_rem[1:4]` (note, don't need commas) but same as `co16_rem[, 1:4]`
-  + Naming `co16_rem$AggLevel`
+  
+  + By name, use, `$`:  `co16_rem$AggLevel`
 
 ---
 class: middle
@@ -578,8 +638,10 @@ class: middle
 
 + Typical use involves taking a very large dataset and selecting only the columns you need. 
 
-+ You can also use `select()` to reorder columns, remove columns, and even rename columns
++ You can also use `select()` to reorder columns, remove columns, and rename columns
+
 --
+
 + General Format: `select(df, columns_you_wish_to_select, by name)`
 
 ---
@@ -596,7 +658,8 @@ state16 &lt;- co16_rem %&gt;%
          `Cohort Graduation Rate`, NumDropouts)
 
 # without a pipe operator
-state16 &lt;- select(co16_rem , CDS,
+*state16 &lt;- select(co16_rem ,
+                  CDS,
                   Name, NumCohort, NumGraduates, 
                   `Cohort Graduation Rate`, NumDropouts)
 
@@ -619,14 +682,16 @@ View(state16)
 class: middle 
 ## what else can you do with `select`? 
 + Re-order columns: Select in the order that you want the variable to appear
-  + Ex: If I want to see `Cohort Graduation Rate` first:
 
-`state16 &lt;- co16_rem %&gt;% 
+Ex: If I want to see "Cohort Graduation Rate" first:
+
++ `state16 &lt;- co16_rem %&gt;% 
   select(`Cohort Graduation Rate`, CDS, Name, NumCohort, NumGraduates, NumDropouts)`
 
-+ If I want to rename a column in the process of selecting the format is:
+If I want to rename a column in the process of selecting the format is:
+
   `newdf &lt;- old_df %&gt;% 
-  select(var1, var2, newname=oldname)`
+  select(newname=oldname, var1, var2)`
   
 ---
 
@@ -634,7 +699,9 @@ class: middle
 
 # Check for understanding `select()`:
 
-1. Starting with co16_rem, edit the code from the previous slide so that you use a pipe operator, and select all variables listed in the table below.
+1. Edit the code:
+`state16 &lt;- co16_rem %&gt;%` 
+  to select all variables listed in the table below.
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -689,7 +756,8 @@ class: middle
 # Solutions
 
 ```r
-state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates, NumDropouts)
+state16 &lt;- co16_rem %&gt;% 
+  select(CDS:NumGraduates, NumDropouts)
                   
    
 names(state16)
@@ -701,23 +769,27 @@ names(state16)
 ## [9] "NumDropouts"
 ```
 ---
-## Adding more to pipes
-1. Using `select()`, edit your code from above to add the variable below while  rename=ing them 
-  + the variable, `Cohort Graduation Rate` to `gradrate`
-  + Rename the variable `Cohort Dropout Rate` to `droprate`
-  + Rename the variable `GED Rate` to `GEDrate`
+## Adding more to select()
+1. Using `select()`, edit your code from above to **ALSO** select the variables listed below while  renaming them 
+  + Rename `Cohort Graduation Rate` to `gradrate`
+  + Rename `Cohort Dropout Rate` to `droprate`
+  + Rename `GED Rate` to `GEDrate`
   
 Creating a new dataframe called state16d, and using a pipe operator
 
 1. add a filter command to your code, such that you select 
   + only district level data, D, (from `AggLevel`) 
-  + only non-charter schools  ("N", from `DFC`)
+  + only non-charter schools, N, (from `DFC`)
   + only `All` from both `Subgroup` and `Subgrouptype`
+  
 1. What is the largest value for `Numcohort`?
---
+---
+## Solutions
+
 
 ```r
-state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates, NumDropouts,
+state16 &lt;- co16_rem %&gt;% select(CDS:NumGraduates, 
+                               NumDropouts,
                       gradrate = `Cohort Graduation Rate`,
                       droprate = `Cohort Dropout Rate`,
                       GEDrate = `GED Rate`)
@@ -746,6 +818,9 @@ max(state16d$NumCohort, na.rm=T)
 
 Easy! 
 ---
+
+class: middle
+
 ## Sometimes these methods can be tedious
 
 + You can use select functionally, that is, you can select based on a rule
@@ -754,11 +829,15 @@ Easy!
 
 + If a variable is numeric: `state16 %&gt;% select_if(is.numeric)`
 
-+ These are just a few examples, if it can be evaluated with a logical, you can use select_if
++ These are just a few examples, if it can be evaluated with a logical, you can use select_if (or any dplyr verb conditionally)
+
++ Read more [**here**](https://www.rdocumentation.org/packages/dplyr/versions/0.5.0/topics/select_if): 
 ---
 ## Names
 
-+ You can rename files using names(df)[column_numbers] &lt;- c("name for first column", "name for second column")
++ You can rename files using: 
+
+`names(df)[column_numbers] &lt;- c("name for first column", "name for second column")`
 
 Example:
 
@@ -767,7 +846,11 @@ Example:
 #to have a throw away datafram
 co16_test &lt;- co16_rem
 
-names(co16_test)[1:5] &lt;- c("ID", "Title", "Stateleveltoschoollevel", "Charter", "Classification")
+names(co16_test)[1:5] &lt;- c("ID", 
+                           "Title", 
+                           "Stateleveltoschoollevel", 
+                           "Charter", 
+                           "Classification")
 
 names(co16_test)
 ```
@@ -784,11 +867,13 @@ names(co16_test)
 ## [17] "GED Rate"                   "Year"
 ```
 ---
-## Or use tidyverse rename
+## Or use tidyverse `rename()`
 
 ```r
 co16_test &lt;- co16_rem %&gt;% 
-  rename("NEWCODE"=CDS, "Title"=Name, "Level"=AggLevel)
+  rename("NEWCODE"=CDS, 
+         "Title"=Name, 
+         "Level"=AggLevel)
 
 names(co16_test)
 ```
@@ -805,7 +890,7 @@ names(co16_test)
 ## [17] "GED Rate"                   "Year"
 ```
 
-
+New names on the left of the `=`, in quotes.
 ---
 class: middle
 
@@ -860,11 +945,11 @@ class: middle
 class: middle 
 
 ## How R uses Logicals
-+ When filtering, what we're really saying is...  _If this statement is TRUE, keep or discard these cases_
+#### When filtering, what we're really saying is...  _If this statement is TRUE, keep or discard these cases_
 
 + You can have an entire column in a dataframe that is a set of logicals (whether a student partook in a certain curriculum)
 
-+ You might have a column of 1s or 0s - But you need R to recognize it as a Boolean or at least a factor level.
++ You might have a column of 1s or 0s - But you need R to recognize it as a Boolean or at least a factor.
 
 + We'll have to coerce the column in a data frame, but first, `mutate()`
 ---
@@ -875,7 +960,7 @@ class: middle
 
 + General form: `Mutate(df, new_variable_name = some_operation)`
 
-+ Let's say I want to check if my cohort and enrollment numbers match the graduation rate of the state. 
++ Let's say I want to check if my cohort and enrollment numbers match the graduation rate of that the state calculated. 
 
 
 ```r
@@ -903,15 +988,15 @@ head(state16d[5:length(state16d)])
 
 class: middle
 
-## Challenge
-1. Create a column using mutate that gives a standardized value of NumCohort for Districts in `State16d`. Call the column StandCohort
+## Challenge, `mutate()` and using assignment
+1. Create a column using mutate that gives a standardized value of NumCohort for Districts in `State16d`. Call the column `StandCohort`
 
 2. Select all the cases in State16 that are at least two standard deviations above the mean NumCohort value based on your standardization
 
 *Standardization/Z-Score = `\(\Sigma(x-\mu)/\sigma\)`*
 1. You'll need to get the mean of Numcohort. 
 1. You'll need to get the standard deviation of Numcohort. 
-1. Use mutate
+
 
 ---
 ## Solution
@@ -944,13 +1029,60 @@ state16 &lt;- state16d %&gt;%
   filter(StandCohort &gt;= 2)
 ```
 ---
+# If and Else
+
++ What if I wanted to create a dummy variable for `standcohort&gt;=2` or not instead of filtering
+
++ Introducing if_else
+
++ Rule mutate = if_else(df, Variable == val, TRUE_value, False_value)
+
+
+```r
+districtlarge &lt;- state16d %&gt;% 
+  mutate(StandCohort= scale(NumCohort)) %&gt;%
+* mutate(Large = if_else(StandCohort &gt;= 2, 1,0))
+
+table(districtlarge$Large)
+```
+
+```
+## 
+##   0   1 
+## 465   9
+```
+
+---
+class: middle 
+## Can nest 
+
++ If StandCohort &gt;= 1, Large =1 
++ If StandCohort &gt;= 1, Large =2
++ Otherwise, Large = 0
+
+```r
+districtlarge &lt;- state16d %&gt;% 
+  mutate(StandCohort= scale(NumCohort)) %&gt;%
+  mutate(Large = if_else(StandCohort &gt;= 1, 1,
+                 if_else(StandCohort &gt;= 2, 2, 0)))
+
+table(districtlarge$Large)
+```
+
+```
+## 
+##   0   1 
+## 446  28
+```
+
+---
 
 class: middle
 
 ## Coercing
 + In R, factors have labels, like in SPSS.
 
-+ So we can use factors to add a label, so that in the data frame, we can see "1" but it has a label of "Participated" (or something like that)
++ We can use factors to add a label, so that in the data frame, we can see 1, but it has a label of "Participated" (or something like that)
 
 + Let's start with `co16_rem` but let's make it smaller.
 
@@ -1015,7 +1147,8 @@ apply(co16dat, 2, class)
 ---
 ## Challenge `apply()`
 
-+ Replace `class` with the function `table`, but only on the last two columns. 
++ Replace `class` with the function `table`
++ Look only at the last two columns of co16dat. 
 
 *Hint*: Remember indexing (though, there are other ways)
 --
@@ -1122,8 +1255,11 @@ class(mpg$cyl)
 # Ordered tells R that the factor is ordered bu could also use factor
 mpg2 &lt;- mpg %&gt;% 
   mutate(cyl2 = ordered(cyl, 
-                        levels = c(4, 5, 6, 8),
-         labels = c("Smallest", "Small", "Medium", "Large")))
+                levels = c(4, 5, 6, 8),
+                labels = c("Smallest", 
+                            "Small", 
+                            "Medium", 
+                            "Large")))
 
 levels(mpg2$cyl2)
 ```
@@ -1131,7 +1267,12 @@ levels(mpg2$cyl2)
 ```
 ## [1] "Smallest" "Small"    "Medium"   "Large"
 ```
-## Just be careful, especially with values coded as 1 or 0 but are actually factors variables, that you either turn it into a logical using `as.logical` or a factor before analysis.  
+
+---
+class: middle
+#### Just be careful, especially with values coded as 1 or 0 and numeric but represent two categories:
+
++ You either turn it into a logical using `as.logical` or a factor before analysis.  
 
 
 ---
@@ -1183,7 +1324,7 @@ class(mpg2$class2)
 + Particularly powerful is `fct_recode` from the `forcats` package of the tidyverse 
   + Allows you to recode levels, collapse levels, or change level names.
 ---
-# Example of `fct_recode`
+### Example of `fct_recode`
 
 Example: using the general social survey, gss (example from [https://r4ds.had.co.nz/factors.html#modifying-factor-levels](https://r4ds.had.co.nz/factors.html#modifying-factor-levels))
 
@@ -1288,7 +1429,7 @@ sum(table(mpg2$cat.cyl))
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "tomorrow-night-bright",
+"highlightStyle": "agate",
 "highlightLines": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
