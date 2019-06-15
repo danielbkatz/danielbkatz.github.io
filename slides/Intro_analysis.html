@@ -721,8 +721,6 @@ plotcorr
 ---
 ## ggplot2 Labels
 
-+  Adding labels is actually really simple
-
 + ggplot2 objects can be always added to with a `+`
 
 + What we'll add is `labs()`
@@ -730,9 +728,9 @@ plotcorr
 
 ```r
 plotcorr &lt;- plotcorr + 
-  labs(y="Cohort Graduation Rate", 
+* labs(y="Cohort Graduation Rate",
        x= "Cohort Dropout Rate", 
-       title = "Relationship between high school graduation rates and dropout rates",
+       title = "Relationship between hs grad rates and dropout rates",
        subtitle = "By California defined subgroup and charter school type")
 
 plotcorr
@@ -781,12 +779,15 @@ plotlab
 &lt;img src="directory.jpg" width="90%" /&gt;
 
 + We want to put any data we've cleaned in a folder called something like, "cleaneddata" and give it a name so we know what's in there. 
+---
+
+class: middle
 
 + Remember `state16d`?
 
 + We'll use the `write_csv()` function from the `readr` package. 
 
-+ general form (`write_csv(df, "folder/data.csv") - extension can be anything related to `write_*` start typing `write_` to see what happens...
++ general form (`write_csv(df, "folder/data.csv1"`) - extension can be anything related to `write_*` start typing `write_` to see what happens...
 
 + What you save it as (in quotes) doesn't have to be the same as what it's called in R.
 
@@ -802,25 +803,615 @@ write_sav(state16d, "Cleandata/districtsub.sav")
 ```
 ---
 
-class: center
+class: middle
 
 # Exporting ggplot2 object
 
 
 ```r
-ggsave("plots/plot1.pdf", plot1)
+ggsave("plot1.pdf", plot1)
 
-ggsave("plots/plot1.png", plot1)
+ggsave("plot1.png", plot1)
 
 # make it a certain size
-ggsave("plots/plot1", width = 20, height = 20, units = "cm")
+ggsave("plots/plot1.png", width = 20, height = 20, units = "cm")
 ```
 
 
 ---
+
+class: middle
+
 # Part 3.2: Descriptive statistics
++ One of the best asepcts of R is that there are a lot of ways to do the same thing. 
+
++ This is also one of the worst aspects of R
+
++ We've already seen a few ways to get descriptive statistics just brute forcing it with dplyr.
+
+## Workflow: Explore, Visualize, Describe, Model
+---
+
+## An easy way to get descriptives
++ Remember `summary()`
+
++ What happens when you run `summary()` on all of state16d?
+
++ What happens when you run `summary()` on just one column?
+
+
+```r
+sumstat &lt;- summary(state16d)
+sum1 &lt;- summary(state16d$NumGraduates)
+sumstat
+```
+
+```
+##      CDS                Name             AggLevel        
+##  Length:493         Length:493         Length:493        
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##      DFC              Subgroup         Subgrouptype      
+##  Length:493         Length:493         Length:493        
+##  Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character  
+##                                                          
+##                                                          
+##                                                          
+##                                                          
+##    NumCohort        NumGraduates      NumDropouts        gradrate     
+##  Min.   :   11.0   Min.   :   11.0   Min.   :  11.0   Min.   :  0.00  
+##  1st Qu.:  134.0   1st Qu.:  119.0   1st Qu.:  25.0   1st Qu.: 84.21  
+##  Median :  372.0   Median :  336.0   Median :  49.0   Median : 90.91  
+##  Mean   :  922.1   Mean   :  824.9   Mean   : 106.7   Mean   : 83.38  
+##  3rd Qu.: 1108.8   3rd Qu.: 1021.0   3rd Qu.: 115.0   3rd Qu.: 94.81  
+##  Max.   :34472.0   Max.   :26654.0   Max.   :4738.0   Max.   :100.00  
+##  NA's   :19        NA's   :32        NA's   :184                      
+##     droprate        GEDrate       
+##  Min.   : 0.00   Min.   : 0.0000  
+##  1st Qu.: 2.90   1st Qu.: 0.0000  
+##  Median : 5.50   Median : 0.0000  
+##  Mean   :10.21   Mean   : 0.2079  
+##  3rd Qu.:10.00   3rd Qu.: 0.0000  
+##  Max.   :81.10   Max.   :15.7000  
+## 
+```
+
+```r
+sum1
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##    11.0   119.0   336.0   824.9  1021.0 26654.0      32
+```
+
++ Both give us NAs, which is convenient
+
++ Can also build from scratch using xtable
+---
+
+## I personally like the Startgazer package
+
++ `Stargazer` will give you descriptive statistics that are outputtable
+
++ `Stargazer` will output to various styles (problematically, no apa style option, though, but close enough)
+
++ `Stargazer` will format your regression output (as we'll see)
+
++ For writing in word, I recommend html output, because you can open it with Excel and edit
+
++ Stargazer takes as argument the data (or the data subset), the way to output the data, and many others (see ?Stargazer)
+
++ The challenge with stargazer is that you need to make sure the dataframe is of type, data.frame (you have to coerce it, see below) 
 
 ---
+## Example 
+
+```r
+library(stargazer)
+
+# Need to select only numeric vars
+numdist &lt;- state16d %&gt;% 
+  select(NumCohort:GEDrate) %&gt;% 
+  as.data.frame(.)
+
+stargazer(numdist, type="html", 
+          out = "describe.html", 
+          digits = 2)
+```
+
+```
+## 
+## &lt;table style="text-align:center"&gt;&lt;tr&gt;&lt;td colspan="8" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;Statistic&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;Mean&lt;/td&gt;&lt;td&gt;St. Dev.&lt;/td&gt;&lt;td&gt;Min&lt;/td&gt;&lt;td&gt;Pctl(25)&lt;/td&gt;&lt;td&gt;Pctl(75)&lt;/td&gt;&lt;td&gt;Max&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan="8" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;NumCohort&lt;/td&gt;&lt;td&gt;474&lt;/td&gt;&lt;td&gt;922.07&lt;/td&gt;&lt;td&gt;1,934.79&lt;/td&gt;&lt;td&gt;11.00&lt;/td&gt;&lt;td&gt;134.00&lt;/td&gt;&lt;td&gt;1,108.75&lt;/td&gt;&lt;td&gt;34,472.00&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style="text-align:left"&gt;NumGraduates&lt;/td&gt;&lt;td&gt;461&lt;/td&gt;&lt;td&gt;824.87&lt;/td&gt;&lt;td&gt;1,595.63&lt;/td&gt;&lt;td&gt;11.00&lt;/td&gt;&lt;td&gt;119.00&lt;/td&gt;&lt;td&gt;1,021.00&lt;/td&gt;&lt;td&gt;26,654.00&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style="text-align:left"&gt;NumDropouts&lt;/td&gt;&lt;td&gt;309&lt;/td&gt;&lt;td&gt;106.65&lt;/td&gt;&lt;td&gt;289.38&lt;/td&gt;&lt;td&gt;11.00&lt;/td&gt;&lt;td&gt;25.00&lt;/td&gt;&lt;td&gt;115.00&lt;/td&gt;&lt;td&gt;4,738.00&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style="text-align:left"&gt;gradrate&lt;/td&gt;&lt;td&gt;493&lt;/td&gt;&lt;td&gt;83.38&lt;/td&gt;&lt;td&gt;21.52&lt;/td&gt;&lt;td&gt;0.00&lt;/td&gt;&lt;td&gt;84.21&lt;/td&gt;&lt;td&gt;94.81&lt;/td&gt;&lt;td&gt;100.00&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style="text-align:left"&gt;droprate&lt;/td&gt;&lt;td&gt;493&lt;/td&gt;&lt;td&gt;10.21&lt;/td&gt;&lt;td&gt;14.06&lt;/td&gt;&lt;td&gt;0.00&lt;/td&gt;&lt;td&gt;2.90&lt;/td&gt;&lt;td&gt;10.00&lt;/td&gt;&lt;td&gt;81.10&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td style="text-align:left"&gt;GEDrate&lt;/td&gt;&lt;td&gt;493&lt;/td&gt;&lt;td&gt;0.21&lt;/td&gt;&lt;td&gt;1.19&lt;/td&gt;&lt;td&gt;0.00&lt;/td&gt;&lt;td&gt;0.00&lt;/td&gt;&lt;td&gt;0.00&lt;/td&gt;&lt;td&gt;15.70&lt;/td&gt;&lt;/tr&gt;
+## &lt;tr&gt;&lt;td colspan="8" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+```
+---
+
+class: middle
+
+## Challenge, descriptive statistics
+
+1.  Using stargazer documentation, change the "type" argument so that it outputs in a way that you can understand the output either in the console or the viewer.
+
+2. Using stargazer documentation, change the table "title."
+
+3. How can you use the `flip` argument?
+
+---
+## Solutions
+
+```r
+stargazer(numdist, type="text", 
+          digits = 2, 
+          title = "Danny's Descriptive Statistics")
+```
+
+```
+## 
+## Danny's Descriptive Statistics
+## ==================================================================
+## Statistic     N   Mean  St. Dev.  Min  Pctl(25) Pctl(75)    Max   
+## ------------------------------------------------------------------
+## NumCohort    474 922.07 1,934.79 11.00  134.00  1,108.75 34,472.00
+## NumGraduates 461 824.87 1,595.63 11.00  119.00  1,021.00 26,654.00
+## NumDropouts  309 106.65  289.38  11.00  25.00    115.00  4,738.00 
+## gradrate     493 83.38   21.52   0.00   84.21    94.81    100.00  
+## droprate     493 10.21   14.06   0.00    2.90    10.00     81.10  
+## GEDrate      493  0.21    1.19   0.00    0.00     0.00     15.70  
+## ------------------------------------------------------------------
+```
+
+
+```r
+stargazer(numdist, type="text", 
+          digits = 2, 
+          title = "Danny's Descriptive Statistics",
+          flip = T)
+```
+
+---
+
+class: middle
+
+#Describeby, with `psych`
+
++ Another useful descriptive statistics package is `psych` which also has a lot of other useful tools including, various psychometric-type analysis functions
+
++ It provides descriptive statistics by a certain grouping variable\
+
++ Run the code below and also replace `mat=T` with `mat=F`
+
++ What happens?
+
+
+```r
+library(psych)
+
+numdist2 &lt;- state16 %&gt;%
+  select(DFC, Subgroup, Subgrouptype, NumCohort:GEDrate) 
+    
+numdist2 &lt;- numdist2 %&gt;% 
+  filter(Subgroup=="All"|Subgrouptype=="All")%&gt;%
+  as.data.frame(.) %&gt;% 
+  select(-Subgroup, -Subgrouptype) 
+
+descriptab &lt;- describeBy(numdist2, 
+                          group = numdist2$DFC, 
+                          na.rm=T, 
+                         digits = 2)
+```
+
+---
+
+Class: middle
+
+## Aside, lists...
+
++ We haven't touched lists, but many packages will output in list form
+
++ That is, it'll give you a `list` of output. 
+
++ In the `Global Environment`, if you click on the blue arrow next to a list, it'll show you the list elements. 
+
++ You can also use `str(list_name)`
+
+---
+# Examples
+
++ A list can contain other data structures.
+
++ What does `descriptab$Y` do? What about `descrptab[[1]]`?
+--
+
+```r
+str(descriptab)
+descriptab$Y
+descriptab[[1]]
+```
+
++ You can view package output by viewing the documentation (output is described in `Values` section of documentation)
+
++ You can access package output by using `object$name` like above, or `object[[1]]` where the 1 is replaced with the desired position and double brackets represents position in the list.
+
++ No shortcut, here, just have to read the documentation
+
+---
+
+# Wrapping up descriptives
+
++ For nice correlation output, please check out the `apaTables` package
+
++ For quick output, check Hmisc
+
++ Don't forget the tidyverse! 
+
++ An overview of the descriptive statistics methods [_**here**_](https://dabblingwithdata.wordpress.com/2018/01/02/my-favourite-r-package-for-summarising-data/)
+
+---
+class: middle
+
+## Some basic linear models
+
++ The basic linear models from R, require no external packages.
+
++ R was built for statistics!
+
+We'll look at two main statistical tools, today...
+
++ `t.test` and `lm()` (anything else you all want to see?)
+
++ Other options include paired sample t.test, different alternative hypotheses
+
+---
+
+# `t tests`
++ t-tests in R are run simply by using `t.test()`
+
++ `?t.test`, you'll want "stats::t.test"
+
++ R assumes, unequal variances of the two groups, thus uses Welch's test
+
++ However, this is just a little more stringent. To override, use, `var.equal=T`
+
++ If your two factors are in two different columns, you might need to name them (remember tidydata is easier)
+---
+# Example run code, below:
+
+```r
+NYCtestscore &lt;- rnorm(1000, mean = 2, sd=1)
+LAtestscore &lt;- rnorm(1000, mean = 3, sd=1)
+testscores &lt;- cbind(NYCtestscore, LAtestscore)
+head(testscores)
+```
+
+```
+##      NYCtestscore LAtestscore
+## [1,]   3.38927256    4.223030
+## [2,]   0.37468345    4.275975
+## [3,]   0.64079589    4.095520
+## [4,]  -0.03043645    2.516746
+## [5,]   1.04023262    4.240619
+## [6,]   2.37446199    4.567708
+```
+
+
+```r
+# two group
+mod1 &lt;- t.test(NYCtestscore, LAtestscore)
+mod1
+```
+
+```
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  NYCtestscore and LAtestscore
+## t = -22.844, df = 1997.1, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.1002544 -0.9262768
+## sample estimates:
+## mean of x mean of y 
+##  1.979669  2.992935
+```
+---
+## Easier, using a formula,, but only applicable using two-sample test
++ If your factor is in one column (such as charter/not charter in DFC)
+
++ Takes the form `t.test(state16, Outcome~Factor)`
+
++ Try doing this with `state16`, using gradrate and DFC
+
++ You can access different parts of the t.test if you use `mod2$*`
+
+--
+
+```r
+library(broom)
+mod2 &lt;- t.test(data=state16, gradrate~DFC)
+
+tidy(mod2)
+```
+
+```
+## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic   p.value parameter conf.low
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1     10.2      75.7      65.5      30.1 6.66e-195    19784.     9.56
+## # ... with 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;,
+## #   alternative &lt;chr&gt;
+```
+
+
+---
+## Linear regression
+
++ Linear regression in R is also very simple
+
++ You can use stargazer to output nice tables as well
+
++ You can easily check assumptions, visually
+
++ The form is `lm(outcome ~ covariate1 + covariat2...)`
+
++ You don't need to dummy out categorical variables as long as they're made factors (or, at least, character)
+
++ You can interact variables within the equation with `*`, `lm(outcome ~ covariate1 + covariate2 + covariate1* covariat2)`
+---
+# Linear Regression
+
+
+```r
+# Example usage
+modlm1 &lt;- lm(data = state16, gradrate~DFC)
+summary(modlm1)
+```
+
+```
+## 
+## Call:
+## lm(formula = gradrate ~ DFC, data = state16)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -75.70 -15.70  16.30  24.30  34.53 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  75.7028     0.1371  552.17   &lt;2e-16 ***
+## DFCY        -10.2287     0.3152  -32.45   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 33.87 on 75260 degrees of freedom
+## Multiple R-squared:  0.0138,	Adjusted R-squared:  0.01379 
+## F-statistic:  1053 on 1 and 75260 DF,  p-value: &lt; 2.2e-16
+```
+---
+# It's easy to check assumptions
+
+```r
+# to check assumptions
+plot(modlm1)
+```
+
+![](Intro_analysis_files/figure-html/unnamed-chunk-46-1.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-46-2.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-46-3.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-46-4.png)&lt;!-- --&gt;
+
+---
+# Challenge
+
+1.  Run a regression in which you regress GEDrate on droprate and DFC using state16 data
+  + But...filter subgrouptype="All"
+  + Also...filter AggLevel!="T
+  
+  
+1. Regress GEDrate on droprate as well as the interaction term between DFC and Subgroup 
+1. Interpret results (roughly)
+---
+
+```r
+state16_2 &lt;- state16 %&gt;%
+  filter(Subgrouptype=="All",
+         AggLevel!="T")  
+  
+
+mod3 &lt;- lm(data=state16_2, GEDrate~droprate + DFC)
+mod4 &lt;- lm(data=state16_2, GEDrate~droprate + DFC*Subgroup)
+```
+
+---
+# Ugly...
+
+```r
+summary(mod3)
+```
+
+```
+## 
+## Call:
+## lm(formula = GEDrate ~ droprate + DFC, data = state16_2)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -0.416 -0.195 -0.159 -0.146 99.854 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.1460687  0.0166196   8.789  &lt; 2e-16 ***
+## droprate     0.0027041  0.0005437   4.974 6.61e-07 ***
+## DFCY        -0.0458140  0.0313436  -1.462    0.144    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.866 on 22236 degrees of freedom
+## Multiple R-squared:  0.001184,	Adjusted R-squared:  0.001094 
+## F-statistic: 13.18 on 2 and 22236 DF,  p-value: 1.901e-06
+```
+
+```r
+summary(mod4)
+```
+
+```
+## 
+## Call:
+## lm(formula = GEDrate ~ droprate + DFC * Subgroup, data = state16_2)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -0.500 -0.231 -0.179 -0.103 99.846 
+## 
+## Coefficients:
+##                    Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)       0.1793643  0.0357456   5.018 5.27e-07 ***
+## droprate          0.0026937  0.0005447   4.945 7.66e-07 ***
+## DFCY             -0.0587284  0.0771780  -0.761  0.44670    
+## SubgroupEL       -0.0257836  0.0507687  -0.508  0.61155    
+## SubgroupFEM      -0.0857560  0.0496538  -1.727  0.08417 .  
+## SubgroupMAL       0.0515013  0.0492089   1.047  0.29530    
+## SubgroupMIG      -0.1834390  0.0645977  -2.840  0.00452 ** 
+## SubgroupSD        0.0114432  0.0492309   0.232  0.81620    
+## SubgroupSE       -0.0918579  0.0496466  -1.850  0.06429 .  
+## DFCY:SubgroupEL  -0.0750446  0.1128792  -0.665  0.50617    
+## DFCY:SubgroupFEM  0.0408527  0.1096171   0.373  0.70939    
+## DFCY:SubgroupMAL  0.0005511  0.1094213   0.005  0.99598    
+## DFCY:SubgroupMIG -0.0084742  0.1623642  -0.052  0.95838    
+## DFCY:SubgroupSD  -0.0350583  0.1092513  -0.321  0.74829    
+## DFCY:SubgroupSE   0.1301154  0.1112262   1.170  0.24208    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.866 on 22224 degrees of freedom
+## Multiple R-squared:  0.002343,	Adjusted R-squared:  0.001715 
+## F-statistic: 3.729 on 14 and 22224 DF,  p-value: 2.65e-06
+```
+---
+# Better!
+
+```r
+stargazer(mod3, mod4, type = "text", out = "output/modcompare.html")
+```
+
+---
+# Challenge:
+
+**Try to plot mod3 in ggplot2**
+--
+Careful in interpretation (make a scatter plot or add points if you'd like)
+
+```r
+ggplot(data=state16_2, 
+        aes(x=droprate, y=GEDrate, color=DFC)) +
+  geom_smooth(method = lm) +
+  labs(x="Dropout Rate (%)",
+       y = "GED Rate (%)")
+```
+
+![](Intro_analysis_files/figure-html/unnamed-chunk-50-1.png)&lt;!-- --&gt;
+
+---
+# Getting help in R
+
++ First, I hope this has been helpful.
+
++ I've posted a list of resources here: [**_Helplist_**](/help/helplist.html)
+
++ Next, please continue working at it. Today was probably really overwhelming. 
+
++ There are a lot of R resources out there!
+---
+## What should I continue to learn?
+
++ Overall, data management and cleaning (remember, tidy!)
+
++ Spreading and gathering from tidyr (soon to be [pivot_longer and pivot_wider](https://tidyr.tidyverse.org/dev/articles/pivot.html)
+
++ merging data with the [join functions from dply](https://dplyr.tidyverse.org/reference/join.html) and merging data by row (for example, long data) with [bind_rows](https://dplyr.tidyverse.org/reference/bind.html)
+
++ Check out how matrices work
+
++ Find something you need to do - do it
+
++ The joy of R is in writing functions and iteration.
+---
+## Finding help with Google
+
++ You'll often find "vignettes" - these are documents that people, often package authors, have created to give some in-depth examples.
+
++ You'll find the package documentation
+
++ You'll find other examples from classes, blogs, etc.
+
++ You'll find...Stack Exchange/Stack Overflow, and you will use it!
+
+---
+
+class: middle
+
+## How to use Stack Overflow/Stack Exchange
+
++ Usual Scenario: Trying to do something, can't figure it out. 
+
++ You Google it and find a number of posts about your topic. You settle on one and there are a bunch of answers. 
+
++ Which one is right? Which one is best?
+
++ Usually, there are a few routes to your solution
+---
+## Posts (try to find the most recent)
+
+&lt;img src="google.jpg" width="1757" /&gt;
+
+---
+## Upvotes (Good Question)
+
+&lt;img src="stackq.jpg" width="1756" /&gt;
+
+---
+
+***Answers (which one has the most upvotes? Which one matches)***
+
+&lt;img src="upvoteold.jpg" width="1652" /&gt;
+
+---
+***People liked the answer from the previous slide but it's old, might be a solution: Scroll through non-featured***
+&lt;img src="scroll.jpg" width="1647" /&gt;
+---
+
+***A featured new answer, but not as many upvotes! A solution and link!***
+&lt;img src="newgood.jpg" width="1792" /&gt;
+---
+
+Class: middle
+## Github
+
++ All R packages that are on `CRAN` have to be posted on Github
+
++ If you Google a package name, it's Github page comes up
+
++ Github is a project tracking/version control page where people can track and share projects. 
+
++ The R code here is usually the source code that makes a package work.
+--
++ You rarely want this unless you want to know why you're getting some error and are maybe ready to scroll [*through lots and lots of code...*](https://github.com/philchalmers/mirt/blob/master/R/EMstep.utils.R)
+
++ But it **can** be [_**useful at times!**_](https://github.com/philchalmers/mirt/wiki)
+---
+
+class: middle
+
+## Any other questions? Concerns?
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

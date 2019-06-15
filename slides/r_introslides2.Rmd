@@ -588,6 +588,42 @@ max(state16d$NumCohort, na.rm=T)
 ```
 
 Easy! 
+---
+## Sometimes these methods can be tedious
+
++ You can use select functionally, that is, you can select based on a rule
+
++ If a variable name contains a certain string e.g. `state16 %>% select(contains("Num"), ends_with("ort"))`
+
++ If a variable is numeric: `state16 %>% select_if(is.numeric)`
+
++ These are just a few examples, if it can be evaluated with a logical, you can use select_if
+---
+## Names
+
++ You can rename files using names(df)[column_numbers] <- c("name for first column", "name for second column")
+
+Example:
+
+```{r}
+#to have a throw away datafram
+co16_test <- co16_rem
+
+names(co16_test)[1:5] <- c("ID", "Title", "Stateleveltoschoollevel", "Charter", "Classification")
+
+names(co16_test)
+
+```
+---
+## Or use tidyverse rename
+```{r}
+co16_test <- co16_rem %>% 
+  rename("NEWCODE"=CDS, "Title"=Name, "Level"=AggLevel)
+
+names(co16_test)
+
+```
+
 
 ---
 class: middle

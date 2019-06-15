@@ -745,6 +745,66 @@ max(state16d$NumCohort, na.rm=T)
 ```
 
 Easy! 
+---
+## Sometimes these methods can be tedious
+
++ You can use select functionally, that is, you can select based on a rule
+
++ If a variable name contains a certain string e.g. `state16 %&gt;% select(contains("Num"), ends_with("ort"))`
+
++ If a variable is numeric: `state16 %&gt;% select_if(is.numeric)`
+
++ These are just a few examples, if it can be evaluated with a logical, you can use select_if
+---
+## Names
+
++ You can rename files using names(df)[column_numbers] &lt;- c("name for first column", "name for second column")
+
+Example:
+
+
+```r
+#to have a throw away datafram
+co16_test &lt;- co16_rem
+
+names(co16_test)[1:5] &lt;- c("ID", "Title", "Stateleveltoschoollevel", "Charter", "Classification")
+
+names(co16_test)
+```
+
+```
+##  [1] "ID"                         "Title"                     
+##  [3] "Stateleveltoschoollevel"    "Charter"                   
+##  [5] "Classification"             "Subgrouptype"              
+##  [7] "NumCohort"                  "NumGraduates"              
+##  [9] "Cohort Graduation Rate"     "NumDropouts"               
+## [11] "Cohort Dropout Rate"        "NumSpecialEducation"       
+## [13] "Special Ed Completers Rate" "NumStillEnrolled"          
+## [15] "Still Enrolled Rate"        "NumGED"                    
+## [17] "GED Rate"                   "Year"
+```
+---
+## Or use tidyverse rename
+
+```r
+co16_test &lt;- co16_rem %&gt;% 
+  rename("NEWCODE"=CDS, "Title"=Name, "Level"=AggLevel)
+
+names(co16_test)
+```
+
+```
+##  [1] "NEWCODE"                    "Title"                     
+##  [3] "Level"                      "DFC"                       
+##  [5] "Subgroup"                   "Subgrouptype"              
+##  [7] "NumCohort"                  "NumGraduates"              
+##  [9] "Cohort Graduation Rate"     "NumDropouts"               
+## [11] "Cohort Dropout Rate"        "NumSpecialEducation"       
+## [13] "Special Ed Completers Rate" "NumStillEnrolled"          
+## [15] "Still Enrolled Rate"        "NumGED"                    
+## [17] "GED Rate"                   "Year"
+```
+
 
 ---
 class: middle

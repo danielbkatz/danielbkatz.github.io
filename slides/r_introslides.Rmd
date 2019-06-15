@@ -230,9 +230,25 @@ mean(x)
 ```
 + In R speak, the particular thing that goes in the parentheses of a function, such as `mean` is called an <mark>argument</mark>
 
-+ R functions often take more than one argument]
++ R functions often take more than one argument
+
++ Because of <mark>code completion</mark>, you can see what arguments a function takes as you start typing]
 ---
 
+class: middle
+
+# Arguments
+
++ When you see that an argument as an option with an equal sign, it usually means order doesn't matter as long as you type the argument first
+
++ For instance to perform linear regression I can type `lm(data=x, outcome~var1+var2)` Or `lm(outcome~var1+var2, data)`
+
++ You usually need commas between arguments
+
++ Make sure your parentheses match/are closed
+
++ R is case sensitive. So `var1` is different from `Var1`
+---
 ## There are also other forms of functions we use in computation
 + "Reading in" Data into R so we can explore or model
 
