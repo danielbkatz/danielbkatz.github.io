@@ -458,14 +458,14 @@ nocharter
 ---
 ## Solutions
 ```{r}
-table(filtdf$AggLevel)
+table(nocharter$AggLevel)
 
-filtdf1000 <- filtdf %>%
+nocharter1000 <- nocharter %>%
   filter(NumCohort >= 1000)
 
-range(filtdf$NumCohort, na.rm = T)
+range(nocharter1000$NumCohort, na.rm = T)
 
-nrow(filtdf) 
+nrow(nocharter1000) 
 ```
 ---
 

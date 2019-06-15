@@ -570,11 +570,14 @@ plotcorr <- plotcorr +
 plotcorr
 ```
 ---
+
+class: middle
+
 ### Challenge: Using labs, 
 
 1. Add a subtitle to the plot 
 1. Change the order of the facet/rearrange the facet using facet_grid(x~y)
---
+---
 #solution (labs)
 
 ```{r, fig.height=4, fig.width=6, fig.align="center"}

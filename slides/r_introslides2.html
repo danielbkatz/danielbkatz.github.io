@@ -105,8 +105,8 @@ getwd()
 
 
 ---
-<div id="htmlwidget-24ed5dee04e5241b55e8" style="width:576px;height:576px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-24ed5dee04e5241b55e8">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5fa14fe198e3695fe289" style="width:576px;height:576px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5fa14fe198e3695fe289">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ---
 
 ## Read in the data, the cheating way...
@@ -574,7 +574,7 @@ nocharter
 ## Solutions
 
 ```r
-table(filtdf$AggLevel)
+table(nocharter$AggLevel)
 ```
 
 ```
@@ -584,22 +584,22 @@ table(filtdf$AggLevel)
 ```
 
 ```r
-filtdf1000 &lt;- filtdf %&gt;%
+nocharter1000 &lt;- nocharter %&gt;%
   filter(NumCohort &gt;= 1000)
 
-range(filtdf$NumCohort, na.rm = T)
+range(nocharter1000$NumCohort, na.rm = T)
 ```
 
 ```
-## [1]    11 34472
+## [1]  1000 34472
 ```
 
 ```r
-nrow(filtdf) 
+nrow(nocharter1000) 
 ```
 
 ```
-## [1] 493
+## [1] 136
 ```
 ---
 
@@ -1385,8 +1385,9 @@ recodeparty &lt;- examplegss %&gt;% mutate(partyid = fct_recode(partyid,
 # Challenge, fct_recode()
 
 1. Using fct_recode with the `mpg` data, collapse categories so that there are only two categories in the variable, cyl2:
-  +`"small"` for 4 and 5 cylinder, 
-  + `"Large"`, for 6 and 8 cylinders.  
+
+  + `small` for 4 and 5 cylinder, 
+  + `Large`, for 6 and 8 cylinders.  
 
 ---
 # Solution
