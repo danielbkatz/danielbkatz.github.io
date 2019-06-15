@@ -17,7 +17,7 @@ output:
 class: middle
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.height = 5)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 
 ```
 ```{r xaringan-themer, include = FALSE}
@@ -246,7 +246,9 @@ class: middle
 1. `?ggplot2::geom_smooth`
 ]
 ---
-class: middle 
+class: middle, center
+
+## Building a Plot
 
 `ggplot(data=state16d, `
 --
@@ -318,7 +320,8 @@ plot1 <- ggplot(data=state16d,
 
  * These questions are modified versions of the ones found in _R for Data Science_
 ---
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=5}
+
+```{r message=FALSE, warning=FALSE, fig.height=5, fig.width=5}
 plot1 <- ggplot(data=state16d, 
                 aes(x=droprate, y=GEDrate)) + 
          geom_point(aes(color=GEDrate >.3))
@@ -557,12 +560,12 @@ plotcorr
 
 + What we'll add is `labs()`
 
-```{r, fig.height=4, fig.width=4, fig.align="center"}
+```{r, fig.height=4, fig.width=6, fig.align="center"}
 
 plotcorr <- plotcorr + 
   labs(y="Cohort Graduation Rate", #<<
-       x= "Cohort Dropout Rate", 
-       title = "Relationship between hs grad rates and dropout rates")
+  x= "Cohort Dropout Rate", 
+  title = "Relationship between hs grad rates and dropout rates")
 
 plotcorr
 ```
@@ -574,16 +577,16 @@ plotcorr
 --
 #solution (labs)
 
-```{r, fig.height=4, fig.width=4, fig.align="center"}
+```{r, fig.height=4, fig.width=6, fig.align="center"}
 
 plotcorr <- ggplot(graphdata4, 
             aes(x=droprate, y = gradrate))+
   geom_point(aes(color=Subgroup)) + 
   facet_grid(DFC~Subgroup) +
   labs(y="Cohort Graduation Rate", #<<
-       x= "Cohort Dropout Rate", 
-       title = "Relationship between hs grad rates and dropout rates",
-       subtitle = "As faceted by CA subgroup and charter status")
+  x= "Cohort Dropout Rate", 
+  title = "Relationship between hs grad rates and dropout rates",
+  subtitle = "As faceted by CA subgroup and charter status")
 
 plotcorr
 ```
@@ -663,7 +666,7 @@ ggsave("plot1.png", width = 20, height = 20, units = "cm")
 ```
 ---
 
-class: center
+class: middle
 # Challenge: Exporting
 
 1. Export one dataframe you made, either in csv or SPSS file format to a "wrangledata" subdirectory in your working directory
@@ -683,9 +686,12 @@ class: middle
 + We've already seen a few ways to get descriptive statistics just brute forcing it with dplyr.
 
 ---
-#### Workflow: Explore, Visualize, Describe, Model (from [https://r4ds.had.co.nz/explore-intro.html(https://r4ds.had.co.nz/explore-intro.html)])
 
-```{r echo=FALSE, fig.height=8}
+class: middle
+
+#### Workflow: Explore, Visualize, Describe, Model 
+
+```{r echo=FALSE, dpi=200, fig.width=9, fig.height=9}
 knitr::include_graphics("datasciexp.png")
 ```
 ---
@@ -699,8 +705,7 @@ knitr::include_graphics("datasciexp.png")
 ```{r}
 summary(state16d)
 summary(state16d$NumGraduates)
-sumstat
-sum1
+
 ```
 
 + Both give us NAs, which is convenient
@@ -719,7 +724,8 @@ sum1
 + `Stargazer` will format your regression output (as we'll see)
 
 + For writing in word
-  + I recommend html output, because you can open it with Excel and edit or open in webbrowser and copy-paste into spreadsheet
+  + I recommend html output
+  because you can open it with Excel and edit or open in webbrowser and copy-paste into spreadsheet
   + Can also output to Latex
 
 + Stargazer takes as argument the data (or the data subset), the way to output the data, and many others (see ?Stargazer)
@@ -783,6 +789,8 @@ class: middle
 
 + What happens?
 
+---
+
 ```{r}
 library(psych)
 
@@ -821,6 +829,9 @@ Class: middle
 + You can also use `str(list_name)`
 
 ---
+
+Class: middle
+
 # Examples
 
 + A list can contain other data structures.
@@ -843,6 +854,8 @@ descriptab[[1]]
 + No shortcut, here, just have to read the documentation
 
 ---
+
+Class: middle
 
 # Wrapping up descriptives
 
@@ -870,8 +883,9 @@ We'll look at two main statistical tools, today...
 + Other options include paired sample t.test, different alternative hypotheses
 
 ---
+Class: middle
 
-# `t tests`
+## `t tests`
 + t-tests in R are run simply by using `t.test()`
 
 + `?t.test`, you'll want "stats::t.test"
@@ -904,6 +918,10 @@ mod1
 
 ```
 ---
+
+class: middle
+
+
 ## Easier, using a formula,, but only applicable using two-sample test
 + If your factor is in one column (such as charter/not charter in DFC)
 
@@ -915,7 +933,8 @@ mod1
 ---
 ## The Broom Package
 + Also, check out the `broom` package and the function `tidy`
---
+
+
 ```{r}
 library(broom)
 mod2 <- t.test(data=state16, gradrate~DFC)
@@ -925,19 +944,25 @@ tidy(mod2)
 
 
 ---
-## Linear regression
 
-+ Linear regression in R is also very simple
+class: middle 
+## Linear regression
++ The form is `lm(outcome ~ covariate1 + covariat2...)`
+  + Where lm() is the regression function
 
 + You can use stargazer to output nice tables
 
 + You can easily check assumptions, visually
 
-+ The form is `lm(outcome ~ covariate1 + covariat2...)`
-
 + You don't need to dummy out categorical variables as long as they're factors (or, at least, character)
 
-+ You can interact variables within the equation with `*`, `lm(outcome ~ covariate1 + covariate2 + covariate1* covariat2)` or `:` `lm(outcome ~ covariate1 + covariate2 + covariate1: covariat2)`
++ You can interact variables within the equation with `*`, 
+
+`lm(outcome ~ covariate1 + covariate2 + covariate1* covariat2)` 
+
+or `:` 
+
+`lm(outcome ~ covariate1 + covariate2 + covariate1: covariat2)`
 ---
 # Linear Regression
 $\widehat{gradraterate} = \alpha + \beta_1DFC$
@@ -956,15 +981,18 @@ plot(modlm1)
 ```
 
 ---
+class: middle
+
 # Challenge
 
 1.  Run a regression in which you regress GEDrate on droprate and DFC using state16 data:
-$\widehat{GEDrate} = \alpha +\beta_1droprate + \beta_2DFC$
 
   + filter subgrouptype="All"
   + filter AggLevel!="T"
   
+.center[$\widehat{GEDrate} = \alpha +\beta_1droprate + \beta_2DFC$]
   
+
 1. Regress GEDrate on droprate as well as the interaction term between DFC and Subgroup 
 $\widehat{GEDrate} = \alpha + \beta_1droprate + \beta_2DFC + \beta_3DFC*Subgroup$
 
@@ -990,8 +1018,8 @@ summary(mod4)
 ```
 ---
 # Better!
-```{r, eval=F}
-stargazer(mod3, mod4, type = "text", out = "output/modcompare.html")
+```{r}
+stargazer(mod3, mod4, type = "text", out = "modcompare.html")
 ```
 
 ---
@@ -1080,41 +1108,55 @@ class: middle
 
 + Usually, there are a few routes to your solution
 ---
+
+class: middle
+
 ## Posts (try to find the most recent)
 
-```{r echo=FALSE, fig.height=8}
+```{r echo=FALSE, dpi=200, fig.align="center"}
 knitr::include_graphics("google.jpg")
 ```
 
 ---
+
+class: middle
+
 ## Upvotes (Good Question)
 
-```{r echo=FALSE, fig.height=8}
+```{r echo=FALSE, dpi=200, fig.align="center"}
 knitr::include_graphics("stackq.jpg")
 ```
 
 ---
+class: middle
+
 
 ***Answers (which one has the most upvotes? Which one matches)***
 
-```{r echo=FALSE, fig.height=8}
+```{r echo=FALSE, dpi=200, fig.align="center"}
 knitr::include_graphics("upvoteold.jpg")
 ```
 
 ---
+class: middle
+
+
 ***People liked the answer from the previous slide but it's old, might be a solution: Scroll through non-featured***
-```{r echo=FALSE,  fig.height=8}
+```{r echo=FALSE,  dpi=200, fig.align="center"}
 knitr::include_graphics("scroll.jpg")
 ```
 ---
 
+class: middle
+
 ***A featured new answer, but not as many upvotes! A solution and link!***
-```{r echo=FALSE, fig.height=8}
+```{r echo=FALSE, dpi=200, fig.align="center"}
 knitr::include_graphics("newgood.jpg")
 ```
 ---
 
-Class: middle
+class: middle
+
 ## Github
 
 + All R packages that are on `CRAN` have to be posted on Github

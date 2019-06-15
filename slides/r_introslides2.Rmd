@@ -1034,8 +1034,9 @@ head(recodeparty) %>%
 # Challenge, fct_recode()
 
 1. Using fct_recode with the `mpg` data, collapse categories so that there are only two categories in the variable, cyl2:
-  +`"small"` for 4 and 5 cylinder, 
-  + `"Large"`, for 6 and 8 cylinders.  
+
+  + `small` for 4 and 5 cylinder, 
+  + `Large`, for 6 and 8 cylinders.  
 
 ---
 # Solution

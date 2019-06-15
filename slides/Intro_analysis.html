@@ -498,7 +498,9 @@ class: middle
 1. `?ggplot2::geom_smooth`
 ]
 ---
-class: middle 
+class: middle, center
+
+## Building a Plot
 
 `ggplot(data=state16d, `
 --
@@ -519,7 +521,7 @@ ggplot(data=state16d,
          geom_smooth(method = lm) 
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-12-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Logic of ggplot2
@@ -547,7 +549,7 @@ ggplot(data=state16d,
   geom_histogram()
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-13-1.png" width="360" /&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -573,6 +575,12 @@ plot1 &lt;- ggplot(data=state16d,
  * These questions are modified versions of the ones found in _R for Data Science_
 ---
 
+
+```r
+plot1 &lt;- ggplot(data=state16d, 
+                aes(x=droprate, y=GEDrate)) + 
+         geom_point(aes(color=GEDrate &gt;.3))
+```
 
 ---
 # Challenge: Aesthetics
@@ -619,7 +627,7 @@ plot2 &lt;- state16 %&gt;%
 plot2
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-17-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -644,7 +652,7 @@ plot3 &lt;- ggplot(graphdata2,
 plot3
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-18-1.png" width="504" height="40%" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-18-1.png" height="40%" /&gt;
 
 ---
 # Challenge: Facets
@@ -677,7 +685,7 @@ plot5 &lt;- ggplot(graphdata3,
 plot4
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-20-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Plot 5
@@ -686,7 +694,7 @@ plot4
 plot5
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-21-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 ---
 class: middle
 # What happens when you replace facet_wrap with facet_grid?
@@ -705,7 +713,7 @@ plot6 &lt;- ggplot(graphdata3,
 plot6
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
 
 ---
 class: middle 
@@ -743,7 +751,7 @@ plot7 &lt;- ggplot(graphdata3,
 plot7
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-24-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -778,7 +786,7 @@ ggplot(graphdata4) +
 *                  fill="red"))
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-26-1.png" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -790,7 +798,7 @@ ggplot(graphdata4,
 *      geom_boxplot()
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-27-1.png" width="432" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -820,7 +828,7 @@ plotcorr &lt;- ggplot(graphdata4,
 plotcorr
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-29-1.png" width="504" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 ## ggplot2 Labels
@@ -833,13 +841,13 @@ plotcorr
 ```r
 plotcorr &lt;- plotcorr + 
 * labs(y="Cohort Graduation Rate",
-       x= "Cohort Dropout Rate", 
-       title = "Relationship between hs grad rates and dropout rates")
+  x= "Cohort Dropout Rate", 
+  title = "Relationship between hs grad rates and dropout rates")
 
 plotcorr
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-30-1.png" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
 ---
 ### Challenge: Using labs, 
 
@@ -855,14 +863,14 @@ plotcorr &lt;- ggplot(graphdata4,
   geom_point(aes(color=Subgroup)) + 
   facet_grid(DFC~Subgroup) +
 * labs(y="Cohort Graduation Rate",
-       x= "Cohort Dropout Rate", 
-       title = "Relationship between hs grad rates and dropout rates",
-       subtitle = "As faceted by CA subgroup and charter status")
+  x= "Cohort Dropout Rate", 
+  title = "Relationship between hs grad rates and dropout rates",
+  subtitle = "As faceted by CA subgroup and charter status")
 
 plotcorr
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-31-1.png" width="288" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
 ---
 ## What about changing the legened?
 This is a good resource for more on [_**ggplot text**_](http://r-statistics.co/Complete-Ggplot2-Tutorial-Part2-Customizing-Theme-With-R-Code.html): 
@@ -873,7 +881,7 @@ plotcorr &lt;- plotcorr +
 plotcorr
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-32-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Labelling individual Cases (with GEDrates greater than 20%)
@@ -887,7 +895,7 @@ plotlab &lt;- plot1 +  geom_text(data=subset(graphdata4, GEDrate &gt;30),
 plotlab
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-33-1.png" width="360" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
 ---
 # There's much, much, much more:
 
@@ -944,7 +952,7 @@ ggsave("plot1.png", width = 20, height = 20, units = "cm")
 ```
 ---
 
-class: center
+class: middle
 # Challenge: Exporting
 
 1. Export one dataframe you made, either in csv or SPSS file format to a "wrangledata" subdirectory in your working directory
@@ -964,9 +972,12 @@ class: middle
 + We've already seen a few ways to get descriptive statistics just brute forcing it with dplyr.
 
 ---
-#### Workflow: Explore, Visualize, Describe, Model (from [https://r4ds.had.co.nz/explore-intro.html(https://r4ds.had.co.nz/explore-intro.html)])
 
-&lt;img src="datasciexp.png" width="230" /&gt;
+class: middle
+
+#### Workflow: Explore, Visualize, Describe, Model 
+
+&lt;img src="datasciexp.png" width="248" /&gt;
 ---
 ## An easy way to get descriptives
 + Remember `summary()`
@@ -1024,54 +1035,6 @@ summary(state16d$NumGraduates)
 ##    11.0   119.0   336.0   824.9  1021.0 26654.0      32
 ```
 
-```r
-sumstat
-```
-
-```
-##      CDS                Name             AggLevel        
-##  Length:493         Length:493         Length:493        
-##  Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character  
-##                                                          
-##                                                          
-##                                                          
-##                                                          
-##      DFC              Subgroup         Subgrouptype      
-##  Length:493         Length:493         Length:493        
-##  Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character  
-##                                                          
-##                                                          
-##                                                          
-##                                                          
-##    NumCohort        NumGraduates      NumDropouts        gradrate     
-##  Min.   :   11.0   Min.   :   11.0   Min.   :  11.0   Min.   :  0.00  
-##  1st Qu.:  134.0   1st Qu.:  119.0   1st Qu.:  25.0   1st Qu.: 84.21  
-##  Median :  372.0   Median :  336.0   Median :  49.0   Median : 90.91  
-##  Mean   :  922.1   Mean   :  824.9   Mean   : 106.7   Mean   : 83.38  
-##  3rd Qu.: 1108.8   3rd Qu.: 1021.0   3rd Qu.: 115.0   3rd Qu.: 94.81  
-##  Max.   :34472.0   Max.   :26654.0   Max.   :4738.0   Max.   :100.00  
-##  NA's   :19        NA's   :32        NA's   :184                      
-##     droprate        GEDrate       
-##  Min.   : 0.00   Min.   : 0.0000  
-##  1st Qu.: 2.90   1st Qu.: 0.0000  
-##  Median : 5.50   Median : 0.0000  
-##  Mean   :10.21   Mean   : 0.2079  
-##  3rd Qu.:10.00   3rd Qu.: 0.0000  
-##  Max.   :81.10   Max.   :15.7000  
-## 
-```
-
-```r
-sum1
-```
-
-```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-##    11.0   119.0   336.0   824.9  1021.0 26654.0      32
-```
-
 + Both give us NAs, which is convenient
 
 + Can also build from scratch using xtable
@@ -1088,7 +1051,8 @@ sum1
 + `Stargazer` will format your regression output (as we'll see)
 
 + For writing in word
-  + I recommend html output, because you can open it with Excel and edit or open in webbrowser and copy-paste into spreadsheet
+  + I recommend html output
+  because you can open it with Excel and edit or open in webbrowser and copy-paste into spreadsheet
   + Can also output to Latex
 
 + Stargazer takes as argument the data (or the data subset), the way to output the data, and many others (see ?Stargazer)
@@ -1180,6 +1144,8 @@ class: middle
 
 + What happens?
 
+---
+
 
 ```r
 library(psych)
@@ -1218,6 +1184,9 @@ Class: middle
 + You can also use `str(list_name)`
 
 ---
+
+Class: middle
+
 # Examples
 
 + A list can contain other data structures.
@@ -1240,6 +1209,8 @@ descriptab[[1]]
 + No shortcut, here, just have to read the documentation
 
 ---
+
+Class: middle
 
 # Wrapping up descriptives
 
@@ -1267,8 +1238,9 @@ We'll look at two main statistical tools, today...
 + Other options include paired sample t.test, different alternative hypotheses
 
 ---
+Class: middle
 
-# `t tests`
+## `t tests`
 + t-tests in R are run simply by using `t.test()`
 
 + `?t.test`, you'll want "stats::t.test"
@@ -1291,12 +1263,12 @@ head(testscores)
 
 ```
 ##      NYCtestscore LAtestscore
-## [1,]     1.606440    4.905530
-## [2,]     2.087384    2.978927
-## [3,]     1.467351    3.753018
-## [4,]     1.926597    2.610392
-## [5,]     1.111528    2.409950
-## [6,]     2.655644    3.001703
+## [1,]     2.348236    3.515105
+## [2,]     2.504161    2.789979
+## [3,]     2.446486    3.689366
+## [4,]     2.999382    3.876570
+## [5,]     3.260279    3.249407
+## [6,]     4.143504    3.732844
 ```
 
 
@@ -1317,15 +1289,19 @@ mod1
 ## 	Welch Two Sample t-test
 ## 
 ## data:  NYCtestscore and LAtestscore
-## t = -21.95, df = 1997.8, p-value &lt; 2.2e-16
+## t = -22.703, df = 1998, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0737072 -0.8975787
+##  -1.0819726 -0.9099083
 ## sample estimates:
 ## mean of x mean of y 
-##  2.000990  2.986633
+##   1.99612   2.99206
 ```
 ---
+
+class: middle
+
+
 ## Easier, using a formula,, but only applicable using two-sample test
 + If your factor is in one column (such as charter/not charter in DFC)
 
@@ -1337,7 +1313,8 @@ mod1
 ---
 ## The Broom Package
 + Also, check out the `broom` package and the function `tidy`
---
+
+
 
 ```r
 library(broom)
@@ -1357,19 +1334,25 @@ tidy(mod2)
 
 
 ---
-## Linear regression
 
-+ Linear regression in R is also very simple
+class: middle 
+## Linear regression
++ The form is `lm(outcome ~ covariate1 + covariat2...)`
+  + Where lm() is the regression function
 
 + You can use stargazer to output nice tables
 
 + You can easily check assumptions, visually
 
-+ The form is `lm(outcome ~ covariate1 + covariat2...)`
-
 + You don't need to dummy out categorical variables as long as they're factors (or, at least, character)
 
-+ You can interact variables within the equation with `*`, `lm(outcome ~ covariate1 + covariate2 + covariate1* covariat2)` or `:` `lm(outcome ~ covariate1 + covariate2 + covariate1: covariat2)`
++ You can interact variables within the equation with `*`, 
+
+`lm(outcome ~ covariate1 + covariate2 + covariate1* covariat2)` 
+
+or `:` 
+
+`lm(outcome ~ covariate1 + covariate2 + covariate1: covariat2)`
 ---
 # Linear Regression
 `\(\widehat{gradraterate} = \alpha + \beta_1DFC\)`
@@ -1409,18 +1392,21 @@ summary(modlm1)
 plot(modlm1)
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-49-1.png" width="216" /&gt;&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-49-2.png" width="216" /&gt;&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-49-3.png" width="216" /&gt;&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-49-4.png" width="216" /&gt;
+![](Intro_analysis_files/figure-html/unnamed-chunk-49-1.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-49-2.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-49-3.png)&lt;!-- --&gt;![](Intro_analysis_files/figure-html/unnamed-chunk-49-4.png)&lt;!-- --&gt;
 
 ---
+class: middle
+
 # Challenge
 
 1.  Run a regression in which you regress GEDrate on droprate and DFC using state16 data:
-`\(\widehat{GEDrate} = \alpha +\beta_1droprate + \beta_2DFC\)`
 
   + filter subgrouptype="All"
   + filter AggLevel!="T"
   
+.center[$\widehat{GEDrate} = \alpha +\beta_1droprate + \beta_2DFC$]
   
+
 1. Regress GEDrate on droprate as well as the interaction term between DFC and Subgroup 
 `\(\widehat{GEDrate} = \alpha + \beta_1droprate + \beta_2DFC + \beta_3DFC*Subgroup\)`
 
@@ -1508,7 +1494,70 @@ summary(mod4)
 # Better!
 
 ```r
-stargazer(mod3, mod4, type = "text", out = "output/modcompare.html")
+stargazer(mod3, mod4, type = "text", out = "modcompare.html")
+```
+
+```
+## 
+## =======================================================================
+##                                     Dependent variable:                
+##                     ---------------------------------------------------
+##                                           GEDrate                      
+##                                (1)                       (2)           
+## -----------------------------------------------------------------------
+## droprate                    0.003***                  0.003***         
+##                              (0.001)                   (0.001)         
+##                                                                        
+## DFCY                         -0.046                    -0.059          
+##                              (0.031)                   (0.077)         
+##                                                                        
+## SubgroupEL                                             -0.026          
+##                                                        (0.051)         
+##                                                                        
+## SubgroupFEM                                            -0.086*         
+##                                                        (0.050)         
+##                                                                        
+## SubgroupMAL                                             0.052          
+##                                                        (0.049)         
+##                                                                        
+## SubgroupMIG                                           -0.183***        
+##                                                        (0.065)         
+##                                                                        
+## SubgroupSD                                              0.011          
+##                                                        (0.049)         
+##                                                                        
+## SubgroupSE                                             -0.092*         
+##                                                        (0.050)         
+##                                                                        
+## DFCY:SubgroupEL                                        -0.075          
+##                                                        (0.113)         
+##                                                                        
+## DFCY:SubgroupFEM                                        0.041          
+##                                                        (0.110)         
+##                                                                        
+## DFCY:SubgroupMAL                                        0.001          
+##                                                        (0.109)         
+##                                                                        
+## DFCY:SubgroupMIG                                       -0.008          
+##                                                        (0.162)         
+##                                                                        
+## DFCY:SubgroupSD                                        -0.035          
+##                                                        (0.109)         
+##                                                                        
+## DFCY:SubgroupSE                                         0.130          
+##                                                        (0.111)         
+##                                                                        
+## Constant                    0.146***                  0.179***         
+##                              (0.017)                   (0.036)         
+##                                                                        
+## -----------------------------------------------------------------------
+## Observations                 22,239                    22,239          
+## R2                            0.001                     0.002          
+## Adjusted R2                   0.001                     0.002          
+## Residual Std. Error    1.866 (df = 22236)        1.866 (df = 22224)    
+## F Statistic         13.181*** (df = 2; 22236) 3.729*** (df = 14; 22224)
+## =======================================================================
+## Note:                                       *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01
 ```
 
 ---
@@ -1525,7 +1574,7 @@ ggplot(data=state16_2,
        y = "GED Rate (%)")
 ```
 
-&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-53-1.png" width="504" style="display: block; margin: auto;" /&gt;
+&lt;img src="Intro_analysis_files/figure-html/unnamed-chunk-53-1.png" style="display: block; margin: auto;" /&gt;
 ---
 
 class: middle
@@ -1599,31 +1648,45 @@ class: middle
 
 + Usually, there are a few routes to your solution
 ---
+
+class: middle
+
 ## Posts (try to find the most recent)
 
-&lt;img src="google.jpg" width="586" /&gt;
+&lt;img src="google.jpg" width="633" style="display: block; margin: auto;" /&gt;
 
 ---
+
+class: middle
+
 ## Upvotes (Good Question)
 
-&lt;img src="stackq.jpg" width="585" /&gt;
+&lt;img src="stackq.jpg" width="632" style="display: block; margin: auto;" /&gt;
 
 ---
+class: middle
+
 
 ***Answers (which one has the most upvotes? Which one matches)***
 
-&lt;img src="upvoteold.jpg" width="551" /&gt;
+&lt;img src="upvoteold.jpg" width="595" style="display: block; margin: auto;" /&gt;
 
 ---
+class: middle
+
+
 ***People liked the answer from the previous slide but it's old, might be a solution: Scroll through non-featured***
-&lt;img src="scroll.jpg" width="549" /&gt;
+&lt;img src="scroll.jpg" width="593" style="display: block; margin: auto;" /&gt;
 ---
+
+class: middle
 
 ***A featured new answer, but not as many upvotes! A solution and link!***
-&lt;img src="newgood.jpg" width="597" /&gt;
+&lt;img src="newgood.jpg" width="645" style="display: block; margin: auto;" /&gt;
 ---
 
-Class: middle
+class: middle
+
 ## Github
 
 + All R packages that are on `CRAN` have to be posted on Github
