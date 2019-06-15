@@ -228,11 +228,31 @@ x <- c(1,2,3,4,5)
 
 mean(x)
 ```
-+ In R speak, the particular thing that goes in the parentheses of a function, such as `mean` is called an <mark>argument</mark>
+]
+---
 
-+ R functions often take more than one argument
+## Some of the language
 
-+ Because of <mark>code completion</mark>, you can see what arguments a function takes as you start typing]
+.pull-left[
+
++ In R speak, the particular thing that goes in the parentheses of a function, such as `mean(x)` is called an <mark>argument</mark>
+
++ R functions often "take more than one argument"
+
++ Because of <mark>code completion</mark>, you can see what arguments a function takes as you start typing.R is making suggestions. 
+
++ Hit tab to select these options!
+]
+
+.pull-right[Don't worry about what this means just yet, but:
++ `ggplot()` is a function, it performs some operation
+
++ It takes several arguments such as `ggplot(data=df, aes(x=xvar, y=yvar))`
+
++ Note: `df` is often R standin speak for a hypothetical `dataframe`, and R word for dataset
+
+]
+
 ---
 
 class: middle
