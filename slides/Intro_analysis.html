@@ -1266,12 +1266,12 @@ head(testscores)
 
 ```
 ##      NYCtestscore LAtestscore
-## [1,]     1.212113    3.474635
-## [2,]     2.161850    1.734149
-## [3,]     1.604860    4.153114
-## [4,]     1.938635    2.925892
-## [5,]     1.438625    4.482339
-## [6,]     1.162177    1.314220
+## [1,]    0.4158010   2.8133630
+## [2,]    1.1428115   2.2576719
+## [3,]    1.0700491   0.5685102
+## [4,]    0.3001898   1.9599454
+## [5,]    0.6109190   3.1117268
+## [6,]    1.6391065   3.1373676
 ```
 
 
@@ -1292,13 +1292,13 @@ mod1
 ## 	Welch Two Sample t-test
 ## 
 ## data:  NYCtestscore and LAtestscore
-## t = -21.9, df = 1997.5, p-value &lt; 2.2e-16
+## t = -21.471, df = 1998, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0573747 -0.8835624
+##  -1.0502472 -0.8744448
 ## sample estimates:
 ## mean of x mean of y 
-##  2.053248  3.023716
+##  2.023123  2.985469
 ```
 ---
 
@@ -1713,7 +1713,8 @@ class: middle
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "agate",
-"highlightLines": true
+"highlightLines": true,
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

@@ -10,6 +10,8 @@ output:
       titleSlideClass: ["center", "middle", "my-title"]
       highlightStyle: agate
       highlightLines: true
+      countIncrementalSlides: false
+
 
 
 ---

@@ -11,6 +11,8 @@ output:
       titleSlideClass: ["left", "middle", "inverse"]
       highlightStyle: agate
       highlightLines: true
+      countIncrementalSlides: false
+
         
 ---
 

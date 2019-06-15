@@ -105,8 +105,8 @@ getwd()
 
 
 ---
-<div id="htmlwidget-5fa14fe198e3695fe289" style="width:576px;height:576px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5fa14fe198e3695fe289">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0dbe8d12c29814ae4618" style="width:576px;height:576px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0dbe8d12c29814ae4618">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ---
 
 ## Read in the data, the cheating way...
@@ -1431,7 +1431,8 @@ sum(table(mpg2$cat.cyl))
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "agate",
-"highlightLines": true
+"highlightLines": true,
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
