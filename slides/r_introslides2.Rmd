@@ -10,7 +10,7 @@ output:
       titleSlideClass: ["center", "middle", "my-title"]
       highlightStyle: agate
       highlightLines: true
-      countIncrementalSlides: false
+      countIncrementalSlides: true
 
 
 
@@ -18,17 +18,17 @@ output:
 
 class: middle
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 options(htmltools.dir.version = FALSE)
 library(DiagrammeR)
 ```
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
 mono_light(base_color = "#050457",
-  code_highlight_color = "#B8BE3F",
+  code_highlight_color = "#686862",
   link_color = "#4C4D41",
-  code_inline_background_color = "#A6A6BA",
-  code_inline_color = "#09090A",
+  #code_inline_background_color = "#A6A6BA",
+  code_inline_color = "#002BDC",
   code_font_google   = google_font("Droid Mono"),
   background_image = "methodsu.jpg",
   background_size = "15%",
@@ -118,7 +118,7 @@ knitr::include_graphics("directory.jpg")
 
 
 ---
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=8, fig.width=8}
+```{r echo=FALSE, fig.align="center", message=FALSE, warning=FALSE, fig.height=8, fig.width=8}
 grViz("
 digraph boxes_and_circles { # several 'node' statements
   node [shape = box,
@@ -800,7 +800,7 @@ View(twosigma)
 
 ```{r, tidy=TRUE}
 #harder
-twosigma <- state16d %>% 
+twosigma <- state16d %>%  
   mutate(StandCohort=
            (NumCohort-mean(NumCohort, na.rm =T))/sd(NumCohort, 
                                          na.rm=T))%>%

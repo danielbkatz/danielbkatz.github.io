@@ -10,7 +10,7 @@ output:
       titleSlideClass: ["center", "middle", "my-title"]
       highlightStyle: agate
       highlightLines: true
-      countIncrementalSlides: false
+      countIncrementalSlides: true
 
 
 
@@ -26,10 +26,10 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(xaringanthemer)
 library(xaringanthemer)
 mono_light(base_color = "#050457",
-  code_highlight_color = "#B8BE3F",
+  code_highlight_color = "#686862",
   link_color = "#4C4D41",
-  code_inline_background_color = "#A6A6BA",
-  code_inline_color = "#09090A",
+  #code_inline_background_color = "#002BDC",
+  code_inline_color = "#002BDC",
   code_font_google   = google_font("Droid Mono"),
   background_image = "methodsu.jpg",
   background_size = "15%",
@@ -99,7 +99,7 @@ names(co16_rem)
 ## The details
 + `group_by()` groups data together by some factor (such as class participation)
 
-+ `summarize` performs some operation on the grouped data, using summary statistics. 
++ `summarize()` performs some operation on the grouped data, using summary statistics. 
 
 + This is often useful for carrying out summary statistics-type analysis
 
@@ -628,7 +628,7 @@ plotlab
 
 + To export data from R is quite simple, but remember our directories! 
 
-```{r echo=FALSE, out.width = '90%'}
+```{r echo=FALSE, out.width = '90%', fig.align= "center"}
 knitr::include_graphics("directory.jpg")
 ```
 
@@ -696,7 +696,7 @@ class: middle
 
 #### Workflow: Explore, Visualize, Describe, Model 
 
-```{r echo=FALSE, dpi=200, fig.width=9, fig.height=9}
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("datasciexp.png")
 ```
 ---
@@ -1118,7 +1118,7 @@ class: middle
 
 ## Posts (try to find the most recent)
 
-```{r echo=FALSE, dpi=200, fig.align="center"}
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("google.jpg")
 ```
 
@@ -1128,7 +1128,7 @@ class: middle
 
 ## Upvotes (Good Question)
 
-```{r echo=FALSE, dpi=200, fig.align="center"}
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("stackq.jpg")
 ```
 
@@ -1138,7 +1138,7 @@ class: middle
 
 ***Answers (which one has the most upvotes? Which one matches)***
 
-```{r echo=FALSE, dpi=200, fig.align="center"}
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("upvoteold.jpg")
 ```
 
@@ -1147,7 +1147,7 @@ class: middle
 
 
 ***People liked the answer from the previous slide but it's old, might be a solution: Scroll through non-featured***
-```{r echo=FALSE,  dpi=200, fig.align="center"}
+```{r echo=FALSE,  fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("scroll.jpg")
 ```
 ---
@@ -1155,7 +1155,7 @@ knitr::include_graphics("scroll.jpg")
 class: middle
 
 ***A featured new answer, but not as many upvotes! A solution and link!***
-```{r echo=FALSE, dpi=200, fig.align="center"}
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
 knitr::include_graphics("newgood.jpg")
 ```
 ---

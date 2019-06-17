@@ -146,7 +146,7 @@ names(co16_rem)
 ## The details
 + `group_by()` groups data together by some factor (such as class participation)
 
-+ `summarize` performs some operation on the grouped data, using summary statistics. 
++ `summarize()` performs some operation on the grouped data, using summary statistics. 
 
 + This is often useful for carrying out summary statistics-type analysis
 
@@ -913,7 +913,7 @@ plotlab
 
 + To export data from R is quite simple, but remember our directories! 
 
-&lt;img src="directory.jpg" width="90%" /&gt;
+&lt;img src="directory.jpg" width="90%" style="display: block; margin: auto;" /&gt;
 
 + We want to put any data we've cleaned in a folder called something like, "cleaneddata" and give it a name so we know what's in there. 
 ---
@@ -980,7 +980,7 @@ class: middle
 
 #### Workflow: Explore, Visualize, Describe, Model 
 
-&lt;img src="datasciexp.png" width="248" /&gt;
+&lt;img src="datasciexp.png" width="689" style="display: block; margin: auto;" /&gt;
 ---
 ## An easy way to get descriptives
 + Remember `summary()`
@@ -1266,12 +1266,12 @@ head(testscores)
 
 ```
 ##      NYCtestscore LAtestscore
-## [1,]    0.4158010   2.8133630
-## [2,]    1.1428115   2.2576719
-## [3,]    1.0700491   0.5685102
-## [4,]    0.3001898   1.9599454
-## [5,]    0.6109190   3.1117268
-## [6,]    1.6391065   3.1373676
+## [1,]     2.454733    3.829157
+## [2,]     2.183003    3.642483
+## [3,]     2.877160    3.791642
+## [4,]     1.489961    4.189516
+## [5,]     3.076432    2.272569
+## [6,]     2.061394    1.464815
 ```
 
 
@@ -1292,13 +1292,13 @@ mod1
 ## 	Welch Two Sample t-test
 ## 
 ## data:  NYCtestscore and LAtestscore
-## t = -21.471, df = 1998, p-value &lt; 2.2e-16
+## t = -22.192, df = 1990.8, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.0502472 -0.8744448
+##  -1.1014208 -0.9225595
 ## sample estimates:
 ## mean of x mean of y 
-##  2.023123  2.985469
+##  2.005141  3.017131
 ```
 ---
 
@@ -1656,7 +1656,7 @@ class: middle
 
 ## Posts (try to find the most recent)
 
-&lt;img src="google.jpg" width="633" style="display: block; margin: auto;" /&gt;
+&lt;img src="google.jpg" width="1757" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1664,7 +1664,7 @@ class: middle
 
 ## Upvotes (Good Question)
 
-&lt;img src="stackq.jpg" width="632" style="display: block; margin: auto;" /&gt;
+&lt;img src="stackq.jpg" width="1756" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle
@@ -1672,20 +1672,20 @@ class: middle
 
 ***Answers (which one has the most upvotes? Which one matches)***
 
-&lt;img src="upvoteold.jpg" width="595" style="display: block; margin: auto;" /&gt;
+&lt;img src="upvoteold.jpg" width="1652" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle
 
 
 ***People liked the answer from the previous slide but it's old, might be a solution: Scroll through non-featured***
-&lt;img src="scroll.jpg" width="593" style="display: block; margin: auto;" /&gt;
+&lt;img src="scroll.jpg" width="1647" style="display: block; margin: auto;" /&gt;
 ---
 
 class: middle
 
 ***A featured new answer, but not as many upvotes! A solution and link!***
-&lt;img src="newgood.jpg" width="645" style="display: block; margin: auto;" /&gt;
+&lt;img src="newgood.jpg" width="1792" style="display: block; margin: auto;" /&gt;
 ---
 
 class: middle
@@ -1714,7 +1714,7 @@ class: middle
 <script>var slideshow = remark.create({
 "highlightStyle": "agate",
 "highlightLines": true,
-"countIncrementalSlides": false
+"countIncrementalSlides": true
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

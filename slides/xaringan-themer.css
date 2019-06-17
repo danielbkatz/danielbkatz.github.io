@@ -56,9 +56,9 @@ h1, h2, h3 {
 }
 .remark-inline-code {
   font-size: 1em;
-  color: #09090A;
-  background-color: #A6A6BA;
-  padding: 2px;
+  color: #002BDC;
+  
+  
 }
 .remark-slide-number {
   color: #050457;
@@ -78,7 +78,7 @@ a, a > code {
   font-size: 0.9em;
 }
 .remark-code-line-highlighted {
-  background-color: #E6E7DC;
+  background-color: #686862;
 }
 .inverse {
   background-color: #050457;
