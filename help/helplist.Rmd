@@ -9,20 +9,59 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Key R and tidyverse links
+1. Everything you'll ever need to know about R from StackOverflow: [https://stackoverflow.com/tags/r/info](https://stackoverflow.com/tags/r/info)
+
+1. Everything you'll ever need to know about using the tidyverse (continually updated). **R for Data Science** by Grolemund and Wickham: [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/)
+
+1. Generating reports/writing papers with R (so your tables, plots, etc can be inline!, don't have to copy-paste, etc)[https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
+
 1. General R tutorial: [https://robchavez.github.io/datascience_gallery/html_only/general_programming.html](https://robchavez.github.io/datascience_gallery/html_only/general_programming.html)
 
-2. LearnR: [https://rstudio.github.io/learnr/](https://rstudio.github.io/learnr/)
+1. LearnR: [https://rstudio.github.io/learnr/](https://rstudio.github.io/learnr/)
 
-3. Intro to dplyr and tidyr: [https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr)
+1. Intro to dplyr and tidyr: [https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr)
 
-4. Tidy data in action: [http://varianceexplained.org/r/tidy-tuesday-college-major/](http://varianceexplained.org/r/tidy-tuesday-college-major/)
+1. Tidy data in action: [http://varianceexplained.org/r/tidy-tuesday-college-major/](http://varianceexplained.org/r/tidy-tuesday-college-major/)
 
-5. Getting Summary Statistics: 
+1. Some great tutorials on basic to advanced uses of dplyr verbs (inlcuding conditionals): [https://suzan.rbind.io/categories/tutorial/](https://suzan.rbind.io/categories/tutorial/)
 
-6. Some great tutorials on basic to advanced uses of dplyr verbs (inlcuding conditionals): [https://suzan.rbind.io/categories/tutorial/](https://suzan.rbind.io/categories/tutorial/)
+1. Data wrangling cheat sheets [https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
-7. Visualizing Interaction Effects with ggplot2: [https://sebastiansauer.github.io/vis_interaction_effects/](https://sebastiansauer.github.io/vis_interaction_effects/)
+1. Class with tutorials: http://stat545.com/topics.html
+  + Dealing with factors in R [http://stat545.com/block029_factors.html](http://stat545.com/block029_factors.html)
+  
+## Basic summary statistics/descriptive Statistics
+1. Getting Summary Statistics: [https://cran.r-project.org/web/packages/qwraps2/vignettes/summary-statistics.html](https://cran.r-project.org/web/packages/qwraps2/vignettes/summary-statistics.html)
+  + Also, super helpful: [https://sejdemyr.github.io/r-tutorials/basics/tables-in-r/](https://sejdemyr.github.io/r-tutorials/basics/tables-in-r/)
+  + Additionally: [https://stats.idre.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/](https://stats.idre.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/)
+  + *Making and Exporting Nice Tables*: [https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf](https://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf)
+  
+1. Personality Project Guide to Statistics with R: [http://personality-project.org/r/r.guide.html](http://personality-project.org/r/r.guide.html)
 
-8. All the colors in R: [https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf)
+## Data Visualization
+1. Workshop from Harvard [https://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html](https://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)
 
-9. Personality Project Guide to Statistics with R: [http://personality-project.org/r/r.guide.html](http://personality-project.org/r/r.guide.html)
+1. Nice ggplot tutorial by plot-type [http://t-redactyl.io/tag/ggplot2.html](http://t-redactyl.io/tag/ggplot2.html)
+
+1. Visualizing Interaction Effects with ggplot2: [https://sebastiansauer.github.io/vis_interaction_effects/](https://sebastiansauer.github.io/vis_interaction_effects/)
+
+1. All the colors in R: [https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf](https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf)
+
+## More advanced uses of R
+1. Iteration/looping over different data structures in R: 
+https://www.datacamp.com/community/tutorials/r-tutorial-apply-family
+
+1. On environments in advanced R, by Hadley Wickham: [http://adv-r.had.co.nz/Environments.html](http://adv-r.had.co.nz/Environments.html)
+
+1. Better project workflow/best practice: [https://jennybc.github.io/wtf-2019-rsc/](https://jennybc.github.io/wtf-2019-rsc/)
+
+1. Using Git/Github for project management, version control, and collaboration [https://happygitwithr.com/](https://happygitwithr.com/)
+
+## More statistics:
+1. Statistics/Analysis with R: [https://learningstatisticswithr.com/lsr-0.6.pdf](https://learningstatisticswithr.com/lsr-0.6.pdf)
+
+1. Probability Distributions in R:
+[http://seankross.com/notes/dpqr/](http://seankross.com/notes/dpqr/)
+
+1. Basic Simulation in R: [http://had.co.nz/stat480/lectures/15-simulation.pdf](http://had.co.nz/stat480/lectures/15-simulation.pdf)
