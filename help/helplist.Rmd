@@ -14,12 +14,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Everything you'll ever need to know about using the tidyverse (continually updated). **R for Data Science** by Grolemund and Wickham: [https://r4ds.had.co.nz/](https://r4ds.had.co.nz/)
 
-1. Generating reports/writing papers with R (so your tables, plots, etc can be inline!, don't have to copy-paste, etc)[https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
+1. Generating reports/writing papers with RMarkdown (so your tables, plots, etc can be inline!, don't have to copy-paste, etc)[https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)
 
 1. General R tutorial: [https://robchavez.github.io/datascience_gallery/html_only/general_programming.html](https://robchavez.github.io/datascience_gallery/html_only/general_programming.html)
 
 1. LearnR: [https://rstudio.github.io/learnr/](https://rstudio.github.io/learnr/)
 
+1. Class with tutorials: http://stat545.com/topics.html
+  + Dealing with factors in R [http://stat545.com/block029_factors.html](http://stat545.com/block029_factors.html)
+
+## More 
 1. Intro to dplyr and tidyr: [https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr](https://datacarpentry.org/R-ecology-lesson/03-dplyr.html#what_are_dplyr_and_tidyr)
 
 1. Tidy data in action: [http://varianceexplained.org/r/tidy-tuesday-college-major/](http://varianceexplained.org/r/tidy-tuesday-college-major/)
@@ -28,8 +32,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Data wrangling cheat sheets [https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
-1. Class with tutorials: http://stat545.com/topics.html
-  + Dealing with factors in R [http://stat545.com/block029_factors.html](http://stat545.com/block029_factors.html)
+
   
 ## Basic summary statistics/descriptive Statistics
 1. Getting Summary Statistics: [https://cran.r-project.org/web/packages/qwraps2/vignettes/summary-statistics.html](https://cran.r-project.org/web/packages/qwraps2/vignettes/summary-statistics.html)
