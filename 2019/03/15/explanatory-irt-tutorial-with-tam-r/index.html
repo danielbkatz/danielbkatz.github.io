@@ -1,78 +1,38 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
+<html lang="en-us"><head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.54.0" />
-
-
-<title>Explanatory IRT tutorial with the TAM package in R - Daniel Katz</title>
-<meta property="og:title" content="Explanatory IRT tutorial with the TAM package in R - Daniel Katz">
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="https://danielbkatz.github.io/css/fonts.css" media="all">
-<link rel="stylesheet" href="https://danielbkatz.github.io/css/main.css" media="all">
-
-
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <nav class="nav">
-  <a href="https://danielbkatz.github.io/" class="nav-logo">
-    <img src="https://danielbkatz.github.io/images/%3cnil%3e"
-         width=""
-         height=""
-         alt="">
-  </a>
-
-  <ul class="nav-links">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Explanatory IRT tutorial with the TAM package in R - Daniel Katz</title>
+    <base href="https://danielbkatz.github.io/">
     
-    <li><a href="https://danielbkatz.github.io/post/">Posts</a></li>
     
-    <li><a href="https://danielbkatz.github.io/about/">About</a></li>
     
-    <li><a href="https://danielbkatz.github.io/contact/">Contact</a></li>
     
-    <li><a href="https://danielbkatz.github.io/cv/">C.V.</a></li>
-    
-    <li><a href="https://danielbkatz.github.io/presentations/">Presentations</a></li>
-    
-  </ul>
-</nav>
-
-      </header>
-
-
-<main class="content" role="main">
-
-  <article class="article">
-    
-    <span class="article-duration">11 min read</span>
-    
-
-    <h1 class="article-title">Explanatory IRT tutorial with the TAM package in R</h1>
-
-    
-    <span class="article-date">2019-03-15</span>
-    
-
-    <div class="article-content">
-      
+    <link rel="stylesheet" href="https://danielbkatz.github.io/css/main.min.d1a35de747f32f38def9b85df0ddc1ae0d95ca476bb14c10d484610ddcc1acda.css">
+</head>
+<body><header>
+    <nav class="breadcrumb">
+        
+        <a href="https://danielbkatz.github.io/post/">/Posts</a>
+        
+        <a href="https://danielbkatz.github.io/about/">/About</a>
+        
+        <a href="https://danielbkatz.github.io/contact/">/Contact</a>
+        
+        <a href="https://danielbkatz.github.io/cv/">/C.V.</a>
+        
+        <a href="https://danielbkatz.github.io/presentations/">/Presentations</a>
+        
+    </nav>
+</header>
+<div class="container">
+<main id="single">
+    <h1>Explanatory IRT tutorial with the TAM package in R</h1>
+    <div class="post-date">
+<time datetime="2019-03-15T00:00:00&#43;0000">15 Mar 2019, 00:00</time>
+</div>
+    <section class="post-content">
+        
 
 
 <div id="get-the-data-read-in" class="section level3">
@@ -183,7 +143,7 @@ head(as.data.frame(mod1$xsi))</code></pre>
 ## Math.6 -0.1907538 0.05419563</code></pre>
 <pre class="r"><code>#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)</code></pre>
-<pre><code>## [1] 0.9577194 1.0289671</code></pre>
+<pre><code>## [1] 0.9593425 1.0308965</code></pre>
 <pre class="r"><code>#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))</code></pre>
 <pre><code>## [1] 0.1032796</code></pre>
@@ -691,44 +651,18 @@ kable(lltm$xsi.facets)</code></pre>
 </div>
 </div>
 
-    </div>
-  </article>
-
-  
-
-
+    </section>
 </main>
 
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="https://danielbkatz.github.io/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="https://danielbkatz.github.io/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
-        </ul>
-      </footer>
-
-    </div>
+        </div><footer>
+    <ul class="lang-selector">
     
+</ul>
 
+    <span class="footer-text">Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a></span>
+</footer>
 
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js//highlight.min.js"></script>
-
-
-
-<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
-
-
-
-    
-<script src="https://danielbkatz.github.io/js/math-code.js"></script>
-<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-    
-  </body>
+<script src="https://danielbkatz.github.io/js/highlight.pack.13389e4e093fc0b3466287ead64c1f9fc3007d7703813a413de3f046ea09a346.js" integrity="sha256-EzieTgk/wLNGYofq1kwfn8MAfXcDgTpBPePwRuoJo0Y="></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
 </html>
-
