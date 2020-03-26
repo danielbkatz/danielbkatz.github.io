@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else</title>
     <meta charset="utf-8" />
@@ -89,7 +89,7 @@ getwd()
 ```
 
 ```
-## [1] "C:/Users/katzd/Desktop/Github/perswebsite2/static/slides"
+## [1] "C:/Users/katzd/Desktop/Github/danielbkatz.github.io/assets/Presentations/slides"
 ```
 
 ---
@@ -105,8 +105,8 @@ getwd()
 
 
 ---
-<div id="htmlwidget-251b158009adcf876c4d" style="width:576px;height:576px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-251b158009adcf876c4d">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-28071bb49f133f261f56" style="width:576px;height:576px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-28071bb49f133f261f56">{"x":{"diagram":"\ndigraph boxes_and_circles { # several \"node\" statements\n  node [shape = box,\n        fontname = Helvetica]\n  Desktop; wd; rawfiles; cleanfiles; output_files; file1; file2\n  \n  Desktop->wd wd->rawfiles wd->cleanfiles wd->output_files output_files->file1 output_files -> file2  }\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ---
 
 ## Read in the data, the cheating way...
@@ -246,19 +246,18 @@ head(co16)
 
 ```
 ## # A tibble: 6 x 19
-##      X1 CDS   Name  AggLevel DFC   Subgroup Subgrouptype NumCohort
-##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;
-## 1     1 0161~ REAL~ D        Y     All      9                   NA
-## 2     2 0161~ Impa~ D        Y     All      2                   NA
-## 3     3 0161~ Impa~ D        Y     All      9                   NA
-## 4     4 0161~ Impa~ D        Y     All      7                   NA
-## 5     5 0161~ Silv~ D        Y     All      5                   11
-## 6     6 0161~ Live~ D        Y     All      5                   27
-## # ... with 11 more variables: NumGraduates &lt;dbl&gt;, `Cohort Graduation
-## #   Rate` &lt;dbl&gt;, NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;,
-## #   NumSpecialEducation &lt;dbl&gt;, `Special Ed Completers Rate` &lt;dbl&gt;,
-## #   NumStillEnrolled &lt;dbl&gt;, `Still Enrolled Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;,
-## #   `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
+##      X1 CDS   Name  AggLevel DFC   Subgroup Subgrouptype NumCohort NumGraduates
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;
+## 1     1 0161~ REAL~ D        Y     All      9                   NA           NA
+## 2     2 0161~ Impa~ D        Y     All      2                   NA           NA
+## 3     3 0161~ Impa~ D        Y     All      9                   NA           NA
+## 4     4 0161~ Impa~ D        Y     All      7                   NA           NA
+## 5     5 0161~ Silv~ D        Y     All      5                   11           NA
+## 6     6 0161~ Live~ D        Y     All      5                   27           27
+## # ... with 10 more variables: `Cohort Graduation Rate` &lt;dbl&gt;,
+## #   NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;, NumSpecialEducation &lt;dbl&gt;,
+## #   `Special Ed Completers Rate` &lt;dbl&gt;, NumStillEnrolled &lt;dbl&gt;, `Still Enrolled
+## #   Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;, `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
 ```
 
 
@@ -560,8 +559,8 @@ nocharter
 ## # ... with 483 more rows, and 10 more variables: `Cohort Graduation
 ## #   Rate` &lt;dbl&gt;, NumDropouts &lt;dbl&gt;, `Cohort Dropout Rate` &lt;dbl&gt;,
 ## #   NumSpecialEducation &lt;dbl&gt;, `Special Ed Completers Rate` &lt;dbl&gt;,
-## #   NumStillEnrolled &lt;dbl&gt;, `Still Enrolled Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;,
-## #   `GED Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
+## #   NumStillEnrolled &lt;dbl&gt;, `Still Enrolled Rate` &lt;dbl&gt;, NumGED &lt;dbl&gt;, `GED
+## #   Rate` &lt;dbl&gt;, Year &lt;dbl&gt;
 ```
 ---
 ## "Remember our logical operators" Challenge
@@ -668,9 +667,8 @@ names(state16)
 ```
 
 ```
-## [1] "CDS"                    "Name"                  
-## [3] "NumCohort"              "NumGraduates"          
-## [5] "Cohort Graduation Rate" "NumDropouts"
+## [1] "CDS"                    "Name"                   "NumCohort"             
+## [4] "NumGraduates"           "Cohort Graduation Rate" "NumDropouts"
 ```
 
 ```r
@@ -764,9 +762,8 @@ names(state16)
 ```
 
 ```
-## [1] "CDS"          "Name"         "AggLevel"     "DFC"         
-## [5] "Subgroup"     "Subgrouptype" "NumCohort"    "NumGraduates"
-## [9] "NumDropouts"
+## [1] "CDS"          "Name"         "AggLevel"     "DFC"          "Subgroup"    
+## [6] "Subgrouptype" "NumCohort"    "NumGraduates" "NumDropouts"
 ```
 ---
 ## Adding more to select()
@@ -972,16 +969,15 @@ head(state16d[5:length(state16d)])
 
 ```
 ## # A tibble: 6 x 9
-##   Subgroup Subgrouptype NumCohort NumGraduates NumDropouts gradrate
-##   &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-## 1 All      All                312          109         148     34.9
-## 2 All      All                727          632          39     86.9
-## 3 All      All                779          749          18     96.2
-## 4 All      All                206          205          NA     99.5
-## 5 All      All                 76           37          19     48.7
-## 6 All      All               1093          979          78     89.6
-## # ... with 3 more variables: droprate &lt;dbl&gt;, GEDrate &lt;dbl&gt;,
-## #   gradrate_calc &lt;dbl&gt;
+##   Subgroup Subgrouptype NumCohort NumGraduates NumDropouts gradrate droprate
+##   &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1 All      All                312          109         148     34.9     47.4
+## 2 All      All                727          632          39     86.9      5.4
+## 3 All      All                779          749          18     96.2      2.3
+## 4 All      All                206          205          NA     99.5      0.5
+## 5 All      All                 76           37          19     48.7     25  
+## 6 All      All               1093          979          78     89.6      7.1
+## # ... with 2 more variables: GEDrate &lt;dbl&gt;, gradrate_calc &lt;dbl&gt;
 ```
 
 ---
@@ -1289,10 +1285,8 @@ table(mpg2$class)
 
 ```
 ## 
-##    2seater    compact    midsize    minivan     pickup subcompact 
-##          5         47         41         11         33         35 
-##        suv 
-##         62
+##    2seater    compact    midsize    minivan     pickup subcompact        suv 
+##          5         47         41         11         33         35         62
 ```
 
 ```r
@@ -1472,9 +1466,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -1483,7 +1503,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>An Introduction to R: Data Cleaning, Wrangling, Visualizing, and Everything Else</title>
     <meta charset="utf-8" />
@@ -995,38 +995,30 @@ summary(state16d)
 ```
 
 ```
-##      CDS                Name             AggLevel        
-##  Length:493         Length:493         Length:493        
-##  Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character  
-##                                                          
-##                                                          
-##                                                          
-##                                                          
-##      DFC              Subgroup         Subgrouptype      
-##  Length:493         Length:493         Length:493        
-##  Class :character   Class :character   Class :character  
-##  Mode  :character   Mode  :character   Mode  :character  
-##                                                          
-##                                                          
-##                                                          
-##                                                          
-##    NumCohort        NumGraduates      NumDropouts        gradrate     
-##  Min.   :   11.0   Min.   :   11.0   Min.   :  11.0   Min.   :  0.00  
-##  1st Qu.:  134.0   1st Qu.:  119.0   1st Qu.:  25.0   1st Qu.: 84.21  
-##  Median :  372.0   Median :  336.0   Median :  49.0   Median : 90.91  
-##  Mean   :  922.1   Mean   :  824.9   Mean   : 106.7   Mean   : 83.38  
-##  3rd Qu.: 1108.8   3rd Qu.: 1021.0   3rd Qu.: 115.0   3rd Qu.: 94.81  
-##  Max.   :34472.0   Max.   :26654.0   Max.   :4738.0   Max.   :100.00  
-##  NA's   :19        NA's   :32        NA's   :184                      
-##     droprate        GEDrate       
-##  Min.   : 0.00   Min.   : 0.0000  
-##  1st Qu.: 2.90   1st Qu.: 0.0000  
-##  Median : 5.50   Median : 0.0000  
-##  Mean   :10.21   Mean   : 0.2079  
-##  3rd Qu.:10.00   3rd Qu.: 0.0000  
-##  Max.   :81.10   Max.   :15.7000  
-## 
+##      CDS                Name             AggLevel             DFC           
+##  Length:493         Length:493         Length:493         Length:493        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##                                                                             
+##    Subgroup         Subgrouptype         NumCohort        NumGraduates    
+##  Length:493         Length:493         Min.   :   11.0   Min.   :   11.0  
+##  Class :character   Class :character   1st Qu.:  134.0   1st Qu.:  119.0  
+##  Mode  :character   Mode  :character   Median :  372.0   Median :  336.0  
+##                                        Mean   :  922.1   Mean   :  824.9  
+##                                        3rd Qu.: 1108.8   3rd Qu.: 1021.0  
+##                                        Max.   :34472.0   Max.   :26654.0  
+##                                        NA's   :19        NA's   :32       
+##   NumDropouts        gradrate         droprate        GEDrate       
+##  Min.   :  11.0   Min.   :  0.00   Min.   : 0.00   Min.   : 0.0000  
+##  1st Qu.:  25.0   1st Qu.: 84.21   1st Qu.: 2.90   1st Qu.: 0.0000  
+##  Median :  49.0   Median : 90.91   Median : 5.50   Median : 0.0000  
+##  Mean   : 106.7   Mean   : 83.38   Mean   :10.21   Mean   : 0.2079  
+##  3rd Qu.: 115.0   3rd Qu.: 94.81   3rd Qu.:10.00   3rd Qu.: 0.0000  
+##  Max.   :4738.0   Max.   :100.00   Max.   :81.10   Max.   :15.7000  
+##  NA's   :184
 ```
 
 ```r
@@ -1266,12 +1258,12 @@ head(testscores)
 
 ```
 ##      NYCtestscore LAtestscore
-## [1,]     2.454733    3.829157
-## [2,]     2.183003    3.642483
-## [3,]     2.877160    3.791642
-## [4,]     1.489961    4.189516
-## [5,]     3.076432    2.272569
-## [6,]     2.061394    1.464815
+## [1,]    2.7349779    4.165935
+## [2,]    2.6011543    4.565074
+## [3,]    0.4261416    2.630528
+## [4,]    1.8561137    2.691927
+## [5,]    1.1962862    2.759620
+## [6,]    2.3860276    4.826200
 ```
 
 
@@ -1292,13 +1284,13 @@ mod1
 ## 	Welch Two Sample t-test
 ## 
 ## data:  NYCtestscore and LAtestscore
-## t = -22.192, df = 1990.8, p-value &lt; 2.2e-16
+## t = -22.825, df = 1992.8, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -1.1014208 -0.9225595
+##  -1.136012 -0.956246
 ## sample estimates:
 ## mean of x mean of y 
-##  2.005141  3.017131
+##  1.989207  3.035336
 ```
 ---
 
@@ -1328,11 +1320,10 @@ tidy(mod2)
 
 ```
 ## # A tibble: 1 x 10
-##   estimate estimate1 estimate2 statistic   p.value parameter conf.low
-##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-## 1     10.2      75.7      65.5      30.1 6.66e-195    19784.     9.56
-## # ... with 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;,
-## #   alternative &lt;chr&gt;
+##   estimate estimate1 estimate2 statistic   p.value parameter conf.low conf.high
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1     10.2      75.7      65.5      30.1 6.66e-195    19784.     9.56      10.9
+## # ... with 2 more variables: method &lt;chr&gt;, alternative &lt;chr&gt;
 ```
 
 
@@ -1754,9 +1745,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
-
-<script>
+})();
+(function() {
+  "use strict"
+  /* Replace <script> tags in slides area to make them executable
+   *
+   * Runs after post-processing of markdown source into slides and replaces only
+   * <script>s on the last slide of continued slides using the .has-continuation
+   * class added by xaringan. Finally, any <script>s in the slides area that
+   * aren't executed are commented out.
+   */
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+  var scriptsNotExecuted = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container.has-continuation script'
+  );
+  if (!scriptsNotExecuted.length) return;
+  for (var i = 0; i < scriptsNotExecuted.length; i++) {
+    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
+    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
+  }
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -1765,7 +1782,23 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-</script>
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 slideshow._releaseMath = function(el) {
