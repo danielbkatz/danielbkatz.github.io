@@ -10,7 +10,6 @@ plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
 exclude: ['*.Rmd']
 title: "Daniel Katz"
 author: "Daniel Katz"
-theme: "minima"
 email: "dkatz@ucsb.edu"
 
 description: > # this means to ignore newlines until "baseurl:"
