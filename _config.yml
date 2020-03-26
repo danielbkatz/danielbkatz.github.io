@@ -2,16 +2,23 @@
 
 
 # Build settings
-markdown:            kramdown
-highlighter:         rouge
+markdown: kramdown
+highlighter: rouge
 theme: jekyll-theme-minimal
+paginate: 50
+plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+
+
 exclude: ['*.Rmd']
 
 
-title: Daniel Katz
-email: dkatz@ucsb.edu
+title: "Daniel Katz"
+author: "Daniel Katz"
+
+email: "dkatz@ucsb.edu"
+
 description: > # this means to ignore newlines until "baseurl:"
-  Graduate Student in Education, Quantitative Methods, and Measurement
+  "Graduate Student in Education, Quantitative Methods, and Measurement"
 url: "http://dbkatz.com"
 twitter_username: dank_atz
 github_username:  danielbkatz
