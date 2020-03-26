@@ -6,7 +6,7 @@ date: '2019-03-15'
 slug: 'Explanatory-IRT-tutorial-with-TAM-R'
 
 categories: R
-tags:[IRT, Rasch, TAM, DIF]
+tags: [IRT, Rasch, TAM, DIF]
 
 ---
 
