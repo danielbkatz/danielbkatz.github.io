@@ -4,9 +4,8 @@
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: jekyll-theme-minimal
-paginate: 50
-plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+theme: minima
+plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed]
 exclude: ['*.Rmd']
 title: "Daniel Katz"
 author: "Daniel Katz"
