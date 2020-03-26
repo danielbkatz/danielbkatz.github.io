@@ -1,5 +1,7 @@
 # Site settings
 
+paginate: 20
+paginate_path: "/blog/page:num/"
 
 # Build settings
 markdown: kramdown
