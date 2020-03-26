@@ -4,7 +4,6 @@ title: Blog
 permalink: /blog/
 ---
 
-[Explanatory IRT in R (with the R package TAM)](C:/Users/katzd/Desktop/Github/danielbkatz.github.io/_posts/EIRTinR.html)     
 
 
 
