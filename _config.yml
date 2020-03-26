@@ -17,10 +17,10 @@ twitter_username: dank_atz
 github_username:  danielbkatz
 #linkedin: jekyll
 
-header_pages:
- - about.md
- - blog.md
- - cv.md
+#header_pages:
+# - about.md
+# - blog.md
+# - cv.md
 show_excerpts: true # set to true to show excerpts on the homepage
 
 # Minima date format
@@ -33,6 +33,10 @@ minima:
 # Build settings
 theme: minima
 
+# plugins:
+#  - jekyll-feed
+#  - jekyll-seo-tag
+#
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
