@@ -2,7 +2,6 @@
 title: An Introduction to R
 subtitle: Data Cleaning, Wrangling, Visualizing, and Everything Else with the   `tidyverse` </span>
 author: "Daniel Katz<br><span style = 'font-size: 70%;'> University of California, Santa Barbara<br><br> [MethodsU 2019 | Gevirtz Graduate School of Education | June 17, 2019]</span>"
-date: <img src = "methodsusm.jpg"/>
 output:
   xaringan::moon_reader:
     lib_dir: libs
