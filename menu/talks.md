@@ -4,7 +4,6 @@ title: Talks
 permalink: "/Talks/"
 ---
 
-#Talks
 
 ## Tutorials
 
