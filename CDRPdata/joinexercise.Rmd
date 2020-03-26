@@ -1,0 +1,132 @@
+---
+title: 'Challenge: Merging data'
+author: "Danny"
+date: "6/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(xtable)
+library(stargazer)
+```
+
+## Merging Data
+
+Merging is a common task that needs to happen in typical data analytic tasks. Using the language of `SQL`, the tidyverse uses "joins" and "bind."
+
+#### An example in which one might "join":  
+I have data on students from a school district and data on the same students from the individual schools.  
+
+1. Both data sets have unique information. For instance, the school district data has student demographic information and the school-level data has student grades. The school doesn't have demographic data and the district doesn't have grades. 
+
+1. Both use the same ID for each student (so, John Doe has ID 110 in both data sets.)
+
+1. I "join the data" by putting the two files together matching on the student ID. 
+
+Ex:
+```{r include=FALSE}
+table1 <- tibble(ID = c("0101", "10101"), Name = c("Student1", "Student2"), Age = c("11", "12"))
+```
+
+```{r echo=FALSE}
+table1
+```
+
+```{r include=FALSE, }
+
+table2 <- tibble(ID = c("0101", "10101"), Grade = c("A", "B"))
+
+```
+
+```{r echo=FALSE}
+table2
+```
+Then we use a "left_join" (not the by):
+
+```{r}
+mergedtable <- left_join(table1, table2, by = "ID")
+```
+
+```{r echo=FALSE}
+mergedtable
+```
+
+If this had multiple years of grades across the top such as the table below, it would be referred to as non-tidy data (or simple, "wide data"). Typical wide-data formats include survey responses, in which each column across the top pertains to a particular item response.  
+
+```{r echo=FALSE}
+tibble(mergedtable, Grade2014 = "B", Grade2015="C", Grade2016 = "A")
+```
+## Binding rows
+
+Another way to merge data is when you want to have "long data" or if you're simply adding cases. 
+
+Let say you you don't want to have wide data, you want to have long data. You receive datasets from the school that looks like:
+
+```{r echo=FALSE, results="asis"}
+tableg1 <- tibble(ID = c("0101", "10101"), Grade = c("A", "B"), Year = "2012")
+tableg2 <- tibble(ID = c("0101", "10101"), Grade = c("A", "C"), Year = "2013")
+
+stargazer(tableg1, type="html", summary=F) 
+
+stargazer(tableg2, type="html", summary=F) 
+```
+We have two data sets that have three of the same variable names. What we want to do is "bind_rows" to put them together.
+
+```{r, results="asis"}
+longdat <- bind_rows(tableg1, tableg2)
+stargazer(longdat, type="html", summary=F) 
+```
+
+## Types of joins: Mutating Joins
+
+There are many different types of ["mutating joins"](https://dplyr.tidyverse.org/reference/join.html). These joins keep columns from all the data frames you're using.
+
+A join takes the form `left_join(x=df1, y=df2, CDS =key)` where key can be one common column. You can use multiple keys, say, if you want to match on ID and date using, `left_join(x=df1, y=df2, CDS =c(ID, Date))` 
+
++ `left_join()`: Keeps all rows on the left, x dataframe, while returning only matched rows from the `y` data frame. Columns from both dataframes are returned. Cases where there's an `X` but no match on `y` are returned with value NA. 
+
++ `Right_join()`: The same as a `left_join` but keeps all rows on right (`y`) instead of left. 
+
++ `full_join()`: Returns all columns and all cases from both `x` and `y`.
+
+The image from [R for Data Science by Grolemund and Wickham](https://r4ds.had.co.nz/) is very helpful.
+
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
+knitr::include_graphics("joins.png")
+```
+
+Another way to think about joins:
+
+```{r echo=FALSE, fig.align="center", fig.width=15, fig.height=15}
+knitr::include_graphics("joinvenn.png")
+
+```
+
+# Filtering Joins: Using joins to filter cases
+
+`semi_join()`: If you have data.frame `x` and data.frame `y`, a semijoin will return just the rows from x where there is a match with `y` and only the columns with `x`.
+
+`anti_join()`: Only returns non-matches in `x` and `y` and only the columns from x. 
+
+# Exercises:
+1. Download and read-in the data from [here]("CDRPdata/Exampledat2.csv")
+  + Notice year is actually coded 1-6. 1 pertains to academic year 2009-2010 and 6 pertains to 2014-2015. 
+  
+2. What happens when you create a dataframe using left_join with co16_rem and the new example data, where the new example data is `x`. 
+
+3. What happens when you right_join?
+
+4. What happens when you semi_join with the new example data on the left, and co16_rem on the right?
+
+# Binding rows
+
+Sometimes, instead, you'd rather "stack" dataframes, such as in the case of timeseries data. For instance, in the new data set, each row pertains to a year and subgroup and district. If we get new data, we'll want to, instead of adding to the data to make it wider, simply add more cases! We're adding more observations. 
+
+This is a form of tidydata. 
+
+
+
+
+
