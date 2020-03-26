@@ -4,6 +4,10 @@ title: Blog
 permalink: /blog/
 ---
 
+[Explanatory IRT in R (with the R package TAM)](_posts/EIRTinR.md)     
+
+
+
 {% for post in site.posts %}
 {% unless post.next %}
   <h3>{{ post.date | date: '%Y' }}</h3>
