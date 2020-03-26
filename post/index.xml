@@ -1,49 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Daniel Katz</title>
-    <link>https://danielbkatz.github.io/post/</link>
-    <description>Recent content in Posts on Daniel Katz</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2016. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 15 Mar 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://danielbkatz.github.io/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Explanatory IRT tutorial with the TAM package in R</title>
-      <link>https://danielbkatz.github.io/2019/03/15/explanatory-irt-tutorial-with-tam-r/</link>
-      <pubDate>Fri, 15 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://danielbkatz.github.io/2019/03/15/explanatory-irt-tutorial-with-tam-r/</guid>
-      <description>Get the Data Read inFirst, I want to make sure everybody gets the data read into R in the exact same way.
-#install packages to get data#install.packages(&amp;quot;tidyverse&amp;quot;)#install.packages(&amp;quot;TAM&amp;quot;)#install.packages(&amp;quot;lme4&amp;quot;)#install.packages(&amp;quot;readr&amp;quot;)#install.packages(&amp;quot;optimx&amp;quot;)library(readr)library(tidyverse)library(lme4)library(TAM)library(optimx)library(knitr)#get the data read in. Have to be connected to internet. eirtdata &amp;lt;- read_csv(&amp;quot;https://raw.githubusercontent.com/danielbkatz/EIRT/master/eirtdata.csv&amp;quot;)#get rid of the extra columneirtdata &amp;lt;- eirtdata[-1]#optional, if you want to save the data as a csv file on your computer.</description>
-    </item>
-    
-    <item>
-      <title>Correlation Doesn&#39;t Even Imply ... Correlation, Necessarily</title>
-      <link>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</link>
-      <pubDate>Wed, 12 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://danielbkatz.github.io/2018/09/12/correlation-doesn-t-even-imply-a-relationship-necessarily/</guid>
-      <description>There’s a problem with the various versions of the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” It gives early statistics students the wrong impressions.
-The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y.</description>
-    </item>
-    
-    <item>
-      <title>Beginning a new Intro-to-R workshop</title>
-      <link>https://danielbkatz.github.io/1/01/01/beginning-a-new-intro-to-r-workshop/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://danielbkatz.github.io/1/01/01/beginning-a-new-intro-to-r-workshop/</guid>
-      <description>I’ll be running an introduction to R workshop at UCSB on June 17. Here are some draft slides:
-1. Part 1: Intro to R (basics)
-2. Part 2: Intro to R (Reading in Data, dplyr verbs)
-3. Part 3: Intro to R, analysis and viz
-Data:Example Data 1Useful ResourcesList of Links</description>
-    </item>
-    
-  </channel>
-</rss>
