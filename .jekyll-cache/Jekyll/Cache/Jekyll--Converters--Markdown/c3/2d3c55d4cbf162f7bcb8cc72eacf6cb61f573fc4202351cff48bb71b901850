@@ -1,0 +1,19 @@
+I"‰<p>#Talks</p>
+
+<h2 id="tutorials">Tutorials</h2>
+
+<h3 id="r-workshop---1-day">R Workshop - 1 day</h3>
+<p>In June 2018, I gave a one day workshop on using the <code class="highlighter-rouge">tidyverse</code> and data wrangling in R. I gave it in three parts with a few exercises. They are linked below.</p>
+
+<ol>
+  <li>[<a href="http://localhost:4000/assets/Presentations/slides/r_introslides.html">Part 1: Intro to R (basics)</a>]</li>
+  <li>[<a href="http://localhost:4000/assets/Presentations/slides/r_introslides2.html">Part 2: Intro to R (Reading in Data, dplyr verbs)</a>]</li>
+  <li>[ <a href="http://localhost:4000/assets/Presentations/slides/Intro_analysis.html">Part 3: Intro to R, analysis and viz</a>]</li>
+</ol>
+
+<h2 id="data">Data:</h2>
+<ol>
+  <li><a href="http://localhost:4000/assets/Presentations/CDRPdata/cohort16.csv"><strong>Example Data for Methodsu workshop</strong></a>)</li>
+</ol>
+
+:ET
