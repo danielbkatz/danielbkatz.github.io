@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Talks
-permalink: /s/
+permalink: /talks/
 ---
 
 #Presentations and Tutorials
