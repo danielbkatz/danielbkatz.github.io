@@ -4,11 +4,10 @@
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
 plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed]
 exclude: ['*.Rmd']
 title: "Daniel Katz"
-author: "Daniel Katz"
+author:
 email: "dkatz@ucsb.edu"
 
 description: > # this means to ignore newlines until "baseurl:"
@@ -16,6 +15,24 @@ description: > # this means to ignore newlines until "baseurl:"
 url: "http://dbkatz.com"
 twitter_username: dank_atz
 github_username:  danielbkatz
-permalink: none
+#linkedin: jekyll
+
+header_pages:
+ - about.md
+ - blog.md
+ - cv.md
+show_excerpts: true # set to true to show excerpts on the homepage
+
+# Minima date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  date_format: "%b %-d, %Y"
 
 
+
+# Build settings
+theme: minima
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
