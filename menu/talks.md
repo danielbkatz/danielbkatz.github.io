@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Talks
+permalink: "/Talks/"
 ---
 
 #Talks
