@@ -6,17 +6,7 @@ date: '2019-03-15'
 slug: 'Explanatory-IRT-tutorial-with-TAM-R'
 
 categories: R
-tags:
-  - IRT
-  - psychometrics
-  - Rasch
-  - Methods
-  - TAM
-  - Rasch
-  - R
-  - DIF
-  - Measurement Invariance
-
+tags:[IRT, Rasch, TAM, DIF]
 
 ---
 
