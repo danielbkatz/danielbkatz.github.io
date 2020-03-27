@@ -12,8 +12,8 @@
 }
 
 .site-title {
-  @include relative-font-size(1.925);
-  font-weight: 400;
+  @include relative-font-size(2.625);
+  font-weight: 500;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
@@ -27,32 +27,6 @@
     color: $brand-color-dark;
   }
 }
-
-/*
-  Masthead
-*/
-
-.masthead {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  margin-bottom: 4rem;
-  font-family: "Quattrocento Sans", sans-serif;
-}
-
-.masthead a:hover {
-  color:black;
-}
-
-.masthead-title a {
-  font-size: 2rem;
-  text-decoration: none;
-  color: #505050;
-}
-
-.masthead-subtitle {
-  color: #999;
-}
-
 
 .site-nav {
   position: absolute;
@@ -68,7 +42,7 @@
   }
 
   .menu-icon {
-    float: right;
+    float: left;
     width: 36px;
     height: 26px;
     line-height: 0;
@@ -268,8 +242,8 @@
 }
 
 .post-title,
-.post-content h2 {
-  @include relative-font-size(2.625);
+.post-content h1 {
+  @include relative-font-size(2.000);
   letter-spacing: -1px;
   line-height: 1.15;
 
