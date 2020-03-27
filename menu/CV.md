@@ -26,12 +26,12 @@ University of California, Santa Barbara
 
 ### RESEARCH INTERESTS
 ----------------------
-The Rasch Model and Item Response Theory
-Measurement Invariance
-Explanatory Item Response Models  
-Philosophy of Measurement and Probability 
-Casual Inference
-Measuring student literacy and other non-academic abilities
+The Rasch Model and Item Response Theory  
+Measurement Invariance  
+Explanatory Item Response Models    
+Philosophy of Measurement and Probability   
+Casual Inference  
+Measuring student literacy and other non-academic abilities  
 
 
 
@@ -122,10 +122,10 @@ Measuring subjective well-being and other constructs in positive psychology usin
   +   Commonly used stats packages:  TAM, mirt, lme4, Lavaan, plm
   +   Other packages: tidyverse, Rmarkdown, xaringan
 + Mplus
-+ Stata (Basic Knowledge)
-+ Tableau (Basic Knowledge)
-+ Git and Gitub (Basic Knowledge)
-•	Stan/rstan (Beginner)
-•	Dedoose (Beginner)
-
++ Stata (Basic Knowledge)  
++ Tableau (Basic Knowledge)  
++ Git and Gitub (Basic Knowledge)  
++	Stan/rstan (Beginner)  
++	Dedoose (Beginner)  
+ 
 
