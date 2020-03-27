@@ -70,6 +70,7 @@ hr {
   padding-bottom: 0.5rem;
   margin-bottom: 4rem;
   font-family: "Quattrocento Sans", sans-serif;
+  float: right;
 }
 
 .masthead a:hover {
@@ -138,7 +139,7 @@ hr {
 .site-header {
   border-top: 5px solid $brand-color-dark;
   border-bottom: 1px solid $brand-color-light;
-  min-height: $spacing-unit * 1.865;
+  min-height: $spacing-unit * 1.965;
   line-height: $base-line-height * $base-font-size * 2.25;
 
   // Positioning context for the mobile navigation icon
@@ -148,7 +149,7 @@ hr {
 .site-title {
   @include relative-font-size(2.625);
   font-weight: 500;
-  letter-spacing: -1px;
+  letter-spacing: 0px;
   margin-bottom: 0;
   float: left;
 
@@ -169,7 +170,7 @@ hr {
   background-color: $background-color;
   border: 1px solid $brand-color-light;
   border-radius: 5px;
-  text-align: right;
+  text-align: left;
 
   .nav-trigger {
       display: none;
