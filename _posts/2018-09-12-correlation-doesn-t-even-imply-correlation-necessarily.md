@@ -1,6 +1,5 @@
 ---
 layout: post
-
 title: "Correlation Doesn't Even Imply ... Correlation, Necessarily"
 author: "Daniel Katz"
 date: '2018-09-12'

@@ -1,5 +1,5 @@
 ---
-title: "Correlation Doesn't Even Imply ... Correlation, Necessarily"
+title: "Correlation Doesn't Even Imply Correlation, Necessarily"
 author: "Daniel Katz"
 date: '2018-09-12'
 status: process
