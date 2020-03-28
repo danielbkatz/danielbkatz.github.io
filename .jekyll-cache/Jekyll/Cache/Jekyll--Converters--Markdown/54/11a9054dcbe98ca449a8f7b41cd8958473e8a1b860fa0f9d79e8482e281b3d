@@ -1,0 +1,107 @@
+I"�5<p>There’s a problem with the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earler version of me.</p>
+
+<p>The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.</p>
+
+<p>The phrase is problematic because it’s actually not accurate.</p>
+
+<ol>
+  <li>
+    <p>The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
+  </li>
+  <li>
+    <p>The next problem is that, paradoxically, the phrase does not go far enough. Correlation present in data does not even indicate a real world relationship, let alone a causal one!</p>
+  </li>
+</ol>
+
+<p>Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.</p>
+
+<h3 id="correlating-the-uncorrelated">Correlating the Uncorrelated</h3>
+<p>Let’s start by generating two random normal distributions of size 20, $\mu$ is 0, $\sigma$ is 1.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">123</span><span class="p">)</span><span class="w">
+</span><span class="n">dist1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="w">
+</span><span class="n">dist2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">20</span><span class="p">)</span></code></pre></figure>
+
+<p>These two distributions, aside from being generated on my computer, have nothing to do with each other and represent nothing in the real world. If you have no interest in the R code, that’s fine, just pay attention to the fact that we’re working with random distributions that have no real world relationship.</p>
+
+<p>We can correlate them.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cor</span><span class="p">(</span><span class="n">dist1</span><span class="p">,</span><span class="w"> </span><span class="n">dist2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] -0.09172278</code></pre></figure>
+
+<p>The Correlation is -.09, not very large.</p>
+
+<p>Let’s do this again.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">9201989</span><span class="p">)</span><span class="w">
+</span><span class="n">dista</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="w">
+ 
+</span><span class="n">distb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="m">20</span><span class="p">)</span><span class="w">
+ 
+</span><span class="n">cor</span><span class="p">(</span><span class="n">dista</span><span class="p">,</span><span class="w"> </span><span class="n">distb</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] -0.3213314</code></pre></figure>
+
+<p>Hm, -.32, we’re starting to get somewhere. But they’re random numbers. Let’s say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit.</p>
+
+<p>It takes as input, the number of times to replicate creating the distribrutions of size <em>samples</em> and a particular correlation value, or <em>cor.cutoff</em>. The function returns the number of times a correlation value above this cutoff (cor.cutoff) is returned.</p>
+
+<p>The code is below. It returns a list. Element 1 is the number of times a correlation value at least as large as cor.cutoff is returned. Element 2 is a line plot of correlation coefficients. Each replication returns one correlation coefficient. And the third element in the returned list is a dataframe containing each correlation coefficient for each replication.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+ 
+</span><span class="n">totfunc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span><span class="w"> </span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="n">cor.cutoff</span><span class="p">){</span><span class="w">
+</span><span class="n">random</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">samples</span><span class="p">){</span><span class="w">
+  </span><span class="n">dist1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+  </span><span class="n">dist2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rnorm</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">distab</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">dist1</span><span class="p">,</span><span class="w"> </span><span class="n">dist2</span><span class="p">))</span><span class="w">
+</span><span class="n">x1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cor</span><span class="p">(</span><span class="n">dist1</span><span class="p">,</span><span class="w"> </span><span class="n">dist2</span><span class="p">)}</span><span class="w">
+ 
+ 
+</span><span class="n">test1</span><span class="w"> </span><span class="o">&lt;-</span><span class="n">replicate</span><span class="p">(</span><span class="n">reps</span><span class="p">,</span><span class="w"> </span><span class="n">random</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span><span class="w">
+ 
+</span><span class="n">test2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.data.frame</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">test1</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">reps</span><span class="p">)))</span><span class="w">
+ 
+</span><span class="n">corpl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test2</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">V2</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">test1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"Replication Number"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"Pearson's Correlation Coeffient Value"</span><span class="p">)</span><span class="w">
+</span><span class="n">x2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">test2</span><span class="o">$</span><span class="n">test1</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">cor.cutoff</span><span class="p">)</span><span class="w">
+ 
+</span><span class="n">corpl</span><span class="w">
+</span><span class="n">plotsr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">corpl</span><span class="p">,</span><span class="w"> </span><span class="n">test2</span><span class="p">)</span><span class="w">
+</span><span class="nf">return</span><span class="p">(</span><span class="n">plotsr</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w"> </span></code></pre></figure>
+
+<p>Let’s see how this works. We’ll start with distributions of size 20 and correlate them. We’ll repeat this process 1000 times. we want to know how many correlation coefficients above the absolute value of .6 exist.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">set.seed</span><span class="p">(</span><span class="m">23</span><span class="p">)</span><span class="w">
+</span><span class="n">testtot</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">totfunc</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="m">.6</span><span class="p">))</span></code></pre></figure>
+
+<p>To see the plot of correlation coefficients:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">testtot</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span></code></pre></figure>
+
+<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily_Rmd/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6" /></p>
+
+<p>Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">testtot</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5</code></pre></figure>
+
+<p>Yep, 5 times. That’s fairly impressive. We were able to generate two random distributions, and depending on the sample, got correlation values that exceeded .6.</p>
+
+<p>If you want to understand why a correlation coefficient doesn’t necessarily describe a real world relationship, this is why!</p>
+
+<p>And if you want to play with some other numbers, say, with random distributions of size 1000 and do it a thousand times, we can.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">test2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">totfunc</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="nf">abs</span><span class="p">(</span><span class="m">.6</span><span class="p">))</span><span class="w">
+ 
+</span><span class="n">test2</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 0</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">test2</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span></code></pre></figure>
+
+<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily_Rmd/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8" /></p>
+
+:ET

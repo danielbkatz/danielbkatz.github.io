@@ -56,6 +56,8 @@ rmd2md <- function( path_site = getwd(),
           #andy change to render for jekyll
           render_jekyll(highlight = "pygments")
           #render_jekyll(highlight = "prettify") #for javascript
+          f1 <- gsub(".Rmd", "_Rmd", f)
+
 
           opts_knit$set(out.format='markdown')
 
@@ -66,7 +68,7 @@ rmd2md <- function( path_site = getwd(),
           # https://groups.google.com/forum/#!topic/knitr/18aXpOmsumQ
 
           opts_knit$set(base.url = "/")
-          opts_chunk$set(fig.path = paste0(url_images,f,"/"))
+          opts_chunk$set(fig.path = paste0(url_images,f1,"/"))
 
           #andy I could try to make figures bigger
           #but that might make not work so well on mobile
