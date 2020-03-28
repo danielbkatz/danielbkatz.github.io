@@ -153,5 +153,5 @@ test2[[1]]
 test2[[2]]
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-8-1](/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily.Rmd/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-8-1](/assets/img/unnamed-chunk-8-1.png)
  
