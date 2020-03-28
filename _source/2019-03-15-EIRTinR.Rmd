@@ -188,7 +188,7 @@ head(lat1$person)
 
 As we can see, the person parameters, the EAP estimates are quite different after "adjusting for" a student being in the treatment group or the non-treatment group. The formula now looks like:
 
-$$Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i$$
+$$Logit[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i$$
 
 In this model, the variable, ```treat``` is often called a "fixed effect." TAM constrains the model so that the reference category fixed effect (no treatment) 0, has a value of zero. So, the model, for person 1, (who was in the treatment group) and item 1, looks like this:
 
@@ -213,7 +213,7 @@ We'll make the model more complicated by predicting theta with a latent regressi
 So the model is now: 
 $$\theta = \beta_1*treat + \beta_2*proflevel + \epsilon$$
 
-And the full model will now look something like: $$Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i$$
+And the full model will now look something like: $$Logit[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i$$
 
 
 ```{r, results='hide', cache=T}
