@@ -5,9 +5,9 @@ permalink: /CV/
 ---
 
 
-dkatz@education.ucsb.edu
+contact: dkatz@education.ucsb.edu
 
-### EDUCATION
+## EDUCATION
 
 **PhD** (2021): Education - Research Methods and Philosophy of Measurement  
 University, of California, Santa Barbara    
@@ -24,7 +24,7 @@ University of California, Santa Barbara
 <br>
 
 
-### RESEARCH INTERESTS
+## RESEARCH INTERESTS
 ----------------------
 The Rasch Model and Item Response Theory  
 Measurement Invariance  
@@ -35,7 +35,7 @@ Measuring student literacy and other non-academic abilities
 
 
 
-### RELEVANT EXPERIENCE
+## RELEVANT EXPERIENCE
 ----------------------
 
 **University of Florida, Virtual Learning Lab – IES Funded Grant** (2019-Present)
@@ -60,7 +60,7 @@ Measuring student literacy and other non-academic abilities
 
  <br>
 
-### Published Projects
+## Published Projects
 ----------------------
 Arya, Diana,  Clairmont, A. **Katz, Daniel** & Maul, A. (2020) Measuring Reading Strategy Use, Educational Assessment, 25:1, 5-30, DOI: 10.1080/10627197.2019.1702464
 
@@ -69,11 +69,11 @@ Research, Measurement, and Evaluation. Thousand Oaks, CA: SAGE.
 
 **Katz, D.** (2017, May). An Update: The Narrowing California High School Graduation Gap between Black, Latino, and White Students.  (CDRP Statistical Brief No. 24). Retrieved from http://cdrpsb.org/pubs_statbriefs.htm
 
-**Katz, D.** (2017, March). The Narrowing California High School Graduation Gap between Black, Latino, and
-White Students.  (CDRP Statistical Brief No. 23). Retrieved from http://cdrpsb.org/pubs_statbriefs.htm. The Narrowing California High School Graduation Gap between Black, Latino, and White Students
+ **Katz, D.** (2017, March). The Narrowing California High School Graduation Gap    between Black, Latino, and  White Students.  (CDRP Statistical Brief No. 23). Retrieved from     http://cdrpsb.org/pubs_statbriefs.htm. The Narrowing California High School Graduation Gap between Black, Latino, and White Students
+
 <br>
 
-### CONFERENCE PRESENTATIONS
+## CONFERENCE PRESENTATIONS
 ----------------------
 **Katz, D.** and Diakow, R. (2019, April). Using Explanatory Item Response Theory Models to Re-Examine Fairness in Psychometrics.  Paper to be presented at the National Council on Measurement in Education (NCME) April 4-8, 2019. Toronto2.
 
@@ -85,7 +85,8 @@ White Students.  (CDRP Statistical Brief No. 23). Retrieved from http://cdrpsb.o
 **Katz, D.**, Clairmont, A., Arya, D. & Maul, A. (2018, April). Measuring Reading Strategy Use in a Multidimensional, Multilingual Context. Paper presented at the International Objective Measurement Workshop (IOMW), April 10-12, 2018. New York.
 
 <br>
-### SELECT IN PROGRESS RESEARCH PROJECTS
+
+## SELECT IN PROGRESS RESEARCH PROJECTS
 ----------------------
 Clairmont, A. & Katz D. (in preperation) Using Rasch Measurement Theory for Program Evaluation: A Methods Note. To be submitted to *American Journal of Evaluation*
 
@@ -96,7 +97,7 @@ Using Rasch Measurement Theory for program evaluation
 Measuring subjective well-being and other constructs in positive psychology using mixture modelling    approaches (with an emphasis on educational settings).
 <br>
 
-### TEACHING EXPERIENCE
+## TEACHING EXPERIENCE
 ----------------------
 **Instructor**  
 + One Day Workshop: UCSB Methods U - An Introduction to R: Data Cleaning, Wrangling, and Visualizing
@@ -107,16 +108,18 @@ Measuring subjective well-being and other constructs in positive psychology usin
 + Education 214C, Linear Models for Data Analysis (and categorical data analysis), Spring 2018
 + Education 214B, Inferential Statistics, Winter 2018
 + Education 214A, Introductory Statistics, Fall 2017
+<br>
 
-
-### ORGANIZATION & COMMITTEE MEMBERSHIPS
+## ORGANIZATION & COMMITTEE MEMBERSHIPS
 ----------------------
 +	Graduate Student Representative – NCME Committee on informing assessment policy and practice
 +	American Educational Research Association
 +	National Council on Measurement in Education
 +	Society for the Improvement of Psychological Sciences
 
-### STATISTICAL SOFTWARE KNOWLEDGE
+<br>
+
+## STATISTICAL SOFTWARE KNOWLEDGE
 ----------------------
 + R 
   +   Commonly used stats packages:  TAM, mirt, lme4, Lavaan, plm

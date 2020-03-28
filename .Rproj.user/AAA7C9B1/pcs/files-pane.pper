@@ -1,5 +1,5 @@
 {
-    "path" : "C:/Users/katzd/Downloads",
+    "path" : "C:/Users/katzd/Desktop/Github/danielbkatz.github.io",
     "sortOrder" : [
         {
             "ascending" : true,
@@ -8,6 +8,10 @@
         {
             "ascending" : false,
             "columnIndex" : 4
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 3
         }
     ]
 }
