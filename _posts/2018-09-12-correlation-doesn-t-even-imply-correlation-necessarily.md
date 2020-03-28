@@ -46,7 +46,7 @@ cor(dist1, dist2)
 
 
 {% highlight text %}
-## [1] -0.09172
+## [1] -0.09172278
 {% endhighlight %}
  
 The Correlation is -.09, not very large. 
@@ -66,7 +66,7 @@ cor(dista, distb)
 
 
 {% highlight text %}
-## [1] -0.3213
+## [1] -0.3213314
 {% endhighlight %}
 Hm, -.32, we're starting to get somewhere. But they're random numbers. Let's say we do this over and over again and graph the correlation coefficients. I created a function to do this as an exhibit. 
  

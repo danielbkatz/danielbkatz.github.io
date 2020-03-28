@@ -1,0 +1,17 @@
+base
+knitr
+ggplot2
+readr
+tidyverse
+tibble
+tidyr
+purrr
+dplyr
+stringr
+forcats
+Matrix
+lme4
+mvtnorm
+CDM
+TAM
+optimx
