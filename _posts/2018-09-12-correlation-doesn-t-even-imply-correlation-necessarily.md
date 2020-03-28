@@ -113,7 +113,7 @@ To see the plot of correlation coefficients:
 testtot[[2]]
 {% endhighlight %}
 
-<img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily.Rmd/unnamed-chunk-6-1.png" alt =" ">
+![plot of chunk unnamed-chunk-6](/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily.Rmd/unnamed-chunk-6-1.png)
  
 Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?
  
@@ -153,5 +153,5 @@ test2[[1]]
 test2[[2]]
 {% endhighlight %}
 
-<img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily.Rmd/unnamed-chunk-8-1.png" alt =" ">
+![plot of chunk unnamed-chunk-8](/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily.Rmd/unnamed-chunk-8-1.png)
  
