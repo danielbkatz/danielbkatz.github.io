@@ -68,7 +68,7 @@ rmd2md <- function( path_site = getwd(),
           # https://groups.google.com/forum/#!topic/knitr/18aXpOmsumQ
 
           opts_knit$set(base.url = "/")
-          opts_chunk$set(fig.path = paste0(url_images,f1,"/"))
+          opts_chunk$set(fig.path = paste0(url_images, paste0(substr(f, 1, (nchar(f)-(nchar(in_ext)))),"/")))
 
           #andy I could try to make figures bigger
           #but that might make not work so well on mobile

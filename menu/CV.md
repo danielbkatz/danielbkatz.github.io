@@ -101,14 +101,16 @@ Measuring subjective well-being and other constructs in positive psychology usin
 ----------------------
 **Instructor**  
 + One Day Workshop: UCSB Methods U - An Introduction to R: Data Cleaning, Wrangling, and Visualizing
-+ Implementing Explanatory IRT via the R package, TAM – Course Materials
++ Implementing Explanatory IRT via the R package, TAM – Course Materials  
+
 <br>
 
 **Teaching Assistant**
 + Education 214C, Linear Models for Data Analysis (and categorical data analysis), Spring 2018
 + Education 214B, Inferential Statistics, Winter 2018
-+ Education 214A, Introductory Statistics, Fall 2017
-<br>
++ Education 214A, Introductory Statistics, Fall 2017  
+
+<br>  
 
 ## ORGANIZATION & COMMITTEE MEMBERSHIPS
 ----------------------
