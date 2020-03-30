@@ -75,7 +75,7 @@ Research, Measurement, and Evaluation. Thousand Oaks, CA: SAGE.
 
 ## CONFERENCE PRESENTATIONS
 ----------------------
-**Katz, D.** and Diakow, R. (2019, April). Using Explanatory Item Response Theory Models to Re-Examine Fairness in Psychometrics.  Paper to be presented at the National Council on Measurement in Education (NCME) April 4-8, 2019. Toronto2.
+**Katz, D.** and Diakow, R. (2019, April). Using Explanatory Item Response Theory Models to Re-Examine Fairness in Psychometrics.  Paper to be presented at the National Council on Measurement in Education (NCME) April 4-8, 2019. Toronto.
 
 **Katz, D.**v, Nylund-Gibson, K., Furlong, M. (2019, April). Is One Item Enough? Examining Affect-Laden Survey Items Using Mixture Modelling with Distal Outcomes.  Paper presented at American Educational Research Association Annual Meeting, April 5-9, 2019. Toronto.   
 **Best Graduate Student Paper in the AERA Survey Special Interest Group Sig**
