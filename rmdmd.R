@@ -56,7 +56,6 @@ rmd2md <- function( path_site = getwd(),
           #andy change to render for jekyll
           render_jekyll(highlight = "pygments")
           #render_jekyll(highlight = "prettify") #for javascript
-          f1 <- gsub(".Rmd", "_Rmd", f)
 
 
           opts_knit$set(out.format='markdown')
@@ -90,3 +89,4 @@ rmd2md <- function( path_site = getwd(),
   }
   invisible()
 }
+

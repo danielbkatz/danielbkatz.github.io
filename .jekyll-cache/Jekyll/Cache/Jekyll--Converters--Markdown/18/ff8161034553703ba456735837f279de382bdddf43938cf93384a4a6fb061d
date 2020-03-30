@@ -1,4 +1,4 @@
-I"�5<p>There’s a problem with the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earler version of me.</p>
+I"�5<p>There’s a problem with the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earler version of me.</p>
 
 <p>The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.</p>
 
@@ -80,7 +80,7 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">testtot</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span></code></pre></figure>
 
-<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily_Rmd/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6" /></p>
+<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8" /></p>
 
 <p>Not the pretties, but you get the idea. Correlation values are all over the place. How many times does the correlation value exceed the absolute value of .6?</p>
 
@@ -102,6 +102,6 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">test2</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span></code></pre></figure>
 
-<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily_Rmd/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8" /></p>
+<p><img src="/assets/img/2018-09-12-correlation-doesn-t-even-imply-correlation-necessarily/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10" /></p>
 
 :ET

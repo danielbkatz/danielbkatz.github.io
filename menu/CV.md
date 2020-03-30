@@ -60,7 +60,7 @@ Measuring student literacy and other non-academic abilities
 
  <br>
 
-## Published Projects
+## PUBLISHED WORK
 ----------------------
 Arya, Diana,  Clairmont, A. **Katz, Daniel** & Maul, A. (2020) Measuring Reading Strategy Use, Educational Assessment, 25:1, 5-30, DOI: 10.1080/10627197.2019.1702464
 
@@ -82,7 +82,7 @@ Research, Measurement, and Evaluation. Thousand Oaks, CA: SAGE.
 
 **Katz, D.**, Clairmont, A., Arya, D., & Maul, A., (2018, April). Measuring Reading Strategy Use in a Multilingual Context. Paper presented at American Educational Research Association Annual Meeting, April 13-17, 2018. New York.
 
-**Katz, D.**, Clairmont, A., Arya, D. & Maul, A. (2018, April). Measuring Reading Strategy Use in a Multidimensional, Multilingual Context. Paper presented at the International Objective Measurement Workshop (IOMW), April 10-12, 2018. New York.
+**Katz, D.**, Clairmont, A., Arya, D. & Maul, A. (2018, April). Measuring Reading Strategy Use in a Multidimensional, Multilingual Context. Paper presented at the International Objective Measurement Workshop (IOMW), April 10-12, 2018. New York.  
 
 <br>
 
@@ -94,7 +94,9 @@ Reconsidering fairness in educational assessment: using tools from ethics, causa
 
 Using Rasch Measurement Theory for program evaluation
 
-Measuring subjective well-being and other constructs in positive psychology using mixture modelling    approaches (with an emphasis on educational settings).
+Measuring subjective well-being and other constructs in positive psychology using mixture modelling    approaches (with an emphasis on educational settings).    
+
+
 <br>
 
 ## TEACHING EXPERIENCE
@@ -102,8 +104,7 @@ Measuring subjective well-being and other constructs in positive psychology usin
 **Instructor**  
 + One Day Workshop: UCSB Methods U - An Introduction to R: Data Cleaning, Wrangling, and Visualizing
 + Implementing Explanatory IRT via the R package, TAM – Course Materials  
-
-<br>
+<br>  
 
 **Teaching Assistant**
 + Education 214C, Linear Models for Data Analysis (and categorical data analysis), Spring 2018

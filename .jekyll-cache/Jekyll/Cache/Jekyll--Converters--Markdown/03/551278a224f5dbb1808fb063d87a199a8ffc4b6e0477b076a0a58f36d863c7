@@ -1,4 +1,4 @@
-I"��<p>In this post, we’ll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
+I"��<p>In this post, we’ll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
 
 <ul id="markdown-toc">
   <li><a href="#get-the-data-read-in" id="markdown-toc-get-the-data-read-in">Get the Data Read in</a></li>
@@ -140,7 +140,7 @@ The data set comes from a general test given to a set of first year undergrads a
 <script type="math/tex">\theta = \beta_1*X_1 + \epsilon</script> 
 where <script type="math/tex">\beta_1</script> is the regression coefficient for 1. <script type="math/tex">X_1</script> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
 
-<p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”</p>
+<p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes.”</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#take the treatment variable and make it its own R object</span><span class="w">
 </span><span class="n">treat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">eirtdata</span><span class="o">$</span><span class="n">treat</span><span class="w">

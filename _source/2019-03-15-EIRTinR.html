@@ -370,9 +370,10 @@ summary {
 </div>
 
 
-<div id="get-the-data-read-in" class="section level3">
-<h3>Get the Data Read in</h3>
-<p>First, I want to make sure everybody gets the data read into R in the exact same way.</p>
+<p>In this post, we’ll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
+<ul>
+<li>TOC {:toc} ### Get the Data Read in First, I want to make sure everybody gets the data read into R in the exact same way.</li>
+</ul>
 <pre class="r"><code>#install packages to get data
 #install.packages(&quot;tidyverse&quot;)
 #install.packages(&quot;TAM&quot;)
@@ -401,7 +402,6 @@ eirtdata &lt;- eirtdata %&gt;% mutate(treat = ifelse(treat==1, &quot;treat&quot;
 eirtdata$treat &lt;- as.factor(eirtdata$treat)
 eirtdata$proflevel &lt;- as.factor(eirtdata$proflevel)
 eirtdata$abilcov &lt;- as.factor(eirtdata$abilcov)</code></pre>
-</div>
 <div id="the-data" class="section level3">
 <h3>1. The Data</h3>
 <p>Once the data is read in, let’s describe the data set.<br />
@@ -474,7 +474,7 @@ head(as.data.frame(mod1$xsi))</code></pre>
 ## Math.6 -0.1907538 0.05419563</code></pre>
 <pre class="r"><code>#view the range of fit statistics, particularly infit
 range(mod1fit$itemfit$Infit)</code></pre>
-<pre><code>## [1] 0.9604344 1.0271975</code></pre>
+<pre><code>## [1] 0.9588464 1.0316484</code></pre>
 <pre class="r"><code>#Get the sample size adjusted acceptable item fit range:
 2* (2/sqrt(1500))</code></pre>
 <pre><code>## [1] 0.1032796</code></pre>
@@ -489,7 +489,7 @@ range(mod1fit$itemfit$Infit)</code></pre>
 <h3>Part I. Two Ways to Analyze Group Differences in TAM</h3>
 <p>Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.</p>
 <p>Formula for latent regression: <span class="math display">\[\theta = \beta_1*X_1 + \epsilon\]</span> where <span class="math display">\[\beta_1\]</span> is the regression coefficient for 1. <span class="math display">\[X_1\]</span> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
-<p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes”</p>
+<p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes.”</p>
 <pre class="r"><code>#take the treatment variable and make it its own R object
 treat &lt;- eirtdata$treat
 
@@ -581,7 +581,7 @@ head(lat1$person)</code></pre>
 ## 5   5    5       1    19  39  0.119659588 0.3024843
 ## 6   6    6       1    20  39 -0.004515606 0.2869874</code></pre>
 <p>As we can see, the person parameters, the EAP estimates are quite different after “adjusting for” a student being in the treatment group or the non-treatment group. The formula now looks like:</p>
-<p><span class="math display">\[Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i\]</span>.</p>
+<p><span class="math display">\[Logit[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \theta - \delta_i\]</span></p>
 <p>In this model, the variable, <code>treat</code> is often called a “fixed effect.” TAM constrains the model so that the reference category fixed effect (no treatment) 0, has a value of zero. So, the model, for person 1, (who was in the treatment group) and item 1, looks like this:</p>
 <ol style="list-style-type: decimal">
 <li>Fixed effect of <code>treat</code> = .70 logits (rounded)</li>
@@ -589,7 +589,7 @@ head(lat1$person)</code></pre>
 <li>.51 logits is the student’s ability after adjusting for the student being in the treatment group.</li>
 <li>Item difficulty for item 1 is -.85 logits.</li>
 </ol>
-<p><span class="math display">\[Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\]</span>.</p>
+<p><span class="math display">\[Logit[Pr(X=1|\theta_1, \delta_1)] = .70*1+ .51 - (-.85)*1 + \epsilon\]</span></p>
 <p>We’ve decomposed the variance of theta.</p>
 </div>
 <div id="part-ii.adding-to-the-latent-regression-model" class="section level3">
@@ -597,7 +597,7 @@ head(lat1$person)</code></pre>
 <p>We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment. 1. Create a matrix of covariates. 2. Create a latent regression formula object for formulaY1 3. Run the model.</p>
 <p>We’ll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.</p>
 <p>So the model is now: <span class="math display">\[\theta = \beta_1*treat + \beta_2*proflevel + \epsilon\]</span></p>
-<p>And the full model will now look something like: <span class="math display">\[Log[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i\]</span>.</p>
+<p>And the full model will now look something like: <span class="math display">\[Logit[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i\]</span></p>
 <pre class="r"><code>#this gets all the person level covariates into a single dataframe
 daty &lt;- eirtdata %&gt;% select(treat, proflevel, abilcov)
 
