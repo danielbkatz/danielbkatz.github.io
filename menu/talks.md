@@ -16,8 +16,8 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 2.  [Part 2: Intro to R (Reading in Data, dplyr verbs)]({{ site.url }}{% link assets/Presentations/slides/r_introslides2.html %})
 3. [Part 3: Intro to R, analysis and viz]({{ site.url }}{% link assets/Presentations/slides/Intro_analysis.html %})
 
-*Data*
-1.  [**Example Data for Methodsu workshop**]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})
+### Data for Workshop
++  [Example Data for Methodsu workshop]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})
 
 
 

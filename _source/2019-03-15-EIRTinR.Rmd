@@ -8,6 +8,7 @@ categories: R
 tags: [IRT, Rasch, TAM, DIF]
 status: process
 published: false
+toc: true
 
 ---
 In this post, we'll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.
