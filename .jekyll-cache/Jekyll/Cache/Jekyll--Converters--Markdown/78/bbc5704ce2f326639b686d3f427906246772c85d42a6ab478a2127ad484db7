@@ -1,9 +1,0 @@
-I"è<p>In this post, we‚Äôll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
-
-<ul id="markdown-toc">
-  <li><a href="#get-the-data-read-in" id="markdown-toc-get-the-data-read-in">Get the Data Read in</a></li>
-</ul>
-<h3 id="get-the-data-read-in">Get the Data Read in</h3>
-<p>First, I want to make sure everybody gets the data read into R in the exact same way.</p>
-
-:ET

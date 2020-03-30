@@ -1,18 +1,30 @@
-I"��<p>In this post, we’ll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
+I"��<p>In this post, we’ll go through the basics of running latent regression models in TAM. In essence, these are IRT models with covariates. These are especially useful for expanding on inferences or measurement claims made with the Rasch model. While not particularly conceptually difficult, there are a number of moving parts that I hope this will help clarify.</p>
 
 <ul id="markdown-toc">
-  <li><a href="#get-the-data-read-in" id="markdown-toc-get-the-data-read-in">Get the Data Read in</a></li>
-  <li><a href="#1-the-data" id="markdown-toc-1-the-data">1. The Data</a></li>
-  <li><a href="#2-the-variables" id="markdown-toc-2-the-variables">2. The variables:</a></li>
-  <li><a href="#3-running-the-rasch-model" id="markdown-toc-3-running-the-rasch-model">3. Running the Rasch Model</a></li>
-  <li><a href="#4-latent-regression-in-two-parts" id="markdown-toc-4-latent-regression-in-two-parts">4. Latent Regression in Two Parts</a>    <ul>
-      <li><a href="#part-i-two-ways-to-analyze-group-differences-in-tam" id="markdown-toc-part-i-two-ways-to-analyze-group-differences-in-tam">Part I. Two Ways to Analyze Group Differences in TAM</a></li>
-      <li><a href="#part-iiadding-to-the-latent-regression-model" id="markdown-toc-part-iiadding-to-the-latent-regression-model">Part II.Adding to the Latent Regression model</a></li>
-      <li><a href="#5-the-item-side-the-linear-logistic-test-model-lltm" id="markdown-toc-5-the-item-side-the-linear-logistic-test-model-lltm">5. The Item Side: The Linear Logistic Test Model (LLTM)</a></li>
+  <li><a href="#part-1-understanding-the-data-and-the-rasch-model" id="markdown-toc-part-1-understanding-the-data-and-the-rasch-model">Part 1. Understanding the Data and the Rasch Model</a>    <ul>
+      <li><a href="#get-the-data-read-in" id="markdown-toc-get-the-data-read-in">Get the Data Read in</a></li>
+      <li><a href="#dataset-description" id="markdown-toc-dataset-description">Dataset Description</a>        <ul>
+          <li><a href="#the-variables" id="markdown-toc-the-variables">The variables:</a></li>
+        </ul>
+      </li>
+      <li><a href="#running-the-rasch-model" id="markdown-toc-running-the-rasch-model">Running the Rasch Model</a></li>
+    </ul>
+  </li>
+  <li><a href="#part-2-latent-regression" id="markdown-toc-part-2-latent-regression">Part 2. Latent Regression</a>    <ul>
+      <li><a href="#two-ways-to-analyze-group-differences" id="markdown-toc-two-ways-to-analyze-group-differences">Two ways to analyze group differences</a>        <ul>
+          <li><a href="#method-1" id="markdown-toc-method-1">Method 1:</a></li>
+          <li><a href="#method-2" id="markdown-toc-method-2">Method 2</a></li>
+        </ul>
+      </li>
+      <li><a href="#adding-to-the-latent-regression-model" id="markdown-toc-adding-to-the-latent-regression-model">Adding to the Latent Regression model</a></li>
+      <li><a href="#the-item-side-the-linear-logistic-test-model-lltm" id="markdown-toc-the-item-side-the-linear-logistic-test-model-lltm">The Item Side: The Linear Logistic Test Model (LLTM)</a></li>
     </ul>
   </li>
 </ul>
-<h3 id="get-the-data-read-in">Get the Data Read in</h3>
+
+<h1 id="part-1-understanding-the-data-and-the-rasch-model">Part 1. Understanding the Data and the Rasch Model</h1>
+
+<h2 id="get-the-data-read-in">Get the Data Read in</h2>
 <p>First, I want to make sure everybody gets the data read into R in the exact same way.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#install packages to get data</span><span class="w">
@@ -44,11 +56,11 @@
 </span><span class="n">eirtdata</span><span class="o">$</span><span class="n">proflevel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">eirtdata</span><span class="o">$</span><span class="n">proflevel</span><span class="p">)</span><span class="w">
 </span><span class="n">eirtdata</span><span class="o">$</span><span class="n">abilcov</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">eirtdata</span><span class="o">$</span><span class="n">abilcov</span><span class="p">)</span></code></pre></figure>
 
-<h3 id="1-the-data">1. The Data</h3>
+<h2 id="dataset-description">Dataset Description</h2>
 <p>Once the data is read in, let’s describe the data set.<br />
 The data set comes from a general test given to a set of first year undergrads at UCSB. The test was administered to 1500 students in a large biology class. Approximately half the students are in a class that is run the standard way. The other class involves an all together different curriculum. Therefore, there’s a treatment and control group.</p>
 
-<h3 id="2-the-variables">2. The variables:</h3>
+<h3 id="the-variables">The variables:</h3>
 <ol>
   <li><code class="highlighter-rouge">id</code>: Random Student ID</li>
   <li><code class="highlighter-rouge">Math...</code> Math Question from the test scored correct or incorrect (1 or 0)</li>
@@ -89,7 +101,7 @@ The data set comes from a general test given to a set of first year undergrads a
 ##   not-treat 185 214 170 191
 ##   treat     193 169 211 167</code></pre></figure>
 
-<h3 id="3-running-the-rasch-model">3. Running the Rasch Model</h3>
+<h2 id="running-the-rasch-model">Running the Rasch Model</h2>
 <p>Let’s run some basic IRT using tam on this data. This should help us get an idea.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#fit the first IRT model. Have to subset the data since it contains person covariates.</span><span class="w">
@@ -128,17 +140,20 @@ The data set comes from a general test given to a set of first year undergrads a
 
 <p>This is all to say, we’re good to start running our latent regressions.</p>
 
-<h2 id="4-latent-regression-in-two-parts">4. Latent Regression in Two Parts</h2>
+<h1 id="part-2-latent-regression">Part 2. Latent Regression</h1>
 <p>Example Q1. Is there a noticable difference in general ability (based on the test we’re analyzing) between groups who were in the treatment group (coded as 1) and those who were not (coded as 0)?</p>
 
 <p>One of the advantages of the latent regression approach is that it gets you item and student level information, potentially, and takes measurement error into account. If you were to simply regress test total score on the group identifier, you would have no measurement error. Plus, this regression approach wouldn’t really be a latent variable model. It takes the observed score and regresses it on the observed student classification.</p>
 
-<h3 id="part-i-two-ways-to-analyze-group-differences-in-tam">Part I. Two Ways to Analyze Group Differences in TAM</h3>
+<h2 id="two-ways-to-analyze-group-differences">Two ways to analyze group differences</h2>
 <p>Treat the “treat” variable as placing students in groups, 1 and 0. We can do this two ways in TAM.</p>
 
-<p>Formula for latent regression: 
-<script type="math/tex">\theta = \beta_1*X_1 + \epsilon</script> 
-where <script type="math/tex">\beta_1</script> is the regression coefficient for 1. <script type="math/tex">X_1</script> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
+<h3 id="method-1">Method 1:</h3>
+<p>Formula for latent regression:</p>
+
+<script type="math/tex; mode=display">\theta_i = \beta_1*X_1 + \epsilon_i</script>
+
+<p>where <script type="math/tex">\beta_1</script> is the regression coefficient for treatment value of 1. <script type="math/tex">X_1</script> takes on a value of 1 if the student is in the treatment group. Error is basically person specific (though, drawn from a normal distribution).</p>
 
 <p>With a dichotomous treatment variable, there are a few ways to do this in TAM. The first treats the data as if it comes from two “groups.” This method gets us group variances. So for instance, we can not only see if the two groups have major differeces via their theta estimates, we can see if their underlying distributions have different “shapes.”</p>
 
@@ -151,6 +166,8 @@ where <script type="math/tex">\beta_1</script> is the regression coefficient for
 </span><span class="n">summary</span><span class="p">(</span><span class="n">latg</span><span class="p">)</span></code></pre></figure>
 
 <p>Under the section, “covariances, variances” we see that the two groups have pretty similar distributions.</p>
+
+<h3 id="method-2">Method 2</h3>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#the next way, and I find this to be the most intuitive way, </span><span class="w">
 </span><span class="c1">#but you don't get group variances. </span><span class="w">
@@ -266,7 +283,7 @@ where <script type="math/tex">\beta_1</script> is the regression coefficient for
 
 <p>We’ve decomposed the variance of theta.</p>
 
-<h3 id="part-iiadding-to-the-latent-regression-model">Part II.Adding to the Latent Regression model</h3>
+<h2 id="adding-to-the-latent-regression-model">Adding to the Latent Regression model</h2>
 <p>We can make the latent regression model more complicated by adding predictors beyond just treatment/not-treatment.</p>
 <ol>
   <li>Create a matrix of covariates.</li>
@@ -276,17 +293,13 @@ where <script type="math/tex">\beta_1</script> is the regression coefficient for
 
 <p>We’ll make the model more complicated by predicting theta with a latent regression controlling for proficiency level.</p>
 
-<p>So the model is now: 
-<script type="math/tex">\theta = \beta_1*treat + \beta_2*proflevel + \epsilon</script></p>
+<p>So the model is now:</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>And the full model will now look something like: $$Logit[Pr(X=1</td>
-      <td>\theta_p, \delta_i)] = \beta_1<em>treat + \beta_2</em>proflevel + \theta - \delta_i$$</td>
-    </tr>
-  </tbody>
-</table>
+<script type="math/tex; mode=display">\theta = \beta_1*treat + \beta_2*proflevel + \epsilon</script>
+
+<p>And the full model will now look something like:</p>
+
+<script type="math/tex; mode=display">Logit[Pr(X=1|\theta_p, \delta_i)] = \beta_1*treat + \beta_2*proflevel + \theta - \delta_i</script>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#this gets all the person level covariates into a single dataframe</span><span class="w">
 </span><span class="n">daty</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">eirtdata</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">treat</span><span class="p">,</span><span class="w"> </span><span class="n">proflevel</span><span class="p">,</span><span class="w"> </span><span class="n">abilcov</span><span class="p">)</span><span class="w">
@@ -452,7 +465,7 @@ where <script type="math/tex">\beta_1</script> is the regression coefficient for
   </tbody>
 </table>
 
-<h3 id="5-the-item-side-the-linear-logistic-test-model-lltm">5. The Item Side: The Linear Logistic Test Model (LLTM)</h3>
+<h2 id="the-item-side-the-linear-logistic-test-model-lltm">The Item Side: The Linear Logistic Test Model (LLTM)</h2>
 
 <p>The LLTM is simply a more parsimonious Rasch model. Instead of each individual item being estimated, estimated item difficulties are made just based on item indicators. For instance, the data we have has four item types. Each item type gets its own difficulty estimate. However, there are some complications here. There is an assumption that each item indicator is responsible for the item difficulty. This is not a safe assumption.</p>
 
