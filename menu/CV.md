@@ -21,6 +21,7 @@ Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya
 
 **BA** (2011), Political Science, Minor in History  
 University of California, Santa Barbara  
+  
 <br>
 
 
@@ -33,7 +34,7 @@ Philosophy of Measurement and Probability
 Casual Inference  
 Measuring student literacy and other non-academic abilities  
 
-
+<br>
 
 ## RELEVANT EXPERIENCE
 ----------------------

@@ -1,0 +1,156 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Link Functions: Where do they come from?},
+  pdfauthor={Danny},
+  hidelinks,
+}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Link Functions: Where do they come from?}
+\author{Danny}
+\date{3/30/2020}
+
+\begin{document}
+\maketitle
+
+As a student, when presented with the concept of link functions -
+especially in a more applied statistics course - I was always left
+wanting a bit more. The standard way a social science student usually
+learns about link functions is through the introduction of logistic
+regression. In this post, I will give an earlier version of myself what
+I always wanted - a step-by-step break down of how the link function is
+derived algebraically. In a future post, I'll expand on the conceptual
+aspects of link functions - introducing roughl, how probability enters
+are generalized linear models which is paramount for understanding link
+functions.
+
+Of note, we'll be dealing with link functions in only super specific
+scenarios. First, we'll be dealing with canonical link functions, only.
+For instance, the logit is the cannonical link to the binomial whereas
+the probit is not. Roughly speaking, this means that the logit link can
+be directly derived from the binomial whereas the probit link cannot.
+
+For this post, we'll be using primarily algebra - there will be a hint
+of calculus. If this isn't your cup of tea, perhaps the next post will
+be more interesting. But, I try to explain all the steps below in a way
+that I hope is clear, including the ``rules'' I'm using through each
+step - so give it a shot! I think a little effort doing algebra can
+serve most of us students in social science more than we realize.
+
+\hypertarget{preliminaries}{%
+\subsection{Preliminaries:}\label{preliminaries}}
+
+I'll refer to these rules in the post below.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  When I use \[Log\] I mean the natural log, or \(ln\) . This is the
+  logarithm with base \(e\) such that \[log_e(1) = 0\] because
+  \[e^0 =1\] .
+\item
+  log(a) + log(b) = \[log(a*b)\] .
+\item
+  log(a)-log(b) = \[log(\frac{a}{b})\] .
+\item
+  \[log(a)^x = xlog(a)\] .
+\end{enumerate}
+
+\hypertarget{exponential-family-of-probability-functions}{%
+\subsection{Exponential Family of Probability
+Functions}\label{exponential-family-of-probability-functions}}
+
+This is where the bulk of the hard work will be and it's all going to be
+algebra. It turns out that probability density functions like the normal
+distribution or discrete probability distributions like the binomial
+(called probability mass functions) are of a family of distributions
+called the exponential family of distributions. In the case of the
+binomial, it is in the exponential family only when there are a fixed
+number of trials, but that's not important.
+
+What's special about this is that members of this family can be written
+in the common form,\\
+\begin{equation}
+  $$f_X(x|\theta) = h(x)exp[\eta(\theta)*T(x) - A(\theta)]$$
+
+\end{equation}
+
+For whatever reason, I like an equivalent form of this distribution a
+bit better:
+
+\[f(x, \theta, \phi) = exp[\frac{y\theta-b(\theta)}{a(\phi)} + c(y, \phi)]\]
+
+One notes that this looks nothing like the binomial distribution in its
+generalized linear model form (glm)
+
+\[f(y) = {n \choose y}p^y(1-p)^{n-y}\] ..
+
+So we'll have to transform it into the form above.
+
+\end{document}

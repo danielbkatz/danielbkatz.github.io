@@ -1,0 +1,264 @@
+---
+title: 'Link Functions: Where do they come from?'
+author: "Danny"
+date: "3/30/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+As a student, when presented with the concept of link functions - especially in a more applied statistics course - I was always left wanting a bit more. The standard way a social science student usually learns about link functions is through the introduction of logistic regression. In this post, I will give an earlier version of myself what I always wanted - a step-by-step break down of how the logit link function is derived. In a future post, I'll expand on the conceptual aspects of link functions - introducing roughly, how probability enters generalized linear models which is paramount for understanding link functions.  
+  
+Of note, we'll be dealing with link functions in specific scenarios. First, we'll be dealing with canonical link functions, only. For instance, the logit is the cannonical link to the binomial whereas the probit is not. Roughly speaking, this means that the logit link can be directly derived from the binomial whereas the probit link cannot. 
+
+We'll be using primarily algebra - there will be a hint of calculus. If this isn't your cup of tea, perhaps the next post will be more interesting. But, I try to explain all the steps below in a way that I hope is clear, including the "rules" I'm using through each step - so give it a shot! I think a little effort doing algebra can serve most of us students in social science more than we realize. 
+
+## Preliminaries:
+
+I'll refer to these rules in the post below. 
+
+1. When I use $Log$ I mean the natural log, or $ln$ . This is the logarithm with base $e$ such that $log_e(1) = 0$ because $e^0 =1$ . 
+2. log(a) + log(b) = $log(a*b)$ .
+3. log(a)-log(b) = $log(\frac{a}{b})$ .
+4. $log(a)^x = xlog(a)$ .
+
+
+## Exponential Family of Probability Functions
+A generalized linear model's link function takes the "structural" component of the model and links it to the outcome. To expand, even when you have a standard linear regression of the form,
+
+$$y = \alpha + \beta_1X_1 + \epsilon$$  
+y has some conditional distribution. In other words, we need to have some way to go from the structural portion of the model, $$\alpha + \beta_1X_1$$, which is just a straight line, and link it to its outcome $y$ via some probability density function because we are not dealing with deterministic data, afterall. In this case, we have an $\epsilon$ term that "adds" noise and we assume that it's normally distibuted for each value of X. So Y, for a given value of x, has a normal distribution. We'll expand more on this is in the next post (or try at least). In other words, $$E(Y|X) = \mathcal{N(\mu=\alpha + B_1X_1, \sigma^2)}$$. So, in this case, the link function is the normal distribution.
+
+But what about for discrete outcomes, like the case where the outcome can only take a value of 1 or 0? Clearly, the normal distribution, won't be the right one - it won't characterize our outcome very well. But what if we want to link this outcome to a structural component in a linear way, like we did above? Welcome to link functions for the generalized linear model.
+
+## Exponential Distribution Families
+This is where the bulk of the hard work will be and it's all going to be algebra. It turns out that probability density functions like the normal distribution or discrete probability distributions like the binomial (called probability mass functions) are of a family of distributions called the exponential family of distributions. In the case of the binomial, it is in the exponential family only when there are a fixed number of trials.
+
+What's special about this is that members of this family can be written in the common form,  
+\begin{equation}
+\tag{1}
+
+f_X(x|\theta) = h(x)exp[\eta(\theta)*T(x) - A(\theta)]
+\end{equation}
+
+For whatever reason, I like an equivalent form of this distribution a bit better:
+
+\begin{equation}
+\tag{2}
+
+f(x, \theta, \phi) = exp[\frac{y\theta-b(\theta)}{a(\phi)} + c(y, \phi)] 
+\end{equation}
+
+
+## The logit link and logistic regression
+
+The binomial distribution looks like:
+
+\begin{equation}
+\tag{3}
+
+f(y) = {n \choose y}p^y(1-p)^{n-y}
+\end{equation}
+
+This looks nothing like equation 2, so how do we get there?
+One notes that this looks nothing like the binomial distribution. Remember from equation 1, above, that we're linking the expectation of a random variable given some predictors X (like the mean from above, to a probability density function). In linear regression, the expectation of y given an x value is simply, $\alpha + B1_X1$ . 
+
+
+A linear model with predictors won't work well, though, because the outcome in a logistic regression can only take on two values. This will make more sense if we can link it to a parameter of the binomial, which is, in the case of 1 trial, simply a bernoulli distribution with mean, $p$, or, generally, with $n$ trials, $n*p$ where $p$ is the probability. In this way, we're saying our outcome is the result of bernoulli trials.
+
+
+The first step is taking the log of both sides, because, remember from preliminary point 2, this will take the multiplication and turn it into addition, effectively:  
+
+\begin{equation}
+\tag{a}
+log(f(y)) = log({n\choose y})+ log(p)^y + log(1-p)^{n-y}
+\end{equation}
+
+Using prelimiary point 4, this becomes:
+
+
+\begin{equation}
+\tag{b}
+log(f(y)) = log({n\choose y})+ ylog(p) + (n-y)log(1-p) .
+\end{equation}
+
+
+
+Now, to get rid of the log on the left side, we exponentiate with $e$ both sides (using $exp(a)$ to mean $e^a$:
+
+\begin{equation}
+\tag{c}
+exp(log(f(y))) = exp[log({n\choose y})+ ylog(p) + (n-y)log(1-p)]
+\end{equation}
+
+which becomes:
+
+
+\begin{equation}
+\tag{d}
+f(y) = exp[log({n\choose y})+ ylog(p) + (n-y)log(1-p)]
+\end{equation}
+
+To save on typing, we'll only write the term inside the exp[] term now.
+
+To make things simpler, we'll group our outcome, y, our parameter of interest p, and terms with the full data in it (n) on their own. Also, we'll factor out: $(n-y)(log(1-p))$ into, 
+
+\begin{equation}
+\tag{e}
+nlog(1-p) - ylog(1-p)
+\end{equation}
+
+With this, we get:
+
+\begin{equation}
+\tag{f}
+=ylog(p) - ylog(1-p) + nlog(1-p) + log({n\choose y})
+\end{equation}
+ 
+All we've done is factor, like we used to do in middle school algebra (or whenver you learn to factor) and rearranged. 
+
+From **preliminary 3**, since first two terms have the same log base and multiplicative constant in `step e`, we can regroup:
+
+\begin{equation}
+\tag{g}
+=y[log(\frac{p}{1-p})] + nlog(1-p) + log{n\choose y}
+\end{equation}
+
+This is starting to look just like we want, and if you've used logistic regression, there should be some familiary terms. 
+
+Remember that our exponential form from equation 2:\begin{equation}
+\tag{2}
+
+f(x, \theta, \phi) = exp[\frac{y\theta-b(\theta)}{a(\phi)} + c(y, \phi)] 
+\end{equation}
+
+it appears the $y\theta$ portion matches up with:   
+$$y[log(\frac{p}{1-p})]$$
+
+Thus:
+
+\begin{equation}
+\tag{h}
+\theta = [log(\frac{p}{1-p})]
+\end{equation}
+
+From equation 2, we see that the second term is also a function of theta, so we need to rewrite $nlog(1-p)$ in terms of \theta. So, the easiest way to do this is to solve for \theta in terms of p.
+
+Exponentiate both sides of `h` then solve.
+
+
+$$
+\begin{equation}
+\tag{i}
+exp(\theta) = \frac{p}{1-p} \\
+exp(\theta)(1-p) = p \\
+exp(\theta)-exp(\theta)*(p) = p \\
+exp(\theta) = p + exp(\theta)*p \\
+\end{equation}
+$$
+
+
+Factor:
+$$
+\begin{equation}
+\tag{i}
+exp(\theta) = p(1 + exp(\theta)) \\
+\end{equation}
+$$
+
+Divide both sides by (1+exp(\theta):
+
+$$
+\begin{equation}
+\tag{i}
+
+\frac{exp(\theta)}{1+exp(\theta)} = p \\
+1 = \frac{1 + exp(\theta)}{1+exp(\theta)} \\
+
+1 - p = \frac{1}{1 + exp(\theta)}
+\end{equation}
+$$
+
+After that fair amount of algebra, let's rewrite 1 - p as 
+$$(1 + exp(\theta))^{-1}$$
+This step is really important because of **prelimiary 4**. Thus, 1-p becomes   
+$$ - (1+exp(\theta))$$
+We can rewrite, starting from `g` now, remembering what \theta equals, as :
+$$
+\begin{equation}
+\tag{j}
+f(x, \theta, \phi)=y(\theta) - nlog(1+exp(\theta)) + log{n\choose y}
+\end{equation}
+$$
+
+Believe it or not, this is now in exponential form, where:
+
+$$y(\theta) = ylog(\frac{p}{1-p})$$
+$$b(\theta) = nlog(1+exp(\theta))$$
+$$c(y, \phi) = log{n\choose y}$$
+$$a(\phi)=1$$
+### Finding Expectation:
+It turns out, that the expectation of a distribution in the exponential form is the first derivative of $b(\theta)$ and the variance is $a(\phi)$ times the second derivative of $b(\theta)$
+
+
+### Expectation/mean
+$$
+\begin{aligned}
+\mu=b'(\theta) = n[log(1+exp(\theta))] \\
+=n[exp(\theta)*\frac{1}{1+exp(\theta)}] \\
+\mu=n[\frac{exp(\theta)}{1+exp(\theta)}] \\
+\mu = n*p =np
+\end{aligned}
+$$
+
+This is great news. The first derivative worked out and we found the mean. This is what we need to pass through the link function, eventually.
+
+### Variance
+Given the definition above, this is how I solved. I use the chain and product rule instead of the quotient rule...sue me. 
+$$
+\begin{aligned}
+a(\phi)b''(\theta) = 1*n[\frac{exp(\theta)}{1+exp(\theta)}] \\ 
+= n[exp({\theta})*(1+exp(\theta)^{-1})] + [exp(\theta)*-1*exp(\theta)*
+(exp(1+\theta)^{-2})]] \\
+
+=n[\frac{exp(\theta)}{{1+exp(theta)}} - \frac{exp(2\theta)}{(exp(1+\theta)^{2})}] \\
+=n\frac{exp(\theta)}{1+exp(\theta)}(1-exp(\theta)) \\
+=npq
+
+\end{aligned}
+$$
+If you know the mean of the binomial, you'll realize this isn't super important to go through all this work, but it's good to see. 
+
+### Linking \mu and \theta
+So the key aspect of a link function is how we go from \mu to \theta. That is,
+$$ f(\mu) = \theta$$ is effectively the link function.
+
+To find the link function, we have to solve for \theta in terms of \mu.
+
+$$\mu = n*p = n*(\frac{exp(\theta)}{1+\exp(\theta)})$$
+
+We need to solve for \theta. We'll start by multiplying both sides of the equation by $1+exp(\theta)$
+
+$$
+\begin{aligned}
+=\mu*(1+exp(\theta)) = n*exp(\theta) \\
+\mu+(\mu*\exp(\theta)) = n*exp(\theta) \\
+\mu = n*exp(\theta) - \mu*exp(\theta)  \\
+\mu = exp(\theta)(n-\mu) \\ 
+\frac{\mu}{n-\mu}=exp(\theta) \\
+\log(\frac{\mu}{n-\mu}) = \theta
+\end{aligned}
+$$
+And that's your link function! But note, $\mu = n*p$ so we can rewrite it as:
+
+$$\theta = log(\frac{n*p}{n-(n*p))})$$
+
+Which, either factoring out n/n, or by substituting 1 for n as is the case for bernoulli trials like in scenarios we're used to with logistic regression:
+
+$$\theta = log(\frac{1*p}{1-(1*p))})$$
+$$\theta = log(\frac{p}{1-p})$$
+And, now this looks awfully like logistic regression. 
