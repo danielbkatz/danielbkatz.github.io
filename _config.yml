@@ -20,7 +20,7 @@ email: "http://dkatz@ucsb.edu"
 
 description: > # this means to ignore newlines until "baseurl:"
     PhD Student in Educational Measurement
-base_url: http://danielbkatz.github.io
+base_url: http://www.danielbkatz.github.io
 
 
 #linkedin: jekyll
