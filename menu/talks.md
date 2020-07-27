@@ -5,7 +5,7 @@ permalink: "/presentations/"
 ---
 
 
-# Talks
+# Conference Presentations:
 
 ## AERA 2019 - Is One Item Enough?
 ### Complex Constructs and Item Selection
@@ -16,10 +16,11 @@ shown via latent class analysis with distal outcomes that a researcher would lik
 to the same conclusions whether using a one item measure of life satisfaction or several
 items traditionally used to measure subjective well-being (SWB). This research
 emphasizes the difficulties of being able to make between-person measurement claims
-in the realm of self-report surveys, in general.
+in the realm of self-report surveys, in general.  
+  
 
 
-\\  
+\   
 
 
 # Tutorials and Workshops:    
