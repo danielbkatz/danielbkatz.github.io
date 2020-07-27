@@ -3,7 +3,8 @@
 theme: minima
 show_excerpts: true # set to true to show excerpts on the homepage
 
-google_analytics: UA-1366433822-2
+google_analytics: UA-136433822-2
+
 
 paginate: 20
 paginate_path: "/blog/page:num/"
