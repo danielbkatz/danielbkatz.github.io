@@ -7,8 +7,7 @@ permalink: "/presentations/"
 
 # Conference Presentations:
 
-## AERA 2019 - Is One Item Enough?
-### Complex Constructs and Item Selection
+## Complex Constructs and Item Selection
 [Presentation from AERA 2019 with Karen Nylund-Gibson and Michael Furlong]({{ site.url }}{% link assets/Presentations/AERA_2019/AERA_presi_2019_SWB.pptx %})
 
 Using self-report survey items administered to 1,908 high school students, it is
@@ -20,7 +19,8 @@ in the realm of self-report surveys, in general.
   
 
 
-\   
+  
+     
 
 
 # Tutorials and Workshops:    
