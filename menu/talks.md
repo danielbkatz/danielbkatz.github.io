@@ -22,7 +22,14 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 
 ## AERA 2019 - Is One Item Enough?
 ### Complex Constructs and Item Selection
-[Presentation from AERA 2019]({{ site.url }}{% link assets/Presentations/AERA_2019/AERA_presi_2019_SWB.pptx %})
+[Presentation from AERA 2019 with Karen Nylund-Gibson and Michael Furlong]({{ site.url }}{% link assets/Presentations/AERA_2019/AERA_presi_2019_SWB.pptx %})
+
+Using self-report survey items administered to 1,908 high school students, it is
+shown via latent class analysis with distal outcomes that a researcher would likely come
+to the same conclusions whether using a one item measure of life satisfaction or several
+items traditionally used to measure subjective well-being (SWB). This research
+emphasizes the difficulties of being able to make between-person measurement claims
+in the realm of self-report surveys, in general.
 
 
 
