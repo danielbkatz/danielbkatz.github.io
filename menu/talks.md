@@ -16,7 +16,13 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 3. [Part 3: Intro to R, analysis and viz]({{ site.url }}{% link assets/Presentations/slides/Intro_analysis.html %})
 
 ### Data for Workshop
-[Example Data for Methodsu workshop]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})
+[Example Data for MethodsU workshop]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})
+
+
+
+## AERA 2019 - Is One Item Enough?
+### Complex Constructs and Item Selection
+[Presentation from AERA 2019]({{ site.url }}{% link assets/Presentations/AERA_2019/AERA_presi_2019_SWB.pptx %})
 
 
 
