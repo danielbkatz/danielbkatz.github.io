@@ -35,10 +35,15 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 3. [Part 3: Intro to R, analysis and viz]({{ site.url }}{% link assets/Presentations/slides/Intro_analysis.html %})
 
 ### Data for Workshop
-[Example Data for MethodsU workshop]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})
-
-
-## Research Seminar Presentation
+[Example Data for MethodsU workshop]({{ site.url }}{% link assets/Presentations/CDRPdata/cohort16.csv %})  
+ 
+ 
+   
+&nbsp;
+  
+  
+  
+# Research Seminar Presentation
 
 [Using mixture models to understand differential item functioning and group constitution.]({{ site.url }}{% link assets/Presentations/Reminar_DIF/DIF_DIF_presi2.html %})
 
