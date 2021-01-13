@@ -315,14 +315,48 @@ class: middle
 - we do this with the log of the odds
 
 $$\log(\frac{p_i}{1-p_i}) = \beta_0 + \sum_{n=1}^N \beta_n x_{in}$$
+---
+class: middle
 
+# Solving for $p_i$
+
+Writing, $\beta_0 + \sum_{n=1}^N \beta_n x_{in}$ as $\theta$ so $$\log(\frac{p_i}{1-p_i}) = \theta$$
+
+.pull-left[
+
+1. Exponentiate both sides. 
+
+2. Multiply both sides by ${1-p_i}$  
+
+3. Distribut the left side
+
+4. Add $e^\theta*p_i$ 
+
+5. Factor out $p_i$ on the left 
+
+6. Divide both sides by $1+e^\theta$ 
+]
+.pull-right[
+1. $\frac{p_i}{1-p_i} =e^\theta$
+
+2. $p_i = e^\theta(1-p_i)$
+
+3. $p_i = e^\theta-e^\theta*p_i$
+
+4. $p_i + e^\theta*p_i = e^\theta$
+
+5. $p_i(1+e^\theta)= e^\theta$
+
+6. $p_i = \frac{e^\theta}{1+e^\theta}$
+]
 ---
 
 class: middle
 
 Probability
 
-+ Perhaps the most basic defintion (frequency/long run frequency)
++ Perhaps the most basic defintion (frequency/long run frequency)  
+
   + proportion of times an event occurs given a number of trials
   + Often not that simple to interpret  
   + Cannot be outside the range, [0,1]
@@ -438,7 +472,7 @@ class: middle
 + Scripts are (essentially) RStudio's text editor. **Work in Scripts**. They're saved text that you _can_ edit  
   
 
-+ Code in the console doesn't get saved and you _cannot_ edit  
++ Code in the console doesn't get saved and you _cannot_  edit  
   
 --
 
