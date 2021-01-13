@@ -24,7 +24,11 @@ in the realm of self-report surveys, in general.
      
 
 
-# Tutorials and Workshops:    
+# Tutorials and Workshops:
+
+# Ed 217B Lab 1
+1. [Part 1: Intro to R (basics)]({{ site.url }}{% link assets/Presentations/217B_Week2/r_introslides.html %})
+
 <p></p>  
 
 ## R Workshop - 1 day
