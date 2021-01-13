@@ -104,7 +104,7 @@ class: middle
 ---
 class: middle
   
-# Why is it useful to learn R?
+# You can learn R! 
 
 + It is quickly becoming the statistical language of choice in academic and non-academic circles    
 
@@ -142,6 +142,106 @@ class: middle
 &lt;img src="r_introslides_files/figure-html/unnamed-chunk-6-1.png" width="648" style="display: block; margin: auto;" /&gt;
 
 ---
+class: middle
+
+# Probability, odds, logits  
+  
+
++ In this class, we'll be operating a lot with probability, odds, and log odds  
+  
+  
+--
+
++ As mentioned in course slides, the link function in logistic regression (and the Rasch model is a special case) is the logit link  
+
+--
+
+- We still want to work in the linear model framework
+- we do this with the log of the odds
+
+`$$\log(\frac{p_i}{1-p_i}) = \beta_0 + \sum_{n=1}^N \beta_n x_{in}$$`
+
+---
+
+class: middle
+
+Probability
+
++ Perhaps the most basic defintion (frequency/long run frequency)
+  + proportion of times an event occurs given a number of trials
+  + Often not that simple to interpret  
+  + Cannot be outside the range, [0,1]
+
+--
+
++ `p` is the probability of an event occurring
+  
+
++ `1-p` is the probability of an even not occurring 
+
+--
+
++ What does it mean to say a coin has a 50% chance of landing heads? Or a student has a 30% chance of answering an item correctly?
+
+--
+
++ Usually invoking the long run
+
+---
+
+
+
+---
+
+class: middle
+
+# Odds
+
+
++ Odds are basically the ratio of an event happening to an event not happening
+
+--
+
++ Formally `odds = p/(1-p)`
+
++ If `p = .6`
+
++ Odds are `1.5 (.6/.4)` - the event (a candidate winning an election) is 1.5 times more likely to happen than not 
+
+--
+
++ What are the odds if the probability is .5?
+
+
+---
+
+class: middle
+
+
+# Log of the odds -logits
+
++ Take the natural log (ln) of the odds 
+
++ `\(log_{e}(odds)\)` or `\(ln(odds)\)`
+
++ Most commonly (and in R): `\(log(odds)\)`
+
++ Odds range from `\((0, \infty)\)` not great for linear modeling
+
++ log odds range from `\((-\infty, \infty)\)`
+
+---
+class: middle
+
+# Formulas for going the other way: logits to probability
+
+1. Exponentiate - `$$e^{logit} = e^{log_e(odds)} = odds$$`
+
+
+2. Get the probability `$$\frac{odds}{1+odds}$$`
+  
+
+---
 
 ## Open Up RStudio
 ---
@@ -159,24 +259,6 @@ background-size: contain
 background-position: center
 
 
----
-
-
-class: middle
-
-
-# Always Remind Yourself
-  
-+ The best way to learn R is to use it
-
-+ Even when it's frustratingly slow, use R instead of something else
-  
-+ Errors are good! Use the error output to guide your thinking (and Googling)
-
-+ In other words, "failing fast" is really convenient:
-  + Run code, change it until it breaks, figure out why it breaks
-  + Run example code, break it up into parts
-
 
 
 ---
@@ -186,7 +268,7 @@ class: middle
 
 ## Introducing "Scripts"
 
-+ Scripts are RStudio's text editor. **Work in Scripts**. They're saved text that you _can_ edit  
++ Scripts are (essentially) RStudio's text editor. **Work in Scripts**. They're saved text that you _can_ edit  
   
 
 + Code in the console doesn't get saved and you _cannot_ edit  
@@ -197,7 +279,7 @@ class: middle
 
 
 --
-+ Don't rely on saving data, rely on being able to re-run your script as if you have no memory of what you had done before 
++ Rely on being able to re-run your script as if you have no memory of what you had done before when you return to the script the next day (or whatever)
 
 ---
 
@@ -234,7 +316,6 @@ class: middle
 
 --
 
-.center[**Challenge** Figure out how to run a line of code in the console!]
 
 ---
 
@@ -261,7 +342,7 @@ factorial(4)
 ## [1] 24
 ```
 
-+ I recommend taking notes in an R script for this workshop! 
++ Add more comments than you think you need
 ---
 
 
@@ -271,7 +352,7 @@ factorial(4)
 |----------|------------------
 | Script   | Document containing code to be run
 | Console  | Output Window/Printer (but you can also run code here)
-| Environment| The place where things you create in R, live
+| Environment| The place where things you create in R, live (metaphorically)
 | Working Directory| The folder where your current R session lives, where output files go
   
 ---
@@ -304,16 +385,6 @@ class: middle
 + Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
 ---
 
-class: middle
-
-## File Paths Continued...Example
-
-+ I make the folder, `thesis`, my working directory, with `analysis.csv` in it.
-
-+ You won't need to type the whole path, just the name of the document or &lt;mark&gt;subdirectory&lt;/mark&gt; plus file 
-
-+ If I have a folder called, `analysis` in `thesis` directory the path will be &lt;mark&gt;analysis/filename.ext&lt;/mark&gt;.
----
 class: middle 
 
 ## File Paths: Getting the Wd...
@@ -337,13 +408,13 @@ class: middle
 ---
 
 ## Creating RStudio Projects
-### Projects are an RStudio work unit, (but, not required)
+### Projects are an RStudio staple
 
 .pull-left[1. Once open, click File (top left) ➡️  New Project
 
 2. New Directory ➡️  New Project ➡️  Create Project as a Subdirectory of: click `browse`.
   
-3. Choose where you'd like to put this session's R work (for instance, on your desktop in a folder called, `Rworkshop`). 
+3. Choose where you'd like to put this session's R work (for instance, on your desktop in a folder called, `ED217B Lab 1`) - or even one level down in a new folder within `ED217B Lab 1`) 
 
 4. `Directory Name` ➡️  Name this R project - `IntroR` (no spaces; It'll make your life easier) ➡️ Create Project.]
 
@@ -352,283 +423,32 @@ class: middle
 ]
 ---
 
-class: middle
-
-## Let's get setup for the workshop!
-1. In your project, create a new script to have at the ready. 
-
-2. Save the script as `introscript`. 
-
-3. Use a command to check your working directory. [_Hint_](http://www.dbkatz.com/slides/r_introslides.html#38).
-
-4. Write a comment:"this is the first R work we'll do in the R workshop"
-
-5. Find the `View` tab and change your RStudio session so it shows only the console
-
-6. Change your R studio Session to look like it did before
-
-7. Find the `Global Environment` (what's in there right now?)
-
-
----
-
-class: middle, center
-
-## What's a Function?
-
----
-
-
----
-## What are some functions we use?
-.pull-left[## How about a mean?
-Let's say we have a vector, `x`, with five elements: `1,2,3,4,5`    
-
-`x = [1,2,3,4,5]`
-
-`\(mean(x)=\frac{1+2+3+4+5}{5}\)` 
-
-`\(mean(x) = 3\)`]
-
---
-.pull-right[## `R` uses functions:
-
-```r
-#Let's make a vector with 
-#five elements
-
-x &lt;- c(1,2,3,4,5)
-
-mean(x)
-```
-
-```
-## [1] 3
-```
-]
----
-
-class: middle
-
-## Some of the language
-
-.pull-left[
-1. What goes in the parentheses of a function, such as `mean(x)` is called an &lt;mark&gt;argument&lt;/mark&gt;
-
-1. R functions often take more than one argument
-
-1. &lt;mark&gt;Code completion&lt;/mark&gt;: you can see what arguments a function takes as you start typing. R is making suggestions. 
-
-1. Hit tab to select these options!]
+# Setting up a nice working directory
 --
 
-.pull-right[
-1. `ggplot()` is a function, it performs some operation
-
-1. It takes several arguments such as `ggplot(data=df, aes(x=xvar, y=yvar))`
-
-1. Note: `df` is often R standin speak for a hypothetical `dataframe`, an R word for dataset
-
-1. Argument type and number varies from function-to-function
-]
-
----
-
-class: middle
-
-# Syntax, Continued 
-
-+ When you see that an argument has an option with an equal sign, it usually means order doesn't matter as long as you type the argument name first
-
-+ For instance to perform linear regression I can type `lm(data=df, outcome~var1+var2)` Or `lm(outcome~var1+var2, df)`
-
-+ You need commas between arguments
-
-+ Make sure your parentheses match/are closed
-
-+ R is case sensitive. So `var1` is different from `Var1`
----
-
-class: middle 
-
-## There are also other forms of functions we use in computation
-+ "Reading in" Data into R so we can explore or model
-
-+ Linear Regression,`lm()` in R
-
-+ Transforming Data in R:
-&lt;img src="gatheringdata.jpg" width="1001" /&gt;
-From, [Link: _**R for Data Science by Grolemund and Wickham**_](https://r4ds.had.co.nz)
+1. There are various philosophies about setting up your working directory. Within your working directory...  
 
 
-  
-# R and Packages
-+ Think of `packages` as very specialized bundles of software. 
-  + They're collections of functions developed by the "community"
-  + For a full intro, [_**click here**_](https://www.datacamp.com/community/tutorials/r-packages-guide#what)
 
---
-+ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)
+1. Set up a folder called "scripts" or similar  
 
 --
 
-+ You don't need all the packages!
-
---
-+ Packages add functions to base R
+1. Set up a folder called "data"  
 
 --
 
-+ For instance, the `psych` package is built with tools commonly needed in the social sciences
+1. Set up a folder called "output" or similar  
 
----
-class: middle
-
-## Packages, cont'd
-+ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer (have to be connected to the internet)
-
-+ To see where it's downloaded, run `.libpaths()`
-
-+ Each time you start a new R session, you have to load a package via `library()` but you don't have to install each time
----
-
-class: middle
-
-# Installing and Loading Packages 
-Installs the package if it's not already installed:
-
-`install.packages("psych")`
-
-Loads the package so I can use the functions in the `psych` package"
-`library(psych)`
----
-
-class: middle 
-
-
-## Installing and loading packages looks like this (note the quotes)
-
-```r
-# note the quotes
-install.packages("psych")  
-library(psych)
-```
----
-
-class: middle
-
-## Let's Install and Load the tidyverse
-
-
-```r
-install.packages("tidyverse")  
-```
-## Load the tidyverse
-
-
-```r
-library(tidyverse)
-```
-
----
-## Getting help
-+ First and foremost, you can see installed packages in the bottom-right pane:
-
-&lt;img src="packages.jpg" width="868" /&gt;
-
-+ Click on a package to see the documentation
----
-## Other Help
-
-+ You can also type `?packagename` such as `?dplyr`
-
-+ To get help with a base R function, you can type ?function
-
-+ To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
-
-+ Under the &lt;mark&gt;Help&lt;/mark&gt; tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
-
-+ Also, Google (we'll talk about this more)!
-
----
-# Run the examples in documentation, usually at the bottom of the section to see how something works!
-
-&lt;img src="doc_examples.jpg" width="1569" style="display: block; margin: auto;" /&gt;
-
-
----
-## why the tidyverse?
-
-The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of packages used to make data wrangling/cleaning, exploration, and, ultimately, modelling easier
-  
-  
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Package &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Description &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; dplyr &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for creating common, easy to use and remember verbs for basic data handling tasks &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; ggplot2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for data visualization &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; tidyr &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for creating `tidy` data &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; readr &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for reading in 'rectangular' data of different formats &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; purrr &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for really working with lots of data easily (for cleaning, computing variables, etc.) &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; tibble &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; to make dealing with dataframes even easier. Dataframes will become tibbles in R &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; stringr &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for working with strings and doing a bit of text mining &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; forcats &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; for handling factors in R &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+Finally...time to get our feet wet...
 
 ---
 
+# Getting set up.
 
-# Operators in R
-|Operation|Operator in R |Example|
-|---------|------|-------|-------|
-|Addition |`+` |`4+3`
-|Subtraction|`-`| `4-3`
-|Multiplication|`*`| `4*3`
-|Exponentiation | `**`| `4**3`
-|Division | `/`| `12/4`
-|Matrix multiplication|`%*%`| `a %*% b`|
+1. Download the R script `Intro_to_R1.R`
 
-**Challenge: Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
-
----
-
-## Output
-+ R `returns a value` in the `console`
-
-+ It'll look like this:
-&lt;img src="output_slides.jpg" width="1809" /&gt;
-
-***Challenge***: Order of operations: Run `(4+3)*(4-3)` and then `4+3*4-3` in the console (for experimentation). What happens?
+1. Place `Intro_to_R1.R` in your `scripts` subdirectory.
 
 ---
 ## Variable Assignment
@@ -647,6 +467,7 @@ The [_**tidyverse**_](https://www.tidyverse.org/packages/) is a suite of package
 4. When we start assigning variables, note what changes in your R session (where do you see the variables go?)
 
 ---
+
 class: middle
  
 ### For instance, run the code below:
@@ -678,225 +499,91 @@ class: middle
 + The environment is also where we'll see what datasets, in R speak, `dataframes` that we have loaded or created, or other objects
 
 + If you don't assign something to a variable, it won't be stored
----
-  
-
-## Run the code below in a script
-
-`x + y`
-
-`x*y`
-
-`x==y`
-
-What happens?
-
---
-
-
-```r
-x + y
-```
-
-```
-## [1] 6
-```
-
-```r
-x*y
-```
-
-```
-## [1] 8
-```
-
-```r
-x==y
-```
-
-```
-## [1] FALSE
-```
-
----
-## Boolean/Logical Operators!
-
-+ `x==y` yields, `FALSE`: `==` is a different type of operator
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; Operation &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Operator &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Example &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Equality; Are they equal? &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; == &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x==y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Not Equal &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; != &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x!=y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Greater then or equal &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; &amp;gt;= &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x&amp;gt;=y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Less than or equal &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; &amp;lt;= &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x&amp;lt;=y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Greater than &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; &amp;gt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x&amp;gt;y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Less than &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; &amp;lt; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; X,y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Or &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; | &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x|y &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; And &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; &amp;amp; &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; x &amp;amp; y &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
----
-
-## Data Structures
-For individual values or vectors, R has a number of data types (not different than SPSS). We have a few ways of checking (for instance, numeric, character, factor, etc): 
-
-`class(x)` returns the data structure (such as numeric, integer, character, factor)
-
-Not exhaustive of all possible:
-
-```r
-# this will work on vectors as well. 
-class(x)
-```
-
-```
-## [1] "numeric"
-```
-
-```r
-str(x)
-```
-
-```
-##  num 2
-```
-
-```r
-is.numeric(x)
-```
-
-```
-## [1] TRUE
-```
-
-```r
-is.character(x)
-```
-
-```
-## [1] FALSE
-```
----
-Class: Middle
-
-## what's a Vector?
-+ In R, it's basically anything that has more than one `element` in it.
-
-+ It's just like a vector in math (row vector, column vector)
-
-+ R does think in matrices
-
-+ Instead of doing things one at a time, it operates on entire rows, columns, dataframes, lists, (arrays in general)
---
-## **Run:**
-
-```r
-v1 &lt;- c(1, 3, 8, 9, 10*8)
-v1
-```
-
-```
-## [1]  1  3  8  9 80
-```
-
----
-## Check for Understanding (classes of vectors)
-
-Run the following code:
-
-`v2 &lt;- c("hello", "world", 4, 5)`
-
-`v2`
-
-`class(v2)`
-
-**Challenge** 
-1. What do you think `c()` does?  
-
-2. What &lt;mark&gt;`class`&lt;/mark&gt; is `v2`?  
-
-3. Strings, or in R speak, objects of class `character`, need to have double or single quotes around them. Any intuition as to why?  
-
-
----
-
-## Check for Understanding
-
-1. Run the following code:
-
-`v3 &lt;- c(1:5)`  
-`v4 &lt;- c(6:10)`    
-`v5 &lt;- v3+v4 `  
-`v5`   
-
-2. What does the `:` operator do?
-
-3. what class is `v5`?
-
---
-R is vectorized: it operates on entire vectors at a time
-
-```r
-v3 &lt;- c(1:5)
-v4 &lt;- c(6:10)
-v5 &lt;- v3+v4
-v5
-```
-
-```
-## [1]  7  9 11 13 15
-```
-
-```r
-class(v5)
-```
-
-```
-## [1] "integer"
-```
 
 ---
 
 class: middle
+
+---
+  
+# R and Packages
++ Think of `packages` as very specialized bundles of software. 
+  + They're collections of functions developed by the "community"
+
+--
++ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)
+
+--
+
++ You don't need all the packages!
+
+--
++ Packages add functions to base R
+
+--
+
++ For instance, the `psych` package is built with tools commonly needed in the social sciences
+
+---
+class: middle
+
+## Packages, cont'd
++ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer (have to be connected to the internet)
+
++ To see where it's downloaded, run `.libpaths()`
+
++ Each time you start a new R session, you have to load a package via `library()` but you don't have to install each time
+
+
+---
+## Getting help
++ First and foremost, you can see installed packages in the bottom-right pane:
+
+&lt;img src="packages.jpg" width="868" /&gt;
+
++ Click on a package to see the documentation
+---
+## Other Help
+
++ You can also type `?packagename` such as `?dplyr`
+
++ To get help with a base R function, you can type ?function
+
++ To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
+
++ Under the &lt;mark&gt;Help&lt;/mark&gt; tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
+
++ Also, Google (we'll talk about this more)!
+
+---
+# Run the examples in documentation, usually at the bottom of the section to see how something works!
+
+&lt;img src="doc_examples.jpg" width="1569" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Operators in R
+|Operation|Operator in R |Example|
+|---------|------|-------|-------|
+|Addition |`+` |`4+3`
+|Subtraction|`-`| `4-3`
+|Multiplication|`*`| `4*3`
+|Exponentiation | `**`| `4**3`
+|Division | `/`| `12/4`
+|Matrix multiplication|`%*%`| `a %*% b`|
+
+**Challenge: Aside from the matrix multiplication, make sure all of these work in `R`** (use a script!)
+
+---
+
+## Output
++ R `returns a value` in the `console`
+
++ It'll look like this:
+&lt;img src="output_slides.jpg" width="1809" /&gt;
+
+***Challenge***: Order of operations: Run `(4+3)*(4-3)` and then `4+3*4-3` in the console (for experimentation). What happens?
 
 ### This is one of those necessary evils, so you know how R works
 - To select individual elements in a vector, use `[2]` and the numeric position that you would like to extract. 
@@ -916,77 +603,8 @@ class: middle
 #### Both `df[1,1]`
 #### Can Select multiple `df[1:5, 1:6]` or `df[c(1,3, 8), c(1, 9, 2)]`
 
-### But the `tidyvese` is going to make our lives easier
 
 ---
-
-
-```r
-sum(v5)
-```
-
-```
-## [1] 55
-```
-
-```r
-max(v5)
-```
-
-```
-## [1] 15
-```
-
-```r
-mean(v5)
-```
-
-```
-## [1] 11
-```
-
-```r
-sd(v5)
-```
-
-```
-## [1] 3.162278
-```
-
-```r
-range(v5)
-```
-
-```
-## [1]  7 15
-```
-
-```r
-summary(v5)
-```
-
-```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##       7       9      11      11      13      15
-```
----
-class: middle
-
-## Important points from part 1
-
-1. Work in scripts.
-
-2. R comes with a base set of functions.
-
-3. R has data structures and types including mathematical/numerical operators and boolean/logical operators.
-
-4. You can always use `class()` or `str()` to figure out the data-type of a &lt;mark&gt;vector&lt;/mark&gt;.
-
-5. To save variables in R, use an assignment operator.
-
-6. Packages are external software that we can download to R.
-
-7. Within R, there are various ways to get help.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
