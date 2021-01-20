@@ -31,7 +31,7 @@ header_pages:
 - menu/blog.html
 - menu/talks.md
 - menu/CV.md
-- menu/Intro to Rasch Analysis.md
+- menu/intro_rasch.md
 #
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
