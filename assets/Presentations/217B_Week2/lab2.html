@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>An Introduction to R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Katz" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, middle, inverse, title-slide
+
+# An Introduction to R
+## ED 217 B Week 3 </span>
+### Daniel Katz
+### 1/20/2021
+
+---
+
+
+
+class: middle
+
+
+
+
+
+
+
+
+
+
+
+
+class: middle
+
+## Working Directories
++ The notion of the &lt;mark&gt;working directory&lt;/mark&gt; isn't unique to R
+
++ Directories are just folders on your computer with a certain `path`
+  + For instance, your `desktop` is a directory
+  + A folder within `Documents` is a directory
+
++ A `working directory` is just where you tell `R` that you'll be working
+  + when you load files, it knows to look to a certain folder
+  + When you export files, `R` exports automatically to the working directory
+
+---
+
+class: middle
+
+## File paths (for PC)
+
++ A path to a Word doc on my desktop looks like: `C:/Users/katzd/Desktop/myfile.docx`
+
++ A path to a file in a folder called, `thesis` in the `Documents directory` looks like `C:/Users/katzd/Documents/thesis/myfile.docx`
+
++ But these are long!
+
++ Instead, we'll tell `R` where to read files from, where to export, etc, via `projects`
+---
+
+class: middle 
+
+## File Paths: Getting the Wd...
+
++ To see the currect working directory, simply run the code `getwd()`
+
++ To set the working directory `setwd("filepath")` (the filepath has to be in quotes)
+
++ It's often useful to set the working directory at the top of your script
+
+**via menu options**: Session ➡️ Set Working Directory ➡️ Choose Directory (copy and paste outputted code to the top of your script)
+
++ Some people don't like this practice: [**Link**](https://whattheyforgot.org/safe-paths.html)
+
++ Run: `getwd()`
+
+---
+class: middle
+
+### For this class, what I might (with various optional permutations)....
+
+---
+
+class: middle
+## Option 1
+  
+**New RStudio project for each lab**:  
+  
+**Step 1.** Create a folder called ED_217B (no spaces)  
+**Step 2.** Create a ffolder called `labs`  
+**Step 3.** Open up `RStudio`  
+**Step 4.** Create a new project from within R studio, creating a new directory within `labs` called `lab2`  
+
+path to hypothetical `data.csv` file: 
+The path to hypothetical data in a data folder will be
+"data/data.csv"  
+
+---
+
+class: middle
+
+## Option 2
+
+**One RStudio project for all labs** Do the above but...  
+**Step 1.** Create a folder called ED_217B (no spaces)  
+**Step 2.** Open up `RStudio`  
+**Step 3.** Create a new project from within RStudio, creating a new directory called labs.  
+**Step 4.** Add a folder for each week's lab materials. You add one extra level to your R project.  
+
+path to hypothetical `data.csv` file: 
+"lab2/data/data.csv"  
+
+---
+
+# Setting up a nice working directory
+
+My working directory looks like this:
+
+&lt;img src="perfect_dir.jpg" width="1620" /&gt;
+
+
+
+
+---
+
+class: middle
+
+  
+# R and Packages
++ Think of `packages` as very specialized bundles of software. 
+  + They're collections of functions developed by the "community"
+  + They're publically accessible (after passing various tests) via `CRAN` or `Biconductor`
+  + May be able to get some `development` versions on `github`
+
+--
++ These packages have documentation if they're on `CRAN: The Comprehensive R Archive Network` (and even sometimes if they're not)
+
+--
+
++ You don't need all the packages!
+
+--
++ Packages add functions to base R
+
+--
+
++ For instance, the `psych` package is built with tools commonly needed in the social sciences while the `TAM` package is specially built for IRT (with a Rasch emphasis)
+
+---
+class: middle
+
+## Packages, cont'd
++ When you `install.packages()`, R will search for a package on `CRAN` and download it to your computer (have to be connected to the internet)
+
++ To see where it's downloaded, run `.libpaths()`
+
++ Each time you start a new R session, you have to load a package via `library()` but you don't have to install each time
+
+
+---
+## Getting help
++ First and foremost, you can see installed packages in the bottom-right pane:
+
+&lt;img src="packages.jpg" width="868" /&gt;
+
++ Click on a package to see the documentation
+---
+## Other Help
+
++ You can also type `?packagename` such as `?dplyr`
+
++ To get help with a base R function, you can type ?function
+
++ To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
+
++ Under the &lt;mark&gt;Help&lt;/mark&gt; tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
+
+
+---
+# Run the examples in documentation, usually at the bottom of the section to see how something works!
+
+&lt;img src="doc_examples.jpg" width="1569" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+### This is one of those necessary evils, so you know how R works
+- To select individual elements in a vector, we use `[]` and the numeric position that you would like to extract. 
+
+
+```r
+# vector reversing from 100 to 15
+vec &lt;- c(100:15)
+
+# select the first ten elements
+vec[1:10]
+```
+
+```
+##  [1] 100  99  98  97  96  95  94  93  92  91
+```
+
+
+- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R using &lt;mark&gt;base R&lt;/mark&gt;
+
+- We can also get descriptives or compute across a vector, or specific vector elements
+
+- Working with datasets or matrices, we can subset rows, columns or both
+---
+class: middle 
+
+#### Rows: `df[1, ]` (gets just the first row)
+#### Columnn `df[,1]` or `df[1]` (gets just the first column)
+#### Both `df[1,1]`
+#### Can Select multiple `df[1:5, 1:6]` or `df[c(1,3, 8), c(1, 9, 2)]`
+
+
+---
+class: middle
+### Random, not too often needed information about `dataframes`:
+
+1. Dataframes are a particular type, or class, of object in R. 
+2. The tidyverse will return something that's also called a `tibble`.
+3. It's just like a dataframe except, better printing and...
+4. When you subset a dataframe with just a row or column (but not both), it'll return a vector, not a df.
+5. A `tibble` won't do this.
+
+---
+
+## Example
+
+
+```r
+df &lt;- data.frame(col1 = 1:10, col2 = 11:20)
+
+# just an integer
+class(df[,1])
+```
+
+```
+## [1] "integer"
+```
+
+```r
+# add drop=FALSE (or drop = F)
+class(df[,1, drop=FALSE])
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+df_tibble &lt;- tibble(col1 = 1:10, col2 = 21:30)
+
+class(df_tibble[,1])
+```
+
+```
+## [1] "tbl_df"     "tbl"        "data.frame"
+```
+---
+
+
+class: middle
+
+### Arrays
+
++ An array is a general multidimensional data structure 
+  + mindblowingly, a matrix that essentially has an x, y, and a z axis (or more!)  
+  
++ One can make lists of matrices or dataframes, and lists can be [_**IN dataframes**_](https://jennybc.github.io/purrr-tutorial/ls13_list-columns.html)
+  + Sometimes, you want to do the same thing to a number of dataframes [_**iteration**_](https://r4ds.had.co.nz/iteration.html).
+  + In a list, you have a method for doing this very easily 
+  
+---
+
+class: middle
+
+## Getting data sets in to R with the `readr` package from the `tidyverse`
+
++ The first challenge: getting data into R
+
++ R needs a command to read in the data
+
++ R needs a &lt;mark&gt;path&lt;/mark&gt;, where to find the data
+
++ We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
+
+#### However, the `foreign` package and `haven` package can handle files from SAS, SPSS, STATA
+
++ You don't need SPSS, SAS, or STATA to read data into R
+
++ We'll start today with a standard `.csv` file.
+
+
+
+---
+
+# Getting set up.
+
+1. Download the R script `Intro_to_R2.R`
+
+2. Place `Intro_to_R2.R` in your `scripts` subdirectory.
+
+3. Download `eirt_data.csv` into your `data` or `raw_data` folder (however you have it set up)
+
+
+---
+
+# What we'll be using today:
+
+1. `readr`  
+
+2. `dplyr`  
+
+3. `ggplot`
+
+---
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "agate",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
