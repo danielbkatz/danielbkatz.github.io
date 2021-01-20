@@ -1,42 +1,61 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-  <head>
-    <title>An Introduction to R</title>
-    <meta charset="utf-8" />
-    <meta name="author" content="Daniel Katz" />
-    <script src="libs/header-attrs/header-attrs.js"></script>
-    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
-  </head>
-  <body>
-    <textarea id="source">
-class: left, middle, inverse, title-slide
-
-# An Introduction to R
-## ED 217 B Week 3 </span>
-### Daniel Katz
-### 1/20/2021
-
 ---
+title: An Introduction to R
+subtitle: ED 217 B Week 3 </span>
+author: "Daniel Katz"
+date: "1/20/2021"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      titleSlideClass: ["left", "middle", "inverse"]
+      highlightStyle: agate
+      highlightLines: true
+      countIncrementalSlides: true
 
+        
+---
 
 
 class: middle
 
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_knit$set(root.dir = "C:/Users/katzd/Dropbox/My PC (LAPTOP-K7402PLE)/Desktop/Github/danielbkatz.github.io/assets/Presentations/217B_Week2")
+
+```
+
+```{r xaringan-themer, include = FALSE}
+library(xaringanthemer)
+mono_light(base_color = "#050457",
+  code_highlight_color = "#686862",
+  link_color = "#4C4D41",
+  #code_inline_background_color = "#A6A6BA",
+  code_inline_color = "#002BDC",
+  code_font_google   = google_font("Droid Mono"),
+  #background_image = "methodsu.jpg",
+  # background_size = "15%",
+  #background_position = "bottom left"
+  )
+
+```
 
 
 
 
 
-
-
-
-
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(tidyverse)
+library(caTools)
+library(gganimate)
+library(knitr)
+```
 
 
 class: middle
 
 ## Working Directories
-+ The notion of the &lt;mark&gt;working directory&lt;/mark&gt; isn't unique to R
++ The notion of the <mark>working directory</mark> isn't unique to R
 
 + Directories are just folders on your computer with a certain `path`
   + For instance, your `desktop` is a directory
@@ -126,7 +145,9 @@ path to hypothetical `data.csv` file:
 
 My working directory looks like this:
 
-&lt;img src="perfect_dir.jpg" width="1620" /&gt;
+```{r echo=FALSE, dpi=50}
+knitr::include_graphics("perfect_dir.jpg")
+```
 
 
 ---
@@ -137,9 +158,9 @@ class: middle
 
 + R is a (mostly) functional programming language
 
-+ instead of `\(f(x)\)` we say things like, `mean(x)`
++ instead of $f(x)$ we say things like, `mean(x)`
 
-+ We can also have composite/multiple functions - `\(f(g(x))\)` - `print(mean(x))`
++ We can also have composite/multiple functions - $f(g(x))$ - `print(mean(x))`
 
 + R packages are bundles of these functions written by the public
 
@@ -190,7 +211,9 @@ class: middle
 ## Getting help
 + First and foremost, you can see installed packages in the bottom-right pane:
 
-&lt;img src="packages.jpg" width="868" /&gt;
+```{r echo=FALSE, dpi=150}
+knitr::include_graphics("packages.jpg")
+```
 
 + Click on a package to see the documentation
 ---
@@ -202,13 +225,15 @@ class: middle
 
 + To get help with a package function, you can type: `?packagename::function` such as `?dplyr::select` where select is a particular function in R.
 
-+ Under the &lt;mark&gt;Help&lt;/mark&gt; tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
++ Under the <mark>Help</mark> tab in R studio (next to `Tools` at the top), exists a few resources as well, including "cheat sheets"
 
 
 ---
 # Run the examples in documentation, usually at the bottom of the section to see how something works!
 
-&lt;img src="doc_examples.jpg" width="1569" style="display: block; margin: auto;" /&gt;
+```{r, echo = FALSE, fig.align = "center"}
+knitr::include_graphics("doc_examples.jpg")
+```
 
 
 ---
@@ -216,21 +241,17 @@ class: middle
 ### This is one of those necessary evils, so you know how R works
 - To select individual elements in a vector, we use `[]` and the numeric position that you would like to extract. 
 
-
-```r
+```{r}
 # vector reversing from 100 to 15
-vec &lt;- c(100:15)
+vec <- c(100:15)
 
 # select the first ten elements
 vec[1:10]
-```
 
-```
-##  [1] 100  99  98  97  96  95  94  93  92  91
 ```
 
 
-- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R using &lt;mark&gt;base R&lt;/mark&gt;
+- This is also how one may pull out individual columns, rows, or specific rows and columns in a dataframe in R using <mark>base R</mark>
 
 - We can also get descriptives or compute across a vector, or specific vector elements
 
@@ -258,35 +279,19 @@ class: middle
 
 ## Example
 
-
-```r
-df &lt;- data.frame(col1 = 1:10, col2 = 11:20)
+```{r}
+df <- data.frame(col1 = 1:10, col2 = 11:20)
 
 # just an integer
 class(df[,1])
-```
 
-```
-## [1] "integer"
-```
-
-```r
 # add drop=FALSE (or drop = F)
 class(df[,1, drop=FALSE])
-```
 
-```
-## [1] "data.frame"
-```
-
-```r
-df_tibble &lt;- tibble(col1 = 1:10, col2 = 21:30)
+df_tibble <- tibble(col1 = 1:10, col2 = 21:30)
 
 class(df_tibble[,1])
-```
 
-```
-## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 ---
 
@@ -312,7 +317,7 @@ class: middle
 
 + R needs a command to read in the data
 
-+ R needs a &lt;mark&gt;path&lt;/mark&gt;, where to find the data
++ R needs a <mark>path</mark>, where to find the data
 
 + We're going to use the [_**`readr`**_](https://readr.tidyverse.org/) package to handle most file types
 
@@ -350,126 +355,3 @@ class: middle
 
 
 
-    </textarea>
-<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
-<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create({
-"highlightStyle": "agate",
-"highlightLines": true,
-"countIncrementalSlides": true
-});
-if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
-  window.dispatchEvent(new Event('resize'));
-});
-(function(d) {
-  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
-  if (!r) return;
-  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
-  d.head.appendChild(s);
-})(document);
-
-(function(d) {
-  var el = d.getElementsByClassName("remark-slides-area");
-  if (!el) return;
-  var slide, slides = slideshow.getSlides(), els = el[0].children;
-  for (var i = 1; i < slides.length; i++) {
-    slide = slides[i];
-    if (slide.properties.continued === "true" || slide.properties.count === "false") {
-      els[i - 1].className += ' has-continuation';
-    }
-  }
-  var s = d.createElement("style");
-  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
-  d.head.appendChild(s);
-})(document);
-// delete the temporary CSS (for displaying all slides initially) when the user
-// starts to view slides
-(function() {
-  var deleted = false;
-  slideshow.on('beforeShowSlide', function(slide) {
-    if (deleted) return;
-    var sheets = document.styleSheets, node;
-    for (var i = 0; i < sheets.length; i++) {
-      node = sheets[i].ownerNode;
-      if (node.dataset["target"] !== "print-only") continue;
-      node.parentNode.removeChild(node);
-    }
-    deleted = true;
-  });
-})();
-(function() {
-  "use strict"
-  // Replace <script> tags in slides area to make them executable
-  var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container script'
-  );
-  if (!scripts.length) return;
-  for (var i = 0; i < scripts.length; i++) {
-    var s = document.createElement('script');
-    var code = document.createTextNode(scripts[i].textContent);
-    s.appendChild(code);
-    var scriptAttrs = scripts[i].attributes;
-    for (var j = 0; j < scriptAttrs.length; j++) {
-      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
-    }
-    scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-})();
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
-  }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
-
-<script>
-slideshow._releaseMath = function(el) {
-  var i, text, code, codes = el.getElementsByTagName('code');
-  for (i = 0; i < codes.length;) {
-    code = codes[i];
-    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
-      text = code.textContent;
-      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
-          /^\$\$(.|\s)+\$\$$/.test(text) ||
-          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
-        code.outerHTML = code.innerHTML;  // remove <code></code>
-        continue;
-      }
-    }
-    i++;
-  }
-};
-slideshow._releaseMath(document);
-</script>
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-(function () {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
-  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
-    script.src  = script.src.replace(/^https?:/, '');
-  document.getElementsByTagName('head')[0].appendChild(script);
-})();
-</script>
-  </body>
-</html>
