@@ -1,7 +1,7 @@
 ---
 layout: page
 title: ED 217 B Lab Materials
-permalink: "/intr_rasch/"
+permalink: "/intro_rasch/"
 ---
 
 <p></p>  
