@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Rasch Model - Extensions via TAM and the MRCML</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, middle, inverse, title-slide
+
+# The Rasch Model - Extensions via TAM and the MRCML
+## Justifications and Considerations </span>
+### 
+
+---
+
+
+
+&lt;style&gt;
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+&lt;/style&gt;
+
+
+
+
+
+
+
+
+
+# What we'll be doing...
+
++ Why?  
+  
+
+--
++ Review of the Linear Model (GLM) with "normal" assumptions to introduce design matrices in the GLM
+
+--
++ An introduction to MRCML - the Multidimensional Random Coefficients Multinomial Logit Model
+
++ An introduction to arrays in R
+
++ Working with design matrices in TAM
+
+--
+
++ Next time - the depths of MRCML and design matrices for different model types
+
++ Linear Logistic Test Model (item side)
+
++ Alternative to TAM (Random Item IRT, Continuous predictors, controlling priors, etc...)
+
+---
+
+class: middle
+
+# The Rasch model
+
++ We use the Rasch model for checking various properties of our items as evidence for having measured (or other hypotheses)  
+  
+
+--
++ We also may have designs that include raters (essays, observation protocols, etc) - so you have participants, items, &amp; raters  
+  
+--
+
++ We may have multidimensionality  
+  
+--
+
++ We may want to include the effect of item type or format, person properties, or their interactions
+  
+--
+
++ We may want to include item dependencies, item covariates, or test form covariates (is including a specific property in item or item category reducing or increasing the probability of category or item endorsement)
+
+---
+class: middle 
+
+
+# The Generalized Linear Model
+
+Classic example, borrowing from Andy...
+
+.pull-left[
+
++ Let's say I tell you that the average time it takes to get to the store from UCSB is 20 minutes. That's all I tell you.
+
++ When you go to the store (any store), how long would you guess your journey is about to take?
+
+
+
+--
+
+
++ We can write, `\(\mathbb{E}[Time] = 20\)` minutes
+]
+
+--
+
+.pull-right[
+
++ Now, let's say you're on some sort of schedule...
+
+
++ You might also be worried about the variance of these trips (you might want to know about the probability of the trip taking more than 30 minutes)
+
+]
+
+---
+
+class: middle 
+
+
+# The GLM, cont'd
+
++ To account for this, you request I describe your trip times with a distribution, namely, a normal distribution
+
++ These trip times now have a mean and variance to describe expectations and uncertainty
+
++ `\(Time \sim  \mathcal N(\mu = 20, \sigma^2 = 25)\)`
+
++ We can plot this
+---
+
+&lt;img src="MRCML_xaringan_files/figure-html/unnamed-chunk-2-1.png" width="648" style="display: block; margin: auto;" /&gt;
+---
+
+class: middle 
+
+
+# Let's write this as a linear model now,
+
+ `$$y = \beta_0*X_0 + \epsilon$$`
+--
+
+`\(X_0\)` is just defined to equal 1
+
++ `\(\epsilon\)` is normally, independently, and identically distributed with mean 0 and variance - let's say the mean is also 20 minutes
+
+---
+
+class: middle
+
+# Running this model
+
+In R this model looks like
+
+```r
+lm(data = df, y ~ 1)
+```
+
++ The model now has a "linear" or deterministic part, and a "random" part - that the outcome will never exactly equal the mean ("the error distribution")
+---
+
+class: middle
+
+# The GLM cont'd
+
+Rewritten in matrix form - this model looks like:
+
+`$$\hat{y} = X\beta$$`
+or...
+
+`$$\mathbb{E}[Time] = X\beta$$`
+---
+
+class: middle
+
+# Representing this model
+
+.pull-left[
++ Using the notation of De Boeck &amp; Wilson(2004)
+
+
+![simple_random](simple_random.png) 
+
+]
+--
+.pull-right[
++ The squiggly line I tried to draw (sorry...) represents the random component of the model - the distribution
+
++ Observed time is not the same as the linear model predicted time - there's some uncertainty 
+
+]
+---
+
+# In Matrix Form
+
+If you have data from 5 trips your model looks like this
+
+$$
+`\begin{bmatrix}
+20 \\
+20 \\
+20 \\
+20 \\
+20 \\
+\end{bmatrix} =
+\begin{bmatrix} 
+1  \\
+1  \\
+1  \\
+1  \\
+1  \\
+\end{bmatrix} * \begin{bmatrix}20\\
+\end{bmatrix}`
+\quad
+$$
+
+
+---
+
+class: middle
+
+# The GLM continued
+
+.pull-left[
+
++ What I didn't tell you is that the average trip takes 20 minutes by bike ... 
+
++ But it actually takes 5 minutes less time by car (on average)
+
++ Now we have additional information - but still need a distribution for modeling each mode of transportation!
+
+`$$\mathbb{E}[Time|Mode] = X\beta$$`
+
+
+]
+
+--
+
+.pull-right[
+
++ The distribution is now relative to each mode of transport - the conditional distribution
+
+  + Normally distributed error, mean 0.
+  
+  + Two normally distributed populations - mean 20, and mean 15.
+  
+  + Could fit the same variance or different variances
+  
+]
+  
+
+
+---
+
+class: middle
+
+# The GLM continued
+
++ Given the description above, in non matrix notation, with bikes as reference group
+
+`\(E[Time|Mode] = 20 * X_0 + (-5*X_1)\)`
+
++ Finally in matrix form, if two trips were by bike, and three by car, bike coded as 0, is the second column of the matrix. 
+
++ We also have a new vector, the beta vector, which holds the values of our coefficients.
+
++ The matrix with 1s and 0s is called the design matrix
+
+$$
+`\begin{bmatrix}
+20 \\
+15 \\
+20 \\
+15 \\
+15 \\
+\end{bmatrix} =
+\begin{bmatrix} 
+1 &amp; 0 \\
+1 &amp; 1 \\
+1 &amp; 0 \\
+1 &amp; 1\\
+1 &amp; 1 \\
+\end{bmatrix} * \begin{bmatrix}20\\
+-5
+\end{bmatrix}`
+\quad
+$$
+
+---
+&lt;img src="MRCML_xaringan_files/figure-html/unnamed-chunk-4-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+class: middle
+
+# Binary or categorical outcomes? 
+
++ Our conditional distribtions aren't really Normal anymore  - but... 
+
++ The outcome data data might have a bernoulli, binomial, poisson, exponential distribution which are all part of the same family of distribution
+
++ This common family of distributions is known as the exponential family of distributions - the lifeblood of the GLM.
+
+---
+
+class: middle
+
+# Aside: The common family for the GLM - The exponential family
+
++ When you write these conditional distributions in this exponential family form:
+  + Given a linear function, `\(\eta = B_0 + B_1*X_1..\)` 
+  
+  + There is a function `\(g(\mu) = \eta\)` 
+  
+  + A function can be inverted so `\(g^{-1}(\eta) = \mu\)`
+  
+--
+
+When this parameter/function comes directly from the distribution written in the common exponential family form, this is called the "cannonical parameter" such that
+
+--
+
+`\(\eta \equiv\theta\)` &amp; `\(g^{-1}(\theta)\)` will get you `\(\mu\)`
+
+---
+
+# For logistic regression
+
+The outcome is defined as being drawn from a Bernoulli (or Binomial):
+
+.pull-left[
+`\(X_i \sim Bern(p)\)`.
+
+The mean of the Bernoulli distribution is the probability of one of the two outcomes (coded as 1 or 0) which we'll call `p`.
+
+Conditional expectation is:
+
+`$$P(y=1|x)$$`
+]
+--
+.pull-right[
+`$$g(\mu)=\eta =\theta = log(\frac{p}{1-p})$$`
+
+
+The inverse ...
+
+`$$p = \frac{exp(\eta)}{1+exp(\eta)}$$`
+]
+
+
+
+
+---
+
+class: middle 
+
+# Ok, enough of this...
+
++ The point isn't to memorize this - it's to see the similarities in item response models 
+
++ What else can we add to the Rasch model?
+
++ Item response data is comprised of categorical data 
+
++ Pet peeve - calling categorical data "normally distributed" because the middle categories have the highest frequencies 
+
+---
+
+class: middle
+
+# Symbolizing our model
+
+We add a straight line between the linear model and eta (they're equivalent) and now we add a link function which is symbolized by the straight arrow between `\(\eta\)` and the probability.
+
++ We still have the random component (of course)
+
+.center[
+
+![link](link_fun.png)
+]
+
+---
+
+## The Rasch model
+
+From De Boeck &amp; Wilson (2004):
+
+.pull-left[
+
+![rasch](rasch_diagram.jpg)
+
++ `\(Y_{pi}\)`: response of person p on item i (categorical)
+]
+
+.pull-right[
+
++ `\(\beta_i\)`: item or item category difficulty - it'll be a vector
+
++ `\(X_{ik}\)`: design matrix containing 1s and 0s pertaining to if the particular `\(\beta\)` corresponds to item i in category k
+
++ `\(\theta_p\)`: the person ability - it is a random effect (next slide)
+
++ `\(Z_{p0}\)` is a constant (here) but later a set of predictors - basically showing that `\(\theta_p\)` is sampled from a distribution - a random effect
+
+]
+
+---
+class: middle
+
+# Formally:
+
+1. `$$\pi_{pi} = P(Y_{ik}=y|\theta_p, \beta_{ik})$$`
+--
+
+1. `$$\pi_{pi} = \frac{exp(\theta_p-\beta_{ik})}{1 + exp(\theta_p-\beta_{ik})}$$`
+--
+
+1. `$$\theta_p \sim N(0, \sigma^2_\theta)$$`
+--
+
+This is a version of the Random Coefficient Multinomial Logit Model (RCML)
+
+---
+class: middle
+
+### Writing the Rasch model as a linear model
+
++ `\(\eta_{pi} = \sum_{p=1}^n\theta_pZ_{pij} + \sum_{k=1}^K\beta_{ik}X_{pik}\)`
+
++ Not pretty, but we just wrote this out as a linear model like you're used to. But `\(\beta\)` is now reversed sign - this is the item "easiness" instead of difficulty.
+
++ `\(X\)` is a design matrix of item predictors - this is the A matrix in `TAM`
+
++ `\(Z\)` is a design matrix of person predictors.
+
+
+---
+class: middle
+
+# Predictors in the Rasch model? Why?
+
+
++ You want to know about the influence of item property Y (word problem vs non-word problem, specific word use on a self-report survey) 
+
+--
+
++ Differential item functioning - is an item (category) relatively harder (to endorse) for certain student groups even after matching on the level of the property of interest?
+
+--
+
++ There are person properties that you want to account for or know about (being in a specific classroom or not) - what is the effect of this property on the same logit scale as the items?
+
+
+---
+
+# It would be great if...
+
+We could have some form of the model so it looks the same regardless of ...
+
+--
+
++ Item type (dichotomous, polytomous)
+
++ Item covariates
+
+--
++ Dimensionality (single or multidimensional, within or between item dimensionality)
+
++ Person covariates included (get person abilities or person property effects on abilities)
+
+--
+
++ Rater effects included
+--
+
++ That is the Multidimensional Random Coefficients Multinomial Logit Model (MRCML)
+
+---
+
+class: middle
+
+# Rasch Model revisited using the design matrices
+
++ We can now use design matrices with dummy variables, effectively, like we did in our earlier regression
+
+`$$P(X_{ik} = 1; A, B | \delta, \theta) = \frac{exp(b_{ik}\theta + a'_{ik}\delta)}{\sum_{k=1}^{K_i}exp(b_{ik}\theta + a'_{ik}\delta)}$$`
+
++ a and b are elements of the design matrices `A` and `B`
+
++ this form of the model allows for all sorts of item types...
+
+---
+class: middle
+
+## Partial Credit Model - Three Response Options
+
+
+1. `$$P(x_i =0) = \frac{1}{1 + exp(\theta-\beta_{i1}) + exp(2\theta-(\beta_{i1}+\beta_{i2})}$$`
+
+1. `$$P(x_i=1) = \frac{ exp(\theta-\beta_{i1}) }{1 + exp(\theta-\beta_{i1}) + exp(2\theta-(\beta_{i1}+\beta_{i2})}$$`
+
+1. `$$P(x_i=2) = \frac{ exp(2\theta-(\beta_{i1}+\beta_{i2}))}{1 + exp(\theta-\beta_{i1}) + exp(2\theta-(\beta_{i1}+\beta_{i2}))}$$`
+
+
+---
+
+## Design Matrices
+
+`$$P(X_{ik} = 1; A, B | \delta, \theta) = \frac{exp(x'(b_{ik}\theta + a'_{ik}\delta)}{\sum_{k=1}^{K_i}exp(z'(b_{ik}\theta + a'_{ik}\delta))}$$`
+.pull-left[
+B = 
+$$
+`\begin{bmatrix}
+0 \\
+1 \\
+2 \\
+\end{bmatrix}`
+$$
+A = 
+$$
+`\begin{bmatrix}
+0 &amp; 0 \\
+1 &amp; 0 \\
+1 &amp; 1 \\
+\end{bmatrix}`
+$$
+
+]
+
+.pull-right[
++ Person responds in category 2 (the highest category - they get a dummy variable of 1 for the third category/row of the item in the x matrix)
+
++ Numerator - invokes the 2 in the B design matrix - so we start with `\(2\theta\)`
+
++ Numerator - invokes the third row of the A matrix - the 1 and 1, so we get `\(\beta_{i1} + \beta_{i2}\)`
+]
+
+---
+# Yielding...
+
+
+![PCM_delta_tau](delta_tau_PCM.jpg)
+
+---
+
+### Multidimensional Rasch example
+
++ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from Kennedy, 2005, p. 17) .
+
+.center[
+&lt;img src="dich_des.jpg" width="1733" height="10%" /&gt;
+]
+
+---
+
+### First covariate, or facet in the Rasch model - DIF
+
++ Checking to see if items or item categories are relatively harder (or easier) for students of different subgroups at the same "level" of the property
+
+
+We can express the model: 
+
+`$$\eta_{ip} = \theta_p + \delta_ik + \beta_1*group_p + \gamma_i(item*group_p)$$`
+
+And we introduce pseudo items in the design matrix, A, for two dichotmous items and one group with two categories
+
+I1_G1 = Pseudo Item
+
+
+
+```
+##       I1 I2 G1 I1xG1
+## I1_G1  1  0  0     0
+## I1_G2  1  0  1     1
+## I2_G1  0  1  0     0
+## I2_G2  0  1  1     0
+```
+
+
+---
+
+# Arrays
+
++ Unfortunately, the package `TAM` uses arrays instead of matrices
+
+--
+
++ Well, they use matrices - just multidimensional matrices
+
+--
+
++ Matrices in R have two dimensions
+
++ Arrays have more than two dimensions - they're like multiple dimensions
+
+
+---
+
+# Arrays, cont'd
+
++ An array with dimensions [4, 4, 2] has 2 matrices, with 4 rows and 4 columns.
+
+
+```r
+# Create two vectors of different lengths.
+v &lt;- c(1:16)
+
+# Make it an array
+ary &lt;- array(c(v),dim = c(4,4,2))
+
+
+ary
+```
+
+```
+## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16
+```
+
+```r
+#If you wanted to select only the second matrix
+#ary[ , , 2]
+```
+
+---
+
+Get only the second columns - turn it into one matrix
+
+```r
+ary[,2,]
+```
+
+```
+##      [,1] [,2]
+## [1,]    5    5
+## [2,]    6    6
+## [3,]    7    7
+## [4,]    8    8
+```
+--
+Get only the first rows
+
+```r
+ary[1, , ]
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    1
+## [2,]    5    5
+## [3,]    9    9
+## [4,]   13   13
+```
+
+--
+get the first rows and second columns
+
+
+```r
+ary[1, 2, ]
+```
+
+```
+## [1] 5 5
+```
+
+---
+
+class: middle
+
+### Thank Dog, some TAM code
+
++ We'll use the first example from TAM documentation for function `tam.mml` to understand the design matrices
+
++ `TAM` is a package for running versions of the MRCML model
+
++ For dichotomous and polytomous data
+
+
+
+
+---
+# Running a Rasch model 
+
+Load data
+
+
+```r
+# load data from TAM
+
+# 2000 persons, 40 items
+
+data(data.sim.rasch)
+
+head(data.sim.rasch)
+```
+
+```
+##      I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 I21
+## [1,]  1  1  1  1  1  1  0  1  0   1   1   0   0   1   1   1   1   1   1   1   0
+## [2,]  0  1  0  0  0  1  1  1  0   1   1   1   1   1   0   0   1   0   1   0   0
+## [3,]  1  1  1  1  1  1  1  1  1   1   1   1   1   1   1   0   0   1   1   1   1
+## [4,]  1  0  1  1  0  1  1  1  0   0   1   1   1   0   0   1   1   0   0   0   0
+## [5,]  1  1  1  1  1  1  1  1  0   0   1   1   1   1   1   0   0   1   1   1   1
+## [6,]  1  1  1  0  0  1  0  0  0   0   0   0   0   0   0   1   1   1   0   0   0
+##      I22 I23 I24 I25 I26 I27 I28 I29 I30 I31 I32 I33 I34 I35 I36 I37 I38 I39
+## [1,]   1   1   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+## [2,]   0   0   1   0   0   0   1   0   0   0   0   0   0   0   1   0   0   0
+## [3,]   1   1   1   1   1   1   1   1   1   1   1   0   0   1   1   1   0   1
+## [4,]   0   1   1   0   0   0   0   0   0   0   0   0   1   0   0   0   0   0
+## [5,]   0   1   1   1   1   1   0   1   0   0   0   1   1   1   0   1   0   0
+## [6,]   1   0   0   1   0   1   1   0   0   0   1   0   0   0   0   0   0   0
+##      I40
+## [1,]   0
+## [2,]   0
+## [3,]   1
+## [4,]   0
+## [5,]   0
+## [6,]   0
+```
+
+
+```
+## ....................................................
+## Processing Data      2021-04-22 11:25:27 
+##     * Response Data: 2000 Persons and  10 Items 
+##     * Numerical integration with 21 nodes
+##     * Created Design Matrices   ( 2021-04-22 11:25:27 )
+##     * Calculated Sufficient Statistics   ( 2021-04-22 11:25:28 )
+## ....................................................
+## Iteration 1     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |---
+##   Deviance = 20159.0309
+##   Maximum item intercept parameter change: 0.155766
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.032967
+## ....................................................
+## Iteration 2     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |---
+##   Deviance = 20107.7509 | Absolute change: 51.28 | Relative change: 0.00255026
+##   Maximum item intercept parameter change: 0.061703
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.044279
+## ....................................................
+## Iteration 3     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |---
+##   Deviance = 20086.0787 | Absolute change: 21.6721 | Relative change: 0.00107896
+##   Maximum item intercept parameter change: 0.041275
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.0447
+## ....................................................
+## Iteration 4     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |---
+##   Deviance = 20074.9888 | Absolute change: 11.0899 | Relative change: 0.00055242
+##   Maximum item intercept parameter change: 0.028785
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.041042
+## ....................................................
+## Iteration 5     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |---
+##   Deviance = 20068.8185 | Absolute change: 6.1703 | Relative change: 0.00030746
+##   Maximum item intercept parameter change: 0.020812
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.035615
+## ....................................................
+## Iteration 6     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20065.2215 | Absolute change: 3.597 | Relative change: 0.00017927
+##   Maximum item intercept parameter change: 0.015479
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.029799
+## ....................................................
+## Iteration 7     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20063.0772 | Absolute change: 2.1443 | Relative change: 0.00010688
+##   Maximum item intercept parameter change: 0.01175
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.024332
+## ....................................................
+## Iteration 8     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20061.7858 | Absolute change: 1.2914 | Relative change: 6.437e-05
+##   Maximum item intercept parameter change: 0.009043
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.019543
+## ....................................................
+## Iteration 9     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20061.0044 | Absolute change: 0.7814 | Relative change: 3.895e-05
+##   Maximum item intercept parameter change: 0.007023
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.015525
+## ....................................................
+## Iteration 10     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20060.5303 | Absolute change: 0.4741 | Relative change: 2.364e-05
+##   Maximum item intercept parameter change: 0.005485
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.012243
+## ....................................................
+## Iteration 11     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20060.2421 | Absolute change: 0.2882 | Relative change: 1.437e-05
+##   Maximum item intercept parameter change: 0.004298
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.00961
+## ....................................................
+## Iteration 12     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20060.0666 | Absolute change: 0.1754 | Relative change: 8.74e-06
+##   Maximum item intercept parameter change: 0.003374
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.007521
+## ....................................................
+## Iteration 13     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.9597 | Absolute change: 0.1069 | Relative change: 5.33e-06
+##   Maximum item intercept parameter change: 0.00265
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.005877
+## ....................................................
+## Iteration 14     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8945 | Absolute change: 0.0652 | Relative change: 3.25e-06
+##   Maximum item intercept parameter change: 0.002083
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.004588
+## ....................................................
+## Iteration 15     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8547 | Absolute change: 0.0398 | Relative change: 1.99e-06
+##   Maximum item intercept parameter change: 0.001636
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.00358
+## ....................................................
+## Iteration 16     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8303 | Absolute change: 0.0243 | Relative change: 1.21e-06
+##   Maximum item intercept parameter change: 0.001285
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.002794
+## ....................................................
+## Iteration 17     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8154 | Absolute change: 0.0149 | Relative change: 7.4e-07
+##   Maximum item intercept parameter change: 0.001009
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.002181
+## ....................................................
+## Iteration 18     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8063 | Absolute change: 0.0091 | Relative change: 4.5e-07
+##   Maximum item intercept parameter change: 0.000792
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.001703
+## ....................................................
+## Iteration 19     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.8008 | Absolute change: 0.0056 | Relative change: 2.8e-07
+##   Maximum item intercept parameter change: 0.000622
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.00133
+## ....................................................
+## Iteration 20     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7974 | Absolute change: 0.0034 | Relative change: 1.7e-07
+##   Maximum item intercept parameter change: 0.000488
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.001039
+## ....................................................
+## Iteration 21     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7953 | Absolute change: 0.0021 | Relative change: 1e-07
+##   Maximum item intercept parameter change: 0.000382
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000812
+## ....................................................
+## Iteration 22     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.794 | Absolute change: 0.0013 | Relative change: 6e-08
+##   Maximum item intercept parameter change: 3e-04
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000635
+## ....................................................
+## Iteration 23     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7932 | Absolute change: 8e-04 | Relative change: 4e-08
+##   Maximum item intercept parameter change: 0.000235
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000496
+## ....................................................
+## Iteration 24     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7927 | Absolute change: 5e-04 | Relative change: 2e-08
+##   Maximum item intercept parameter change: 0.000184
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000388
+## ....................................................
+## Iteration 25     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7924 | Absolute change: 3e-04 | Relative change: 1e-08
+##   Maximum item intercept parameter change: 0.000144
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000304
+## ....................................................
+## Iteration 26     2021-04-22 11:25:28
+## E Step
+## M Step Intercepts   |--
+##   Deviance = 20059.7923 | Absolute change: 2e-04 | Relative change: 1e-08
+##   Maximum item intercept parameter change: 0.000113
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000237
+## ....................................................
+## Iteration 27     2021-04-22 11:25:29
+## E Step
+## M Step Intercepts   |-
+##   Deviance = 20059.7921 | Absolute change: 1e-04 | Relative change: 1e-08
+##   Maximum item intercept parameter change: 8.8e-05
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000186
+## ....................................................
+## Iteration 28     2021-04-22 11:25:29
+## E Step
+## M Step Intercepts   |-
+##   Deviance = 20059.7921 | Absolute change: 1e-04 | Relative change: 0
+##   Maximum item intercept parameter change: 6.9e-05
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000145
+## ....................................................
+## Iteration 29     2021-04-22 11:25:29
+## E Step
+## M Step Intercepts   |-
+##   Deviance = 20059.792 | Absolute change: 0 | Relative change: 0
+##   Maximum item intercept parameter change: 5.4e-05
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 0.000114
+## ....................................................
+## Iteration 30     2021-04-22 11:25:29
+## E Step
+## M Step Intercepts   |-
+##   Deviance = 20059.792 | Absolute change: 0 | Relative change: 0
+##   Maximum item intercept parameter change: 4.2e-05
+##   Maximum item slope parameter change: 0
+##   Maximum regression parameter change: 0
+##   Maximum variance parameter change: 8.9e-05
+## ....................................................
+## Item Parameters
+##    xsi.index xsi.label     est
+## 1          1        I1 -1.9426
+## 2          2        I2 -1.8415
+## 3          3        I3 -1.7299
+## 4          4        I4 -1.6272
+## 5          5        I5 -1.5321
+## 6          6        I6 -1.5217
+## 7          7        I7 -1.3357
+## 8          8        I8 -1.3389
+## 9          9        I9 -1.2502
+## 10        10       I10 -1.0388
+## ...................................
+## Regression Coefficients
+##      [,1]
+## [1,]    0
+## 
+## Variance:
+##       [,1]
+## [1,] 1.344
+## 
+## 
+## EAP Reliability:
+## [1] 0.627
+## 
+## -----------------------------
+## Start:  2021-04-22 11:25:27
+## End:  2021-04-22 11:25:29 
+## Time difference of 1.232509 secs
+```
+
+
+```r
+head(mod1$xsi)
+```
+
+```
+##          xsi     se.xsi
+## I1 -1.942628 0.06437953
+## I2 -1.841519 0.06283751
+## I3 -1.729919 0.06126225
+## I4 -1.627156 0.05992419
+## I5 -1.532077 0.05877820
+## I6 -1.521734 0.05865871
+```
+
+---
+
+# Extract Design Matrices
+
++ TAM uses contrast coding - so items get a -1 instead of a 1.
+
+
+```r
+A_mat &lt;- mod1$A
+
+B_mat &lt;- mod1$B
+
+# array with 10 rows, 2 columns, and 10 matrices
+dim(A_mat)
+```
+
+```
+## [1] 10  2 10
+```
+
+```r
+# array with 10 rows, 2 columns, 1 matrix
+dim(B_mat)
+```
+
+```
+## [1] 10  2  1
+```
+
+
+---
+
+# A mat
+
+
+```r
+# First 5 rows, First two matrices
+A_mat[, , 1:2]
+```
+
+```
+## , , I1
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## 
+## , , I2
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0        -1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+```
+
+
+
+---
+
+# A matrix continued - 
+
+
+```r
+A_mat[,2,]
+```
+
+```
+##        I1 I2 I3 I4 I5 I6 I7 I8 I9 I10
+## Item01 -1  0  0  0  0  0  0  0  0   0
+## Item02  0 -1  0  0  0  0  0  0  0   0
+## Item03  0  0 -1  0  0  0  0  0  0   0
+## Item04  0  0  0 -1  0  0  0  0  0   0
+## Item05  0  0  0  0 -1  0  0  0  0   0
+## Item06  0  0  0  0  0 -1  0  0  0   0
+## Item07  0  0  0  0  0  0 -1  0  0   0
+## Item08  0  0  0  0  0  0  0 -1  0   0
+## Item09  0  0  0  0  0  0  0  0 -1   0
+## Item10  0  0  0  0  0  0  0  0  0  -1
+```
+
+---
+
+Transform to get item "easiness" params
+
+```r
+A_mat1 &lt;- A_mat
+
+A_mat1[,2,] &lt;- A_mat[,2,] *-1
+
+A_mat1[,, 1:2]
+```
+
+```
+## , , I1
+## 
+##        Category0 Category1
+## Item01         0         1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## 
+## , , I2
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+```
+
+
+---
+
+# Compare the item parameters
+
+```r
+head(mod1$xsi)
+```
+
+```
+##          xsi     se.xsi
+## I1 -1.942628 0.06437953
+## I2 -1.841519 0.06283751
+## I3 -1.729919 0.06126225
+## I4 -1.627156 0.05992419
+## I5 -1.532077 0.05877820
+## I6 -1.521734 0.05865871
+```
+
+```r
+head(mod2$xsi)
+```
+
+```
+##         xsi     se.xsi
+## I1 1.942619 0.06437943
+## I2 1.841510 0.06283742
+## I3 1.729910 0.06126216
+## I4 1.627147 0.05992410
+## I5 1.532069 0.05877811
+## I6 1.521725 0.05865863
+```
+
+---
+
+# B Matrix
+
+
+```r
+B_mat
+```
+
+```
+## , , Dim01
+## 
+##     Cat0 Cat1
+## I1     0    1
+## I2     0    1
+## I3     0    1
+## I4     0    1
+## I5     0    1
+## I6     0    1
+## I7     0    1
+## I8     0    1
+## I9     0    1
+## I10    0    1
+```
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "agate",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
