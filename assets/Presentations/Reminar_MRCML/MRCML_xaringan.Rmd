@@ -725,7 +725,7 @@ class: middle
 + For dichotomous and polytomous data
 
 
-```{r echo=F, message=F, warning=F}
+```{r message=F, warning=F}
 
 #install.packages(TAM)
 #install.packages
@@ -846,3 +846,5 @@ head(mod2$xsi)
 B_mat
 
 ```
+
+---
