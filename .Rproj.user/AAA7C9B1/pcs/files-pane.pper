@@ -1,13 +1,13 @@
 {
-    "path" : "C:/Users/katzd/Desktop/Github/danielbkatz.github.io",
+    "path" : "C:/Users/katzd/Dropbox/My PC (LAPTOP-K7402PLE)/Desktop/Github/danielbkatz.github.io",
     "sortOrder" : [
         {
             "ascending" : false,
-            "columnIndex" : 2
+            "columnIndex" : 4
         },
         {
-            "ascending" : false,
-            "columnIndex" : 4
+            "ascending" : true,
+            "columnIndex" : 2
         },
         {
             "ascending" : false,
