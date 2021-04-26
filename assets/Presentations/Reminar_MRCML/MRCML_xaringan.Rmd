@@ -15,16 +15,11 @@ output:
 
 
 <style>
-
-.center2 {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+pre {
+  white-space: pre !important;
+  overflow-y: scroll !important;
+  max-height: 50vh !important;
 }
-
 </style>
 
 ```{r setup, include=FALSE}
@@ -49,6 +44,7 @@ mono_light(base_color = "#29132e",
 ```
 
 ```{r, include = FALSE}
+
 library(tidyverse)
 ```
 
@@ -737,7 +733,7 @@ library(TAM)
 ```
 
 ---
-# Running a Rasch model 
+# Data for running the model
 
 Load data
 
@@ -748,13 +744,21 @@ Load data
 
 data(data.sim.rasch)
 
+
 head(data.sim.rasch)
 
 ```
+---
 
-```{r warning=F, message=F, echo=F}
+# Running the Rasch Model (first ten items)
+```{r message=FALSE, warning=FALSE, results='hide'}
 
-mod1 <- tam.mml(resp = data.sim.rasch[, 1:10])
+# Get first ten items 
+
+df <- data.sim.rasch[,1:10]
+
+# Run the model
+mod1 <- tam.mml(resp = df)
 
 ```
 
@@ -810,7 +814,7 @@ A_mat[,2,]
 
 ---
 
-Transform to get item "easiness" params
+Transform to get item "easiness" params - multiply by -1
 ```{r}
 
 A_mat1 <- A_mat
@@ -821,9 +825,9 @@ A_mat1[,, 1:2]
 
 ```
 
-```{r results='hide', echo=F, warning=F, message=F}
+```{r results='hide', warning=F, message=F}
 
-mod2 <- tam.mml(data.sim.rasch[, 1:10], A=A_mat1)
+mod2 <- tam.mml(df, A=A_mat1)
 
 ```
 ---
