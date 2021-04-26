@@ -757,6 +757,7 @@ mod1 &lt;- tam.mml(resp = df)
 
 
 ```r
+# item difficulties
 head(mod1$xsi)
 ```
 
@@ -909,6 +910,7 @@ A_mat1[,, 1:2]
 
 
 ```r
+# model with new A matrix
 mod2 &lt;- tam.mml(df, A=A_mat1)
 ```
 ---
@@ -916,6 +918,7 @@ mod2 &lt;- tam.mml(df, A=A_mat1)
 # Compare the item parameters
 
 ```r
+# model with default design matrices
 head(mod1$xsi)
 ```
 
@@ -930,6 +933,7 @@ head(mod1$xsi)
 ```
 
 ```r
+#model with transformed A matrix
 head(mod2$xsi)
 ```
 

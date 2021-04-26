@@ -764,6 +764,7 @@ mod1 <- tam.mml(resp = df)
 
 ```{r}
 
+# item difficulties
 head(mod1$xsi)
 
 ```
@@ -826,7 +827,7 @@ A_mat1[,, 1:2]
 ```
 
 ```{r results='hide', warning=F, message=F}
-
+# model with new A matrix
 mod2 <- tam.mml(df, A=A_mat1)
 
 ```
@@ -834,9 +835,10 @@ mod2 <- tam.mml(df, A=A_mat1)
 
 # Compare the item parameters
 ```{r}
-
+# model with default design matrices
 head(mod1$xsi)
 
+#model with transformed A matrix
 head(mod2$xsi)
 
 
