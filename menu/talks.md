@@ -54,7 +54,7 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 [Using mixture models to understand differential item functioning and group constitution.]({{ site.url }}{% link assets/Presentations/Reminar_DIF/DIF_DIF_presi2.html %})
 
 
-[Using mixture models to understand differential item functioning and group constitution.]({{ site.url }}{% link assets/Presentations/Reminar_MRCML/MRCML_xaringan.html %})
+[Design Matrices in TAM (and the MRCML model) - Part 1]({{ site.url }}{% link assets/Presentations/Reminar_MRCML/MRCML_xaringan.html %})
 
 
 
