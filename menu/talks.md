@@ -28,8 +28,6 @@ in the realm of self-report surveys, in general.
 
 <p></p>  
 
-## Ed 217B Lab 1
-1. [Part 1: Intro to R (basics)]({{ site.url }}{% link assets/Presentations/217B_Week2/r_introslides.html %})
 
 <p></p>  
 
@@ -55,6 +53,11 @@ In June 2018, I gave a one day "`tidyverse` and data wrangling in R" workshop at
 
 
 [Design Matrices in TAM (and the MRCML model) - Part 1]({{ site.url }}{% link assets/Presentations/Reminar_MRCML/MRCML_xaringan.html %})
+
+
+## Ed 217B Lab 1
+1. [Part 1: Intro to R (basics)]({{ site.url }}{% link assets/Presentations/217B_Week2/r_introslides.html %})
+
 
 
 
