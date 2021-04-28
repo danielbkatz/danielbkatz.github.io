@@ -31,8 +31,11 @@ I'll refer to these rules in the post below.
 A generalized linear model's link function takes the "structural" or linear component of the model and links it to the outcome, the expectation of y given x (sometimes, this is written, y-hat) but you can also think of it as $\mu$. To expand, even when you have a standard linear regression of the form,
 
 $$y_i = \alpha + \beta_1X_{1i }+ \epsilon_i$$  
-y has some conditional distribution, an error distribution. In other words, we need to have some way to go from the structural portion of the model, $$\alpha + \beta_1X_1$$, which is just a straight line, and link it to its outcome $y$ and have some probability density function for describing or modeling the data, since we are not working with deterministic data, afterall. In this case, we have an $\epsilon$ term that "adds" noise and we assume that it's normally distibuted for each value of X. So Y, for a given value of x, has a normal distribution. In other words, $$E(Y|X) = \mathcal{N(\mu=\alpha + B_1X_1, \sigma^2)}$$ or in matrix notation:  
-  $$E(Y|X) = \mathcal{N(\mu=XB, \sigma^2I)}$$ where I is the identity matrix. So, in this case, the link function is the idenity - or, said another way, the identify link takes $E[Y|X]$ and outputs the same thing - it doesn't change it - $g(E[Y|X]) = E[Y|X]$.
+y has some conditional distribution, an error distribution. In other words, we need to have some way to go from the structural portion of the model, $$\alpha + \beta_1X_1$$, which is just a straight line, and link it to its outcome $y$ and have some probability density function for describing or modeling the data, since we are not working with deterministic data, afterall. In this case, we have an $\epsilon$ term that "adds" noise and we assume that it's normally distibuted for each value of X. So Y, for a given value of x, is modeled with a normal distribution. In other words, $$Y = N(\mu=\alpha + B_1*X_1, \sigma^{2})$$ or in matrix notation:  
+  $$Y = N(\mu=XB, \sigma^{2}I)$$ where I is the identity matrix. 
+  
+  
+In this case, the Gaussian/normal, the link function is the idenity - or, said another way, the identify link takes $E[Y|X]$ and outputs the same thing - it doesn't change it - $g(E[Y|X]) = E[Y|X]$.
 
 When the outcome can only take a value of 1 or 0, the normal distribution is not a grear distribution to use, really - it best models data that are continuous (among many other properties). So, the identity link won't do. We need to see if we can use some other function to transform the expectation such that we can still use a linear model to model the data.
   
@@ -271,7 +274,6 @@ Given the definition above, this is how I solved. I use the chain and product ru
 a(\phi)b''(\theta) = 1*n\biggl[\frac{exp(\theta)}{1+exp(\theta)}\biggr] \\ 
 = n\biggl[exp({\theta})*(1+exp(\theta)^{-1})\biggr] + \biggl[exp(\theta)*-1*exp(\theta)*
 (exp(1+\theta)^{-2})\biggr] \\
-
 =n[\frac{exp(\theta)}{{1+exp(theta)}} - \frac{exp(2\theta)}{(exp(1+\theta)^{2})}] \\
 =n\frac{exp(\theta)}{1+exp(\theta)}(1-exp(\theta)) \\
 =npq
