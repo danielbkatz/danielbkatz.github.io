@@ -29,6 +29,7 @@ options(htmltools.dir.version = FALSE)
 
 ```{r xaringan-themer, include = FALSE}
 library(xaringanthemer)
+library(RefManageR)
 
 mono_light(base_color = "#29132e",
           white_color = lighten_color("#29132e", 0.7),
@@ -48,6 +49,20 @@ mono_light(base_color = "#29132e",
 library(tidyverse)
 ```
 
+
+```{r, load_refs, include=FALSE, cache=FALSE}
+
+library(RefManageR)
+
+
+BibOptions(check.entries = FALSE,
+           bib.style = "authoryear",
+           cite.style = "alphabetic",
+           style = "markdown",
+           hyperlink = FALSE,
+           dashed = FALSE)
+myBib <- ReadBib("ref.bib", check = FALSE)
+```
 
 
 # What we'll be doing...
@@ -202,8 +217,10 @@ class: middle
 
 # Representing this model
 
+
+
 .pull-left[
-+ Using the notation of De Boeck & Wilson(2004)
++ Using the notation of `r Citet(myBib, 1, .opts=list(cite.style = "authoryear"))`
 
 
 ![simple_random](simple_random.png) 
@@ -611,7 +628,7 @@ $$
 
 ### Multidimensional Rasch example
 
-+ Using $\delta$ for item difficulty instead of $\beta$; Items 1 and 2 indicator for first dim, items 1 & 3 correct. (from Kennedy, 2005, p. 17) .
++ Using $\delta$ for item difficulty instead of $\beta$; Items 1 and 2 indicator for first dim, items 1 & 3 correct. (from `r Citet(myBib, 5, .opts=list(cite.style = "authoryear"))` , p. 17) .
 
 .center[
 ```{r out.height= "10%", echo=F}
@@ -744,12 +761,8 @@ library(TAM)
 ---
 # Data for running the model
 
-Load data
-
 ```{r}
-# load data from TAM
-
-# 2000 persons, 40 items
+# Load data
 
 items <- read.csv("https://raw.githubusercontent.com/danielbkatz/danielbkatz.github.io/master/assets/Presentations/Reminar_MRCML/sim_data.csv")
 
@@ -1005,15 +1018,15 @@ mod_l <- tam.mml(resp=resp, A = A4)
 
 # get "model"item" fit
 itfit <- tam.fit(mod_l)
-
-
-
 ```
 
 + Get item difficulties (you may get slightly different values)
 
 ```{r}
 mod_l$xsi
+```
+--
+```{r}
 
 itfit$itemfit
 ```
@@ -1021,12 +1034,17 @@ itfit$itemfit
 + This is a strange model but describes the "difficulty effect" of item type
 
 ---
+class: middle 
 
 #### What about individual item difficulties plus overall effect of item type?
 
-+ I'm still trying to figure out if I'm doing this correctly (need to simulate)
++ I'm still trying to figure out if I'm doing this correctly (need to simulate)  
 
-+ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning as well)
+--  
+
++ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well `r Citet(myBib, 4, .opts=list(cite.style = "authoryear"))`)  
+
+--
 
 + Start with design matrix A and add item types to the matrix - four columns to each matrix - these are pseudo items - not sure if I need to leave one as all zeros for identification or code as `-1` and `1` instead
 
@@ -1059,7 +1077,12 @@ A_ex <- abind::abind(A, A_type)
 ```{r}
 
 A_ex[ , 2, ]
+```
 
+---
+# Final Array 
+
+```{r}
 A_ex[, , 41:44]
 
 ```
@@ -1094,9 +1117,19 @@ test_run <- tam.mml(resp=resp, A = A_ex)
 # Item difficulties
 
 test_run$xsi
+```
 
+---
 #Compare the model fits
-CDM::IRT.compareModels(test_run, mod_l)$IC
+
+```{r}
+
+fit_comp <- CDM::IRT.compareModels(test_run, mod_l)
+
+fit_comp$IC
+
+fit_comp$LRtest
+
 ```
 
 ---
@@ -1136,7 +1169,7 @@ dif_des_A$A$A.3d
 
 + We'll use the partial credit model (by convention, the Rating Scale Model uses a different parameterization)
 
-+ In this model, the item category, or item step difficulties are allowed to differ across items 
++ The item category difficulties - item step difficulties - are allowed to differ across items 
 
 ```{r }
 data(data.sim.mfr)
@@ -1173,10 +1206,11 @@ poly_mod2 <- tam.mml(data.sim.mfr, irtmodel = "PCM2")
 ---
 
 # In case of curiosity
+
+For more see `r Citet(myBib, 7, .opts = list(cite.style = "authoryear"))`
 ```{r}
 poly_mod$A[1:4, , ]
 
-poly_mod2$A
 ```
 
 ---
@@ -1193,6 +1227,15 @@ poly_mod2$A
 + Correlated factors
 
 + Compensatory
+
+---
+
+class: center
+
+# MIRT Model
+
+
+![mirt](mirt.png)
 
 ---
 
@@ -1224,13 +1267,15 @@ multi_des$B
 
 ## Alternative to TAM
 
-+ eRm is a conditional maximum likelihood based package that has special functions devoted to the LLTM
++ `eRm` is a conditional maximum likelihood based package that has special functions devoted to the LLTM
 
-+ Random Item or Random Item covariate models can be run in `lme4`
++ Random Item or Random Item covariate models can be run in `lme4` `r Citet(myBib, c(2,6), .opts=list(cite.style = "authoryear"))`
 
 + I think multilevel models can be run in TAM but definitely `lme4`
 
 + We can use Bayesian approaches (`MCMCpack` or `mirt`) - `brms` uses `lme4` modeling language to translate code into `Stan` files and uses Stan to model and estimate
+
++ Check out papers around `r Citet(myBib, c(3), .opts=list(cite.style = "authoryear"))`
 
 ---
 
@@ -1275,5 +1320,20 @@ $$sigma \sim exp(.1)$$
 $${Pr}[y_n = 1] = {logit}^{-1}(\theta - \delta)$$
 
 $$ y \sim bernoulli(Pr[y_n=1])$$
+---
 
+
+# References
+
+```{r refs, echo=FALSE, results="asis"}
+PrintBibliography(myBib, start = 1, end = 6)
+
+```
+
+---
+
+```{r refs2, echo=FALSE, results="asis"}
+PrintBibliography(myBib, start = 7, end = 7)
+
+```
 

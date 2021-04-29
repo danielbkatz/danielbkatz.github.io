@@ -34,6 +34,8 @@ pre {
 
 
 
+
+
 # What we'll be doing...
 
 + Why?  
@@ -176,8 +178,10 @@ class: middle
 
 # Representing this model
 
+
+
 .pull-left[
-+ Using the notation of De Boeck &amp; Wilson(2004)
++ Using the notation of De Boeck and Wilson (2004)
 
 
 ![simple_random](simple_random.png) 
@@ -547,7 +551,7 @@ $$
 
 ### Multidimensional Rasch example
 
-+ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from Kennedy, 2005, p. 17) .
++ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from Kennedy (2005) , p. 17) .
 
 .center[
 &lt;img src="dich_des.jpg" width="1733" height="10%" /&gt;
@@ -714,13 +718,9 @@ library(TAM)
 ---
 # Data for running the model
 
-Load data
-
 
 ```r
-# load data from TAM
-
-# 2000 persons, 40 items
+# Load data
 
 items &lt;- read.csv("https://raw.githubusercontent.com/danielbkatz/danielbkatz.github.io/master/assets/Presentations/Reminar_MRCML/sim_data.csv")
 
@@ -1697,33 +1697,39 @@ mod_l$xsi
 ## ELA       -1.287357593 0.01988335
 ## Word_Prob  0.024911944 0.01676495
 ```
+--
 
 ```r
 itfit$itemfit
 ```
 
 ```
-##   parameter    Outfit  Outfit_t     Outfit_p Outfit_pholm     Infit   Infit_t
-## 1      Math 1.4947203 117.03367 0.000000e+00 0.000000e+00 1.5009656 118.33145
-## 2   Science 0.8376460 -47.89234 0.000000e+00 0.000000e+00 0.8361073 -48.37380
-## 3       ELA 1.2083867  18.39074 1.558258e-75 1.558258e-75 1.2309462  20.25046
-## 4 Word_Prob 0.8683153 -38.37365 0.000000e+00 0.000000e+00 0.8675823 -38.59916
-##        Infit_p  Infit_pholm
-## 1 0.000000e+00 0.000000e+00
-## 2 0.000000e+00 0.000000e+00
-## 3 3.519697e-91 3.519697e-91
-## 4 0.000000e+00 0.000000e+00
+##   parameter    Outfit  Outfit_t      Outfit_p  Outfit_pholm     Infit   Infit_t
+## 1      Math 1.4770249 112.09548  0.000000e+00  0.000000e+00 1.4830318 113.34048
+## 2   Science 0.8510156 -43.26278  0.000000e+00  0.000000e+00 0.8482414 -44.11350
+## 3       ELA 1.1884167  16.70814  1.143463e-62  1.143463e-62 1.2131581  18.77354
+## 4 Word_Prob 0.8736461 -36.35628 2.090765e-289 4.181530e-289 0.8731073 -36.51659
+##         Infit_p   Infit_pholm
+## 1  0.000000e+00  0.000000e+00
+## 2  0.000000e+00  0.000000e+00
+## 3  1.243123e-78  1.243123e-78
+## 4 6.049716e-292 1.209943e-291
 ```
 
 + This is a strange model but describes the "difficulty effect" of item type
 
 ---
+class: middle 
 
 #### What about individual item difficulties plus overall effect of item type?
 
-+ I'm still trying to figure out if I'm doing this correctly (need to simulate)
++ I'm still trying to figure out if I'm doing this correctly (need to simulate)  
 
-+ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning as well)
+--  
+
++ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well Wang and Wilson (2005))  
+
+--
 
 + Start with design matrix A and add item types to the matrix - four columns to each matrix - these are pseudo items - not sure if I need to leave one as all zeros for identification or code as `-1` and `1` instead
 
@@ -2007,6 +2013,10 @@ A_ex[ , 2, ]
 ## Item40       0   0        -1
 ```
 
+---
+# Final Array 
+
+
 ```r
 A_ex[, , 41:44]
 ```
@@ -2267,9 +2277,14 @@ test_run$xsi
 ## Word_Prob    0.05582184 0.02002690
 ```
 
-```r
+---
 #Compare the model fits
-CDM::IRT.compareModels(test_run, mod_l)$IC
+
+
+```r
+fit_comp &lt;- CDM::IRT.compareModels(test_run, mod_l)
+
+fit_comp$IC
 ```
 
 ```
@@ -2279,6 +2294,15 @@ CDM::IRT.compareModels(test_run, mod_l)$IC
 ##       CAIC
 ## 1 64548.21
 ## 2 77171.27
+```
+
+```r
+fit_comp$LRtest
+```
+
+```
+##   Model1   Model2     Chi2 df p
+## 1  mod_l test_run 12955.59 40 0
 ```
 
 ---
@@ -2460,7 +2484,7 @@ dif_des_A$A$A.3d
 
 + We'll use the partial credit model (by convention, the Rating Scale Model uses a different parameterization)
 
-+ In this model, the item category, or item step difficulties are allowed to differ across items 
++ The item category difficulties - item step difficulties - are allowed to differ across items 
 
 
 ```r
@@ -2521,6 +2545,8 @@ poly_mod2 &lt;- tam.mml(data.sim.mfr, irtmodel = "PCM2")
 ---
 
 # In case of curiosity
+
+For more see Kim and Wilson (2020)
 
 ```r
 poly_mod$A[1:4, , ]
@@ -2648,147 +2674,6 @@ poly_mod$A[1:4, , ]
 ## Item04         0         0         0         0
 ```
 
-```r
-poly_mod2$A
-```
-
-```
-## , , I1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0   -1   -2   -3
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0   -1   -2   -3
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I3
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0   -1   -2   -3
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I4
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0   -1   -2   -3
-## I5    0    0    0    0
-## 
-## , , I5
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0   -1   -2   -3
-## 
-## , , I1_step1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0   -1   -1    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I1_step2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0   -1    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I2_step1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0   -1   -1    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I2_step2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0   -1    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I3_step1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0   -1   -1    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I3_step2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0   -1    0
-## I4    0    0    0    0
-## I5    0    0    0    0
-## 
-## , , I4_step1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0   -1   -1    0
-## I5    0    0    0    0
-## 
-## , , I4_step2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0   -1    0
-## I5    0    0    0    0
-## 
-## , , I5_step1
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0   -1   -1    0
-## 
-## , , I5_step2
-## 
-##    [,1] [,2] [,3] [,4]
-## I1    0    0    0    0
-## I2    0    0    0    0
-## I3    0    0    0    0
-## I4    0    0    0    0
-## I5    0    0   -1    0
-```
-
 ---
 # Multidimensional Model 
 
@@ -2803,6 +2688,15 @@ poly_mod2$A
 + Correlated factors
 
 + Compensatory
+
+---
+
+class: center
+
+# MIRT Model
+
+
+![mirt](mirt.png)
 
 ---
 
@@ -3013,13 +2907,15 @@ multi_des$B
 
 ## Alternative to TAM
 
-+ eRm is a conditional maximum likelihood based package that has special functions devoted to the LLTM
++ `eRm` is a conditional maximum likelihood based package that has special functions devoted to the LLTM
 
-+ Random Item or Random Item covariate models can be run in `lme4`
++ Random Item or Random Item covariate models can be run in `lme4` De Boeck (2008); De Boeck, Bakker, Zwitser, Nivard, Hofman, Tuerlinckx, Partchev, and others (2011)
 
 + I think multilevel models can be run in TAM but definitely `lme4`
 
 + We can use Bayesian approaches (`MCMCpack` or `mirt`) - `brms` uses `lme4` modeling language to translate code into `Stan` files and uses Stan to model and estimate
+
++ Check out papers around Adams, Wilson, and Wang (1997)
 
 ---
 
@@ -3064,7 +2960,37 @@ multi_des$B
 `$${Pr}[y_n = 1] = {logit}^{-1}(\theta - \delta)$$`
 
 $$ y \sim bernoulli(Pr[y_n=1])$$
+---
 
+
+# References
+
+Adams, R. J., M. Wilson, and W. Wang (1997). "The multidimensional
+random coefficients multinomial logit model". In: _Applied
+psychological measurement_ 21.1, pp. 1-23.
+
+De Boeck, P. (2008). "Random item IRT models". In: _Psychometrika_
+73.4, pp. 533-559.
+
+De Boeck, P., M. Bakker, R. Zwitser, et al. (2011). "The estimation of
+item response models with the lmer function from the lme4 package in
+R". In: _Journal of Statistical Software_ 39.12, pp. 1-28.
+
+De Boeck, P. and M. Wilson (2004). _Explanatory item response models_.
+Wiley Online Library.
+
+Kennedy, C. A. (2005). "Constructing measurement models for MRCML
+estimation: A primer for using the BEAR scoring engine". In: _Berkeley
+Eval Assess Res Cent_.
+
+Kim, J. and M. Wilson (2020). "Polytomous item explanatory item
+response theory models". In: _Educational and Psychological
+Measurement_ 80.4, pp. 726-755.
+
+---
+
+Wang, W. and M. Wilson (2005). "The Rasch testlet model". In: _Applied
+Psychological Measurement_ 29.2, pp. 126-149.
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
