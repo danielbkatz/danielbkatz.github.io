@@ -871,7 +871,7 @@ $$
   \mu_{\beta_1} \\
   . \\
   . \\
-  .\\
+  . \\
   \mu_{\beta_G}
   
   
@@ -906,6 +906,26 @@ class: middle
 
 
 ---
+class: middle
+
+# Different approaches: Regularization/Lasso
+
++ To handle the multiple testing and anchor item problems - shrink coefficients toward zero.
+
+--
+
++ Add a tuning/penalty parameter to the model such that $$\eta_{ip} = \theta_p + \beta_{ik} + \beta_1*group_p + \gamma_i(item*group_p)$$ 
+ + shrink $\gamma_i$ toward zero
+ + for instance -penalize the DIF parameters via a tuning parameter $\tau$ - $\tau\Sigma_{i=1}^n |\gamma_i|$ (or something)
+
+--
+
++ But is this more informative than RI approach to DIF or only an error control type thing?
+
+
+---
+
+
 
 # It would be great if...
 
@@ -919,6 +939,8 @@ We could have some form of the model so it looks the same regardless of ...
 
 --
 + Dimensionality (single or multidimensional, within or between item dimensionality)
+
+--
 
 + Person covariates included (get person abilities or person property effects on abilities)
 
@@ -1084,7 +1106,7 @@ ary[1, 2, ]
 
 + `TAM` is a package for running versions of the MRCML model
 
-+ For dichotomous and polytomous data
++  For dichotomous and polytomous data
 
 
 ```{r message=F, warning=F}

@@ -781,7 +781,7 @@ $$
   \mu_{\beta_1} \\
   . \\
   . \\
-  .\\
+  . \\
   \mu_{\beta_G}
   
   
@@ -816,6 +816,26 @@ class: middle
 
 
 ---
+class: middle
+
+# Different approaches: Regularization/Lasso
+
++ To handle the multiple testing and anchor item problems - shrink coefficients toward zero.
+
+--
+
++ Add a tuning/penalty parameter to the model such that `$$\eta_{ip} = \theta_p + \beta_{ik} + \beta_1*group_p + \gamma_i(item*group_p)$$` 
+ + shrink `\(\gamma_i\)` toward zero
+ + for instance -penalize the DIF parameters via a tuning parameter `\(\tau\)` - `\(\tau\Sigma_{i=1}^n |\gamma_i|\)` (or something)
+
+--
+
++ But is this more informative than RI approach to DIF or only an error control type thing?
+
+
+---
+
+
 
 # It would be great if...
 
@@ -829,6 +849,8 @@ We could have some form of the model so it looks the same regardless of ...
 
 --
 + Dimensionality (single or multidimensional, within or between item dimensionality)
+
+--
 
 + Person covariates included (get person abilities or person property effects on abilities)
 
@@ -1030,7 +1052,7 @@ ary[1, 2, ]
 
 + `TAM` is a package for running versions of the MRCML model
 
-+ For dichotomous and polytomous data
++  For dichotomous and polytomous data
 
 
 
@@ -2032,16 +2054,16 @@ itfit$itemfit
 ```
 
 ```
-##   parameter    Outfit  Outfit_t     Outfit_p Outfit_pholm     Infit   Infit_t
-## 1      Math 1.4756206 112.04879 0.000000e+00 0.000000e+00 1.4801420 112.98952
-## 2   Science 0.8452185 -45.20998 0.000000e+00 0.000000e+00 0.8428497 -45.93738
-## 3       ELA 1.2037602  17.98808 2.415809e-72 2.415809e-72 1.2282764  20.01052
-## 4 Word_Prob 0.8688800 -37.88195 0.000000e+00 0.000000e+00 0.8679097 -38.17495
-##        Infit_p  Infit_pholm
-## 1 0.000000e+00 0.000000e+00
-## 2 0.000000e+00 0.000000e+00
-## 3 4.459548e-89 4.459548e-89
-## 4 0.000000e+00 0.000000e+00
+##   parameter    Outfit  Outfit_t      Outfit_p  Outfit_pholm     Infit   Infit_t
+## 1      Math 1.4759125 111.74844  0.000000e+00  0.000000e+00 1.4822589 113.06106
+## 2   Science 0.8434738 -45.54778  0.000000e+00  0.000000e+00 0.8417203 -46.08585
+## 3       ELA 1.1950835  17.26147  9.174342e-67  9.174342e-67 1.2185779  19.21516
+## 4 Word_Prob 0.8730247 -36.50539 9.106512e-292 1.821302e-291 0.8727447 -36.58769
+##         Infit_p   Infit_pholm
+## 1  0.000000e+00  0.000000e+00
+## 2  0.000000e+00  0.000000e+00
+## 3  2.763907e-82  2.763907e-82
+## 4 4.488844e-293 8.977687e-293
 ```
 
 + This is a strange model but describes the "difficulty effect" of item type
