@@ -23,7 +23,7 @@ pre {
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_knit$set(root.dir ="C:/Users/v-danielkatz/OneDrive - Microsoft/Documents/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
+knitr::opts_knit$set(root.dir ="~/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
                        
 
 ```
