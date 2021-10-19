@@ -23,7 +23,7 @@ pre {
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_knit$set(root.dir = "C:/Users/katzd/Dropbox/My PC (LAPTOP-K7402PLE)/Desktop/Github/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
+knitr::opts_knit$set(root.dir ="~/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
                        
 
 ```
@@ -751,7 +751,7 @@ class: middle
 
 + Another subset of approaches constrains the parameters of items in one group, and frees in another (this gets messy with many groups)
 
-+ But since we have scale intdeterminacy, not clear which should be constrained
++ But since we have scale indeterminacy, not clear which should be constrained
 
 + Iteratively treat items as if they do not have DIF
 
@@ -791,7 +791,7 @@ mod1 <- glmer(response ~ -1 + (1|item_id) + (1|person_id),
               family = binomial, data = df)
 
 
-# DIF random across persons - individual differences of DIF
+# DIF random across persons - individual differences of DIF -correct?
 random_DIF <- glmer(response ~ -1 + item + (1 + group*item_id|person_id), 
               family = binomial, data = df)
 
@@ -848,19 +848,17 @@ class: middle
 ## How does this manifest?
 
 
-
 For non - DIF
-$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$
-$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$
+$$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$$
+$$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$$
 
 --
 
 FOR DIF...oi vei  
-$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$
+$$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$$
 
 item difficulty sampled from G-Variate normal distribution:
 $$
-\begin{equation}
   \begin{bmatrix}
   \beta_{j1}\\
   . \\
@@ -876,7 +874,6 @@ $$
   
   
  \end{bmatrix}\, \Sigma_\beta)
-\end{equation}
 
 $$
 ---

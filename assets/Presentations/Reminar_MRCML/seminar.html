@@ -126,7 +126,7 @@ These sources of uncertainty add up and we have no great way of updating this un
 class: middle
 We're pretty good at making sure we do not differentiate among different distributions (distributions of what?)
 
-Example: As cited in  Thissen and Steinberg (2020)
+Example: As cited in  
 
 &gt; "In a subsequent figure (Lord &amp; Novick, 1968, Figure
 16.11.1, p. 380) they plot a second kind of normal density
@@ -163,7 +163,7 @@ class: middle
 
 # Factor Score indeterminacy
 
-As cited in  Rigdon, Becker, and Sarstedt (2019)
+As cited in  
 
 &gt; In simplest terms, “[f]actor indeterminacy is the inability to determine uniquely the common and unique factor variables of the common factor model from the uniquely defined ‘observed variables’ because the number of observed variables is smaller than the number of common and unique factors” (Mulaik &amp; McDonald, 1978, p. 177). 
 
@@ -318,7 +318,7 @@ class: middle
 
 
 .pull-left[
-+ Using the notation of De Boeck and Wilson (2004)
++ Using the notation of 
 
 
 ![simple_random](simple_random.png) 
@@ -661,7 +661,7 @@ class: middle
 
 + Another subset of approaches constrains the parameters of items in one group, and frees in another (this gets messy with many groups)
 
-+ But since we have scale intdeterminacy, not clear which should be constrained
++ But since we have scale indeterminacy, not clear which should be constrained
 
 + Iteratively treat items as if they do not have DIF
 
@@ -702,7 +702,7 @@ mod1 &lt;- glmer(response ~ -1 + (1|item_id) + (1|person_id),
               family = binomial, data = df)
 
 
-# DIF random across persons - individual differences of DIF
+# DIF random across persons - individual differences of DIF -correct?
 random_DIF &lt;- glmer(response ~ -1 + item + (1 + group*item_id|person_id), 
               family = binomial, data = df)
 ```
@@ -735,7 +735,7 @@ This is the Random Item Mixture model (RIM)
 class: middle
 # RIM model:
 
- Frederickx, Tuerlinckx, De Boeck, and Magis (2010):
+ :
 &gt; "For the DIF class distribution on the other
 hand, a G-dimensional distribution (where G equals the number of person groups)
 is used such that each person group can have its own item parameter."
@@ -758,19 +758,17 @@ class: middle
 ## How does this manifest?
 
 
-
 For non - DIF
-`\(logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j\)`
-`\(B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)\)`
+`$$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$$`
+`$$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$$`
 
 --
 
 FOR DIF...oi vei  
-`\(logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}\)`
+`$$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$$`
 
 item difficulty sampled from G-Variate normal distribution:
 $$
-`\begin{equation}
   \begin{bmatrix}
   \beta_{j1}\\
   . \\
@@ -786,7 +784,6 @@ $$
   
   
  \end{bmatrix}\, \Sigma_\beta)
-\end{equation}`
 
 $$
 ---
@@ -925,7 +922,7 @@ $$
 
 ### Multidimensional Rasch example
 
-+ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from Kennedy (2005) , p. 17) .
++ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from  , p. 17) .
 
 .center[
 &lt;img src="dich_des.jpg" width="1733" height="10%" /&gt;
@@ -2054,16 +2051,16 @@ itfit$itemfit
 ```
 
 ```
-##   parameter    Outfit  Outfit_t      Outfit_p  Outfit_pholm     Infit   Infit_t
-## 1      Math 1.4759125 111.74844  0.000000e+00  0.000000e+00 1.4822589 113.06106
-## 2   Science 0.8434738 -45.54778  0.000000e+00  0.000000e+00 0.8417203 -46.08585
-## 3       ELA 1.1950835  17.26147  9.174342e-67  9.174342e-67 1.2185779  19.21516
-## 4 Word_Prob 0.8730247 -36.50539 9.106512e-292 1.821302e-291 0.8727447 -36.58769
-##         Infit_p   Infit_pholm
-## 1  0.000000e+00  0.000000e+00
-## 2  0.000000e+00  0.000000e+00
-## 3  2.763907e-82  2.763907e-82
-## 4 4.488844e-293 8.977687e-293
+##   parameter    Outfit  Outfit_t    Outfit_p Outfit_pholm     Infit   Infit_t
+## 1      Math 1.4830160 113.63106 0.00000e+00  0.00000e+00 1.4905247 115.18768
+## 2   Science 0.8454558 -45.15042 0.00000e+00  0.00000e+00 0.8432485 -45.82752
+## 3       ELA 1.1950293  17.24804 1.15755e-66  1.15755e-66 1.2213055  19.42894
+## 4 Word_Prob 0.8641578 -39.37522 0.00000e+00  0.00000e+00 0.8643133 -39.32616
+##        Infit_p  Infit_pholm
+## 1 0.000000e+00 0.000000e+00
+## 2 0.000000e+00 0.000000e+00
+## 3 4.393295e-84 4.393295e-84
+## 4 0.000000e+00 0.000000e+00
 ```
 
 + This is a strange model but describes the "difficulty effect" of item type
@@ -2077,7 +2074,7 @@ class: middle
 
 --  
 
-+ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well Wang and Wilson (2005))  
++ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well )  
 
 --
 
@@ -2641,9 +2638,9 @@ fit_comp$IC
 ##      Model   loglike Deviance Npars Nobs      AIC      BIC     AIC3     AICc
 ## 1 test_run -32087.06 64174.11    45 1500 64264.11 64503.21 64309.11 64266.96
 ## 2    mod_l -38564.85 77129.71     5 1500 77139.71 77166.27 77144.71 77139.75
-##       CAIC
-## 1 64548.21
-## 2 77171.27
+##       CAIC       GHP
+## 1 64548.21 0.5355343
+## 2 77171.27 0.6428309
 ```
 
 ```r
@@ -2896,7 +2893,7 @@ poly_mod2 &lt;- tam.mml(data.sim.mfr, irtmodel = "PCM2")
 
 # In case of curiosity
 
-For more see Kim and Wilson (2020)
+For more see 
 
 ```r
 poly_mod$A[1:4, , ]
@@ -3259,13 +3256,13 @@ multi_des$B
 
 + `eRm` is a conditional maximum likelihood based package that has special functions devoted to the LLTM
 
-+ Random Item or Random Item covariate models can be run in `lme4` De Boeck (2008); De Boeck, Bakker, Zwitser, Nivard, Hofman, Tuerlinckx, Partchev, and others (2011)
++ Random Item or Random Item covariate models can be run in `lme4` 
 
 + I think multilevel models can be run in TAM but definitely `lme4`
 
 + We can use Bayesian approaches (`MCMCpack` or `mirt`) - `brms` uses `lme4` modeling language to translate code into `Stan` files and uses Stan to model and estimate
 
-+ Check out papers around Adams, Wilson, and Wang (1997)
++ Check out papers around 
 
 ---
 
@@ -3315,54 +3312,11 @@ $$ y \sim bernoulli(Pr[y_n=1])$$
 
 # References
 
-Adams, R. J., M. Wilson, and W. Wang (1997). "The multidimensional
-random coefficients multinomial logit model". In: _Applied
-psychological measurement_ 21.1, pp. 1-23.
-
-De Boeck, P. (2008). "Random item IRT models". In: _Psychometrika_
-73.4, pp. 533-559.
-
-De Boeck, P., M. Bakker, R. Zwitser, et al. (2011). "The estimation of
-item response models with the lmer function from the lme4 package in
-R". In: _Journal of Statistical Software_ 39.12, pp. 1-28.
-
-De Boeck, P. and M. Wilson (2004). _Explanatory item response models_.
-Wiley Online Library.
-
-Frederickx, S., F. Tuerlinckx, P. De Boeck, et al. (2010). "RIM: A
-random item mixture model to detect differential item functioning". In:
-_Journal of Educational Measurement_ 47.4, pp. 432-457.
-
-Kennedy, C. A. (2005). "Constructing measurement models for MRCML
-estimation: A primer for using the BEAR scoring engine". In: _Berkeley
-Eval Assess Res Cent_.
+NULL
 
 ---
 
-Kim, J. and M. Wilson (2020). "Polytomous item explanatory item
-response theory models". In: _Educational and Psychological
-Measurement_ 80.4, pp. 726-755.
-
-Rigdon, E. E., J. Becker, and M. Sarstedt (2019). "Factor Indeterminacy
-as Metrological Uncertainty: Implications for Advancing Psychological
-Measurement". In: _Multivariate Behavioral Research_ 54.3. PMID:
-30829544, pp. 429-443. DOI:
-[10.1080/00273171.2018.1535420](https://doi.org/10.1080%2F00273171.2018.1535420).
-eprint: https://doi.org/10.1080/00273171.2018.1535420
-
-. URL: [ https://doi.org/10.1080/00273171.2018.1535420
-
-]( https://doi.org/10.1080/00273171.2018.1535420
-
-).
-
-Thissen, D. and L. Steinberg (2020). "An intellectual history of
-parametric item response theory models in the twentieth century". In:
-_Chinese/English Journal of Educational Measurement and Evaluation|
-æ•™è‚²æµ‹é‡ä¸Žè¯„ä¼°åŒè¯­å­£åˆŠ_ 1.1, p. 5.
-
-Wang, W. and M. Wilson (2005). "The Rasch testlet model". In: _Applied
-Psychological Measurement_ 29.2, pp. 126-149.
+NULL
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
