@@ -23,7 +23,7 @@ pre {
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_knit$set(root.dir ="~/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
+knitr::opts_knit$set(root.dir ="C:/Users/v-danielkatz/OneDrive - Microsoft/Documents/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
                        
 
 ```
@@ -859,22 +859,19 @@ $$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$$
 
 item difficulty sampled from G-Variate normal distribution:
 $$
-  \begin{bmatrix}
-  \beta_{j1}\\
-  . \\
-  . \\
-  \beta_{jG}
-  \end{bmatrix}\ \Bigg\vert C_j = 1 
-  \sim N(\begin{bmatrix}
-  \mu_{\beta_1} \\
-  . \\
-  . \\
-  . \\
-  \mu_{\beta_G}
-  
-  
- \end{bmatrix}\, \Sigma_\beta)
-
+\begin{bmatrix}
+\beta_{j1} \\
+. \\
+. \\
+\beta_{jG}
+\end{bmatrix}\ \Bigg\vert C_j = 1 
+\sim N(\begin{bmatrix}
+\mu_{\beta_1}\\
+.\\
+.\\
+.\\
+\mu_{\beta_G}
+\end{bmatrix}\, \Sigma_\beta)
 $$
 ---
 class: middle 
