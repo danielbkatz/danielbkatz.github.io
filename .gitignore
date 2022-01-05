@@ -3,3 +3,7 @@
 .RData
 _site/
 .sass-cache/
+.Rdata
+.httr-oauth
+.DS_Store
+assets/CV/somewhatmanual.log

@@ -23,7 +23,7 @@ pre {
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-knitr::opts_knit$set(root.dir ="~/Rprojects/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
+knitr::opts_knit$set(root.dir = "C:/Users/katzd/Dropbox/My PC (LAPTOP-K7402PLE)/Desktop/Github/danielbkatz.github.io/assets/Presentations/Reminar_MRCML")
                        
 
 ```
@@ -751,7 +751,7 @@ class: middle
 
 + Another subset of approaches constrains the parameters of items in one group, and frees in another (this gets messy with many groups)
 
-+ But since we have scale indeterminacy, not clear which should be constrained
++ But since we have scale intdeterminacy, not clear which should be constrained
 
 + Iteratively treat items as if they do not have DIF
 
@@ -775,90 +775,13 @@ mod1 <- glmer(response ~ -1 + item_id*group + (1|person_id),
               family = binomial, data = df)
 
 ```
----
-class: middle
-
-# 2PL (in FA parameterization) DIF Model (parameterization from the paper):
-.pull-left[
-2pl
-+ $P(Y_{pi}|\theta_p) = \frac{1}{1+e^{-(c_{i} + \alpha_{i}\theta_p)}}$
-
-+ $c_i$ = intercept of item i
-
-+ $\alpha_i$ = slope parameter
-
-+ if slope parameters the same (and 1) then 1PL model
-]
-
-.pull-right[
-DIF model
-+ $P(Y_{pi}|\theta_p) = \frac{1}{1+e^{(c_{ig} + \alpha_{ig}\theta_j)}}$
-
-+ $g$ is group membership indicator
-
-+ Each group can have its own mean and variance - identification constraints necessary
-
-+ Fix mean and variance of one group and constrain select a few item difficulties and slopes to be equal
-
-+ Red flag...
-]
-
----
-
-class: middle
-
-## Reg DIF
-
-+ $P(Y_{pi}|\theta_p) = \frac{1}{1+e^{-(c_{0i} + c_{1i}x_i) - (\alpha_{0i}+\alpha{1i})\theta_p)}}$
-
-+ $c_0$ and $\alpha_0$ represent reference/baseline vals, x is a group membership var
-
-+ other parameters represent difference between reference and contrast groups. 
-
-+ lasso penalty: $$l(\gamma)Reg_{DIF} = l(\gamma)_{DIF}-\tau\Sigma_{i=1}^p[|c_{1i}| + |\alpha_{1i}|]$$
-
-+ $\gamma$ are model params - or Marginal LL of the model maximizing with respect to $\gamma$
-
----
-class: middle
-
-# What does Reg dif help solve?
-
-.pull-left[
-+ Uncertainty due to multiple testing
-
-+ Does not require anchor items
-
-+ Lower type 1 error 
-
-]
-
-.pull-right[
-What problem remain:
-
-+ Scale indeterminacy
-
-+ Sampling error
-
-+ identification solved by Reg dif so only sort of a solution
-
-+ Constant DIF across people-group-item interactions (uniform)
-
-+ selecting model/tuning parameter based on fit
-
-+ still select items based on p-values
-
-]
-
-
-
 
 ---
 # Finally some new territory
 
-+ It is typical to have items as fixed effects in in the 1pl model. But...
++ It is typical to have items as fixed. But that's not necessary.
 
-+ Random Items, Random Persons, random groups for instance, also plausible:
++ Random Items, Random Persons, random groups for instance, is also plausible:
 
 ```{r eval = F}
 library(lme4)
@@ -868,7 +791,7 @@ mod1 <- glmer(response ~ -1 + (1|item_id) + (1|person_id),
               family = binomial, data = df)
 
 
-# DIF random across persons - individual differences of DIF -correct?
+# DIF random across persons - individual differences of DIF
 random_DIF <- glmer(response ~ -1 + item + (1 + group*item_id|person_id), 
               family = binomial, data = df)
 
@@ -919,42 +842,45 @@ $$
     \right.
 \end{equation}
 $$
-
 ---
 
 class: middle
 ## How does this manifest?
 
 
+
 For non - DIF
 $$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$$
 $$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$$
 
----
-
-class: middle
+--
 
 FOR DIF...oi vei  
-$$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$$
+$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$
 
-item difficulty sampled from G-Variate normal distribution:  
-
+item difficulty sampled from G-Variate normal distribution:
 
 $$
-
+\begin{align}
   \begin{bmatrix}
-      \beta_{j1} \\
-      \beta_{jG} \\
-    \end{bmatrix}\Bigg\vert C_j = 1 
-    \sim N
-    (\begin{bmatrix}
-     \mu_{\beta_1}\\
-     \mu_{\beta_G}\\
-  \end{bmatrix} \Sigma_\beta)
+  \beta_{j1}\\
+  . \\
+  . \\
+  \beta_{jG}
+  \end{bmatrix}\ \Bigg\vert C_j = 1 
+  \sim N(\begin{bmatrix}
+  \mu_{\beta_1} \\
+  . \\
+  . \\
+  . \\
+  \mu_{\beta_G}
+  
+  
+ \end{bmatrix}\, \Sigma_\beta)
+\end{align}
 $$
 
 ---
-
 class: middle 
 
 ## Potential Applications of Random Item/Person DIF
@@ -998,8 +924,9 @@ class: middle
 + But is this more informative than RI approach to DIF or only an error control type thing?
 
 
-
 ---
+
+
 
 # It would be great if...
 
@@ -1080,6 +1007,641 @@ $$
 ]
 
 ---
+# Yielding...
+
+
+![PCM_delta_tau](delta_tau_PCM.jpg)
+
+---
+
+### Multidimensional Rasch example
+
++ Using $\delta$ for item difficulty instead of $\beta$; Items 1 and 2 indicator for first dim, items 1 & 3 correct. (from `r Citet(myBib, 5, .opts=list(cite.style = "authoryear"))` , p. 17) .
+
+.center[
+```{r out.height= "10%", echo=F}
+knitr::include_graphics("dich_des.jpg")
+```
+]
+
+---
+
+### First covariate, or facet in the Rasch model - DIF
+
++ Checking to see if items or item categories are relatively harder (or easier) for students of different subgroups at the same "level" of the property
+
+
+We can express the model: 
+
+$$\eta_{ip} = \theta_p + \delta_ik + \beta_1*group_p + \gamma_i(item*group_p)$$
+
+
+
+---
+
+# Arrays
+
++ Unfortunately, the package `TAM` uses arrays instead of matrices
+
+--
+
++ Well, they use matrices - just multidimensional matrices
+
+--
+
++ Matrices in R have two dimensions
+
++ Arrays have more than two dimensions - they're like multiple dimensions
+
+
+---
+
+# Arrays, cont'd
+
++ An array with dimensions [4, 4, 2] has 2 matrices, with 4 rows and 4 columns.
+
+```{r}
+
+# Create two vectors of different lengths.
+v <- c(1:16)
+
+# Make it an array
+ary <- array(c(v),dim = c(4,4,2))
+
+
+ary
+
+#If you wanted to select only the second matrix
+#ary[ , , 2]
+
+```
+
+---
+
+Get only the second columns - turn it into one matrix
+```{r}
+ary[,2,]
+
+```
+--
+Get only the first rows
+```{r}
+ary[1, , ]
+```
+
+--
+get the first rows and second columns
+
+```{r}
+
+ary[1, 2, ]
+
+
+```
+
+---
+
+### Thank Dog, some TAM code
+
++  We'll use some simulated data to understand the different models
+
++ `TAM` is a package for running versions of the MRCML model
+
++  For dichotomous and polytomous data
+
+
+```{r message=F, warning=F}
+
+#install.packages(TAM)
+#install.packages
+
+library(TAM)
+
+# ?tam.mml
+
+```
+
+---
+# Data for running the model
+
+```{r}
+# Load data
+
+items <- read.csv("https://raw.githubusercontent.com/danielbkatz/danielbkatz.github.io/master/assets/Presentations/Reminar_MRCML/sim_data.csv")
+
+# remove id column and 
+resp <- items[-c(1,42)]
+
+head(resp)
+
+```
+---
+
+# Running the Rasch Model (first ten items)
+```{r message=FALSE, warning=FALSE, results='hide'}
+
+# Get first ten items 
+
+df <- resp[,1:10]
+
+# Run the model
+mod1 <- tam.mml(resp = df)
+
+```
+
+```{r}
+
+# item difficulties
+head(mod1$xsi)
+
+```
+
+---
+
+# Extract Design Matrices
+
++ TAM uses contrast coding - so items get a -1 instead of a 1.
+
+```{r}
+
+A_mat <- mod1$A
+
+B_mat <- mod1$B
+
+# array with 10 rows, 2 columns, and 10 matrices
+dim(A_mat)
+
+# array with 10 rows, 2 columns, 1 matrix
+dim(B_mat)
+```
+
+
+---
+
+# A mat
+
+```{r}
+
+# First 5 rows, First two matrices
+A_mat[, , 1:2]
+
+
+```
+
+
+
+---
+
+# A matrix continued - 
+
+```{r}
+
+A_mat[,2,]
+
+```
+
+---
+
+Transform to get item "easiness" params - multiply by -1
+```{r}
+
+A_mat1 <- A_mat
+
+A_mat1[,2,] <- A_mat[,2,] *-1
+
+A_mat1[,, 1:2]
+
+```
+
+```{r results='hide', warning=F, message=F}
+# model with new A matrix
+mod2 <- tam.mml(df, A=A_mat1)
+
+```
+---
+
+# Compare the item parameters
+```{r}
+# model with default design matrices
+head(mod1$xsi)
+
+#model with transformed A matrix
+head(mod2$xsi)
+
+
+```
+
+---
+
+# B Matrix
+
+Note the name of the matrix here is Dim 1 - hold that thought
+
+```{r}
+B_mat
+
+```
+
+---
+
+class: middle
+
+# The linear logistic test model (LLTM) - base of many models
+
++ Note the data we have here has four "dimensions"
+
++ What if we wanted to know the overall difficulty of item type?  
+  
+--
++ We'll use the design matrices  
+  
+--
++ Note - this is not really a "multidimensional model" in the sense of multiple factors - this models each type of item as a fixed effect
+
+
+---
+
+# The item side base for 
+
++ For dichotomous or polytomous items
+
+$$P(Y=y|\theta_s, \delta_i) = \frac{exp(\theta_s-\delta_i)}{1+exp(\theta_s-\delta_i)}$$
+
+$$log\biggl[P/(1-P)\biggr] = \eta = \theta_p-\delta_i$$
+$$\delta_i = \sum(q_{ij}\nu_j)$$
+  
++ q = "weights" for item i and item effect j  
+--
+
++ $\nu_j$ = item effect/variable/indicator if item i is related to some effect
+
+--
++ In our data, whether an item is a math item or not.
+
+---
+# How do we indicate this? A matrix
+
+For 4 items, treat the first two items as the same and second two items as the same
+
+```{r}
+
+A2 <- matrix(data = 0, nrow = 4, ncol = 2)
+A2[1:2,1] <- 1
+A2[3:4,2] <- 1
+
+A2
+
+```
+
+---
+## Doing this in TAM
+
++ work with the full `resp` data frame
+
+--
++ Code all item types together so that all math items, all ela items...used for generating area specific (fixed) difficulties
+
+```{r}
+#use TAM to generate the design matrices for us
+
+des_lltm <- designMatrices(resp = resp)
+
+# we want the A matrix
+
+A <- des_lltm$A
+
+```
+
+---
+### Looking at the design matrix
+
++ Let's look at the matrices for the first four items
+
+
++ We'll keep only the first four matrices since we're going to have only four parameters (math difficulty, ela difficulty, science difficuly, word problem)
+```{r}
+
+A[ , , 1:4]
+```
+--
+
+# We'll keep only the first 4 matrices
+```{r}
+A4 <- A[ , , 1:4]
+
+# rename the dimensions 
+dimnames(A4)[[3]] <- c("Math", "Science", "ELA", "Word_Prob")
+
+A4
+```
+
+---
+# Recode
+
++ All items of the same type get dummy coded the same, zero otherwise
+
++ We do this by assigning -1 to the pertinent dimensions
+
++ For instance, two items, two facets
+
+A =  
+$$
+\begin{bmatrix}
+0 & -1 \\
+0 & -1 \\
+-1 & 0 \\
+-1 & 0 \\
+\end{bmatrix}
+$$
+---
+
+### Let's do this in TAM
+```{r}
+# zero it all out
+A4[,,] <- 0
+
+A4[1:10,2, 1] <- -1
+
+A4[11:20,2,2] <- -1
+
+A4[21:30,2,3] <- -1
+
+A4[31:40,2,4] <- -1
+
+A4
+
+```
+
+---
+
+## Run the model
+
+```{r results='hide'}
+mod_l <- tam.mml(resp=resp, A = A4)
+
+# get "model"item" fit
+itfit <- tam.fit(mod_l)
+```
+
++ Get item difficulties (you may get slightly different values)
+
+```{r}
+mod_l$xsi
+```
+--
+```{r}
+
+itfit$itemfit
+```
+
++ This is a strange model but describes the "difficulty effect" of item type
+
+---
+class: middle 
+
+#### What about individual item difficulties plus overall effect of item type?
+
++ I'm still trying to figure out if I'm doing this correctly (need to simulate)  
+
+--  
+
++ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well `r Citet(myBib, 4, .opts=list(cite.style = "authoryear"))`)  
+
+--
+
++ Start with design matrix A and add item types to the matrix - four columns to each matrix - these are pseudo items - not sure if I need to leave one as all zeros for identification or code as `-1` and `1` instead
+
+---
+
+# Setting up design matrices
+
+```{r}
+# create a new array with 40 rows, 2 columns, and 4 matrices
+
+# 40 items to get coded, still two categories, 4 matrices
+A_type <- array(data=0, dim = c(40, 2, 4))
+
+A_type[1:10, 2, 1] <-  -1
+
+A_type[11:20, 2, 2] <- -1
+
+A_type[21:30, 2, 3] <- -1
+
+A_type[31:40, 2, 4] <- -1
+
+dimnames(A_type)[[3]] <- c("Math", "Science", "ELA", "Word_Prob")
+
+A_ex <- abind::abind(A, A_type)
+
+```
+
+---
+# Check out the array
+```{r}
+
+A_ex[ , 2, ]
+```
+
+---
+# Final Array 
+
+```{r}
+A_ex[, , 41:44]
+
+```
+
+
+---
+### Testing this LLTM (may be easier with the eRm package)
+
++ Might want to use do in long data form (easier to include facets this way)
+
++ Can include more categories that `-1` and `1` in `TAM` - could take on ordinal values
+
++ Can add now covariates for things like individual categories for polytomous items 
+
++ Item or category position effects
+
++ "Severity" or wording
+
+---
+
+# Run the new model
+
+```{r, results='hide', warning=FALSE, message=FALSE}
+
+test_run <- tam.mml(resp=resp, A = A_ex)
+
+
+```
+
+```{r}
+
+# Item difficulties
+
+test_run$xsi
+```
+
+---
+#Compare the model fits
+
+```{r}
+
+fit_comp <- CDM::IRT.compareModels(test_run, mod_l)
+
+fit_comp$IC
+
+fit_comp$LRtest
+
+```
+
+---
+
+## Learning from differential item functioning
+
++ Another way to do this is to use differential item functioning A matrices 
++ We can use the design matrices again
+
+ $$\eta_{ip} = \theta_p + \delta_ik + \beta_1*group_p + \gamma_i(item*group_p)$$
+ 
++ We use `formulaA` because it creates the `A matrix` for us in TAM
+
+```{r}
+
+treat <- items[42]
+
+treat$treat <- ifelse(treat == "treat", 1, 0)
+
+formA <- ~ item*treat
+
+# Restrict items to 5 items to make output shorter
+dif_des_A <- designMatrices.mfr(resp = resp[1:5], facets = treat, formulaA = formA)
+```
+
+---
+# DIF Design Matrix
+
+```{r}
+dif_des_A$A$A.3d
+
+```
+---
+# Polytomous Data
+
++ Just so you can see the A design matrix for polytomous data
+
++ We'll use the partial credit model (by convention, the Rating Scale Model uses a different parameterization)
+
++ The item category difficulties - item step difficulties - are allowed to differ across items 
+
+```{r }
+data(data.sim.mfr)
+
+# 100 people 5 items
+dim(data.sim.mfr)
+
+head(data.sim.mfr)
+
+
+apply(as.data.frame(data.sim.mfr), 2, table)
+
+```
+
+---
+
+## Get design matrices for polytomous data
+
++ Reversed design matrices because of contrast coding...
+```{r, results="hide", message= F, warning= F}
+polyt_des <- designMatrices(resp = data.sim.mfr, modeltype = "PCM")
+
+# Creat or have the model create
+A_poly <- polyt_des$A
+
+#
+poly_mod <- tam.mml(data.sim.mfr)
+
+# Different parameterization (item + item*step)
+poly_mod2 <- tam.mml(data.sim.mfr, irtmodel = "PCM2")
+
+
+```
+---
+
+# In case of curiosity
+
+For more see `r Citet(myBib, 7, .opts = list(cite.style = "authoryear"))`
+```{r}
+poly_mod$A[1:4, , ]
+
+```
+
+---
+# Multidimensional Model 
+
++ "MIRT"
+
++ Closest thing to factor analysis in the Rasch world
+
++ Items load onto dimensions - we use a Q matrix
+
++ In the case of our `resp` data ...
+
++ Correlated factors
+
++ Compensatory
+
+---
+
+class: center
+
+# MIRT Model
+
+
+![mirt](mirt.png)
+
+---
+
+## Setting up the multidimensional model
+
+```{r}
+
+# set up the Q matrix - dimensionality assignment
+Q <- matrix(0, nrow = 40, ncol = 4)
+
+Q[1:10 , 1] <- Q[11:20, 2] <- Q[21:30, 3]<- Q[31:40, 4] <- 1 
+
+# If you want to run the model
+# tam.mml(resp, Q = Q, control=list(snodes=500, maxiter=10))
+
+
+multi_des <- designMatrices(resp = resp, Q = Q, ndim = 4)
+```
+---
+
+# Design Matrix B
+
+```{r}
+# The person side matrix is changed
+multi_des$B
+```
+
+---
+
+## Alternative to TAM
+
++ `eRm` is a conditional maximum likelihood based package that has special functions devoted to the LLTM
+
++ Random Item or Random Item covariate models can be run in `lme4` `r Citet(myBib, c(2,6), .opts=list(cite.style = "authoryear"))`
+
++ I think multilevel models can be run in TAM but definitely `lme4`
+
++ We can use Bayesian approaches (`MCMCpack` or `mirt`) - `brms` uses `lme4` modeling language to translate code into `Stan` files and uses Stan to model and estimate
+
++ Check out papers around `r Citet(myBib, c(3), .opts=list(cite.style = "authoryear"))`
+
+---
+
 ## `Stan`
 
 + Stan allows ultimate flexibility but is complicated to use 

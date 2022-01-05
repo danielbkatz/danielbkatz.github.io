@@ -126,7 +126,11 @@ These sources of uncertainty add up and we have no great way of updating this un
 class: middle
 We're pretty good at making sure we do not differentiate among different distributions (distributions of what?)
 
+<<<<<<< HEAD
+Example: As cited in  Thissen and Steinberg (2020)
+=======
 Example: As cited in  
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 &gt; "In a subsequent figure (Lord &amp; Novick, 1968, Figure
 16.11.1, p. 380) they plot a second kind of normal density
@@ -163,7 +167,11 @@ class: middle
 
 # Factor Score indeterminacy
 
+<<<<<<< HEAD
+As cited in  Rigdon, Becker, and Sarstedt (2019)
+=======
 As cited in  
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 &gt; In simplest terms, “[f]actor indeterminacy is the inability to determine uniquely the common and unique factor variables of the common factor model from the uniquely defined ‘observed variables’ because the number of observed variables is smaller than the number of common and unique factors” (Mulaik &amp; McDonald, 1978, p. 177). 
 
@@ -318,7 +326,11 @@ class: middle
 
 
 .pull-left[
+<<<<<<< HEAD
++ Using the notation of De Boeck and Wilson (2004)
+=======
 + Using the notation of 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 
 ![simple_random](simple_random.png) 
@@ -661,7 +673,11 @@ class: middle
 
 + Another subset of approaches constrains the parameters of items in one group, and frees in another (this gets messy with many groups)
 
+<<<<<<< HEAD
++ But since we have scale intdeterminacy, not clear which should be constrained
+=======
 + But since we have scale indeterminacy, not clear which should be constrained
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 + Iteratively treat items as if they do not have DIF
 
@@ -685,6 +701,8 @@ library(lme4)
 mod1 &lt;- glmer(response ~ -1 + item_id*group + (1|person_id), 
               family = binomial, data = df)
 ```
+<<<<<<< HEAD
+=======
 ---
 class: middle
 
@@ -762,13 +780,20 @@ What problem remain:
 
 
 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ---
 # Finally some new territory
 
+<<<<<<< HEAD
++ It is typical to have items as fixed. But that's not necessary.
+
++ Random Items, Random Persons, random groups for instance, is also plausible:
+=======
 + It is typical to have items as fixed effects in in the 1pl model. But...
 
 + Random Items, Random Persons, random groups for instance, also plausible:
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 
 ```r
@@ -779,7 +804,11 @@ mod1 &lt;- glmer(response ~ -1 + (1|item_id) + (1|person_id),
               family = binomial, data = df)
 
 
+<<<<<<< HEAD
+# DIF random across persons - individual differences of DIF
+=======
 # DIF random across persons - individual differences of DIF -correct?
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 random_DIF &lt;- glmer(response ~ -1 + item + (1 + group*item_id|person_id), 
               family = binomial, data = df)
 ```
@@ -812,7 +841,11 @@ This is the Random Item Mixture model (RIM)
 class: middle
 # RIM model:
 
+<<<<<<< HEAD
+ Frederickx, Tuerlinckx, De Boeck, and Magis (2010):
+=======
  :
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 &gt; "For the DIF class distribution on the other
 hand, a G-dimensional distribution (where G equals the number of person groups)
 is used such that each person group can have its own item parameter."
@@ -829,17 +862,54 @@ $$
     \right.
 \end{equation}`
 $$
+<<<<<<< HEAD
+=======
 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 ---
 
 class: middle
 ## How does this manifest?
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 For non - DIF
 `$$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$$`
 `$$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$$`
 
+<<<<<<< HEAD
+--
+
+FOR DIF...oi vei  
+`\(logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}\)`
+
+item difficulty sampled from G-Variate normal distribution:
+
+$$
+`\begin{align}
+  \begin{bmatrix}
+  \beta_{j1}\\
+  . \\
+  . \\
+  \beta_{jG}
+  \end{bmatrix}\ \Bigg\vert C_j = 1 
+  \sim N(\begin{bmatrix}
+  \mu_{\beta_1} \\
+  . \\
+  . \\
+  . \\
+  \mu_{\beta_G}
+  
+  
+ \end{bmatrix}\, \Sigma_\beta)
+\end{align}`
+$$
+
+---
+=======
 ---
 
 class: middle
@@ -865,6 +935,7 @@ $$
 
 ---
 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 class: middle 
 
 ## Potential Applications of Random Item/Person DIF
@@ -908,9 +979,16 @@ class: middle
 + But is this more informative than RI approach to DIF or only an error control type thing?
 
 
+<<<<<<< HEAD
+---
+
+
+
+=======
 
 ---
 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 # It would be great if...
 
 We could have some form of the model so it looks the same regardless of ...
@@ -990,6 +1068,2362 @@ $$
 ]
 
 ---
+<<<<<<< HEAD
+# Yielding...
+
+
+![PCM_delta_tau](delta_tau_PCM.jpg)
+
+---
+
+### Multidimensional Rasch example
+
++ Using `\(\delta\)` for item difficulty instead of `\(\beta\)`; Items 1 and 2 indicator for first dim, items 1 &amp; 3 correct. (from Kennedy (2005) , p. 17) .
+
+.center[
+&lt;img src="dich_des.jpg" width="1733" height="10%" /&gt;
+]
+
+---
+
+### First covariate, or facet in the Rasch model - DIF
+
++ Checking to see if items or item categories are relatively harder (or easier) for students of different subgroups at the same "level" of the property
+
+
+We can express the model: 
+
+`$$\eta_{ip} = \theta_p + \delta_ik + \beta_1*group_p + \gamma_i(item*group_p)$$`
+
+
+
+---
+
+# Arrays
+
++ Unfortunately, the package `TAM` uses arrays instead of matrices
+
+--
+
++ Well, they use matrices - just multidimensional matrices
+
+--
+
++ Matrices in R have two dimensions
+
++ Arrays have more than two dimensions - they're like multiple dimensions
+
+
+---
+
+# Arrays, cont'd
+
++ An array with dimensions [4, 4, 2] has 2 matrices, with 4 rows and 4 columns.
+
+
+```r
+# Create two vectors of different lengths.
+v &lt;- c(1:16)
+
+# Make it an array
+ary &lt;- array(c(v),dim = c(4,4,2))
+
+
+ary
+```
+
+```
+## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    5    9   13
+## [2,]    2    6   10   14
+## [3,]    3    7   11   15
+## [4,]    4    8   12   16
+```
+
+```r
+#If you wanted to select only the second matrix
+#ary[ , , 2]
+```
+
+---
+
+Get only the second columns - turn it into one matrix
+
+```r
+ary[,2,]
+```
+
+```
+##      [,1] [,2]
+## [1,]    5    5
+## [2,]    6    6
+## [3,]    7    7
+## [4,]    8    8
+```
+--
+Get only the first rows
+
+```r
+ary[1, , ]
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    1
+## [2,]    5    5
+## [3,]    9    9
+## [4,]   13   13
+```
+
+--
+get the first rows and second columns
+
+
+```r
+ary[1, 2, ]
+```
+
+```
+## [1] 5 5
+```
+
+---
+
+### Thank Dog, some TAM code
+
++  We'll use some simulated data to understand the different models
+
++ `TAM` is a package for running versions of the MRCML model
+
++  For dichotomous and polytomous data
+
+
+
+```r
+#install.packages(TAM)
+#install.packages
+
+library(TAM)
+
+# ?tam.mml
+```
+
+---
+# Data for running the model
+
+
+```r
+# Load data
+
+items &lt;- read.csv("https://raw.githubusercontent.com/danielbkatz/danielbkatz.github.io/master/assets/Presentations/Reminar_MRCML/sim_data.csv")
+
+# remove id column and 
+resp &lt;- items[-c(1,42)]
+
+head(resp)
+```
+
+```
+##   Math.1 Math.2 Math.3 Math.4 Math.5 Math.6 Math.7 Math.8 Math.9 Math.10
+## 1      1      1      1      0      0      0      1      0      1       1
+## 2      1      1      1      0      0      1      0      1      1       0
+## 3      1      0      0      0      0      0      1      0      0       0
+## 4      1      1      0      0      0      0      1      0      1       0
+## 5      0      1      0      0      0      0      1      0      0       0
+## 6      0      1      1      0      0      1      1      0      1       1
+##   Science.1 Science.2 Science.3 Science.4 Science.5 Science.6 Science.7
+## 1         1         1         0         0         0         1         0
+## 2         1         1         0         0         0         1         1
+## 3         0         1         0         0         0         1         1
+## 4         0         1         0         1         0         1         1
+## 5         1         1         0         0         1         1         0
+## 6         0         1         0         0         0         1         0
+##   Science.8 Science.9 Science.10 ELA.1 ELA.2 ELA.3 ELA.4 ELA.5 ELA.6 ELA.7
+## 1         1         0          1     1     1     1     0     1     1     1
+## 2         1         1          1     1     1     1     1     1     1     0
+## 3         1         0          1     1     0     0     1     1     1     0
+## 4         1         0          1     0     1     1     0     0     1     1
+## 5         1         0          0     1     1     1     1     1     1     1
+## 6         0         0          0     1     1     1     1     0     1     1
+##   ELA.8 ELA.9 ELA.10 WordProb.1 WordProb.2 WordProb.3 WordProb.4 WordProb.5
+## 1     1     1      1          0          1          0          1          0
+## 2     1     1      0          1          1          1          0          0
+## 3     0     0      1          0          1          0          0          1
+## 4     1     1      1          0          1          0          0          0
+## 5     1     0      1          0          1          0          1          0
+## 6     1     1      1          0          1          0          0          1
+##   WordProb.6 WordProb.7 WordProb.8 WordProb.9 WordProb.10
+## 1          0          0          1          0           1
+## 2          1          0          1          0           0
+## 3          0          1          1          0           1
+## 4          1          0          1          0           1
+## 5          1          0          0          0           0
+## 6          1          0          0          0           1
+```
+---
+
+# Running the Rasch Model (first ten items)
+
+```r
+# Get first ten items 
+
+df &lt;- resp[,1:10]
+
+# Run the model
+mod1 &lt;- tam.mml(resp = df)
+```
+
+
+```r
+# item difficulties
+head(mod1$xsi)
+```
+
+```
+##               xsi     se.xsi
+## Math.1 -1.3301167 0.06494537
+## Math.2 -0.6036252 0.05876371
+## Math.3  0.2329543 0.05746165
+## Math.4  0.8544774 0.06033535
+## Math.5  0.9465537 0.06105641
+## Math.6 -0.2136443 0.05742465
+```
+
+---
+
+# Extract Design Matrices
+
++ TAM uses contrast coding - so items get a -1 instead of a 1.
+
+
+```r
+A_mat &lt;- mod1$A
+
+B_mat &lt;- mod1$B
+
+# array with 10 rows, 2 columns, and 10 matrices
+dim(A_mat)
+```
+
+```
+## [1] 10  2 10
+```
+
+```r
+# array with 10 rows, 2 columns, 1 matrix
+dim(B_mat)
+```
+
+```
+## [1] 10  2  1
+```
+
+
+---
+
+# A mat
+
+
+```r
+# First 5 rows, First two matrices
+A_mat[, , 1:2]
+```
+
+```
+## , , Math.1
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## 
+## , , Math.2
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0        -1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+```
+
+
+
+---
+
+# A matrix continued - 
+
+
+```r
+A_mat[,2,]
+```
+
+```
+##        Math.1 Math.2 Math.3 Math.4 Math.5 Math.6 Math.7 Math.8 Math.9 Math.10
+## Item01     -1      0      0      0      0      0      0      0      0       0
+## Item02      0     -1      0      0      0      0      0      0      0       0
+## Item03      0      0     -1      0      0      0      0      0      0       0
+## Item04      0      0      0     -1      0      0      0      0      0       0
+## Item05      0      0      0      0     -1      0      0      0      0       0
+## Item06      0      0      0      0      0     -1      0      0      0       0
+## Item07      0      0      0      0      0      0     -1      0      0       0
+## Item08      0      0      0      0      0      0      0     -1      0       0
+## Item09      0      0      0      0      0      0      0      0     -1       0
+## Item10      0      0      0      0      0      0      0      0      0      -1
+```
+
+---
+
+Transform to get item "easiness" params - multiply by -1
+
+```r
+A_mat1 &lt;- A_mat
+
+A_mat1[,2,] &lt;- A_mat[,2,] *-1
+
+A_mat1[,, 1:2]
+```
+
+```
+## , , Math.1
+## 
+##        Category0 Category1
+## Item01         0         1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## 
+## , , Math.2
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+```
+
+
+```r
+# model with new A matrix
+mod2 &lt;- tam.mml(df, A=A_mat1)
+```
+---
+
+# Compare the item parameters
+
+```r
+# model with default design matrices
+head(mod1$xsi)
+```
+
+```
+##               xsi     se.xsi
+## Math.1 -1.3301167 0.06494537
+## Math.2 -0.6036252 0.05876371
+## Math.3  0.2329543 0.05746165
+## Math.4  0.8544774 0.06033535
+## Math.5  0.9465537 0.06105641
+## Math.6 -0.2136443 0.05742465
+```
+
+```r
+#model with transformed A matrix
+head(mod2$xsi)
+```
+
+```
+##               xsi     se.xsi
+## Math.1  1.3300881 0.06494508
+## Math.2  0.6035996 0.05876352
+## Math.3 -0.2329764 0.05746155
+## Math.4 -0.8544967 0.06033529
+## Math.5 -0.9465727 0.06105636
+## Math.6  0.2136203 0.05742450
+```
+
+---
+
+# B Matrix
+
+Note the name of the matrix here is Dim 1 - hold that thought
+
+
+```r
+B_mat
+```
+
+```
+## , , Dim01
+## 
+##         Cat0 Cat1
+## Math.1     0    1
+## Math.2     0    1
+## Math.3     0    1
+## Math.4     0    1
+## Math.5     0    1
+## Math.6     0    1
+## Math.7     0    1
+## Math.8     0    1
+## Math.9     0    1
+## Math.10    0    1
+```
+
+---
+
+class: middle
+
+# The linear logistic test model (LLTM) - base of many models
+
++ Note the data we have here has four "dimensions"
+
++ What if we wanted to know the overall difficulty of item type?  
+  
+--
++ We'll use the design matrices  
+  
+--
++ Note - this is not really a "multidimensional model" in the sense of multiple factors - this models each type of item as a fixed effect
+
+
+---
+
+# The item side base for 
+
++ For dichotomous or polytomous items
+
+`$$P(Y=y|\theta_s, \delta_i) = \frac{exp(\theta_s-\delta_i)}{1+exp(\theta_s-\delta_i)}$$`
+
+`$$log\biggl[P/(1-P)\biggr] = \eta = \theta_p-\delta_i$$`
+`$$\delta_i = \sum(q_{ij}\nu_j)$$`
+  
++ q = "weights" for item i and item effect j  
+--
+
++ `\(\nu_j\)` = item effect/variable/indicator if item i is related to some effect
+
+--
++ In our data, whether an item is a math item or not.
+
+---
+# How do we indicate this? A matrix
+
+For 4 items, treat the first two items as the same and second two items as the same
+
+
+```r
+A2 &lt;- matrix(data = 0, nrow = 4, ncol = 2)
+A2[1:2,1] &lt;- 1
+A2[3:4,2] &lt;- 1
+
+A2
+```
+
+```
+##      [,1] [,2]
+## [1,]    1    0
+## [2,]    1    0
+## [3,]    0    1
+## [4,]    0    1
+```
+
+---
+## Doing this in TAM
+
++ work with the full `resp` data frame
+
+--
++ Code all item types together so that all math items, all ela items...used for generating area specific (fixed) difficulties
+
+
+```r
+#use TAM to generate the design matrices for us
+
+des_lltm &lt;- designMatrices(resp = resp)
+
+# we want the A matrix
+
+A &lt;- des_lltm$A
+```
+
+---
+### Looking at the design matrix
+
++ Let's look at the matrices for the first four items
+
+
++ We'll keep only the first four matrices since we're going to have only four parameters (math difficulty, ela difficulty, science difficuly, word problem)
+
+```r
+A[ , , 1:4]
+```
+
+```
+## , , Math.1
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Math.2
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0        -1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Math.3
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0        -1
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Math.4
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0        -1
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+```
+--
+
+# We'll keep only the first 4 matrices
+
+```r
+A4 &lt;- A[ , , 1:4]
+
+# rename the dimensions 
+dimnames(A4)[[3]] &lt;- c("Math", "Science", "ELA", "Word_Prob")
+
+A4
+```
+
+```
+## , , Math
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Science
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0        -1
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , ELA
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0        -1
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Word_Prob
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0        -1
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+```
+
+---
+# Recode
+
++ All items of the same type get dummy coded the same, zero otherwise
+
++ We do this by assigning -1 to the pertinent dimensions
+
++ For instance, two items, two facets
+
+A =  
+$$
+`\begin{bmatrix}
+0 &amp; -1 \\
+0 &amp; -1 \\
+-1 &amp; 0 \\
+-1 &amp; 0 \\
+\end{bmatrix}`
+$$
+---
+
+### Let's do this in TAM
+
+```r
+# zero it all out
+A4[,,] &lt;- 0
+
+A4[1:10,2, 1] &lt;- -1
+
+A4[11:20,2,2] &lt;- -1
+
+A4[21:30,2,3] &lt;- -1
+
+A4[31:40,2,4] &lt;- -1
+
+A4
+```
+
+```
+## , , Math
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0        -1
+## Item03         0        -1
+## Item04         0        -1
+## Item05         0        -1
+## Item06         0        -1
+## Item07         0        -1
+## Item08         0        -1
+## Item09         0        -1
+## Item10         0        -1
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Science
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0        -1
+## Item12         0        -1
+## Item13         0        -1
+## Item14         0        -1
+## Item15         0        -1
+## Item16         0        -1
+## Item17         0        -1
+## Item18         0        -1
+## Item19         0        -1
+## Item20         0        -1
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , ELA
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0        -1
+## Item22         0        -1
+## Item23         0        -1
+## Item24         0        -1
+## Item25         0        -1
+## Item26         0        -1
+## Item27         0        -1
+## Item28         0        -1
+## Item29         0        -1
+## Item30         0        -1
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Word_Prob
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0        -1
+## Item32         0        -1
+## Item33         0        -1
+## Item34         0        -1
+## Item35         0        -1
+## Item36         0        -1
+## Item37         0        -1
+## Item38         0        -1
+## Item39         0        -1
+## Item40         0        -1
+```
+
+---
+
+## Run the model
+
+
+```r
+mod_l &lt;- tam.mml(resp=resp, A = A4)
+
+# get "model"item" fit
+itfit &lt;- tam.fit(mod_l)
+```
+
++ Get item difficulties (you may get slightly different values)
+
+
+```r
+mod_l$xsi
+```
+
+```
+##                    xsi     se.xsi
+## Math      -0.109231488 0.01678528
+## Science    0.006363148 0.01676390
+## ELA       -1.287357593 0.01988335
+## Word_Prob  0.024911944 0.01676495
+```
+--
+
+```r
+itfit$itemfit
+```
+
+```
+##   parameter    Outfit  Outfit_t     Outfit_p Outfit_pholm     Infit   Infit_t
+## 1      Math 1.4775089 112.57828 0.000000e+00 0.000000e+00 1.4837803 113.88324
+## 2   Science 0.8445360 -45.41123 0.000000e+00 0.000000e+00 0.8426173 -46.00668
+## 3       ELA 1.1938188  17.15996 5.295313e-66 5.295313e-66 1.2188346  19.23828
+## 4 Word_Prob 0.8700116 -37.59670 0.000000e+00 0.000000e+00 0.8697018 -37.69000
+##        Infit_p  Infit_pholm
+## 1 0.000000e+00 0.000000e+00
+## 2 0.000000e+00 0.000000e+00
+## 3 1.769861e-82 1.769861e-82
+## 4 0.000000e+00 0.000000e+00
+```
+
++ This is a strange model but describes the "difficulty effect" of item type
+
+---
+class: middle 
+
+#### What about individual item difficulties plus overall effect of item type?
+
++ I'm still trying to figure out if I'm doing this correctly (need to simulate)  
+
+--  
+
++ I want the item difficulty of the item "adjusting for" the item type effect (this is relevant to differential bundle functioning or testlets as well Wang and Wilson (2005))  
+
+--
+
++ Start with design matrix A and add item types to the matrix - four columns to each matrix - these are pseudo items - not sure if I need to leave one as all zeros for identification or code as `-1` and `1` instead
+
+---
+
+# Setting up design matrices
+
+
+```r
+# create a new array with 40 rows, 2 columns, and 4 matrices
+
+# 40 items to get coded, still two categories, 4 matrices
+A_type &lt;- array(data=0, dim = c(40, 2, 4))
+
+A_type[1:10, 2, 1] &lt;-  -1
+
+A_type[11:20, 2, 2] &lt;- -1
+
+A_type[21:30, 2, 3] &lt;- -1
+
+A_type[31:40, 2, 4] &lt;- -1
+
+dimnames(A_type)[[3]] &lt;- c("Math", "Science", "ELA", "Word_Prob")
+
+A_ex &lt;- abind::abind(A, A_type)
+```
+
+---
+# Check out the array
+
+```r
+A_ex[ , 2, ]
+```
+
+```
+##        Math.1 Math.2 Math.3 Math.4 Math.5 Math.6 Math.7 Math.8 Math.9 Math.10
+## Item01     -1      0      0      0      0      0      0      0      0       0
+## Item02      0     -1      0      0      0      0      0      0      0       0
+## Item03      0      0     -1      0      0      0      0      0      0       0
+## Item04      0      0      0     -1      0      0      0      0      0       0
+## Item05      0      0      0      0     -1      0      0      0      0       0
+## Item06      0      0      0      0      0     -1      0      0      0       0
+## Item07      0      0      0      0      0      0     -1      0      0       0
+## Item08      0      0      0      0      0      0      0     -1      0       0
+## Item09      0      0      0      0      0      0      0      0     -1       0
+## Item10      0      0      0      0      0      0      0      0      0      -1
+## Item11      0      0      0      0      0      0      0      0      0       0
+## Item12      0      0      0      0      0      0      0      0      0       0
+## Item13      0      0      0      0      0      0      0      0      0       0
+## Item14      0      0      0      0      0      0      0      0      0       0
+## Item15      0      0      0      0      0      0      0      0      0       0
+## Item16      0      0      0      0      0      0      0      0      0       0
+## Item17      0      0      0      0      0      0      0      0      0       0
+## Item18      0      0      0      0      0      0      0      0      0       0
+## Item19      0      0      0      0      0      0      0      0      0       0
+## Item20      0      0      0      0      0      0      0      0      0       0
+## Item21      0      0      0      0      0      0      0      0      0       0
+## Item22      0      0      0      0      0      0      0      0      0       0
+## Item23      0      0      0      0      0      0      0      0      0       0
+## Item24      0      0      0      0      0      0      0      0      0       0
+## Item25      0      0      0      0      0      0      0      0      0       0
+## Item26      0      0      0      0      0      0      0      0      0       0
+## Item27      0      0      0      0      0      0      0      0      0       0
+## Item28      0      0      0      0      0      0      0      0      0       0
+## Item29      0      0      0      0      0      0      0      0      0       0
+## Item30      0      0      0      0      0      0      0      0      0       0
+## Item31      0      0      0      0      0      0      0      0      0       0
+## Item32      0      0      0      0      0      0      0      0      0       0
+## Item33      0      0      0      0      0      0      0      0      0       0
+## Item34      0      0      0      0      0      0      0      0      0       0
+## Item35      0      0      0      0      0      0      0      0      0       0
+## Item36      0      0      0      0      0      0      0      0      0       0
+## Item37      0      0      0      0      0      0      0      0      0       0
+## Item38      0      0      0      0      0      0      0      0      0       0
+## Item39      0      0      0      0      0      0      0      0      0       0
+## Item40      0      0      0      0      0      0      0      0      0       0
+##        Science.1 Science.2 Science.3 Science.4 Science.5 Science.6 Science.7
+## Item01         0         0         0         0         0         0         0
+## Item02         0         0         0         0         0         0         0
+## Item03         0         0         0         0         0         0         0
+## Item04         0         0         0         0         0         0         0
+## Item05         0         0         0         0         0         0         0
+## Item06         0         0         0         0         0         0         0
+## Item07         0         0         0         0         0         0         0
+## Item08         0         0         0         0         0         0         0
+## Item09         0         0         0         0         0         0         0
+## Item10         0         0         0         0         0         0         0
+## Item11        -1         0         0         0         0         0         0
+## Item12         0        -1         0         0         0         0         0
+## Item13         0         0        -1         0         0         0         0
+## Item14         0         0         0        -1         0         0         0
+## Item15         0         0         0         0        -1         0         0
+## Item16         0         0         0         0         0        -1         0
+## Item17         0         0         0         0         0         0        -1
+## Item18         0         0         0         0         0         0         0
+## Item19         0         0         0         0         0         0         0
+## Item20         0         0         0         0         0         0         0
+## Item21         0         0         0         0         0         0         0
+## Item22         0         0         0         0         0         0         0
+## Item23         0         0         0         0         0         0         0
+## Item24         0         0         0         0         0         0         0
+## Item25         0         0         0         0         0         0         0
+## Item26         0         0         0         0         0         0         0
+## Item27         0         0         0         0         0         0         0
+## Item28         0         0         0         0         0         0         0
+## Item29         0         0         0         0         0         0         0
+## Item30         0         0         0         0         0         0         0
+## Item31         0         0         0         0         0         0         0
+## Item32         0         0         0         0         0         0         0
+## Item33         0         0         0         0         0         0         0
+## Item34         0         0         0         0         0         0         0
+## Item35         0         0         0         0         0         0         0
+## Item36         0         0         0         0         0         0         0
+## Item37         0         0         0         0         0         0         0
+## Item38         0         0         0         0         0         0         0
+## Item39         0         0         0         0         0         0         0
+## Item40         0         0         0         0         0         0         0
+##        Science.8 Science.9 Science.10 ELA.1 ELA.2 ELA.3 ELA.4 ELA.5 ELA.6 ELA.7
+## Item01         0         0          0     0     0     0     0     0     0     0
+## Item02         0         0          0     0     0     0     0     0     0     0
+## Item03         0         0          0     0     0     0     0     0     0     0
+## Item04         0         0          0     0     0     0     0     0     0     0
+## Item05         0         0          0     0     0     0     0     0     0     0
+## Item06         0         0          0     0     0     0     0     0     0     0
+## Item07         0         0          0     0     0     0     0     0     0     0
+## Item08         0         0          0     0     0     0     0     0     0     0
+## Item09         0         0          0     0     0     0     0     0     0     0
+## Item10         0         0          0     0     0     0     0     0     0     0
+## Item11         0         0          0     0     0     0     0     0     0     0
+## Item12         0         0          0     0     0     0     0     0     0     0
+## Item13         0         0          0     0     0     0     0     0     0     0
+## Item14         0         0          0     0     0     0     0     0     0     0
+## Item15         0         0          0     0     0     0     0     0     0     0
+## Item16         0         0          0     0     0     0     0     0     0     0
+## Item17         0         0          0     0     0     0     0     0     0     0
+## Item18        -1         0          0     0     0     0     0     0     0     0
+## Item19         0        -1          0     0     0     0     0     0     0     0
+## Item20         0         0         -1     0     0     0     0     0     0     0
+## Item21         0         0          0    -1     0     0     0     0     0     0
+## Item22         0         0          0     0    -1     0     0     0     0     0
+## Item23         0         0          0     0     0    -1     0     0     0     0
+## Item24         0         0          0     0     0     0    -1     0     0     0
+## Item25         0         0          0     0     0     0     0    -1     0     0
+## Item26         0         0          0     0     0     0     0     0    -1     0
+## Item27         0         0          0     0     0     0     0     0     0    -1
+## Item28         0         0          0     0     0     0     0     0     0     0
+## Item29         0         0          0     0     0     0     0     0     0     0
+## Item30         0         0          0     0     0     0     0     0     0     0
+## Item31         0         0          0     0     0     0     0     0     0     0
+## Item32         0         0          0     0     0     0     0     0     0     0
+## Item33         0         0          0     0     0     0     0     0     0     0
+## Item34         0         0          0     0     0     0     0     0     0     0
+## Item35         0         0          0     0     0     0     0     0     0     0
+## Item36         0         0          0     0     0     0     0     0     0     0
+## Item37         0         0          0     0     0     0     0     0     0     0
+## Item38         0         0          0     0     0     0     0     0     0     0
+## Item39         0         0          0     0     0     0     0     0     0     0
+## Item40         0         0          0     0     0     0     0     0     0     0
+##        ELA.8 ELA.9 ELA.10 WordProb.1 WordProb.2 WordProb.3 WordProb.4
+## Item01     0     0      0          0          0          0          0
+## Item02     0     0      0          0          0          0          0
+## Item03     0     0      0          0          0          0          0
+## Item04     0     0      0          0          0          0          0
+## Item05     0     0      0          0          0          0          0
+## Item06     0     0      0          0          0          0          0
+## Item07     0     0      0          0          0          0          0
+## Item08     0     0      0          0          0          0          0
+## Item09     0     0      0          0          0          0          0
+## Item10     0     0      0          0          0          0          0
+## Item11     0     0      0          0          0          0          0
+## Item12     0     0      0          0          0          0          0
+## Item13     0     0      0          0          0          0          0
+## Item14     0     0      0          0          0          0          0
+## Item15     0     0      0          0          0          0          0
+## Item16     0     0      0          0          0          0          0
+## Item17     0     0      0          0          0          0          0
+## Item18     0     0      0          0          0          0          0
+## Item19     0     0      0          0          0          0          0
+## Item20     0     0      0          0          0          0          0
+## Item21     0     0      0          0          0          0          0
+## Item22     0     0      0          0          0          0          0
+## Item23     0     0      0          0          0          0          0
+## Item24     0     0      0          0          0          0          0
+## Item25     0     0      0          0          0          0          0
+## Item26     0     0      0          0          0          0          0
+## Item27     0     0      0          0          0          0          0
+## Item28    -1     0      0          0          0          0          0
+## Item29     0    -1      0          0          0          0          0
+## Item30     0     0     -1          0          0          0          0
+## Item31     0     0      0         -1          0          0          0
+## Item32     0     0      0          0         -1          0          0
+## Item33     0     0      0          0          0         -1          0
+## Item34     0     0      0          0          0          0         -1
+## Item35     0     0      0          0          0          0          0
+## Item36     0     0      0          0          0          0          0
+## Item37     0     0      0          0          0          0          0
+## Item38     0     0      0          0          0          0          0
+## Item39     0     0      0          0          0          0          0
+## Item40     0     0      0          0          0          0          0
+##        WordProb.5 WordProb.6 WordProb.7 WordProb.8 WordProb.9 WordProb.10 Math
+## Item01          0          0          0          0          0           0   -1
+## Item02          0          0          0          0          0           0   -1
+## Item03          0          0          0          0          0           0   -1
+## Item04          0          0          0          0          0           0   -1
+## Item05          0          0          0          0          0           0   -1
+## Item06          0          0          0          0          0           0   -1
+## Item07          0          0          0          0          0           0   -1
+## Item08          0          0          0          0          0           0   -1
+## Item09          0          0          0          0          0           0   -1
+## Item10          0          0          0          0          0           0   -1
+## Item11          0          0          0          0          0           0    0
+## Item12          0          0          0          0          0           0    0
+## Item13          0          0          0          0          0           0    0
+## Item14          0          0          0          0          0           0    0
+## Item15          0          0          0          0          0           0    0
+## Item16          0          0          0          0          0           0    0
+## Item17          0          0          0          0          0           0    0
+## Item18          0          0          0          0          0           0    0
+## Item19          0          0          0          0          0           0    0
+## Item20          0          0          0          0          0           0    0
+## Item21          0          0          0          0          0           0    0
+## Item22          0          0          0          0          0           0    0
+## Item23          0          0          0          0          0           0    0
+## Item24          0          0          0          0          0           0    0
+## Item25          0          0          0          0          0           0    0
+## Item26          0          0          0          0          0           0    0
+## Item27          0          0          0          0          0           0    0
+## Item28          0          0          0          0          0           0    0
+## Item29          0          0          0          0          0           0    0
+## Item30          0          0          0          0          0           0    0
+## Item31          0          0          0          0          0           0    0
+## Item32          0          0          0          0          0           0    0
+## Item33          0          0          0          0          0           0    0
+## Item34          0          0          0          0          0           0    0
+## Item35         -1          0          0          0          0           0    0
+## Item36          0         -1          0          0          0           0    0
+## Item37          0          0         -1          0          0           0    0
+## Item38          0          0          0         -1          0           0    0
+## Item39          0          0          0          0         -1           0    0
+## Item40          0          0          0          0          0          -1    0
+##        Science ELA Word_Prob
+## Item01       0   0         0
+## Item02       0   0         0
+## Item03       0   0         0
+## Item04       0   0         0
+## Item05       0   0         0
+## Item06       0   0         0
+## Item07       0   0         0
+## Item08       0   0         0
+## Item09       0   0         0
+## Item10       0   0         0
+## Item11      -1   0         0
+## Item12      -1   0         0
+## Item13      -1   0         0
+## Item14      -1   0         0
+## Item15      -1   0         0
+## Item16      -1   0         0
+## Item17      -1   0         0
+## Item18      -1   0         0
+## Item19      -1   0         0
+## Item20      -1   0         0
+## Item21       0  -1         0
+## Item22       0  -1         0
+## Item23       0  -1         0
+## Item24       0  -1         0
+## Item25       0  -1         0
+## Item26       0  -1         0
+## Item27       0  -1         0
+## Item28       0  -1         0
+## Item29       0  -1         0
+## Item30       0  -1         0
+## Item31       0   0        -1
+## Item32       0   0        -1
+## Item33       0   0        -1
+## Item34       0   0        -1
+## Item35       0   0        -1
+## Item36       0   0        -1
+## Item37       0   0        -1
+## Item38       0   0        -1
+## Item39       0   0        -1
+## Item40       0   0        -1
+```
+
+---
+# Final Array 
+
+
+```r
+A_ex[, , 41:44]
+```
+
+```
+## , , Math
+## 
+##        Category0 Category1
+## Item01         0        -1
+## Item02         0        -1
+## Item03         0        -1
+## Item04         0        -1
+## Item05         0        -1
+## Item06         0        -1
+## Item07         0        -1
+## Item08         0        -1
+## Item09         0        -1
+## Item10         0        -1
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Science
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0        -1
+## Item12         0        -1
+## Item13         0        -1
+## Item14         0        -1
+## Item15         0        -1
+## Item16         0        -1
+## Item17         0        -1
+## Item18         0        -1
+## Item19         0        -1
+## Item20         0        -1
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , ELA
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0        -1
+## Item22         0        -1
+## Item23         0        -1
+## Item24         0        -1
+## Item25         0        -1
+## Item26         0        -1
+## Item27         0        -1
+## Item28         0        -1
+## Item29         0        -1
+## Item30         0        -1
+## Item31         0         0
+## Item32         0         0
+## Item33         0         0
+## Item34         0         0
+## Item35         0         0
+## Item36         0         0
+## Item37         0         0
+## Item38         0         0
+## Item39         0         0
+## Item40         0         0
+## 
+## , , Word_Prob
+## 
+##        Category0 Category1
+## Item01         0         0
+## Item02         0         0
+## Item03         0         0
+## Item04         0         0
+## Item05         0         0
+## Item06         0         0
+## Item07         0         0
+## Item08         0         0
+## Item09         0         0
+## Item10         0         0
+## Item11         0         0
+## Item12         0         0
+## Item13         0         0
+## Item14         0         0
+## Item15         0         0
+## Item16         0         0
+## Item17         0         0
+## Item18         0         0
+## Item19         0         0
+## Item20         0         0
+## Item21         0         0
+## Item22         0         0
+## Item23         0         0
+## Item24         0         0
+## Item25         0         0
+## Item26         0         0
+## Item27         0         0
+## Item28         0         0
+## Item29         0         0
+## Item30         0         0
+## Item31         0        -1
+## Item32         0        -1
+## Item33         0        -1
+## Item34         0        -1
+## Item35         0        -1
+## Item36         0        -1
+## Item37         0        -1
+## Item38         0        -1
+## Item39         0        -1
+## Item40         0        -1
+```
+
+
+---
+### Testing this LLTM (may be easier with the eRm package)
+
++ Might want to use do in long data form (easier to include facets this way)
+
++ Can include more categories that `-1` and `1` in `TAM` - could take on ordinal values
+
++ Can add now covariates for things like individual categories for polytomous items 
+
++ Item or category position effects
+
++ "Severity" or wording
+
+---
+
+# Run the new model
+
+
+```r
+test_run &lt;- tam.mml(resp=resp, A = A_ex)
+```
+
+
+```r
+# Item difficulties
+
+test_run$xsi
+```
+
+```
+##                     xsi     se.xsi
+## Math.1      -1.15759447 0.06169386
+## Math.2      -0.50611041 0.05551036
+## Math.3       0.23894943 0.05423183
+## Math.4       0.79407082 0.05712653
+## Math.5       0.87667246 0.05785140
+## Math.6      -0.15860188 0.05418143
+## Math.7      -0.52154221 0.05559979
+## Math.8       1.02067324 0.05930785
+## Math.9      -1.68471685 0.07074748
+## Math.10      0.01382643 0.05399926
+## Science.1   -0.05131973 0.05399823
+## Science.2   -2.17697719 0.08096956
+## Science.3    2.98424286 0.11495551
+## Science.4   -0.52781745 0.05521237
+## Science.5    0.48307885 0.05549410
+## Science.6   -1.77160114 0.07095983
+## Science.7    0.67829992 0.05681226
+## Science.8   -0.97811139 0.05865354
+## Science.9    2.28750653 0.08703684
+## Science.10  -0.41609880 0.05471005
+## ELA.1       -1.25898560 0.07493500
+## ELA.2       -0.92513028 0.06778220
+## ELA.3       -0.35647695 0.05935776
+## ELA.4       -0.32843485 0.05905203
+## ELA.5       -0.17561230 0.05755321
+## ELA.6       -1.87207302 0.09327876
+## ELA.7       -0.36353326 0.05943621
+## ELA.8       -1.51555798 0.08172172
+## ELA.9       -0.27660831 0.05851230
+## ELA.10      -0.58892256 0.06227373
+## WordProb.1  -0.03976762 0.05400046
+## WordProb.2  -2.18875250 0.08096955
+## WordProb.3   2.90818047 0.11187031
+## WordProb.4  -0.46087876 0.05484437
+## WordProb.5   0.54267409 0.05592667
+## WordProb.6  -1.68555128 0.06895528
+## WordProb.7   0.67298598 0.05686322
+## WordProb.8  -1.02798526 0.05905355
+## WordProb.9   2.33773872 0.08906916
+## WordProb.10 -0.44285619 0.05476956
+## Math        -0.03279081 0.01818586
+## Science      0.04404676 0.02004367
+## ELA         -0.64374851 0.02055893
+## Word_Prob    0.05582184 0.02002690
+```
+
+---
+#Compare the model fits
+
+
+```r
+fit_comp &lt;- CDM::IRT.compareModels(test_run, mod_l)
+
+fit_comp$IC
+```
+
+```
+##      Model   loglike Deviance Npars Nobs      AIC      BIC     AIC3     AICc
+## 1 test_run -32087.06 64174.11    45 1500 64264.11 64503.21 64309.11 64266.96
+## 2    mod_l -38564.85 77129.71     5 1500 77139.71 77166.27 77144.71 77139.75
+##       CAIC
+## 1 64548.21
+## 2 77171.27
+```
+
+```r
+fit_comp$LRtest
+```
+
+```
+##   Model1   Model2     Chi2 df p
+## 1  mod_l test_run 12955.59 40 0
+```
+
+---
+
+## Learning from differential item functioning
+
++ Another way to do this is to use differential item functioning A matrices 
++ We can use the design matrices again
+
+ `$$\eta_{ip} = \theta_p + \delta_ik + \beta_1*group_p + \gamma_i(item*group_p)$$`
+ 
++ We use `formulaA` because it creates the `A matrix` for us in TAM
+
+
+```r
+treat &lt;- items[42]
+
+treat$treat &lt;- ifelse(treat == "treat", 1, 0)
+
+formA &lt;- ~ item*treat
+
+# Restrict items to 5 items to make output shorter
+dif_des_A &lt;- designMatrices.mfr(resp = resp[1:5], facets = treat, formulaA = formA)
+```
+
+---
+# DIF Design Matrix
+
+
+```r
+dif_des_A$A$A.3d
+```
+
+```
+## , , Math.1
+## 
+##               _step0 _step1
+## Math.1-treat0      0     -1
+## Math.1-treat1      0     -1
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      0
+## Math.5-treat1      0      0
+## 
+## , , Math.2
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0     -1
+## Math.2-treat1      0     -1
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      0
+## Math.5-treat1      0      0
+## 
+## , , Math.3
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0     -1
+## Math.3-treat1      0     -1
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      0
+## Math.5-treat1      0      0
+## 
+## , , Math.4
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0     -1
+## Math.4-treat1      0     -1
+## Math.5-treat0      0      0
+## Math.5-treat1      0      0
+## 
+## , , Math.5
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0     -1
+## Math.5-treat1      0     -1
+## 
+## , , treat0
+## 
+##               _step0 _step1
+## Math.1-treat0      0     -1
+## Math.1-treat1      0      1
+## Math.2-treat0      0     -1
+## Math.2-treat1      0      1
+## Math.3-treat0      0     -1
+## Math.3-treat1      0      1
+## Math.4-treat0      0     -1
+## Math.4-treat1      0      1
+## Math.5-treat0      0     -1
+## Math.5-treat1      0      1
+## 
+## , , Math.1:treat0
+## 
+##               _step0 _step1
+## Math.1-treat0      0     -1
+## Math.1-treat1      0      1
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      1
+## Math.5-treat1      0     -1
+## 
+## , , Math.2:treat0
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0     -1
+## Math.2-treat1      0      1
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      1
+## Math.5-treat1      0     -1
+## 
+## , , Math.3:treat0
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0     -1
+## Math.3-treat1      0      1
+## Math.4-treat0      0      0
+## Math.4-treat1      0      0
+## Math.5-treat0      0      1
+## Math.5-treat1      0     -1
+## 
+## , , Math.4:treat0
+## 
+##               _step0 _step1
+## Math.1-treat0      0      0
+## Math.1-treat1      0      0
+## Math.2-treat0      0      0
+## Math.2-treat1      0      0
+## Math.3-treat0      0      0
+## Math.3-treat1      0      0
+## Math.4-treat0      0     -1
+## Math.4-treat1      0      1
+## Math.5-treat0      0      1
+## Math.5-treat1      0     -1
+```
+---
+# Polytomous Data
+
++ Just so you can see the A design matrix for polytomous data
+
++ We'll use the partial credit model (by convention, the Rating Scale Model uses a different parameterization)
+
++ The item category difficulties - item step difficulties - are allowed to differ across items 
+
+
+```r
+data(data.sim.mfr)
+
+# 100 people 5 items
+dim(data.sim.mfr)
+```
+
+```
+## [1] 100   5
+```
+
+```r
+head(data.sim.mfr)
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5]
+## V1      3    3    3    3    1
+## V1.1    2    3    2    3    2
+## V1.2    1    3    0    3    0
+## V1.3    1    3    3    3    0
+## V1.4    0    1    3    2    1
+## V1.5    1    3    1    3    0
+```
+
+```r
+apply(as.data.frame(data.sim.mfr), 2, table)
+```
+
+```
+##   V1 V2 V3 V4 V5
+## 0 52 18 22  6 64
+## 1 28 17 10  5 21
+## 2 14 13 15 19 11
+## 3  6 52 53 70  4
+```
+
+---
+
+## Get design matrices for polytomous data
+
++ Reversed design matrices because of contrast coding...
+
+```r
+polyt_des &lt;- designMatrices(resp = data.sim.mfr, modeltype = "PCM")
+
+# Creat or have the model create
+A_poly &lt;- polyt_des$A
+
+#
+poly_mod &lt;- tam.mml(data.sim.mfr)
+
+# Different parameterization (item + item*step)
+poly_mod2 &lt;- tam.mml(data.sim.mfr, irtmodel = "PCM2")
+```
+---
+
+# In case of curiosity
+
+For more see Kim and Wilson (2020)
+
+```r
+poly_mod$A[1:4, , ]
+```
+
+```
+## , , I1_Cat1
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0        -1        -1        -1
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I1_Cat2
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0        -1        -1
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I1_Cat3
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0        -1
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I2_Cat1
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0        -1        -1        -1
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I2_Cat2
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0        -1        -1
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I2_Cat3
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0        -1
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I3_Cat1
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0        -1        -1        -1
+## Item04         0         0         0         0
+## 
+## , , I3_Cat2
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0        -1        -1
+## Item04         0         0         0         0
+## 
+## , , I3_Cat3
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0        -1
+## Item04         0         0         0         0
+## 
+## , , I4_Cat1
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0        -1        -1        -1
+## 
+## , , I4_Cat2
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0        -1        -1
+## 
+## , , I4_Cat3
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0        -1
+## 
+## , , I5_Cat1
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I5_Cat2
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+## 
+## , , I5_Cat3
+## 
+##        Category0 Category1 Category2 Category3
+## Item01         0         0         0         0
+## Item02         0         0         0         0
+## Item03         0         0         0         0
+## Item04         0         0         0         0
+```
+
+---
+# Multidimensional Model 
+
++ "MIRT"
+
++ Closest thing to factor analysis in the Rasch world
+
++ Items load onto dimensions - we use a Q matrix
+
++ In the case of our `resp` data ...
+
++ Correlated factors
+
++ Compensatory
+
+---
+
+class: center
+
+# MIRT Model
+
+
+![mirt](mirt.png)
+
+---
+
+## Setting up the multidimensional model
+
+
+```r
+# set up the Q matrix - dimensionality assignment
+Q &lt;- matrix(0, nrow = 40, ncol = 4)
+
+Q[1:10 , 1] &lt;- Q[11:20, 2] &lt;- Q[21:30, 3]&lt;- Q[31:40, 4] &lt;- 1 
+
+# If you want to run the model
+# tam.mml(resp, Q = Q, control=list(snodes=500, maxiter=10))
+
+
+multi_des &lt;- designMatrices(resp = resp, Q = Q, ndim = 4)
+```
+---
+
+# Design Matrix B
+
+
+```r
+# The person side matrix is changed
+multi_des$B
+```
+
+```
+## , , Dim01
+## 
+##             Cat0 Cat1
+## Math.1         0    1
+## Math.2         0    1
+## Math.3         0    1
+## Math.4         0    1
+## Math.5         0    1
+## Math.6         0    1
+## Math.7         0    1
+## Math.8         0    1
+## Math.9         0    1
+## Math.10        0    1
+## Science.1      0    0
+## Science.2      0    0
+## Science.3      0    0
+## Science.4      0    0
+## Science.5      0    0
+## Science.6      0    0
+## Science.7      0    0
+## Science.8      0    0
+## Science.9      0    0
+## Science.10     0    0
+## ELA.1          0    0
+## ELA.2          0    0
+## ELA.3          0    0
+## ELA.4          0    0
+## ELA.5          0    0
+## ELA.6          0    0
+## ELA.7          0    0
+## ELA.8          0    0
+## ELA.9          0    0
+## ELA.10         0    0
+## WordProb.1     0    0
+## WordProb.2     0    0
+## WordProb.3     0    0
+## WordProb.4     0    0
+## WordProb.5     0    0
+## WordProb.6     0    0
+## WordProb.7     0    0
+## WordProb.8     0    0
+## WordProb.9     0    0
+## WordProb.10    0    0
+## 
+## , , Dim02
+## 
+##             Cat0 Cat1
+## Math.1         0    0
+## Math.2         0    0
+## Math.3         0    0
+## Math.4         0    0
+## Math.5         0    0
+## Math.6         0    0
+## Math.7         0    0
+## Math.8         0    0
+## Math.9         0    0
+## Math.10        0    0
+## Science.1      0    1
+## Science.2      0    1
+## Science.3      0    1
+## Science.4      0    1
+## Science.5      0    1
+## Science.6      0    1
+## Science.7      0    1
+## Science.8      0    1
+## Science.9      0    1
+## Science.10     0    1
+## ELA.1          0    0
+## ELA.2          0    0
+## ELA.3          0    0
+## ELA.4          0    0
+## ELA.5          0    0
+## ELA.6          0    0
+## ELA.7          0    0
+## ELA.8          0    0
+## ELA.9          0    0
+## ELA.10         0    0
+## WordProb.1     0    0
+## WordProb.2     0    0
+## WordProb.3     0    0
+## WordProb.4     0    0
+## WordProb.5     0    0
+## WordProb.6     0    0
+## WordProb.7     0    0
+## WordProb.8     0    0
+## WordProb.9     0    0
+## WordProb.10    0    0
+## 
+## , , Dim03
+## 
+##             Cat0 Cat1
+## Math.1         0    0
+## Math.2         0    0
+## Math.3         0    0
+## Math.4         0    0
+## Math.5         0    0
+## Math.6         0    0
+## Math.7         0    0
+## Math.8         0    0
+## Math.9         0    0
+## Math.10        0    0
+## Science.1      0    0
+## Science.2      0    0
+## Science.3      0    0
+## Science.4      0    0
+## Science.5      0    0
+## Science.6      0    0
+## Science.7      0    0
+## Science.8      0    0
+## Science.9      0    0
+## Science.10     0    0
+## ELA.1          0    1
+## ELA.2          0    1
+## ELA.3          0    1
+## ELA.4          0    1
+## ELA.5          0    1
+## ELA.6          0    1
+## ELA.7          0    1
+## ELA.8          0    1
+## ELA.9          0    1
+## ELA.10         0    1
+## WordProb.1     0    0
+## WordProb.2     0    0
+## WordProb.3     0    0
+## WordProb.4     0    0
+## WordProb.5     0    0
+## WordProb.6     0    0
+## WordProb.7     0    0
+## WordProb.8     0    0
+## WordProb.9     0    0
+## WordProb.10    0    0
+## 
+## , , Dim04
+## 
+##             Cat0 Cat1
+## Math.1         0    0
+## Math.2         0    0
+## Math.3         0    0
+## Math.4         0    0
+## Math.5         0    0
+## Math.6         0    0
+## Math.7         0    0
+## Math.8         0    0
+## Math.9         0    0
+## Math.10        0    0
+## Science.1      0    0
+## Science.2      0    0
+## Science.3      0    0
+## Science.4      0    0
+## Science.5      0    0
+## Science.6      0    0
+## Science.7      0    0
+## Science.8      0    0
+## Science.9      0    0
+## Science.10     0    0
+## ELA.1          0    0
+## ELA.2          0    0
+## ELA.3          0    0
+## ELA.4          0    0
+## ELA.5          0    0
+## ELA.6          0    0
+## ELA.7          0    0
+## ELA.8          0    0
+## ELA.9          0    0
+## ELA.10         0    0
+## WordProb.1     0    1
+## WordProb.2     0    1
+## WordProb.3     0    1
+## WordProb.4     0    1
+## WordProb.5     0    1
+## WordProb.6     0    1
+## WordProb.7     0    1
+## WordProb.8     0    1
+## WordProb.9     0    1
+## WordProb.10    0    1
+```
+
+---
+
+## Alternative to TAM
+
++ `eRm` is a conditional maximum likelihood based package that has special functions devoted to the LLTM
+
++ Random Item or Random Item covariate models can be run in `lme4` De Boeck (2008); De Boeck, Bakker, Zwitser, Nivard, Hofman, Tuerlinckx, Partchev, and others (2011)
+
++ I think multilevel models can be run in TAM but definitely `lme4`
+
++ We can use Bayesian approaches (`MCMCpack` or `mirt`) - `brms` uses `lme4` modeling language to translate code into `Stan` files and uses Stan to model and estimate
+
++ Check out papers around Adams, Wilson, and Wang (1997)
+
+---
+
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 ## `Stan`
 
 + Stan allows ultimate flexibility but is complicated to use 
@@ -1036,11 +3470,62 @@ $$ y \sim bernoulli(Pr[y_n=1])$$
 
 # References
 
+<<<<<<< HEAD
+Adams, R. J., M. Wilson, and W. Wang (1997). "The multidimensional
+random coefficients multinomial logit model". In: _Applied
+psychological measurement_ 21.1, pp. 1-23.
+
+De Boeck, P. (2008). "Random item IRT models". In: _Psychometrika_
+73.4, pp. 533-559.
+
+De Boeck, P., M. Bakker, R. Zwitser, et al. (2011). "The estimation of
+item response models with the lmer function from the lme4 package in
+R". In: _Journal of Statistical Software_ 39.12, pp. 1-28.
+
+De Boeck, P. and M. Wilson (2004). _Explanatory item response models_.
+Wiley Online Library.
+
+Frederickx, S., F. Tuerlinckx, P. De Boeck, et al. (2010). "RIM: A
+random item mixture model to detect differential item functioning". In:
+_Journal of Educational Measurement_ 47.4, pp. 432-457.
+
+Kennedy, C. A. (2005). "Constructing measurement models for MRCML
+estimation: A primer for using the BEAR scoring engine". In: _Berkeley
+Eval Assess Res Cent_.
+
+---
+
+Kim, J. and M. Wilson (2020). "Polytomous item explanatory item
+response theory models". In: _Educational and Psychological
+Measurement_ 80.4, pp. 726-755.
+
+Rigdon, E. E., J. Becker, and M. Sarstedt (2019). "Factor Indeterminacy
+as Metrological Uncertainty: Implications for Advancing Psychological
+Measurement". In: _Multivariate Behavioral Research_ 54.3. PMID:
+30829544, pp. 429-443. DOI:
+[10.1080/00273171.2018.1535420](https://doi.org/10.1080%2F00273171.2018.1535420).
+eprint: https://doi.org/10.1080/00273171.2018.1535420
+
+. URL: [ https://doi.org/10.1080/00273171.2018.1535420
+
+]( https://doi.org/10.1080/00273171.2018.1535420
+
+).
+
+Thissen, D. and L. Steinberg (2020). "An intellectual history of
+parametric item response theory models in the twentieth century". In:
+_Chinese/English Journal of Educational Measurement and Evaluation|
+æ•™è‚²æµ‹é‡ä¸Žè¯„ä¼°åŒè¯­å­£åˆŠ_ 1.1, p. 5.
+
+Wang, W. and M. Wilson (2005). "The Rasch testlet model". In: _Applied
+Psychological Measurement_ 29.2, pp. 126-149.
+=======
 NULL
 
 ---
 
 NULL
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
