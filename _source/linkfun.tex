@@ -1,17 +1,31 @@
 % Options for packages loaded elsewhere
+<<<<<<< HEAD
 \PassOptionsToPackage{unicode}{hyperref}
+=======
+\PassOptionsToPackage{unicode=true}{hyperref}
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
 ]{article}
+<<<<<<< HEAD
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
+=======
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+<<<<<<< HEAD
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
+=======
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
@@ -39,10 +53,17 @@
   pdftitle={Link Functions: Where do they come from?},
   pdfauthor={Danny},
   hidelinks,
+<<<<<<< HEAD
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
+=======
+}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
@@ -51,17 +72,38 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+<<<<<<< HEAD
 % Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+<<<<<<< HEAD
 \ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+=======
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 \title{Link Functions: Where do they come from?}
 \author{Danny}
@@ -70,6 +112,7 @@
 \begin{document}
 \maketitle
 
+<<<<<<< HEAD
 As a student presented with the concept of link functions I was always
 left wanting a bit more. The standard way a social science student
 usually learns about link functions is through the introduction of
@@ -93,6 +136,31 @@ Usually mathematical derivations skip steps which makes them actually
 look less daunting. I tried to show every single step to make it
 obvious. I think a little effort doing algebra can serve most of us
 students in social science more than we realize.
+=======
+As a student, when presented with the concept of link functions -
+especially in a more applied statistics course - I was always left
+wanting a bit more. The standard way a social science student usually
+learns about link functions is through the introduction of logistic
+regression. In this post, I will give an earlier version of myself what
+I always wanted - a step-by-step break down of how the link function is
+derived algebraically. In a future post, I'll expand on the conceptual
+aspects of link functions - introducing roughl, how probability enters
+are generalized linear models which is paramount for understanding link
+functions.
+
+Of note, we'll be dealing with link functions in only super specific
+scenarios. First, we'll be dealing with canonical link functions, only.
+For instance, the logit is the cannonical link to the binomial whereas
+the probit is not. Roughly speaking, this means that the logit link can
+be directly derived from the binomial whereas the probit link cannot.
+
+For this post, we'll be using primarily algebra - there will be a hint
+of calculus. If this isn't your cup of tea, perhaps the next post will
+be more interesting. But, I try to explain all the steps below in a way
+that I hope is clear, including the ``rules'' I'm using through each
+step - so give it a shot! I think a little effort doing algebra can
+serve most of us students in social science more than we realize.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 \hypertarget{preliminaries}{%
 \subsection{Preliminaries:}\label{preliminaries}}
@@ -103,6 +171,7 @@ I'll refer to these rules in the post below.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
+<<<<<<< HEAD
   When I use \(log\) I mean the natural log, or \(ln\) . This is the
   logarithm with base \(e\) such that \(log_e(1) = 0\) because
   \(e^0 =1\) .
@@ -112,12 +181,24 @@ I'll refer to these rules in the post below.
   \(log(a)-log(b) = log(\frac{a}{b})\) .
 \item
   \(log(a)^x = xlog(a)\) .
+=======
+  When I use \[Log\] I mean the natural log, or \(ln\) . This is the
+  logarithm with base \(e\) such that \[log_e(1) = 0\] because
+  \[e^0 =1\] .
+\item
+  log(a) + log(b) = \[log(a*b)\] .
+\item
+  log(a)-log(b) = \[log(\frac{a}{b})\] .
+\item
+  \[log(a)^x = xlog(a)\] .
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 \end{enumerate}
 
 \hypertarget{exponential-family-of-probability-functions}{%
 \subsection{Exponential Family of Probability
 Functions}\label{exponential-family-of-probability-functions}}
 
+<<<<<<< HEAD
 A generalized linear model's link function takes the ``structural'' or
 linear component of the model and links it to the outcome, the
 expectation of y given x (sometimes, this is written, y-hat) but you can
@@ -167,10 +248,27 @@ in the general form,
 \tag{A}
 f_X(x|\theta) = h(x)exp[\eta(\theta)*T(x) - A(\theta)]
 \end{align}
+=======
+This is where the bulk of the hard work will be and it's all going to be
+algebra. It turns out that probability density functions like the normal
+distribution or discrete probability distributions like the binomial
+(called probability mass functions) are of a family of distributions
+called the exponential family of distributions. In the case of the
+binomial, it is in the exponential family only when there are a fixed
+number of trials, but that's not important.
+
+What's special about this is that members of this family can be written
+in the common form,\\
+\begin{equation}
+  $$f_X(x|\theta) = h(x)exp[\eta(\theta)*T(x) - A(\theta)]$$
+
+\end{equation}
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 For whatever reason, I like an equivalent form of this distribution a
 bit better:
 
+<<<<<<< HEAD
 \begin{align}
 \tag{B}
 f(x, \theta, \phi) = exp\biggl[\frac{y\theta-b(\theta)}{a(\phi)} + c(y, \phi)\biggr] 
@@ -462,5 +560,15 @@ regression:
 
 \[\theta = log(\frac{1*p}{1-(1*p))})\] \[\theta = log(\frac{p}{1-p})\]
 And, now this looks awfully like logistic regression.
+=======
+\[f(x, \theta, \phi) = exp[\frac{y\theta-b(\theta)}{a(\phi)} + c(y, \phi)]\]
+
+One notes that this looks nothing like the binomial distribution in its
+generalized linear model form (glm)
+
+\[f(y) = {n \choose y}p^y(1-p)^{n-y}\] ..
+
+So we'll have to transform it into the form above.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 \end{document}

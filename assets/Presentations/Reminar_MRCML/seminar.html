@@ -126,7 +126,11 @@ These sources of uncertainty add up and we have no great way of updating this un
 class: middle
 We're pretty good at making sure we do not differentiate among different distributions (distributions of what?)
 
+<<<<<<< HEAD
 Example: As cited in  Thissen and Steinberg (2020)
+=======
+Example: As cited in  
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 &gt; "In a subsequent figure (Lord &amp; Novick, 1968, Figure
 16.11.1, p. 380) they plot a second kind of normal density
@@ -163,7 +167,11 @@ class: middle
 
 # Factor Score indeterminacy
 
+<<<<<<< HEAD
 As cited in  Rigdon, Becker, and Sarstedt (2019)
+=======
+As cited in  
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 &gt; In simplest terms, “[f]actor indeterminacy is the inability to determine uniquely the common and unique factor variables of the common factor model from the uniquely defined ‘observed variables’ because the number of observed variables is smaller than the number of common and unique factors” (Mulaik &amp; McDonald, 1978, p. 177). 
 
@@ -318,7 +326,11 @@ class: middle
 
 
 .pull-left[
+<<<<<<< HEAD
 + Using the notation of De Boeck and Wilson (2004)
+=======
++ Using the notation of 
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 
 ![simple_random](simple_random.png) 
@@ -661,7 +673,11 @@ class: middle
 
 + Another subset of approaches constrains the parameters of items in one group, and frees in another (this gets messy with many groups)
 
+<<<<<<< HEAD
 + But since we have scale intdeterminacy, not clear which should be constrained
+=======
++ But since we have scale indeterminacy, not clear which should be constrained
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 + Iteratively treat items as if they do not have DIF
 
@@ -685,13 +701,99 @@ library(lme4)
 mod1 &lt;- glmer(response ~ -1 + item_id*group + (1|person_id), 
               family = binomial, data = df)
 ```
+<<<<<<< HEAD
+=======
+---
+class: middle
+
+# 2PL (in FA parameterization) DIF Model (parameterization from the paper):
+.pull-left[
+2pl
++ `\(P(Y_{pi}|\theta_p) = \frac{1}{1+e^{-(c_{i} + \alpha_{i}\theta_p)}}\)`
+
++ `\(c_i\)` = intercept of item i
+
++ `\(\alpha_i\)` = slope parameter
+
++ if slope parameters the same (and 1) then 1PL model
+]
+
+.pull-right[
+DIF model
++ `\(P(Y_{pi}|\theta_p) = \frac{1}{1+e^{(c_{ig} + \alpha_{ig}\theta_j)}}\)`
+
++ `\(g\)` is group membership indicator
+
++ Each group can have its own mean and variance - identification constraints necessary
+
++ Fix mean and variance of one group and constrain select a few item difficulties and slopes to be equal
+
++ Red flag...
+]
+
+---
+
+class: middle
+
+## Reg DIF
+
++ `\(P(Y_{pi}|\theta_p) = \frac{1}{1+e^{-(c_{0i} + c_{1i}x_i) - (\alpha_{0i}+\alpha{1i})\theta_p)}}\)`
+
++ `\(c_0\)` and `\(\alpha_0\)` represent reference/baseline vals, x is a group membership var
+
++ other parameters represent difference between reference and contrast groups. 
+
++ lasso penalty: `$$l(\gamma)Reg_{DIF} = l(\gamma)_{DIF}-\tau\Sigma_{i=1}^p[|c_{1i}| + |\alpha_{1i}|]$$`
+
++ `\(\gamma\)` are model params - or Marginal LL of the model maximizing with respect to `\(\gamma\)`
+
+---
+class: middle
+
+# What does Reg dif help solve?
+
+.pull-left[
++ Uncertainty due to multiple testing
+
++ Does not require anchor items
+
++ Lower type 1 error 
+
+]
+
+.pull-right[
+What problem remain:
+
++ Scale indeterminacy
+
++ Sampling error
+
++ identification solved by Reg dif so only sort of a solution
+
++ Constant DIF across people-group-item interactions (uniform)
+
++ selecting model/tuning parameter based on fit
+
++ still select items based on p-values
+
+]
+
+
+
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ---
 # Finally some new territory
 
+<<<<<<< HEAD
 + It is typical to have items as fixed. But that's not necessary.
 
 + Random Items, Random Persons, random groups for instance, is also plausible:
+=======
++ It is typical to have items as fixed effects in in the 1pl model. But...
+
++ Random Items, Random Persons, random groups for instance, also plausible:
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 
 ```r
@@ -702,7 +804,11 @@ mod1 &lt;- glmer(response ~ -1 + (1|item_id) + (1|person_id),
               family = binomial, data = df)
 
 
+<<<<<<< HEAD
 # DIF random across persons - individual differences of DIF
+=======
+# DIF random across persons - individual differences of DIF -correct?
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 random_DIF &lt;- glmer(response ~ -1 + item + (1 + group*item_id|person_id), 
               family = binomial, data = df)
 ```
@@ -735,7 +841,11 @@ This is the Random Item Mixture model (RIM)
 class: middle
 # RIM model:
 
+<<<<<<< HEAD
  Frederickx, Tuerlinckx, De Boeck, and Magis (2010):
+=======
+ :
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 &gt; "For the DIF class distribution on the other
 hand, a G-dimensional distribution (where G equals the number of person groups)
 is used such that each person group can have its own item parameter."
@@ -752,17 +862,25 @@ $$
     \right.
 \end{equation}`
 $$
+<<<<<<< HEAD
+=======
+
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 ---
 
 class: middle
 ## How does this manifest?
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 For non - DIF
 `$$logit[Pr(Y_{ijg} = 1 |C_j = 0)] = \theta_{ig} - \beta_j$$`
 `$$B_j|C_j \sim N(\mu_{\beta}, \sigma^2_\beta)$$`
 
+<<<<<<< HEAD
 --
 
 FOR DIF...oi vei  
@@ -791,6 +909,33 @@ $$
 $$
 
 ---
+=======
+---
+
+class: middle
+
+FOR DIF...oi vei  
+`$$logit[Pr(Y_{ijg} = 1 |C_j = 1)] = \theta_{ig} - \beta_{jg}$$`
+
+item difficulty sampled from G-Variate normal distribution:  
+
+
+$$
+
+  \begin{bmatrix}
+      \beta_{j1} \\
+      \beta_{jG} \\
+    \end{bmatrix}\Bigg\vert C_j = 1 
+    \sim N
+    (\begin{bmatrix}
+     \mu_{\beta_1}\\
+     \mu_{\beta_G}\\
+  \end{bmatrix} \Sigma_\beta)
+$$
+
+---
+
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 class: middle 
 
 ## Potential Applications of Random Item/Person DIF
@@ -834,10 +979,16 @@ class: middle
 + But is this more informative than RI approach to DIF or only an error control type thing?
 
 
+<<<<<<< HEAD
 ---
 
 
 
+=======
+
+---
+
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 # It would be great if...
 
 We could have some form of the model so it looks the same regardless of ...
@@ -917,6 +1068,7 @@ $$
 ]
 
 ---
+<<<<<<< HEAD
 # Yielding...
 
 
@@ -3270,6 +3422,8 @@ multi_des$B
 
 ---
 
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 ## `Stan`
 
 + Stan allows ultimate flexibility but is complicated to use 
@@ -3316,6 +3470,7 @@ $$ y \sim bernoulli(Pr[y_n=1])$$
 
 # References
 
+<<<<<<< HEAD
 Adams, R. J., M. Wilson, and W. Wang (1997). "The multidimensional
 random coefficients multinomial logit model". In: _Applied
 psychological measurement_ 21.1, pp. 1-23.
@@ -3364,6 +3519,13 @@ _Chinese/English Journal of Educational Measurement and Evaluation|
 
 Wang, W. and M. Wilson (2005). "The Rasch testlet model". In: _Applied
 Psychological Measurement_ 29.2, pp. 126-149.
+=======
+NULL
+
+---
+
+NULL
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -21,6 +21,10 @@ options(htmltools.dir.version = FALSE)
 ```
 
 ```{r xaringan-themer, include = FALSE}
+<<<<<<< HEAD
+=======
+library(xaringanthemer)
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 mono_light(base_color = "#29132e",
           white_color = lighten_color("#29132e", 0.7),
@@ -78,6 +82,22 @@ class: middle
 ---
 
 class: middle
+<<<<<<< HEAD
+=======
+# What about relative DIF?
+ + In classroom settings, diagnostic assessment may be of interest and we'd like to compare similar groups
+ 
+ + How should we identify groups
+ 
+ + we have "observed" groups (or at least we think we do...)
+ 
+ + But what happens when the observed groupings (i.e. don't match the goupings we're actually interested in - in the case of DIF)?
+ 
+
+---
+
+class: middle
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 # Differential Item Functioning (DIF)
 
@@ -398,12 +418,20 @@ p_rel <- ggplot(data = data.frame(ability = c(-3:3)), mapping = aes(x=ability))+
 ---
 class: middle 
 # Relative Invariance
+<<<<<<< HEAD
 $P(X_{ij}=x_{ij}|W=w_i, V_i=v_i) = P(X_{ij}=x_{ij}|W=w_i)$
+=======
+$F(X_{ij}=x_{ij}|W=w_i, V_i=v_i) = F(X_{ij}=x_{ij}|W=w_i)$
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 
 Non Invariance Occurs when: 
 
+<<<<<<< HEAD
 $P(X_{ij}=x_{ij}|W=w_i, V_i=v_i) \neq P(X_{ij}=x_{ij}|W=w_i)$
+=======
+$F(X_{ij}=x_{ij}|W=w_i, V_i=v_i) \neq F(X_{ij}=x_{ij}|W=w_i)$
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 Where `W` is the within group, relative, position
 
@@ -500,8 +528,11 @@ class: middle
 ---
 
 ```{r echo=FALSE, fig.align='center', fig.width=10, figh.height=8,fig.retina=3, message=FALSE, warning=FALSE}
+<<<<<<< HEAD
 library(tidyverse)
 
+=======
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 all_mix <- read_rds("C:/Users/katzd/Dropbox/My PC (LAPTOP-K7402PLE)/Desktop/Github/danielbkatz.github.io/assets/Presentations/Reminar_DIF/mixture_all.rds")
 all_mix
 ```

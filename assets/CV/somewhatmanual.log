@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.24)  29 SEP 2021 20:35
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.24)  18 NOV 2020 20:26
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 entering extended mode
 **./somewhatmanual.tex
 (somewhatmanual.tex
@@ -885,36 +889,61 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+<<<<<<< HEAD
 72.
+=======
+67.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
+<<<<<<< HEAD
 72.
+=======
+67.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
+<<<<<<< HEAD
 172.
+=======
+167.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
+<<<<<<< HEAD
 172.
+=======
+167.
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
+<<<<<<< HEAD
 (Font)              <12> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 172.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 172.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 172
+=======
+(Font)              <12> on input line 167.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 167.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 167.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 167
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 .
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
@@ -924,7 +953,11 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 fg"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
+<<<<<<< HEAD
 LaTeX Font Info:    Trying to load font information for U+msb on input line 172
+=======
+LaTeX Font Info:    Trying to load font information for U+msb on input line 167
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 .
 
 ("C:\Users\katzd\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
@@ -941,6 +974,7 @@ Package rerunfilecheck Info: File `somewhatmanual.out' has not changed.
 (rerunfilecheck)             Checksum: 5BEACBC81FCD8FCDEF2E9168141332C6;1346.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  15514 strings out of 480202
  229531 string characters out of 2877025
  582386 words of memory out of 3000000
@@ -948,13 +982,26 @@ Here is how much of TeX's memory you used:
  581454 words of font info for 81 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  60i,13n,66p,327b,501s stack positions out of 5000i,500n,10000p,200000b,50000s
+=======
+ 15518 strings out of 480202
+ 229573 string characters out of 2877025
+ 582386 words of memory out of 3000000
+ 31815 multiletter control sequences out of 15000+200000
+ 581636 words of font info for 83 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 60i,14n,66p,319b,501s stack positions out of 5000i,500n,10000p,200000b,50000s
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 {C:/Users/katzd/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
 c}<C:/Users/katzd/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbx1
 2.pfb><C:/Users/katzd/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
 mr10.pfb><C:/Users/katzd/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
 m/lmr12.pfb><C:/Users/katzd/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmri12.pfb>
+<<<<<<< HEAD
 Output written on somewhatmanual.pdf (4 pages, 125896 bytes).
+=======
+Output written on somewhatmanual.pdf (4 pages, 124586 bytes).
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  25 named destinations out of 1000 (max. 500000)

@@ -16,7 +16,11 @@ The idea seems simple: Just because there's statistical correlation in the prese
 
 The phrase is problematic because it's actually not accurate.
 
+<<<<<<< HEAD
 1. The first problem is that the only thing that _may_ indicate a causal relationship statistically is correlation (though, sometimes causal relationships may be non-linear, rendering correlations less useful, here). The more accurate phrase might be something like, "correlation does not ***necessarily*** imply causation"
+=======
+1. The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, "correlation does not ***necessarily*** imply causation"
+>>>>>>> 19bdb9ffa4f78b31e460bde0aaae9e85ef799363
 
 2. The next problem is that, paradoxically, the phrase does not go far enough. Correlation present in data does not even indicate a real world relationship, let alone a causal one!
 
