@@ -115,7 +115,7 @@ class: middle
 ### Measurement, ontology
 1. Make sure score interpretations are same across groups (equating, if you will)
 
-2. Limit the extent to which the instrument is sensitive to sources not related to the construct
+2. Limit the extent to which instrument is sensitive to sources not related to the construct
 
 3. Finding DIF is important for examining construct of interest
 ]
