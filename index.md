@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
+order: 1
 ---
 
 <div style='float: right; padding-left: 10px' >
