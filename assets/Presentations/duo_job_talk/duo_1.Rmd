@@ -104,7 +104,7 @@ class: middle
 
 1. We want to treat like cases alike
 
-2. High stakes/summative assessment: no test taker (or group) has undo (dis)advantage
+2. High stakes assessment: no test taker (or group) has undo (dis)advantage
 
 3. The AERA, APA, NCME *Standards* denote fairness as a validity issue (focusing not just on DIF)
 ]
