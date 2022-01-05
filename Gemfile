@@ -12,4 +12,5 @@ gem "jekyll-sitemap"
 gem "minima"
 
 
+/_layouts/home.html
 
