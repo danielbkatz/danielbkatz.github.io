@@ -7,7 +7,7 @@ google_analytics: UA-136433822-2
 
 
 paginate: 20
-paginate_path: "/blog/page:num/"
+paginate_path: "/about/page:num/"
 permalink: none
 
 # Build settings
