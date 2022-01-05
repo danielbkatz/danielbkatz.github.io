@@ -10,7 +10,7 @@ status: publish
 published: true
 ---
  
-There's a problem with the oft-heard-in-intro-stats-courses phrase "correlation does not imply causation." I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earler version of me.
+There's a problem with the oft-heard-in-intro-stats-courses phrase "correlation does not imply causation." I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earlier version of me.
  
 The idea seems simple: Just because some correlation is estimated from the present data does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.
  
