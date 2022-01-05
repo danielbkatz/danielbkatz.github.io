@@ -1,0 +1,21 @@
+I"�<p>There’s a problem with the oft-heard-in-intro-stats-courses phrase “correlation does not imply causation.” I think it gives statistics students the wrong impression, if not carefully flushed out, about the differences between random variables, estimates, and estimands. The phrase also provides a perfect opportunity to induce some thoughts about sampling distributions, chance, and p-values. This was a post I drew up quickly but always wanted to distribute to an earler version of me.</p>
+
+<p>The idea seems simple: Just because there’s statistical correlation in the present does not mean that that there is a real world causal relationship (a complicated term, it turns out) between x and y. For instance, x could have a high correlation with y but actually, w is simply a mutual cause of x and y. Or something like that.</p>
+
+<p>The phrase is problematic because it’s actually not accurate.</p>
+
+<ol>
+  <li>
+    <p>The first problem is that the only thing that may indicate a causal relationship statistically is correlation. The more accurate phrase might be something like, “correlation does not <strong><em>necessarily</em></strong> imply causation”</p>
+  </li>
+  <li>
+    <p>The next problem is that, paradoxically, the phrase does not go far enough. Correlation present in data does not even indicate a real world relationship, let alone a causal one!</p>
+  </li>
+</ol>
+
+<p>Point 2 can be demonstrated. We’ll generate completely random distributions and then correlate them. Then we’ll do this over and over and look at how the correlations values vary.</p>
+
+<h3 id="correlating-the-uncorrelated">Correlating the Uncorrelated</h3>
+<p>Let’s start by generating two random normal distributions of size 20, $\mu$ is 0, $\sigma$ is 1.</p>
+
+:ET

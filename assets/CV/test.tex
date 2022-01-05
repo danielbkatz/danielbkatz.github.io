@@ -1,0 +1,281 @@
+\documentclass[11pt,]{article}
+\usepackage[sc, osf]{mathpazo}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+
+
+
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% Now begins the stuff that I added.
+% ----------------------------------
+
+% Custom section fonts
+\usepackage{sectsty}
+\sectionfont{\rmfamily\mdseries\large\bf}
+\subsectionfont{\rmfamily\mdseries\normalsize\scshape}
+
+
+% Make lists without bullets
+\renewenvironment{itemize}{
+  \begin{list}{}{
+    \setlength{\leftmargin}{1.5em}
+  }
+}{
+  \end{list}
+}
+
+
+% Make parskips rather than indent with lists.
+\usepackage{parskip}
+\usepackage{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+
+% Use fontawesome. Note: you'll need TeXLive 2015. Update.
+\usepackage{fontawesome}
+
+% Fancyhdr, as I tend to do with these personal documents.
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{
+\cfoot{\scriptsize  Daniel Katz - CV }}
+\rfoot{\scriptsize \thepage/{\hypersetup{linkcolor=black}\pageref{LastPage}}}
+
+% Always load hyperref last.
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+
+\hypersetup{unicode=true,
+            pdftitle={Daniel Katz:  CV (Curriculum Vitae)},
+            pdfauthor={Daniel Katz},
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=Blue,
+            urlcolor=blue,
+            breaklinks=true, bookmarks=true}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Make AP style (kinda) dates for the updated/today field
+
+\usepackage{datetime}
+\newdateformat{apstylekinda}{%
+  \shortmonthname[\THEMONTH]. \THEDAY, \THEYEAR}
+
+\begin{document}
+
+
+\centerline{\huge \bf Daniel Katz}
+
+\vspace{2 mm}
+
+\hrule
+
+\vspace{2 mm}
+
+\moveleft.5\hoffset\centerline{Graduate Student}
+
+\moveleft.5\hoffset\centerline{ \faEnvelopeO \hspace{1 mm} \href{mailto:}{\tt \href{mailto:dkatz@ucsb.edu}{\nolinkurl{dkatz@ucsb.edu}}} \hspace{1 mm}  \faPhone \hspace{1 mm}  310-800-8354  \hspace{1 mm}  \faGithub \hspace{1 mm} \href{http://github.com/danielbkatz}{\tt danielbkatz} \hspace{1 mm}     \faGlobe \hspace{1 mm} \href{http://dbkatz.com}{\tt dbkatz.com}    | \emph{Updated:} \apstylekinda\today}
+
+\vspace{2 mm}
+
+\hrule
+
+\vspace{5mm}
+\# EDUCATION
+
+\hypertarget{university-of-california-santa-barbara}{%
+\subsection{University of California, Santa
+Barbara}\label{university-of-california-santa-barbara}}
+
+\textbf{PhD} (2021): Education - Quantitative Research Methods and
+Philosophy of Measurement\\
+\hspace*{0.333em}\hspace*{0.333em}Thesis: Fairness and Uncertainty in
+Academic Testing\\
+\hspace*{0.333em}\hspace*{0.333em}Advisor: Andrew Maul
+
+\textbf{M.A.} (2017) Education - Quantitative Research Methods\\
+\hspace*{0.333em}\hspace*{0.333em} Thesis: Validating a Multidimensional
+Measure of Reading Strategy Use
+
+\textbf{BA} (2011), Political Science, Minor in History
+
+\textbackslash{} \textbackslash{} \# RESEARCH INTERESTS
+
+~~ The Rasch Model\\
+\hspace*{0.333em}\hspace*{0.333em} Fairness and Ethincs\\
+\hspace*{0.333em}\hspace*{0.333em} Measurement Invariance\\
+\hspace*{0.333em}\hspace*{0.333em} Explanatory Item Response Models\\
+\hspace*{0.333em}\hspace*{0.333em} Philosophy of Measurement, Language,
+and Probability\\
+\hspace*{0.333em}\hspace*{0.333em} Causal Inference
+
+\hypertarget{relevant-experience}{%
+\section{RELEVANT EXPERIENCE}\label{relevant-experience}}
+
+\textbf{University of Florida, Virtual Learning Lab -- IES Funded Grant}
+(2019-Present)\\
+\hspace*{0.333em}\hspace*{0.333em} Supervisor: Anne Corinne Manley ~~
+Role: Graduate Student Extern -- IRT/Simulation focus
+
+\textbf{UCSB Center for Innovative Teaching, Research, and Learning
+(CITRAL)} (2018-Present)\\
+\hspace*{0.333em}\hspace*{0.333em} Supervisor: Linda Adler-Kassner\\
+\hspace*{0.333em}\hspace*{0.333em} Role: Graduate Student Researcher in
+Assessment and Evaluation
+
+\textbf{New York City Department of Education: Assessment, Design, and
+Evaluation} (Summer 2018)\\
+\hspace*{0.333em}\hspace*{0.333em} Supervisor: Ronli Diakow\\
+\hspace*{0.333em}\hspace*{0.333em} Role: Graduate Student Psychometrics
+Intern -- Applying IRT and Explanatory IRT Models
+
+\textbf{California Dropout Research Project (CDRP); Get Focused Stay
+Focused Evaluation} (2016-2019)\\
+\hspace*{0.333em}\hspace*{0.333em} PI: Russell Rumberger\\
+\hspace*{0.333em}\hspace*{0.333em} Role: Graduate Student Researcher
+
+\textbf{UCSB General Education Assessment Project, Office of
+Institutional Research} (2016-2018)\\
+\hspace*{0.333em}\hspace*{0.333em} PI: Linda Adler-Kassner, Co-Interim
+Dean of UCSB Undergraduate Education\\
+\hspace*{0.333em}\hspace*{0.333em} Role: Graduate Student Researcher
+
+\hypertarget{published-work}{%
+\section{PUBLISHED WORK}\label{published-work}}
+
+Arya, Diana, Clairmont, A. \textbf{Katz, D} \& Maul, A. (2020) Measuring
+Reading Strategy Use, \emph{Educational ~~ Assessment}, 25:1, 5-30, DOI:
+10.1080/10627197.2019.1702464
+
+Maul, A. and \textbf{Katz, D}. (2018). Internal Validity. In B. Frey
+(Editor), The SAGE Encyclopedia of ~~Educational Research, Measurement,
+and Evaluation. Thousand Oaks, CA: SAGE.
+
+\textbf{Katz, D.} (2017, May). An Update: The Narrowing California High
+School Graduation Gap between ~~Black, Latino, and White Students. (CDRP
+Statistical Brief No.~24). Retrieved from
+~~\url{http://cdrpsb.org/pubs_statbriefs.htm}
+
+\textbf{Katz, D.} (2017, March). The Narrowing California High School
+Graduation Gap between Black, ~~Latino, and White Students. (CDRP
+Statistical Brief No.~23). Retrieved from
+~~\url{http://cdrpsb.org/pubs_statbriefs.htm}. The Narrowing California
+High School Graduation Gap ~~between Black, Latino, and White Students
+
+\hypertarget{conference-presentations}{%
+\section{CONFERENCE PRESENTATIONS}\label{conference-presentations}}
+
+\textbf{Katz, D.} and Diakow, R. (2019, April). Using Explanatory Item
+Response Theory Models to Re-Examine ~~Fairness in Psychometrics. Paper
+to be presented at the National Council on Measurement ~~in Education
+(NCME) April 4-8, 2019. Toronto.
+
+\textbf{Katz, D.}, Nylund-Gibson, K., Furlong, M. (2019, April). Is One
+Item Enough? Examining ~~Affect-Laden Survey Items Using Mixture
+Modelling with Distal Outcomes. Paper presented ~~at American
+Educational Research Association Annual Meeting, April 5-9, 2019.
+Toronto.\\
+\textbf{Best Graduate Student Paper in the AERA Survey Special Interest
+Group Sig}
+
+\textbf{Katz, D.}, Clairmont, A., Arya, D., \& Maul, A., (2018, April).
+Measuring Reading Strategy Use in a ~~Multilingual Context. Paper
+presented at American Educational Research Association Annual ~~Meeting,
+April 13-17, 2018. New York.
+
+\textbf{Katz, D.}, Clairmont, A., Arya, D. \& Maul, A. (2018, April).
+Measuring Reading Strategy Use in a ~~Multidimensional, Multilingual
+Context. Paper presented at the International Objective ~~Measurement
+Workshop (IOMW), April 10-12, 2018. New York.
+
+\hypertarget{select-in-progress-work}{%
+\section{SELECT IN PROGRESS WORK}\label{select-in-progress-work}}
+
+Clairmont, A. \& Katz D. (in preperation) Using Rasch Measurement Theory
+for Program Evaluation: A ~~ Methods Note. To be submitted to
+\emph{American Journal of Evaluation}
+
+Katz, D., Maul A., Clairmont, A (2021) Tools from philosophy of language
+for increasing transparency ~~ in psychological measurement"
+
+Reconsidering fairness in educational assessment: using tools from
+ethics, causal inference, and ~~ psychometrics
+
+Measuring subjective well-being and other constructs in positive
+psychology using mixture modelling ~~ approaches (with an emphasis on
+educational settings)
+
+\hypertarget{teaching-experience}{%
+\section{TEACHING EXPERIENCE}\label{teaching-experience}}
+
+\textbf{Instructor}\\
+\hspace*{0.333em}\hspace*{0.333em} One Day Workshop: UCSB Methods U - An
+Introduction to R: Data Cleaning, Wrangling, and Visualizing ~~
+Implementing Explanatory IRT via the R package, TAM
+
+\textbf{Teaching Assistant} ~~ Education 214C, Linear Models for Data
+Analysis (and categorical data analysis), Spring 2018 ~~ Education 214B,
+Inferential Statistics, Winter 2018 ~~ Education 214A, Introductory
+Statistics, Fall 2017
+
+\hypertarget{organization-committee-memberships}{%
+\section{ORGANIZATION \& COMMITTEE
+MEMBERSHIPS}\label{organization-committee-memberships}}
+
+~~ Graduate Student Representative -- NCME Committee on informing
+assessment policy and practice ~~ American Educational Research
+Association ~~ National Council on Measurement in Education ~~ Society
+for the Improvement of Psychological Sciences
+
+\hypertarget{statistical-software}{%
+\section{STATISTICAL SOFTWARE}\label{statistical-software}}
+
+~~ R ~~~~ Commonly used stats packages: TAM, mirt, lme4, Lavaan, plm
+~~~~ Other packages: tidyverse, Rmarkdown, xaringan ~~ Mplus ~~ Stata
+(Basic Knowledge)\\
+\hspace*{0.333em}\hspace*{0.333em} Tableau (Basic Knowledge)\\
+\hspace*{0.333em}\hspace*{0.333em} Git and Gitub (Basic Knowledge)\\
+\hspace*{0.333em}\hspace*{0.333em} Stan/rstan (Beginner)\\
+\hspace*{0.333em}\hspace*{0.333em} Dedoose (Beginner)
+
+\end{document}
+

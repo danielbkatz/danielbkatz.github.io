@@ -1,0 +1,53 @@
+# Site settings
+# Build settings
+theme: minima
+show_excerpts: true # set to true to show excerpts on the homepage
+
+google_analytics: UA-136433822-2
+
+
+paginate: 20
+paginate_path: "/blog/page:num/"
+permalink: none
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins: [jekyll-paginate, jekyll-sitemap, jekyll-feed]
+exclude: ['*.Rmd']
+title: "Daniel Katz"
+author:
+email: "http://dkatz@ucsb.edu"
+
+description: > # this means to ignore newlines until "baseurl:"
+    PhD Student in Educational Measurement
+base_url: http://www.danielbkatz.github.io
+
+
+#linkedin: jekyll
+
+header_pages:
+- menu/about.md
+- menu/blog.html
+- menu/talks.md
+- menu/CV.md
+
+#
+# Minima date format
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  social_links:
+    twitter: dank_atz
+    github:  danielbkatz
+  date_format: "%b %-d, %Y"
+
+
+
+
+
+
+# plugins:
+#  - jekyll-feed
+#  - jekyll-seo-tag
+#
+

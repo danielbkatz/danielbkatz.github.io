@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Different Kinds of DIF</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, middle, inverse, title-slide
+
+# Different Kinds of DIF
+## Justifications and Considerations </span>
+### 
+
+---
+
+class: middle
+
+
+
+
+
+
+# Introduction
+
+
+
+
++ "Group" assignment is a Catch-22 in statistics/measurement  
+
+
++ Often need to assign people to groups for various reasons 
+
++ Often have to run the statistical model to make our classifications
+
++ Finding important aspects of group membership is a way for us to compare (age-grading, diagnoses, regression modelling)
+
++ But what can we do to ensure our group membership, for DIF testing is meaningful?
+
+
+---
+
+class: middle
+
+# "Fixed Effects" models
+
++ What constitutes a meaningful group?
+
+  + Consequence - may ignore heterogeneity in treatment effects even within groups
+  
+  + May inflate or a deflate the causual estimate (plus, can you interpret them within group?)
+  
++ General lesson: A group indicator can induce more problems if not thought through
+
++ Problems...
+
+
+
+---
+
+class: middle
+
+# Differential Item Functioning (DIF)
+
++ Invariance/DIF analysis starts with the premise that items are invariant, when one can, 
+
+1. Match respondents on "ability" or a sum score, or the like, 
+  
+2. Model the responses probabilities to certain items or item categories 
+  
+3. Note whether the probability of that response to a given item for respondents is the same regardless of group membership
+
+(note that in factor analysis/SEM, one may instead start with other parameters before item intercepts to make sure freeing those item parameters across groups does not "substantially" change the model fit) 
+
+---
+
+class: middle
+
+# Formalizing
+Given, participant `i`, item `j`, value on latent trait, `t`, selection variable (or group), `v` 
+
+`\(F(X_{ij}=x_{ij}|T=t_i, V_i=v_i) = F(X_{ij}=x_{ij}|T=t_i)\)`
+
+
+Non Invariance Occurs when: 
+
+`\(F(X_{ij}=x_{ij}|T=t_i, V_i=v_i) \neq F(X_{ij}=x_{ij}|T=t_i)\)`
+---
+class: middle
+# Strategies
+  
++ Typically, items are removed when measurement non-invariance is found
+
++ There are various philosophies:
+  + DIF found: Item removal (no questions asked - testing agencies)
+  + DIF found: Item removal if DIF can be explained
+  + DIF found: Items removed/altered/some parameters are allowed to change
+
+
+---
+class: middle
+
+"The authors will be concerned with one specific shift of meaning that
+occurs when the concepts of measurement invariance and bias are used in the area of personality and attitude testing. Especially ... when items invoke a frame of reference, for example, by inducing a within-group comparison...." - Borsboom et al., 434
+
+---
+class: middle
+# More on DIF
+
++ DIF is classically assumed to be a sign of unintended multidimensionality
+
++ More accurately, a responses are thought to be a function of the target latent construct AND something related to group membership
+
++ Shealy and Stout (1993) point out, more accurately, that it's not necessarily "group" membership per se that causes DIF but some other construct that two groups differ "on"
+
++ This is a measurement threat 
+
+---
+class: middle
+
+# But...An alternative
+
++ Absolute and Relative Measurement Invariance
+
++ We typically look at absolute invariance
+
++ In some cases when absolute non-invariance is found, relative invariance might still hold
+
+
+---
+
+
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-3-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+Absolute DIF
+`$$P(X_{is}=1|\theta_s, \delta_i, \gamma_i, G_s)=\frac{exp(\theta_s-\delta_i + \gamma_i*G_)}{1+ exp(\theta_s-\delta_i +\gamma_i*G)}$$`
+
+
+
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+class: middle
+# Recovering Measurement via Relative Measurement
+Relative Trait Value: `\(\large z_i = \frac{t_i-\mu_{Tv}}{\sigma_{Tv}}\)`  
+  
+Relative Difficulty: `\(\large \delta_{i_{rel}} = \frac{\delta_{i_{abs}}-\mu_{T_{v}}}{\sigma_{T_{v}}}\)`
+---
+
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle
+# What about relative DIF?
+ + In classroom settings, diagnostic assessment may be of interest and we'd like to compare similar groups
+ 
+ + How should we identify groups
+ 
+ + we have "observed" groups (or at least we think we do...)
+ 
+ + But what happens when the observed groupings (i.e. don't match the goupings we're actually interested in - in the case of DIF)?
+ 
+---
+
+# Our example
+
++ Two "groups" - each normally distributed (I know...)
++ Group 0 ~ `\(\mathcal{N}(\mu = 0, \sigma^2=1)\)` 
+   
++ Group 1 ~ `\(\mathcal{N}(\mu = 1, \sigma^2=1)\)`
++ Relative abilities are found by standardizing ability distributions relative to their own distribution (first distribution, already)
+
++ Relative difficulties are found by standardizing item difficulties relative to each groups ability distribution
+
+---
+
+
+
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-9-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle
+## Example: Group 0
+
+.pull-left[Person ability = 0 logits  
+Item difficulty = 1 logit  
+Group ability mean = 0  
+Group ability sd = 1] 
+
+.pull-right[
+`\(z_1 = \frac{0-0}{1} = 0\)`    
+`\(\delta_{rel}=\frac{1-0}{1}=1\)`    
+`\(p(X=1) = \frac{exp(0-1)}{1+exp(0-1)}\)` 
+=27% chance of endorsing the item]
+
+
+
+---
+class: middle
+
+## Example: Group 1
+
+.pull-left[Person ability = 0 logits  
+Item difficulty = 1 logit  
+Group ability mean = 1  
+Group ability sd = 1]
+.pull-right[
+`\(z_1 = \frac{0-1}{1} = -1\)`  
+
+`\(\delta_{rel}=\frac{1-1}{1}=0\)`  
+
+`\(p(X=1) = \frac{exp(-1-0)}{1+exp(-1-0)}\)` = 10% chance of endorsing the item]
+---
+class: middle 
+# Relative Invariance
+`\(F(X_{ij}=x_{ij}|W=w_i, V_i=v_i) = F(X_{ij}=x_{ij}|W=w_i)\)`
+
+
+Non Invariance Occurs when: 
+
+`\(F(X_{ij}=x_{ij}|W=w_i, V_i=v_i) \neq F(X_{ij}=x_{ij}|W=w_i)\)`
+
+Where `W` is the within group, relative, position
+
+## We've effectively switched units 
+ 
+ + How do we feel about this?
+
+
+---
+class: middle
+# Not an unheard of problem
+
++ "Value of the dollar"
++ Defined as the number of falafel/pita sandwiches one can purchase with $1
+
++ Santa Barbara: 1/8th of a sandwich
++ Cairo, Egypt: 3 sandwiches
+
++ If I want to compare the wealth of a person in Santa Barbara with the wealth of a person in Egypt, what would I do?
+
+---
+class: middle
+
+# why is this important to me?
+
+### Group Membership
+  
+"There is nothing outside the text" - Derrida, 1976, p. 158; ***Of Grammatology***
+  
+"There is no outside text" (maybe - "it n’y a
+pas de hors-texte")
+
+
+---
+
+class: middle
+# A reading measure example
+
++ Let's say there's an assessment of reading strategy use, we'll call it the SUM (strategy Use Measure)
+  
+
+--
++ Intended to be multidimensional but treated unidimensionally  
+  
+
+--
++ The assessment has a section testing knowledge of English-Spanish Cognates 
+  
+--
+
++ While the assessment has 157 items, I've cherry picked a set of items that exhibit DIF (for didactic purposes)  
+  
+--
+
++ Note - this is NOT a fair characterization of the assessment  
+---
+
+# I run a Rasch model and find evidence that some items have DIF
+
+(I've selected 9 items, some of which show absolute DIF)
+
++ Relative measurement not ruled out
+
++ I need to test whether I can measure within my "identified" groups
+
++ Heritage Spanish Speakers vs. Not heritage Spanish Speakers
+  
+---
+
+# strategy - trialing a method
+
++ Use a clustering method (for instance, latent class analysis)  
+  
+--
++ Predict cluster/class membership by subgroup 
+  
+--
+
++ Is there a cluster/class group members are most likely to be part of? Is it as expected based on theory?
+  
+--
+
++ Compare the cluster/distribution/class shape most like my view of a "group" to what the observed item response proportions
+  
+
+--
++ Re-estimate the cluster with just the heritage Spanish speakers and just the non-heritage Spanish speakers (English speakers)  
+  
+---
+class: middle
+
+# Key point
+
+**For this to work, I need to have a response process theory in mind**
+  
+
+- "Those who read like Spanish Speakers" and "Those who do not"
+  
+---
+
+## Key items
+![Qcog3](QCOG3.jpg)
+
+![Qcog20](QCOG20.jpg)
+---
+
+class: middle
+# Data and Methods Description
+
++ 328 heritage Spanish Speakers
+
++ 999 non-heritage Spanish Speakers
+
++ Used Latent Class Analysis
+  + Exploratory Method
+  + Effectively "finds" groups in the data - distributions that are alike
+  + Accept or reject based on fit criteria
+
++ Categorical Latent Variable 
+---
+
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-10-1.png" width="720" style="display: block; margin: auto;" /&gt;
+---
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-11-1.png" width="720" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center
+# Structural Model
+
+![sem](semplot.png)
+
+
+---
+class: middle
+
+## Methods
++ Probability of being in a given class given self-identified heritage language
+
++ Multinomial logistic regression
+
++ Reference Outcome: Class 3 - the "Spanish reading profile"
+
++ Reference of the Language Predictor: non-heritage Spanish Speakers
+---
+class: middle
+## Results
+
++ Compared to non-heritage Spanish Speakers, those who identify as heritage Spanish Speakers are 3 logits less likely to be in  the class 1 and class 2.
+
++ Flipping the reference classes and language groups around:
+  + Students who are Spanish at home Speakers are 3 logits more likely to be in reference class 3 (Spanish at home) than any other class relative to non-Spanish at home speakers
+  
++ 3 logits ~ 95%
++ -3 logits ~ 5%
+---
+class: middle
+## That's promising for relative measurement
++ But let's think about that - it's not 100%  
+  
+--
++ What do the profiles look like when I run an LCA without each group?
+  + Model without heritage Spanish speakers
+  + Model with heritage Spanish speakers
+
+---
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-12-1.png" width="720" style="display: block; margin: auto;" /&gt;
+---
+&lt;img src="DIF_DIF_presi2_files/figure-html/unnamed-chunk-13-1.png" width="720" style="display: block; margin: auto;" /&gt;
+---
+# Final Not Spanish Speakers Compared to full final model
+.pull-left[
+![](DIF_DIF_presi2_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+![](DIF_DIF_presi2_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+  ]
+---
+
+## Just Spanish Compared to Final Model
+.pull-left[
+![](DIF_DIF_presi2_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+]
+
+.pull-right[
+![](DIF_DIF_presi2_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+  ]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "agate",
+"highlightLines": true,
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

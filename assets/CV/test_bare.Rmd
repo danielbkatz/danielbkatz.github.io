@@ -1,0 +1,137 @@
+---
+title: "Daniel Katz"
+output: pdf_document
+extra_dependencies:
+      caption: ["labelfont={bf}"]
+      hyperref: ["unicode=true", "breaklinks=true"]
+      lmodern: null
+      fancyhdr: null
+fontsize: 11pt
+geometry: margin=1in
+
+---
+
+
+\vspace{7mm}
+
+# EDUCATION  
+
+## University of California, Santa Barbara  
+
+**PhD** (2021): Education - Quantitative Research Methods and Philosophy of Measurement      
+&nbsp;&nbsp;Thesis: Fairness and Uncertainty in Academic Testing    
+&nbsp;&nbsp;Advisor: Andrew Maul  
+
+**M.A.** (2017) Education - Quantitative Research Methods  
+&nbsp;&nbsp; Thesis: Validating a Multidimensional Measure of Reading Strategy Use
+
+**BA** (2011), Political Science, Minor in History
+\vspace{7mm}
+
+# RESEARCH INTERESTS
+  
+&nbsp;&nbsp; The Rasch Model  
+&nbsp;&nbsp; Fairness and Ethincs  
+&nbsp;&nbsp; Measurement Invariance    
+&nbsp;&nbsp; Explanatory Item Response Models         
+&nbsp;&nbsp; Philosophy of Measurement, Language, and Probability         
+&nbsp;&nbsp; Causal Inference    
+\vspace{7mm}
+
+  
+  
+  
+# RELEVANT EXPERIENCE    
+**University of Florida, Virtual Learning Lab – IES Funded Grant** (2019-Present)  
+&nbsp;&nbsp; Supervisor: Anne Corinne Manley
+&nbsp;&nbsp; Role: Graduate Student Extern – IRT/Simulation focus      
+
+**UCSB Center for Innovative Teaching, Research, and Learning (CITRAL)** (2018-Present)  
+&nbsp;&nbsp; Supervisor: Linda Adler-Kassner  
+&nbsp;&nbsp; Role: Graduate Student Researcher in Assessment and Evaluation   
+ 
+**New York City Department of Education: Assessment, Design, and Evaluation** (Summer 2018)   
+&nbsp;&nbsp; Supervisor: Ronli Diakow  
+&nbsp;&nbsp; Role: Graduate Student Psychometrics Intern – Applying IRT and Explanatory IRT Models    
+  
+**California Dropout Research Project (CDRP); Get Focused Stay Focused Evaluation** (2016-2019)     
+&nbsp;&nbsp; PI: Russell Rumberger  
+&nbsp;&nbsp; Role: Graduate Student Researcher 
+ 
+**UCSB General Education Assessment Project, Office of Institutional Research** (2016-2018)        
+&nbsp;&nbsp; PI: Linda Adler-Kassner, Co-Interim Dean of UCSB Undergraduate Education  
+&nbsp;&nbsp; Role: Graduate Student Researcher  
+\vspace{7mm}
+
+
+# PUBLISHED WORK  
+Arya, Diana,  Clairmont, A. **Katz, D** & Maul, A. (2020) Measuring Reading Strategy Use, *Educational &nbsp;&nbsp; Assessment*, 25:1, 5-30, DOI: 10.1080/10627197.2019.1702464
+
+Maul, A. and **Katz, D**. (2018). Internal Validity. In B. Frey (Editor), The SAGE Encyclopedia of &nbsp;&nbsp;Educational Research, Measurement, and Evaluation. Thousand Oaks, CA: SAGE.
+
+**Katz, D.** (2017, May). An Update: The Narrowing California High School Graduation Gap between &nbsp;&nbsp;Black, Latino, and White Students.  (CDRP Statistical Brief No. 24). Retrieved from &nbsp;&nbsp;http://cdrpsb.org/pubs_statbriefs.htm
+
+ **Katz, D.** (2017, March). The Narrowing California High School Graduation Gap    between Black, &nbsp;&nbsp;Latino, and  White Students.  (CDRP Statistical Brief No. 23). Retrieved from     &nbsp;&nbsp;http://cdrpsb.org/pubs_statbriefs.htm. The Narrowing California High School Graduation Gap &nbsp;&nbsp;between Black, Latino, and White Students
+
+\vspace{7mm}
+
+
+# CONFERENCE PRESENTATIONS
+**Katz, D.** and Diakow, R. (2019, April). Using Explanatory Item Response Theory Models to Re-Examine &nbsp;&nbsp;Fairness in Psychometrics.  Paper to be presented at the National Council on Measurement &nbsp;&nbsp;in Education (NCME) April 4-8, 2019. Toronto.
+
+**Katz, D.**, Nylund-Gibson, K., Furlong, M. (2019, April). Is One Item Enough? Examining &nbsp;&nbsp;Affect-Laden Survey Items Using Mixture Modelling with Distal Outcomes.  Paper presented &nbsp;&nbsp;at American Educational Research Association Annual Meeting, April 5-9, 2019. Toronto.   
+**Best Graduate Student Paper in the AERA Survey Special Interest Group Sig**
+
+**Katz, D.**, Clairmont, A., Arya, D., & Maul, A., (2018, April). Measuring Reading Strategy Use in a &nbsp;&nbsp;Multilingual Context. Paper presented at American Educational Research Association Annual &nbsp;&nbsp;Meeting, April 13-17, 2018. New York.
+
+**Katz, D.**, Clairmont, A., Arya, D. & Maul, A. (2018, April). Measuring Reading Strategy Use in a &nbsp;&nbsp;Multidimensional, Multilingual Context. Paper presented at the International Objective &nbsp;&nbsp;Measurement Workshop (IOMW), April 10-12, 2018. New York.  
+
+
+\vspace{7mm}
+
+# SELECT IN PROGRESS WORK
+Clairmont, A. & **Katz D.** (in preperation) Using Rasch Measurement Theory for Program Evaluation: A &nbsp;&nbsp; Methods Note. To be submitted to *American Journal of Evaluation*
+
+Katz, D., Maul A., Clairmont, A (2021) Tools from philosophy of language for increasing transparency &nbsp;&nbsp; in psychological measurement"
+
+**Katz D.** Reconsidering fairness in educational assessment: using tools from ethics, causal inference, and &nbsp;&nbsp; psychometrics
+
+**Katz D.** Measuring subjective well-being and other constructs in positive psychology using mixture modelling   &nbsp;&nbsp; approaches (with an emphasis on educational settings)
+
+\vspace{7mm}
+
+
+# TEACHING EXPERIENCE
+
+**Instructor**  
+&nbsp;&nbsp; One Day Workshop: UCSB Methods U - An Introduction to R: Data Cleaning, Wrangling, and Visualizing
+&nbsp;&nbsp; Implementing Explanatory IRT via the R package, TAM  
+  
+
+**Teaching Assistant**
+&nbsp;&nbsp; Education 214C, Linear Models for Data Analysis (and categorical data analysis), Spring 2018
+&nbsp;&nbsp; Education 214B, Inferential Statistics, Winter 2018
+&nbsp;&nbsp; Education 214A, Introductory Statistics, Fall 2017  
+\vspace{7mm}
+
+
+# ORGANIZATION & COMMITTEE MEMBERSHIPS
+&nbsp;&nbsp; Graduate Student Representative – NCME Committee on informing assessment policy and practice
+&nbsp;&nbsp; American Educational Research Association
+&nbsp;&nbsp; National Council on Measurement in Education
+&nbsp;&nbsp; Society for the Improvement of Psychological Sciences
+
+\vspace{7mm}
+
+
+# STATISTICAL SOFTWARE
+&nbsp;&nbsp; R 
+&nbsp;&nbsp;&nbsp;&nbsp; Commonly used stats packages:  TAM, mirt, lme4, Lavaan, plm
+&nbsp;&nbsp;&nbsp;&nbsp; Other packages: tidyverse, Rmarkdown, xaringan
+&nbsp;&nbsp; Mplus
+&nbsp;&nbsp; Stata (Basic Knowledge)  
+&nbsp;&nbsp; Tableau (Basic Knowledge)  
+&nbsp;&nbsp; Git and Gitub (Basic Knowledge)  
+&nbsp;&nbsp;	Stan/rstan (Beginner)  
+&nbsp;&nbsp;	Dedoose (Beginner)  
+ 
