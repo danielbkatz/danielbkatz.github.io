@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Making Sense of Differential Item Functioning, Group Membership, and Response Processes</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Katz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, top, my-title, title-slide
+
+# Making Sense of Differential Item Functioning, Group Membership, and Response Processes
+### Daniel Katz
+
+---
+
+class: middle
+
+
+
+
+
+
+class: middle
+
+## Outline
+
+1. Brief Overview of Interests
+
+2. Introduction to an example reading test that motivated the project
+
+2. Considering differential item functioning and group homogeneity
+
+3. Presenting a workflow: Is there homogeneous group membership? Can we use this group membership to transform item response functions to equality?
+
+4. Concluding thoughts
+
+---
+class: middle 
+
+# Introduction
+
+
+
+
++ My interests are centered around different concepts of uncertainty - that don't neatly align with "true" vs "estimated" values
+
+
++ The definition of the construct of interest influences what we may consider construct irrelevant variance
+  + What is/isn't the estimand or measurand?
+  + Motivation for avoiding method effects, DIF, etc...
+
+---
+class: middle
+
+## Some terminology
+
+ + The International Vocabulary of Metrology (VIM; metrology is the study of measurement) defines definitional uncertainty:
+
+&gt; "component of measurement uncertainty resulting from the finite amount of detail in the definition of a measurand" [link to VIM](https://jcgm.bipm.org/vim/en/2.27.html)
+
+--
+
+class: middle
+
++ In psychometrics: try to detect sources of construct irrelevant variance - differential item functioning (DIF) may be an indication
+
++ From metrology - sources of DIF or non-invariance might be called "influence properties" or "influence quantities"
+
+
+
+---
+
+## Why do we worry about DIF?
+
+
+.pull-left[
+### Fairness:
+
+1. We want to treat like cases alike
+
+2. High stakes assessment: no test taker (or group) has undo (dis)advantage
+
+3. The AERA, APA, NCME *Standards* denote fairness as a validity issue (focusing not just on DIF)
+]
+
+--
+ 
+.pull-right[
+### Measurement, ontology
+1. Make sure score interpretations are same across groups (equating, if you will)
+
+2. Limit the extent to which instrument is sensitive to sources not related to the construct
+
+3. Finding DIF is important for examining construct of interest
+]
+
+Of course, also legal ramifications 
+
+---
+
+
+## The Strategy Use Measure (SUM) - Formative, used for creating reading groups in the classroom
+
+.pull-left[
+Four dimensions:
+
++ Morphological Awareness Items
+
++ Macro and Micro Relationships in Text
+
++ Inter-and Intra-Sentential Context Clues
+
++ Cognates (Spanish/English)
+]
+
+--
+
+.pull-right[
+
++ Given that there would be some DIF - how to interpret?
+
+
++ Eliminating items due to DIF is costly, but also want to investigate DIF (help explain/understand response process)
+
+
++ Using language spoken at home as an indicator/group membership for potential DIF testing- why?
+
+
+]
+
+---
+
+Example items:
+
+.pull-left[
+### Morphological Awareness
+
+The book covers were heterocoloreous. What does "heterocoloreous" mean?
++ **Different Colors** (1)
++ same colors
++ bright red colors
++ different red colors
+]
+
+--
+
+.pull-right[
+### Macro and Micro Relations in Text
+
+Glaciers are very large layers of ice that move very slowly.
+Which detail is least related to this sentence?   
+ + **Glaciers have been long studied by scientists.** (1)
+ + Glaciers can be as large as many countries.
+ + Glaciers move an average of 200 feet per year.
+ + Glaciers are able to carve out rock as they move.
+]
+---
+class: middle
+
+### Inter-and Intra-Sentential Context Clues
+
+Tree frogs are about two `strimes` long, which is the size of your finger. They must move `pandery` to capture flies, their favorite food. The `norkle` of tree frogs is not definitive because they move around too quickly for people to observe how long they will survive. Tree frogs must escape from `morpes`, like snakes and bats, by moving quickly. _What could `pandery` mean?_
+
++	**quickly** (1)
++	slowly
++	gently
+
+
+---
+
+
+## Key items
+![Qcog3](QCOG3.jpg)
+
+![Qcog20](QCOG20.jpg)
+
+---
+class: middle
+
+## Formalizing Measurement Invariance and Differential Item Functioning (DIF)
+
+Given, participant `i`, item `j`, value on latent trait `t`, selection variable (or group) `v` 
+
+
+## Measurement Invariance
+`\(P(X_{ij}=x_{ij}|T=t_i, V_i=v_i) = P(X_{ij}=x_{ij}|T=t_i)\)`
+  
+
+--
+
+## Non Invariance Occurs when: 
+
+`\(P(X_{ij}=x_{ij}|T=t_i, V_i=v_i) \neq P(X_{ij}=x_{ij}|T=t_i)\)`
+
+
+
+
+
+---
+
+## Definitional uncertainty as a matter of fairness
+
+
++ What we consider construct relevant and construct irrelevant - might lead to different measurement models
+
+--
+
++ Different definitions/identifications of properties may lead to different student rankings (e.g. should the definition of "reading ability" include requisite background knowledge?)
+  
+--
+
+  
++ Deciding to exclude/include certain items: test impact
+
+--
+
++ Defining the property of interest for which group membership is supposed to serve as proxy
+
+---
+class: middle
+# Strategies
+  
+
+--
+
++ There are various philosophies:
+  + DIF found: Item removal (no questions asked)
+  + DIF found: Item removal if DIF can be explained
+  + DIF found: Items removed/altered/some parameters are allowed to change
+  
+--
+  
+Removing items can be costly - investigating reasons or sources of DIF may save money 
+
+---
+
+class: middle
+
+# But...An alternative
+
+Using the language of Borsboom, Mellenbergh, Van Heerden (2002)
+
++ Absolute and relative measurement invariance
+
++ We typically look at absolute invariance
+
++ In some cases when absolute non-invariance is found, relative invariance might still hold
+
+What's relative measurement invariance?
+
+---
+
+
+
+&lt;img src="duo_1_files/figure-html/unnamed-chunk-3-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+
+---
+## Absolute DIF
+
+
+
+
+&lt;img src="duo_1_files/figure-html/unnamed-chunk-5-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+
+
+
+###  Relative Invariance
+
+
+`\(P(X_{ij}=x_{ij}|W=w_i, V_i=v_i) = P(X_{ij}=x_{ij}|W=w_i)\)`
+
+
+### Non Relative Invariance Occurs when: 
+
+`\(P(X_{ij}=x_{ij}|W=w_i, V_i=v_i) \neq P(X_{ij}=x_{ij}|W=w_i)\)`
+
+Where `W` is the within group, relative, position
+
+## We've effectively switched units
+
+
+---
+
+## Relative Invariance
+
+&lt;img src="duo_1_files/figure-html/unnamed-chunk-7-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+class: middle
+
+
+## Why? What does this get us?
+
+1. Usefully: Well, maybe don't have to get rid of items
+
+2. Descriptively: Figuring out the appropriate transformation requires investigations related to group membership (an influence quantity/property?)
+
+Group Membership indicators are often used as proxies - (DIF as Multidimensionality)
+
+
+
+
+---
+
+class: middle 
+
+But… 
+
+
++ Assuming we’ve found evidence of DIF, how might we statistically investigate whether reported/observed groups are homogenous enough for a transformation?
+
+
+
++ How meaningful is our DIF analysis?
+
+---
+
+class: middle
+
+## The IRT step:
+
+Using similar notation to Paek &amp; Wilson (2011)
+
+`$$P(X_{is}=1|\theta_s, g_s)=\frac{exp(\theta_s-\delta_i + \Delta G + \gamma_i*G_)}{1+ exp(\theta_s-\delta_i +\Delta G + \gamma_i*G)}$$`
+
+`\(\theta_s\)` = ability of student `s`
+
+`\(\delta_i\)` = difficulty of item `i`
+
+`\(\Delta\)` = "Group effect" or "impact factor"
+
+`\(\gamma_i\)` = DIF parameter value (e.g. item*group interaction)
+
+---
+
+class: middle
+
+## A Graphical Method
+
+Let's say you've found evidence of DIF:
+
+
+1. Start with a mixture model - a Latent Class Analysis, here ( we know we have different distributions)
+
+--
+
+2. Use multinomial logistic regression to regress class (or cluster membership) on observed group membership (for the full model)
+
+ + Which class/cluster/profile does each group have the highest chance of being in?
+ + Compare to individual cluster analyses/mixture models of each group individually
+ 
+--
+
+3. Compare item response profiles of clusters (do they resemble the response probabilities of observed groups given DIF)
+ + An LCA with all students
+ + An LCA with just heritage Spanish Speakers
+ + An LCA with just non-heritage Spanish Speakers
+
+---
+
+## Brief Aside - Latent Class Analysis
+
+.pull-left[
+
++ Highly exploratory use case here
+
++ Enumerate several possible potential classes (e.g. - 1 class, 2 class, 3 class)
+
++ Classes are categorical latent variables with reflective latent variable model interpretations
+
+]
+
+.pull-right[
+
+`$$P(X=(x_1..x_k)) = \Sigma_{c=1}^{G*}\pi_cP(x_1..x_k)|c)$$`
++ `c` is class indicator
+
++ `G*` denotes total classes
+
++ `\(\pi_c\)` = mixing proportions/class sizes (estimated)
+
++ Item responses conditionally indpendent within class
+
+]
+
+
+---
+class: middle
+
+## How did I use this process?
+
++ Data from a multidimensional reading test (N ~ 1000)
+   + Items cherry-picked to have those that show evidence of DIF (for presentation)
+
++ Two primary observed groups of interest (“heritage Spanish speakers”, “non-heritage Spanish Speakers”)
+
++ One dimension of the test used Spanish-English cognates (in effect, a test of bilingualism)
+
++ Would be unfair to compare non-Spanish speakers to Spanish speakers
+
+
+
+
+
+---
+class: middle
+## Question of ultimate interest:
+
+1. Is group membership homogenous enough to perform a within group transformation of item score to equate scores across groups?
+
+2. If so, how?
+
+3. If not, explore potential "latent" groupings and hypothesize influence properties/sources of DIF
+
+---
+
+## Key items
+![Qcog3](QCOG3.jpg)
+
+![Qcog20](QCOG20.jpg)
+
+
+---
+class: middle
+
+# Key point
+
+**For this to work, I need to have a response process theory in mind**
+  
+
+- "Those who read like Spanish Speakers" and "Those who do not"
+
+- Another way: Those who show evidence of bilingualism (those who do not)
+  
+
+---
+## Settle on a full sample model and Predict into Classes (Step 1 and 2)
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="final_mod.png" alt="Prediction-based: Heritage Spanish Speakers had a much higher chance of being in the Orange Class" width="50%" /&gt;
+&lt;p class="caption"&gt;Prediction-based: Heritage Spanish Speakers had a much higher chance of being in the Orange Class&lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+
+## What about just Spanish Speakers, though?
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="Just Spanish.png" alt="Predicted Probabilities of Just Spanish Speakers on Items – Most heritage Spanish Speakers aren’t likely to get this question correct " width="50%" /&gt;
+&lt;p class="caption"&gt;Predicted Probabilities of Just Spanish Speakers on Items – Most heritage Spanish Speakers aren’t likely to get this question correct &lt;/p&gt;
+&lt;/div&gt;
+
+
+---
+.pull-left[
+
+&lt;div class="figure" style="text-align: left"&gt;
+&lt;img src="Just Spanish.png" alt="Despite having a high probability (or higher probability) of being in the class most likely to get the cognate items correct - most students who identified as heritage Spanish speakers were not likely to get those items correct" width="99%" /&gt;
+&lt;p class="caption"&gt;Despite having a high probability (or higher probability) of being in the class most likely to get the cognate items correct - most students who identified as heritage Spanish speakers were not likely to get those items correct&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+--
+
+.pull-right[
+
+
+&lt;div class="figure" style="text-align: right"&gt;
+&lt;img src="Just non-Spanish.png" alt="Response Probabilities for non-heritage Spanish Speakers" width="99%" /&gt;
+&lt;p class="caption"&gt;Response Probabilities for non-heritage Spanish Speakers&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+
+class: middle 
+
+## Conclusions
+
++ However, this finding might tell us something about bilingualism  (moving from tests of invariance 🡪 understanding responses in terms of mixtures of populations)
+
+
++ Iterate on construct definitions - What aspect of bilingualism is/n't part of the measurand?
+
+
++ Depending on what perspective on fairness we take, how might we act in a fair way with this sort of observed grouping?
+
+
++ What about fairness?
+
+
++ How would this work for many groups or many more items? (would it scale?)
+
+
++ Next steps: Try to "explain" DIF with LLTM/explanatory IRT models? Random Item Models? DIF not as fixed quantity?
+
+
+---
+
+class: middle
+
+## Brief Discussion of Fairness
+
++ For items showing evidence of DIF, the influence quantity seems to be something else behind the veil of group membership - bilingualism? Should we be using that?
+
+
++ But this uses an old conception of fairness - treat like cases alike, everybody should have equal opportunities to learn
+
+
+
++ What if we take a dynamic assessment perspective? E.g. - assessment mediates between student and instruction, helping student master material (a Vygotzky-esque perspective)?
+
+---
+
+
+
+## Thanks!
+
+Special thanks to…
+
+
+Dr. Diana Arya, UCSB Gevirtz Graduate School of Education, Associate Professor and director of the Mcenroe Reading and Language Arts Clinic for creating the Strategy Use Measure (SUM) – data from which I have interrogated against best use recommendations
+
+As well as other committee members:
+
+Dr. Andy Maul
+
+Dr. Karen Nylund-Gibson
+
+---
+## References
+
+Arya, D., Clairmont, A., Katz, D., &amp; Maul, A. (2020). Measuring Reading Strategy Use. _Educational Assessment_, 25(1), 5-30.
+
+Borsboom, D., Mellenbergh, G. J., &amp; Van Heerden, J. (2002). Different Kinds of DIF: A Distinction Between Absolute and Relative Forms of Measurement Invariance and Bias. _Applied Psychological Measurement_, 26(4), 433–450. [https://doi.org/10.1177/014662102237798](https://doi.org/10.1177/014662102237798)  
+
+Paek, I., &amp; Wilson, M. (2011). Formulating the Rasch Differential Item Functioning Model Under the Marginal Maximum Likelihood Estimation Context and Its Comparison With Mantel–Haenszel Procedure in Short Test and Small Sample Conditions. _Educational and Psychological Measurement_, 71(6), 1023–1046. [https://doi.org/10.1177/0013164411400734](https://doi.org/10.1177/0013164411400734)
+
+
+
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "agate",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
