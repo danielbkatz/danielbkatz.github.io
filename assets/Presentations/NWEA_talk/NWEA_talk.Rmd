@@ -1,7 +1,7 @@
 ---
 title: Construct Definition
 subtitle: Tools from Philosophy and Psychometrics 
-author: Daniel Katz
+author: Daniel Katz- University of California, Santa Barbara
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -44,7 +44,10 @@ class: middle
 
 ## Outline
 
-1. Brief Overview of Motivations and Interests - construct definitions, ontology, and psychometrics
+1. Brief Overview of Motivations and Interests 
+  + construct definitions
+  + ontology
+  + psychometrics
 
 2. Presenting an iterative workflow - between theoretical considerations and (statistical) modeling and back
 
@@ -165,6 +168,28 @@ _Resilience as internal:_
 
 But there is no **correct** definition! Resilience is a metaphor.
 
+
+---
+
+class: middle
+
+# So I began to wonder...
+
+1. What should a properly specified definition look like?
+
+2. What is the role of definition in measurement activities? Who gets to do that?
+
+3. Is defining . . . 
+  + a language-based enterprise?
+  + an empirical one?
+  + or some combination? 
+  
+4. How does thinking about "what's out there?" help with our work?
+  
+4. Given any of these, what should count as enough for "measuring?”
+
+
+
 ---
 
 class: middle
@@ -174,9 +199,13 @@ class: middle
 
 + I wanted to create sort of a warning labels for myself (a cheat sheet if you will)
 
-+ I figured I'd find one but they mostly existed in philosophy of language texts (with a few exceptions)
++ I figured I'd find one...
 
-+ At first, it was just for me to sort out the work I was doing...
+--
+
+... but they mostly existed in philosophy of language texts (with a few exceptions)
+
++ At first, it was just for me
 
 ???
 
@@ -210,23 +239,6 @@ class: center
 ![conflations](reading_abil_designator.png)
 
 
-
----
-
-class: middle
-
-# So I began to wonder...
-
-1. What should a properly specified definition look like?
-
-2. What is the role of definition in measurement activities? Who gets to do that?
-
-3. Is defining . . . 
-  +   a language-based enterprise?
-  + an empirical one?
-  + or some combination? 
-  
-4. Given any of these, what should count as enough for "measuring?”
 
 
 ---
@@ -289,8 +301,13 @@ class: middle
 
 > "component of measurement uncertainty resulting from the finite amount of detail in the definition of a measurand"
 
+???
 
+The BIPM is...Bureau International des Poids et Mesures
 
+the international organization established by the Metre Convention, through which Member States act together on matters related to measurement science and measurement standards
+
+the home of the International System of Units (SI) and the international reference time scale (UTC).
 ---
 
 class: middle 
@@ -400,9 +417,9 @@ For now, this effort has been a categorization exercise - trying to figure out c
 ---
 class: middle, center
 
-# Part 3
+# Part 2
 
-#### Brief case study using latent variable models
+#### Brief case study using latent variable models - an iterative workflow
 
 
 ---
@@ -412,11 +429,11 @@ class: middle
 
 
 .pull-left[
-+ Latent variables in latent variable models - don't confront the measurement and definition question. 
++ Latent variables in latent variable models - don't confront the definition question. 
 
-+ "Ability" - whatever it is that makes it possible to do something
++ "Ability" - makes it possible to do something
 
-+ But also serves as explanation for variation
++ "Ability" - Also serves as explanation for variation
 ]
 
 .pull-right[
@@ -452,29 +469,41 @@ Construct mapping and IRT and back again
 
 $$P(X_{is}=1|\theta_s, \delta_i)=\frac{exp(\theta_s-\delta_i)}{1+ exp(\theta_s-\delta_i)}$$
 
-+ item difficulties $\delta_i$
+$\theta_s$ = ability of student `s`
 
-+ person abilities $\theta_s$
+$\delta_i$ = difficulty of item `i`
+
 ]
 ---
+class: middle
 
 # But what about violations?
 
 
 + In psychometrics, we learn about differential item functioning (DIF) in sort of a causal way
 
-+ An item is flagged for DIF when the probability of a response to an item, is not the same for people of the same ability but from different groups
+--
 
-+ Knowledge of tipping is thought to cause different response probabilities. We're not interested in measuring this. This is an explanatory account of DIF but helps us delimit what we're interested in measuring. 
+An item is flagged for DIF when the probability of a response to an item, is not the same for people of the same ability but from different groups
+
+--
+
++ We're not interested in "tipping at a restaurant" knowledge in an item about percentages. 
+
++ Normally differential item functioning in IRT - modeled something like a fixed effect
 
 ???
 
-People from countries without tipping as common practice have a lower probability of getting a math question about tipping correct than those people who are from countries with tipping as common practice EVEN AFTER matching on (estimated) math abilities. In metrology - this would be an "influence property" or "influence quanity"
+As an examplePeople from countries without tipping as common practice to those from countries with tipping as a common practice - people from countries without tipping have a lower probability of getting a math question about tipping correct than those people who are from countries with tipping as common practice EVEN AFTER matching on (estimated) math abilities. In metrology - this would be an "influence property" or "influence quantity"
+
 
 ---
+
+class: middle
+
 ## The Strategy Use Measure (SUM) - Formative, used for creating reading groups in the classroom
 
-.pull-left[
+
 Four correlated dimensions:
 
 + Morphological Awareness Items
@@ -484,37 +513,33 @@ Four correlated dimensions:
 + Inter-and Intra-Sentential Context Clues
 
 + Cognates (Spanish/English)
-]
-
---
-.pull-right[
-
-
-Each dimension is thought to assess the extent to which readers are able to put these strategies to use when they encounter a difficulty text.
 
 
 
-]
+
+
+???
+Each dimension is thought to assess the extent to which readers are able to put these strategies to use when they encounter a difficult text.
+
+
+---
+
+class: middle 
+
+Toy example for presentation and a project that we're working on right now...
+
 ---
 
 ## Construct maps
 
-From (Arya, Clairmon, Katz, & Maul, 2020)
+From (Arya, Clairmont, Katz, & Maul, 2020)
 
 
-.pull-left[
-
-![Morphological](MA_construct.png)
+![cognate](cog_construct_map.png)
 
 
-]
-
-.pull-right[
-
-![Morphological](cog_construct_map.png)
 
 
-]
 
 ---
 
@@ -554,192 +579,16 @@ Tree frogs are about two `strimes` long, which is the size of your finger. They 
 +	gently
 
 
----
 
+---
 
 ## Key items
 ![Qcog3](QCOG3.jpg)
 
 ![Qcog20](QCOG20.jpg)
 
-
----
-
-## Why do we worry about DIF?
-
-
-.pull-left[
-### Fairness:
-
-1. We want to treat like cases alike
-
-2. High stakes assessment: no test taker (or group) has undo (dis)advantage
-
-3. The AERA, APA, NCME *Standards* denote fairness as a validity issue (focusing not just on DIF)
-]
-
---
- 
-.pull-right[
-### Measurement, ontology
-1. Make sure score interpretations are same across groups (equating, if you will)
-
-2. Limit the extent to which instrument is sensitive to sources not related to the construct
-
-3. Finding DIF is important for examining construct of interest
-]
-
-Of course, also legal ramifications 
-
-
-
----
-
-## What we're measuring
-
-.pull-left[
-
-+ We name the properties - so our words refer to something 
-
-+ The thing we use to refer to those things - the label - is a signifier
-
-+ Thinking this way helps us figure out what it is to be these things 
-
-
-]
-
-
-
---
-
-
-.pull-right[
-Forms of uncertatinty to think about...
-
-Sometimes, we don't know what's different and what's the same thing
-
-![jupiter](NWEA_talk_files/jupiter.png)
-
-
-]
----
-
-class: middle, center
-
-# Example
-
-.pull-left[
-
-![same_entity](reading_abil_both.png)
-
-]
-
---
-
-.pull-right[
-
-![sep_entity](reading_abil_sep.png)
-
-]
-
----
-class: middle 
-
-# Bewitched by language - conceptual thinking
-
-+ Sometimes labels are too ambiguous
-
-+ Sometimes definitions are too ambiguous
-
-+ But always, language is never quiiiiiiite enough. 
-
-+ We need to delimit
-
----
-class: middle
-
-# Or what about empty or contingent references?
-
-![unicorn](NWEA_talk_files/unicorn.png)
-
-
-
----
-
-class: middle
-
-# Semantics
-
-As Fiona Hibbard says (2019, p.31): 
-
-> “Although we use words to propose or state what kind of thing we think it is, a definition references the what-it-is-to-be that kind of thing — its principal features or structure — in order to delimit it from other kinds and to make possible a systematic study of it and its connections.”
-
-
-
----
-
-Example items:
-
-.pull-left[
-### Morphological Awareness
-
-The book covers were heterocoloreous. What does "heterocoloreous" mean?
-+ **Different Colors** (1)
-+ same colors
-+ bright red colors
-+ different red colors
-]
-
---
-
-.pull-right[
-### Macro and Micro Relations in Text
-
-Glaciers are very large layers of ice that move very slowly.
-Which detail is least related to this sentence?   
- + **Glaciers have been long studied by scientists.** (1)
- + Glaciers can be as large as many countries.
- + Glaciers move an average of 200 feet per year.
- + Glaciers are able to carve out rock as they move.
-]
----
-class: middle
-
-### Inter-and Intra-Sentential Context Clues
-
-Tree frogs are about two `strimes` long, which is the size of your finger. They must move `pandery` to capture flies, their favorite food. The `norkle` of tree frogs is not definitive because they move around too quickly for people to observe how long they will survive. Tree frogs must escape from `morpes`, like snakes and bats, by moving quickly. _What could `pandery` mean?_
-
-+	**quickly** (1)
-+	slowly
-+	gently
-
-
----
-
-
-## Key items
-![Qcog3](QCOG3.jpg)
-
-![Qcog20](QCOG20.jpg)
-
-
----
-
-class: middle
-
-## The IRT step:
-
-Using similar notation to Paek & Wilson (2011)
-
-$$P(X_{is}=1|\theta_s, g_s)=\frac{exp(\theta_s-\delta_i + \Delta G + \gamma_i*G_)}{1+ exp(\theta_s-\delta_i +\Delta G + \gamma_i*G)}$$
-
-$\theta_s$ = ability of student `s`
-
-$\delta_i$ = difficulty of item `i`
-
-$\Delta$ = "Group effect" or "impact factor"
-
-$\gamma_i$ = DIF parameter value (e.g. item*group interaction)
+???
+Via IRT - these items were flagged for DIF and showed some of the largest "DIF effects" favoring heritage Spanish speakers - but is this problematic for a formative assessment?
 
 ---
 
@@ -747,7 +596,7 @@ class: middle
 
 ## A Graphical Method
 
-Let's say you've found evidence of DIF:
+Let's say you've found evidence of DIF but want to work through the response processes.
 
 
 1. Start with a mixture model - a Latent Class Analysis, here ( we know we have different distributions)
@@ -757,91 +606,20 @@ Let's say you've found evidence of DIF:
 2. Use multinomial logistic regression to regress class (or cluster membership) on observed group membership (for the full model)
 
  + Which class/cluster/profile does each group have the highest chance of being in?
- + Compare to individual cluster analyses/mixture models of each group individually
- 
---
+
+3. Compare to individual cluster analyses/mixture models of each group individually
+
+Abduce to response process theories derived from definitions.
+
+???
 
 3. Compare item response profiles of clusters (do they resemble the response probabilities of observed groups given DIF)
  + An LCA with all students
  + An LCA with just heritage Spanish Speakers
  + An LCA with just non-heritage Spanish Speakers
 
----
 
-## Brief Aside - Latent Class Analysis
-
-.pull-left[
-
-+ Highly exploratory use case here
-
-+ Enumerate several possible potential classes (e.g. - 1 class, 2 class, 3 class)
-
-+ Classes are categorical latent variables with reflective latent variable model interpretations
-
-]
-
-.pull-right[
-
-$$P(X=(x_1..x_k)) = \Sigma_{c=1}^{G*}\pi_cP(x_1..x_k)|c)$$
-+ `c` is class indicator
-
-+ `G*` denotes total classes
-
-+ $\pi_c$ = mixing proportions/class sizes (estimated)
-
-+ Item responses conditionally indpendent within class
-
-]
-
-
----
-class: middle
-
-## How did I use this process?
-
-+ Data from a multidimensional reading test (N ~ 1000)
-   + Items cherry-picked to have those that show evidence of DIF (for presentation)
-
-+ Two primary observed groups of interest (“heritage Spanish speakers”, “non-heritage Spanish Speakers”)
-
-+ One dimension of the test used Spanish-English cognates (in effect, a test of bilingualism)
-
-+ Would be unfair to compare non-Spanish speakers to Spanish speakers
-
-
-
-
-
----
-class: middle
-## Question of ultimate interest:
-
-1. Is group membership homogenous enough to perform a within group transformation of item score to equate scores across groups?
-
-2. If so, how?
-
-3. If not, explore potential "latent" groupings and hypothesize influence properties/sources of DIF
-
----
-
-## Key items
-![Qcog3](QCOG3.jpg)
-
-![Qcog20](QCOG20.jpg)
-
-
----
-class: middle
-
-# Key point
-
-**For this to work, I need to have a response process theory in mind**
-  
-
-- "Those who read like Spanish Speakers" and "Those who do not"
-
-- Another way: Those who show evidence of bilingualism (those who do not)
-  
+A mixture model in this setting is exploratory. A colloquial way of thinking about this process is seeking to find underlying, distributions, or clusters of people. Here it involves a process that goes between different numbers of classes. 
 
 ---
 ## Settle on a full sample model and Predict into Classes (Step 1 and 2)
@@ -853,12 +631,14 @@ knitr::include_graphics("final_mod.png")
 ```
 
 
+
 ---
+
 
 ## What about just Spanish Speakers, though?
 
 
-```{r echo=FALSE, fig.align='center', out.width="50%", fig.cap="Predicted Probabilities of Just Spanish Speakers on Items – Most heritage Spanish Speakers aren’t likely to get this question correct "}
+```{r echo=FALSE, fig.align='center', out.width="50%", fig.cap="Predicted Probabilities of Just Spanish Speakers on Items – Most heritage Spanish Speakers aren’t likely to get cognate questions correct "}
 
 knitr::include_graphics("Just Spanish.png")
 
@@ -890,22 +670,35 @@ knitr::include_graphics("Just non-Spanish.png")
 
 ]
 
+
 ---
+
+class: middle
+
+# Key point
+
+**For this to process to be informative, I need to have a response process theory in mind**
+  
+
+- Should "cognate knowledge" include more consideration for bilingualism?
+
+--
+
+- Normall, items that favor bilinguals might be filtered out for DIF
+
+???
+But bilingualism is a strength, here, in strategy use - should it feature in larger assessments? Perhaps formatively or in-classroom settings, this might be useful for knowledge for a teacher.
+
+---
+
 
 class: middle 
 
-## Conclusions
+## Conclusions and steps forward
 
-+ However, this finding might tell us something about bilingualism  (moving from tests of invariance 🡪 understanding responses in terms of mixtures of populations)
-
++ What I'm hoping is that this process might tell us something about bilingualism and cognate knowledge interacting - for whom should the items be difficult? 
 
 + Iterate on construct definitions - What aspect of bilingualism is/n't part of the measurand?
-
-
-+ Depending on what perspective on fairness we take, how might we act in a fair way with this sort of observed grouping?
-
-
-+ What about fairness?
 
 
 + How would this work for many groups or many more items? (would it scale?)
@@ -914,51 +707,190 @@ class: middle
 + Next steps: Try to "explain" DIF with LLTM/explanatory IRT models? Random Item Models? DIF not as fixed quantity?
 
 
+???
+
+ (moving from tests of invariance 🡪 understanding responses in terms of mixtures of populations)
+
 ---
+
 
 class: middle
 
 ## Brief Discussion of Fairness
 
-+ For items showing evidence of DIF, the influence quantity seems to be something else behind the veil of group membership - bilingualism? Should we be using that?
++ For items showing evidence of DIF, the influence quantity seems to be something else behind the veil of group membership then just "speaks Spanish"
 
 
-+ But this uses an old conception of fairness - treat like cases alike, everybody should have equal opportunities to learn
++ But this uses an old conception of fairness - treat like cases alike
 
 
++ What if we take a dynamic assessment perspective? E.g. - assessment mediates between student and instruction, helping student master material - then utilizing response processes will be useful
 
-+ What if we take a dynamic assessment perspective? E.g. - assessment mediates between student and instruction, helping student master material (a Vygotzky-esque perspective)?
+???
+
+The more multilingual learners are encouraged to use their home language in reading contexts, the more connections they are able to make across English and other linguistic systems, and the greater their ability to pick up lexical clues for comprehending (Rodríguez, 2001).
 
 ---
 
+# Part 3
 
+## Concluding thoughts and discussions
+
+---
+
+class: middle 
+
+## Conclusions more broadly
+
++ It's hard to interpret psychometric models without clarifying definitions
+
++ But definitions are never "complete"
+
++ Never forget that language can fool us but it's also a very helpful tool
+
++ Definitional work paired with response process work may help with impasses in psychometric modeling 
+  + Is IRT probabilistic because of sampling from persons or because of within person processes?
+  + Random sampling vs Stochastic subjects (Holland, 1990)
+
+???
+Work through metaphors and use them to our advantage
+
+
+---
+
+class: middle
 
 ## Thanks!
 
-Special thanks to…
+Special thanks to Dr. Diana Arya, UCSB Gevirtz Graduate School of Education, Associate Professor and director of the Mcenroe Reading and Language Arts Clinic, creator of the Strategy Use Measure (SUM) – data from which I have interrogated against best use recommendations
 
 
-Dr. Diana Arya, UCSB Gevirtz Graduate School of Education, Associate Professor and director of the Mcenroe Reading and Language Arts Clinic for creating the Strategy Use Measure (SUM) – data from which I have interrogated against best use recommendations
 
-As well as other committee members:
+If you'd like to get in touch...
 
-Dr. Andy Maul
-
-Dr. Karen Nylund-Gibson
-
----
-## References
-
-Arya, D., Clairmont, A., Katz, D., & Maul, A. (2020). Measuring Reading Strategy Use. _Educational Assessment_, 25(1), 5-30.
-
-Borsboom, D., Mellenbergh, G. J., & Van Heerden, J. (2002). Different Kinds of DIF: A Distinction Between Absolute and Relative Forms of Measurement Invariance and Bias. _Applied Psychological Measurement_, 26(4), 433–450. [https://doi.org/10.1177/014662102237798](https://doi.org/10.1177/014662102237798)  
-
-Paek, I., & Wilson, M. (2011). Formulating the Rasch Differential Item Functioning Model Under the Marginal Maximum Likelihood Estimation Context and Its Comparison With Mantel–Haenszel Procedure in Short Test and Small Sample Conditions. _Educational and Psychological Measurement_, 71(6), 1023–1046. [https://doi.org/10.1177/0013164411400734](https://doi.org/10.1177/0013164411400734)
-
-
+Daniel Katz: dkatz@ucsb.edu
 
 
 ---
+
+# References
+
+Arya, D., Clairmont, A., Katz, D., & Maul, A. (2020). Measuring Reading Strategy Use. *Educational Assessment*, 25(1), 5-30.
+
+Hibberd, F. (2019). What is Scientific Definition? *Journal of Mind and Behavior*, 40(1), 29-52.
+
+
+Holland, P. W. (1990). On the sampling theory foundations of item response theory models. *Psychometrika*, 55(4), 577-601.
+
+Maul, A., Mari, L., & Wilson, M. (2019). Intersubjectivity of measurement across the sciences. *Measurement: Journal of the International Measurement Confederation*, 131, 764–770. https://doi.org/10.1016/j.measurement.2018.08.068
+
+
+
+Wilson, M. (2005). *Constructing measures: an item response modeling approach.* Lawrence Erlbaum Associates.
+
+
+---
+# References
+
+
+Borsboom, D., Mellenbergh, G. J., & Van Heerden, J. (2002). Different Kinds of DIF: A Distinction Between Absolute and Relative Forms of Measurement Invariance and Bias. *Applied Psychological Measurement*, 26(4), 433–450. [https://doi.org/10.1177/014662102237798](https://doi.org/10.1177/014662102237798) 
+
+
+Slaney, K. L., & Garcia, D. A. (2015). Constructing psychological objects: The rhetoric of constructs. *Journal of Theoretical and Philosophical Psychology*, 35(4), 244–259. https://doi.org/10.1037/teo0000025
+
+
+Paek, I., & Wilson, M. (2011). Formulating the Rasch Differential Item Functioning Model Under the Marginal Maximum Likelihood Estimation Context and Its Comparison With Mantel–Haenszel Procedure in Short Test and Small Sample Conditions. *Educational and Psychological Measurement*, 71(6), 1023–1046. [https://doi.org/10.1177/0013164411400734](https://doi.org/10.1177/0013164411400734)
+---
+
+## Why do we worry about DIF?
+
+
+.pull-left[
+### Fairness:
+
+1. We want to treat like cases alike
+
+2. High stakes assessment: no test taker (or group) has undo (dis)advantage
+
+3. The AERA, APA, NCME *Standards* denote fairness as a validity issue (focusing not just on DIF)
+]
+
+--
+ 
+.pull-right[
+### Measurement, ontology
+1. Make sure score interpretations are same across groups (equating, if you will)
+
+2. Limit the extent to which instrument is sensitive to sources not related to the construct
+
+3. Finding DIF is important for examining construct of interest
+]
+
+Of course, also legal ramifications 
+
+
+
+
+
+
+---
+class: middle
+
+# Or what about empty or contingent references?
+
+![unicorn](NWEA_talk_files/unicorn.png)
+
+---
+
+class: middle
+
+## The IRT step:
+
+Using similar notation to Paek & Wilson (2011)
+
+$$P(X_{is}=1|\theta_s, g_s)=\frac{exp(\theta_s-\delta_i + \Delta G + \gamma_i*G_)}{1+ exp(\theta_s-\delta_i +\Delta G + \gamma_i*G)}$$
+
+$\theta_s$ = ability of student `s`
+
+$\delta_i$ = difficulty of item `i`
+
+$\Delta$ = "Group effect" or "impact factor"
+
+$\gamma_i$ = DIF parameter value (e.g. item*group interaction)
+
+
+
+---
+
+## Latent Class Analysis
+
+.pull-left[
+
++ Highly exploratory use case here
+
++ Enumerate several possible potential classes (e.g. - 1 class, 2 class, 3 class)
+
++ Classes are categorical latent variables with reflective latent variable model interpretations
+
+]
+
+.pull-right[
+
+$$P(X=(x_1..x_k)) = \Sigma_{c=1}^{G*}\pi_cP(x_1..x_k)|c)$$
++ `c` is class indicator
+
++ `G*` denotes total classes
+
++ $\pi_c$ = mixing proportions/class sizes (estimated)
+
++ Item responses conditionally indpendent within class
+
+]
+
+
+
+---
+
 
 
 
