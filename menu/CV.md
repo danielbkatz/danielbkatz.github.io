@@ -12,9 +12,9 @@ contact: katzdanb@gmail.com
 **PhD**: Education - Quantitative Research Methods and Philosophy of Measurement  
 University of California, Santa Barbara, 2022  
 &nbsp;&nbsp;&nbsp;&nbsp; Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya  
-**M.A.** Education - Quantitative Research Methods
-University of California, Santa Barbara, 2017  
-&nbsp;&nbsp;&nbsp;&nbsp; Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya
+**M.A.** Education - Quantitative Research Methods  
+University of California, Santa Barbara, 2017    
+&nbsp;&nbsp;&nbsp;&nbsp; Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya  
 **BA** (2011), Political Science, Minor in History  
 University of California, Santa Barbara  
   
