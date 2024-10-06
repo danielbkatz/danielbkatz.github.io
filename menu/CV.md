@@ -5,23 +5,16 @@ permalink: /CV/
 ---
 
 
-contact: kazdanb@gmail.com
+contact: katzdanb@gmail.com
 
 ## EDUCATION
 
-**PhD** (2022): Education - Quantitative Research Methods and Philosophy of Measurement  
-University of California, Santa Barbara  
-<div style="margin-left: 40px;">
-Dissertation: Unveiling Uncertainty: Tools, Concepts, and Philosophy for Defining what is Measured in Educational and
-Psychological Measurement.  
-Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya
-</div>
-**M.A.** (2017) Education (Quantitative Research Methods) 
-<div style="margin-left: 40px;">
-**Thesis:** Validating a Multidimensional Measure of Reading Strategy Use with the Rasch Model  
-University of California, Santa Barbara  
-Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya
-</div>
+**PhD**: Education - Quantitative Research Methods and Philosophy of Measurement  
+University of California, Santa Barbara, 2022  
+&nbsp;&nbsp;  Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya  
+**M.A.** Education - Quantitative Research Methods
+University of California, Santa Barbara, 2017  
+&nbsp;&nbsp; Committee: Andrew Maul, Karen Nylund-Gibson, Diana Arya
 **BA** (2011), Political Science, Minor in History  
 University of California, Santa Barbara  
   
