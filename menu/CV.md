@@ -164,6 +164,8 @@ Measuring subjective well-being and other constructs in positive psychology usin
 +	American Educational Research Association
 +	National Council on Measurement in Education
 +	Society for the Improvement of Psychological Sciences
++ Reviewer: American Psychologist
++ Reviewer: American Journal of Evaluation
 
 <br>
 
