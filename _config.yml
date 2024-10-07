@@ -20,7 +20,7 @@ author:
 email: "http://dkatz@ucsb.edu"
 
 description: > # this means to ignore newlines until "baseurl:"
-    PhD Student in Educational Measurement
+    Ontology Engineering, Measurement, Evaluation and Quantitative Methods
 base_url: http://www.danielbkatz.github.io
 
 
@@ -31,6 +31,7 @@ header_pages:
 - menu/blog.html
 - menu/talks.md
 - menu/CV.md
+- menu/resume.md
 
 #
 # Minima date format
