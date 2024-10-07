@@ -23,10 +23,10 @@ University of California, Santa Barbara
 
 ## RESEARCH INTERESTS
 ----------------------
+Ontology (philosophically) and ontology in the information science sense
 The Rasch Model and Item Response Theory  
-Measurement Invariance  
 Explanatory Item Response Models    
-Philosophy of Measurement and Probability   
+Philosophy of Measurement, Language, and Statistics   
 Casual Inference  
 Measuring student literacy and other non-academic abilities  
 
