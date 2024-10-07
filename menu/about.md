@@ -24,7 +24,9 @@ Good question - here is a rough and broad example:
 ## How did I get here?
 I did my PhD at UCSB in the Education Department under Andy Maul in educational measurement. Early in grad school, I devoted time to studying statistics as applied to educational research, causal inference, and psychometrics. I also dove into exciting-to-me debates about test validity theory where I was introduced to philosophy of science. As I joined more projects as the consulting methodologist, it often seemed like conceptual issues were masquerading as statistical issues. I had a creeping feeling that I could contribute more to these projects by helping establish conceptual clarity around defining the things we intended to measure and identifying when researchers (including me) were being [bewitched by our words.](https://philosophynow.org/issues/59/Bewitched)
 <br>
+<br>
 At the same time, there was burgeoning work comparing and contrasting traditions of measurement in the [human sciences and the field of metrology (measurement sciences outside of the social sciences)](https://link.springer.com/book/10.1007/978-3-031-22448-5) that captured my interest - particularly taking advantage of concepts already developed in metrology like the concept of a measurand. 
+<br>
 <br>
 These interests turned into a job at NWEA where I worked on an R&D team in ontology and measurement developing very specific cognitive models in service of classroom-based assessments: focusing on defining the things we intended to measure and turning cognitive models into ontologies and then psychometric models. After NWEA was purchased by HMH, my work became more technical - working as an ontology engineer, deploying enterprise level ontologies and serving machine learning systems.
 
