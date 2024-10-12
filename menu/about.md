@@ -20,9 +20,9 @@ Good question - here is a rough and broad example:
 1. Work with consumers of the ontology (e.g. machine learning engineers, data scientists, data engineers, subject matter experts on other teams) to consider how the ontology should be structured. 
 1. Move these semantics into a machine readable language (such as the Web Ontology Language). 
 1. Aligning data to this ontology, linking data across fields, ideally reducing ambiguity around internal vocabularies or what an organization's data refer to. 
-1. Developing design patterns, data models, and querying methods enabling machine learning engineers, data scientists, or business analysts to retrieve data based on relevant relations between data. 
+1. Developing design patterns, [data models](https://en.wikipedia.org/wiki/Data_model), and querying methods enabling machine learning engineers, data scientists, or business analysts to retrieve data based on relevant relations between data. 
   
-## How did I get here?
+# How did I get here?
 I did my PhD at UCSB under Andy Maul in educational measurement. Early in grad school, I devoted time to studying quantitative methods in educational research - focusing on psychometrics and causal inference. I also dove into exciting-to-me debates about test validity theory where I was introduced to philosophy of science. As I joined more projects, it often seemed like researcher conceptual issues were masquerading as statistical issues. I had a creeping feeling that I could contribute more by helping establish conceptual clarity around defining the things we intended to measure in our projects and identifying when researchers (including me) were being [bewitched by our words.](https://philosophynow.org/issues/59/Bewitched)
 <br>
 <br>
