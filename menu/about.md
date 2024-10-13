@@ -14,7 +14,7 @@ As I joined more projects in grad school, it often seemed like conceptual issues
   
 At the same time, there was burgeoning work comparing and contrasting traditions of measurement in the [human sciences and the field of metrology (measurement sciences outside of the social sciences)](https://link.springer.com/book/10.1007/978-3-031-22448-5) that captured my interest - particularly taking advantage of concepts already developed in metrology like the concept of a [measurand](https://jcgm.bipm.org/vim/en/2.3.html).     
   
-These interests turned into a job at NWEA where I worked on an R&D team in ontology and measurement developing very specific cognitive models in service of classroom-based assessments - turning these models into ontologies and then psychometric models. After NWEA was purchased by HMH, my work became more technical - working as an ontology engineer, deploying enterprise-level ontologies and serving machine learning systems.  
+These interests turned into a job at NWEA where I worked on an R&D team in ontology and measurement developing cognitive models in service of classroom-based assessments. After NWEA was purchased by HMH, my work became more technical - working as an ontology engineer, deploying enterprise-level ontologies and serving machine learning systems.  
   
    
 # What might an ontology engineer do?
