@@ -25,9 +25,3 @@ Good question - here is a rough and broad example:
 1. Move these semantics into a machine readable language (such as the Web Ontology Language). 
 1. Aligning data to this ontology, linking data across fields, ideally reducing ambiguity around internal vocabularies or what an organization's data refer to. 
 1. Developing design patterns, [data models](https://en.wikipedia.org/wiki/Data_model), and querying methods enabling machine learning engineers, data scientists, or business analysts to retrieve data based on relevant relations between data. 
-  
-
-    
-# What other interests do I have?
-I continue to chip away at projects from my PhD studies. Substantively, I maintain an interest in literacy and reading research as well as concepts of fairness in educational testing and psychometrics. I have ongoing projects in program evaluation, philosophy of measurement and the ethics therein, and statistical modeling. I especially enjoy an R&D-like setting where we implement new ideas and thoroughly evaluate them for their usefulness.
-
